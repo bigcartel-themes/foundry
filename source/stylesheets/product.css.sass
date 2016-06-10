@@ -1,0 +1,159 @@
+@import 'config'
+
+.previous_next
+  +pie-clearfix
+  font-size: 13px
+  margin-bottom: 40px
+  
+  @media screen and (max-width: $break-small)
+    margin-bottom: 20px
+  
+  .previous_product
+    float: left
+    
+    svg
+      +rotate(90deg)
+    
+  .next_product
+    float: right
+    
+    svg
+      +rotate(-90deg)
+      
+  a
+    display: block
+    position: relative
+  
+    svg
+      display: inline-block
+      fill: $secondary-text-color
+      height: 15px
+      position: relative
+      top: 3px
+      width: 15px
+      
+.product_images
+  float: left
+  max-width: 50%
+  width: 100%
+  
+  @media screen and (max-width: $break-small)
+    float: none
+    max-width: 100%
+  
+  a
+    display: block
+    outline: none
+    
+  .primary_image
+    display: block
+    width: 100%
+
+  .product_thumbnails
+    +pie-clearfix
+    font-size: 0
+    margin: 10px -5px 0 -5px
+    padding: 0
+    text-align: center
+
+    li
+      display: inline-block
+      padding: 0 5px
+      vertical-align: top
+      width: 20%
+
+      img
+        display: block
+        width: 100%
+        
+      &:first-child
+        img
+          opacity: .5
+        
+.product_detail
+  +all-transitions
+  float: left
+  max-width: 50%
+  padding-left: 8%
+  width: 100%
+  
+  @media screen and (max-width: 1200px)
+    padding-left: 5%
+  
+  @media screen and (max-width: $break-small)
+    float: none
+    margin-top: 40px
+    max-width: 100%
+    padding-left: 0
+  
+  .product_description
+    font-size: 14px
+    line-height: 1.5em
+    margin-top: 20px
+  
+  .product_form
+    margin-top: 20px
+    
+    #quantity
+      display: none
+    
+.share_buttons
+  margin-top: 40px
+
+  li
+    display: inline-block
+    margin-right: 18px
+    position: relative
+    
+    a
+      cursor: pointer
+      display: block
+      
+      svg
+        +all-transitions
+        fill: $secondary-text-color
+        height: 18px
+        width: 18px
+
+    &.social_pinterest
+    
+      a
+        display: inline-block
+        position: relative
+        
+        &:after
+          content: ""
+          position: absolute
+          top: 0
+          right: 0
+          bottom: 0
+          left: 0
+          
+.facebook_popup_holder
+  +transform(translateX(-50%))
+  bottom: 200%
+  display: none
+  left: 50%
+  position: absolute
+  z-index: 1
+  
+.facebook_popup
+  +border-radius(2px)
+  +box-shadow(0px 0px 1px 1px $header-text-color)
+  background-color: $header-background-color
+  padding: 10px
+  position: relative
+
+.facebook_popup:after
+  +box-shadow(-1px 1px 1px 0 $header-text-color)
+  +transform(rotate(-45deg))
+  +transform-origin(0 0)
+  border: 10px solid black
+  border-color: transparent transparent $header-background-color $header-background-color
+  bottom: -10px
+  content: ""
+  height: 0
+  left: 44%
+  margin-left: -3px
+  position: absolute
+  width: 0

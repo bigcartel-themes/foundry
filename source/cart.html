@@ -1,0 +1,85 @@
+<div class="min_cart">
+  <div class="item_holder">
+    {% for item in cart.items %}
+      <a class="cart_item" href="{{ item.product.url }}">
+        <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}?w=240&h=240&fit=crop" alt="Image of {{ item.product.name | escape }}">
+        <div class="item_info">
+          {{ item.product.name }}
+          {% unless item.product.has_default_option %}
+            <span>{{ item.option.name }}</span>
+          {% endunless %}
+          <div class="item_price">{{ item.unit_price | money_with_sign }}</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="cart_footer">
+    <div class="item_subtotal">
+      Subtotal <span>{{ cart.total | money_with_sign }}</span>
+    </div>
+    <a class="button view_bag" href="/cart">View/edit your bag</a>
+  </div>
+</div>
+  
+{% if cart.items != blank %}
+  <h1>Your bag</h1>
+  <form method="post" action="/cart" id="cart_form" class="cart_form">
+    <ul class="cart_items">
+      {% for item in cart.items %}
+        <li>
+          <a href="{{ item.product.url }}" class="item_image">
+            <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="{{ item.product.name }}">
+          </a>
+          <div class="item_details">
+            <a href="{{ item.product.url }}">
+              {{ item.product.name }}
+              {% unless item.product.has_default_option %}
+                <span>{{ item.option.name }}</span>
+              {% endunless %}
+            </a>
+            <div class="qty_holder">
+              <button class="qty" data-cart-id="{{ item.id }}" type="button" data-func="minus"><svg viewBox="0 0 20 20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg></button>
+              {{ item | item_quantity_input, 'quantity', 'quantity' }}
+              <button class="qty" data-cart-id="{{ item.id }}" type="button" data-func="plus"><svg viewBox="0 0 20 20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg></button>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="cart_info sticky">
+      {% if cart.shipping.enabled or cart.discount.enabled %}
+        {% if cart.shipping.enabled %}
+          <h4>
+            Shipping:
+            {% if cart.shipping.pending %}
+              {% if cart.country %}
+                <span class="small_message">Select another country</span>
+              {% else %}
+                <span class="small_message">Select country</span>
+              {% endif %}
+            {% else %}
+              <span>{{ cart.shipping.amount | money_with_sign }}</span>
+            {% endif %}
+          </h4>
+        {% endif %}
+        {% if cart.discount.enabled %}
+          {% if cart.discount.pending %}
+          {% elsif cart.discount.free_shipping %}
+            <h4>Discount: <span class="small_message">Free shipping!</span></h4>
+          {% else %}
+            <h4>Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      <h3>Subtotal  <span>{{ cart.total | money_with_sign }}</span></h3>
+      <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
+      <a class="button continue_shopping" href="/products">Continue Shopping</a>
+    </div>
+  </form>
+{% else %}
+  <h1>Your bag is empty</h1>
+  <div class="cart_empty">
+    <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
+    <p><a class="button" href="/products">Start Shopping</a></p>
+  </div>
+{% endif %}

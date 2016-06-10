@@ -1,0 +1,141 @@
+@import 'config'
+
+#cart .min_cart
+  display: none
+
+.cart_form
+  +pie-clearfix
+  margin: 0 auto
+  max-width: 1200px
+  
+.cart_items
+  float: left
+  max-width: 60%
+  width: 100%
+  
+  @media screen and (max-width: $break-extra-large)
+    max-width: 65%
+    
+  @media screen and (max-width: $break-small)
+    float: none
+    max-width: 100%
+  
+  li
+    +pie-clearfix
+    display: block
+    font-size: 14px
+    height: 250px
+    line-height: 15px
+    overflow: hidden
+    padding: 20px 0
+    
+    a.item_image
+      +vertical-align
+      float: left
+      height: 250px
+      margin-right: 20px
+      max-width: 200px
+      overflow: hidden
+      text-align: center
+      width: 100%
+      
+      @media screen and (max-width: $break-extra-large)
+        max-width: 40%
+
+      img
+        +vertical-align
+        display: block
+        height: auto
+        margin: 0 auto
+        width: 100%
+      
+    .item_details
+      +vertical-align  
+      float: left
+      max-width: 300px
+      width: auto
+      
+      @media screen and (max-width: $break-extra-large)
+        max-width: 50%
+
+      a  
+        display: block
+        font-size: 18px
+      
+        span
+          display: block
+          font-size: 14px
+          line-height: 1.4em
+          margin-top: 6px
+          
+    .qty_holder
+      +pie-clearfix
+      margin-top: 20px
+      
+      button
+        +border-radius(3ex)
+        background: none
+        border: 1px solid $secondary-text-color
+        color: $secondary-text-color
+        float: left
+        height: 32px
+        line-height: normal
+        width: 32px
+        
+        svg
+          fill: $secondary-text-color
+          height: 14px
+          width: 14px
+        
+      input
+        border: none
+        float: left
+        font-size: 13px
+        height: 32px
+        text-align: center
+        width: 60px
+    
+.cart_info
+  border: 1px solid $secondary-text-color
+  float: right
+  max-width: 400px
+  padding: 45px 40px 20px 40px
+  position: -webkit-sticky
+  position: sticky
+  text-align: center
+  top: 110px
+  width: 100%
+  
+  h3
+    margin-bottom: 20px
+    text-align: left
+    
+    >span
+      float: right
+      
+  button, .button
+    max-width: 100%
+  
+  @media screen and (max-width: $break-extra-large)
+    max-width: 35%
+  
+  @media screen and (max-width: $break-small)
+    float: none
+    max-width: 100%
+  
+  .continue_shopping
+    background: none
+    color: #000
+    font-size: 12px
+    margin-top: 20px
+  
+.cart_empty
+  text-align: center
+  
+  p
+    margin: 80px 0
+    
+  svg
+    fill: $secondary-text-color
+    height: 40px
+    width: 40px

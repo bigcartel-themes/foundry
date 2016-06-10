@@ -1,0 +1,131 @@
+{
+  "name": "Foundry",
+  "version": "0.0.17",
+  "images": [
+    {
+      "variable": "header_logo",
+      "label": "Header logo",
+      "description": "Good for an image up to 1300 by 250 pixels"
+    },
+    {
+      "variable": "welcome_image",
+      "label": "Welcome image",
+      "description": "Good for an image up to 1300 by 250 pixels",
+      "default": "welcome.png"
+    }
+  ],
+  "fonts": [
+    {
+      "variable": "primary_font",
+      "label": "Primary Font",
+      "default": "Work Sans"
+    },
+    {
+      "variable": "secondary_font",
+      "label": "Secondary Font",
+      "default": "Karla"
+    }
+  ],
+  "colors": [
+    {
+      "variable": "background_color",
+      "label": "Background",
+      "default": "#FFF"
+    },
+    {
+      "variable": "header_background_color",
+      "label": "Header & button background",
+      "default": "#222"
+    },
+    {
+      "variable": "header_text_color",
+      "label": "Header & button text",
+      "default": "#FFF"
+    },
+    {
+      "variable": "welcome_text_color",
+      "label": "Welcome text",
+      "default": "#FFF"
+    },
+    {
+      "variable": "primary_text_color",
+      "label": "Primary text",
+      "default": "#222"
+    },
+    {
+      "variable": "secondary_text_color",
+      "label": "Secondary text",
+      "default": "#646464"
+    },
+    {
+      "variable": "border_color",
+      "label": "Borders",
+      "default": "#999"
+    },
+    {
+      "variable": "error_text_color",
+      "label": "Errors",
+      "default": "#CF3636"
+    }
+  ],
+  "options": [
+    {
+      "variable": "welcome_text",
+      "label": "Welcome Text",
+      "type": "text",
+      "description": "Welcome message for your visitors",
+      "default": "Welcome to my ultra rad shop"
+    },
+    {
+      "variable": "show_overlay",
+      "label": "Product list info",
+      "type": "select",
+      "options": ["On rollover", "Under image"],
+      "default": "Under image",
+      "description": "Shows a product's name & price on hover or under the image"
+    },
+    {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "type": "select",
+      "options": "1..100",
+      "default": 12,
+      "description": "The number of products displayed per page"
+    },
+    {
+      "variable": "twitter_url",
+      "label": "Twitter URL",
+      "type": "text",
+      "description": "Ex: http://twitter.com/bigcartel",
+      "default": "http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "facebook_url",
+      "label": "Facebook URL",
+      "type": "text",
+      "description": "Ex: http://facebook.com/bigcartel",
+      "default": "http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: http://bigcartel.tumblr.com",
+      "default": "http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel",
+      "default": "http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel",
+      "default": "http://twitter.com/bigcartel"
+    }
+  ]
+}

@@ -1,0 +1,606 @@
+@import 'config'
+
+*
+  +box-sizing(border-box)
+  
+html
+  min-height: 100%
+  position: relative
+   
+body
+  background: $background-color
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  font-family: $primary-font
+  font-size: 15px
+  line-height: 1
+  margin: auto
+  margin-bottom: 120px
+  overflow-y: scroll
+  padding-top: 140px
+  
+  @media screen and (max-width: $break-small)
+    padding-top: 100px
+  
+  &#cart
+    .footer_cart
+      display: none
+      
+  &#home
+    padding-top: 0
+    
+  &.standalone
+    padding: 70px
+    text-align: center
+    
+    h1
+      font-size: 22px
+      line-height: 1.6em
+    
+    .maintenance_icons
+      display: block
+      
+      li
+        display: inline-block
+        
+        a
+          display: block
+          padding: 0 10px
+          
+          @media screen and (max-width: $break-small)
+            padding: 0 6px
+          
+          svg
+            height: 22px
+            width: 22px
+            
+            @media screen and (max-width: $break-small)
+              height: 16px
+              width: 16px
+  
+header
+  +pie-clearfix
+  background: $header-background-color
+  height: 90px
+  font-family: $secondary-font
+  left: 0
+  margin: 0
+  position: absolute
+  right: 0
+  top: 0
+  z-index: 1
+  
+  &.has_image
+    background: transparent
+    
+  &.background_overlay
+    background: $header-background-color
+    
+  &.has_alert
+    top: 40px
+  
+  .store_name
+    color: $header-text-color
+    float: left
+    font-size: 20px
+    line-height: 90px
+    margin-left: 20px
+    
+  .header_icons
+    +vertical-align
+    height: 30px
+    list-style: none
+    position: absolute
+    right: 20px
+    
+    li
+      display: inline-block
+      font-size: 0
+      height: 30px
+      margin-left: 30px
+      
+      a
+        color: $header-text-color
+        display: block
+        font-size: 14px
+        position: relative
+        
+        svg
+          fill: $header-text-color
+          height: 30px
+          width: 30px
+          
+      &.open_search a
+        top: 1px
+          
+      &.open_cart
+        margin-left: 23px
+        
+        @media screen and (max-width: $break-small)
+          display: none
+            
+      &.open_menu a
+        +vertical-align
+        height: 16px
+        
+        width: 22px
+        
+        span
+          +border-radius(2px)
+          +transform(rotate(0deg))
+          display: block
+          background: $header-text-color
+          width: 100%
+          height: 2px
+          position: absolute
+          left: 0
+          opacity: 1
+    
+          &:nth-child(1)
+            top: 0px
+    
+          &:nth-child(2), &:nth-child(3)
+            top: 50%
+    
+          &:nth-child(4)
+            top: 99%
+              
+.cart_count
+  position: absolute
+  right: -10px
+  top: 0
+
+  .value
+    +border-radius(3em)
+    background-image: linear-gradient(#fff, #eee)
+    background-color: #fff
+    color: #000
+    display: inline-block
+    font-size: 12px
+    line-height: 1.3
+    padding: 2px 5px
+              
+a
+  color: $secondary-text-color
+  text-decoration: none
+  
+ul, ol
+  list-style: none
+  margin: 0
+  padding: 0
+  
+button, a.button
+  +all-transitions
+  background-color: $header-background-color
+  border: none
+  color: $header-text-color
+  cursor: pointer
+  display: inline-block
+  font-size: 14px
+  height: 50px
+  line-height: 46px
+  max-width: 300px
+  outline: none
+  padding: 0
+  text-align: center
+  width: 100%
+
+  &:hover, &:focus, &.active
+    border: none
+    opacity: .9
+    
+.select
+  +all-transitions
+  position: relative
+  border: 1px solid $secondary-text-color
+  color: $secondary-text-color
+  height: 50px
+  margin-bottom: 15px
+  padding: 0
+  position: relative
+  max-width: 300px
+  width: 100%
+
+  select
+    +all-transitions
+    +appearance(none)
+    background: none
+    border: 0
+    color: $secondary-text-color
+    font-size: 14px
+    height: 100%
+    line-height: 2em
+    padding: 0 38px 0 12px
+    position: relative
+    width: 100%
+    z-index: 2
+
+    option
+      background-color: #FFF
+      color: #000
+
+    &:focus
+      box-shadow: none
+      outline: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    +all-transitions
+    fill: $secondary-text-color
+    height: 8px
+    margin-top: -2px
+    position: absolute
+    right: 14px
+    top: 50%
+    width: 13px
+    z-index: 1
+
+  &:hover
+    color: $secondary-text-color
+    border-color: $secondary-text-color
+
+    select
+      color: $primary-text-color
+      
+    svg
+      fill: $primary-text-color
+  
+.overlay
+  background-color: rgba(black, .9)
+  color: #FFF
+  display: none
+  height: 100%
+  left: 0
+  padding-top: 10%
+  position: fixed
+  text-align: center
+  top: 0
+  width: 100%
+  z-index: 2
+  
+  .close_overlay
+    cursor: pointer
+    fill: #FFF
+    height: 34px
+    position: absolute
+    right: 16px
+    top: 31px
+    width: 34px
+    
+  .page_list
+    display: none
+    
+    li
+      display: block
+      
+      a
+        color: #FFF
+        display: block
+        font-size: 18px
+        padding: 10px
+        
+  .search_form
+    display: none
+        
+  &.navigation
+    .page_list
+      display: block
+      
+  &.search
+    .search_form
+      display: block
+      
+      input
+        border: none
+        color: #fff
+        display: block
+        margin: 0 auto
+        width: 80%
+        padding: 15px
+        background: #222
+        font-size: 1.5em
+      
+        &:focus
+          border: none
+          color: #FFF
+          outline-color: #111
+      
+        &::-moz-placeholder
+          color: #CCC
+      
+        &::-webkit-input-placeholder
+          color: #CCC
+      
+        &:-ms-input-placeholder
+          color: #CCC
+
+.footer_cart
+  bottom: 0
+  display: none
+  height: 60px
+  left: 0
+  position: fixed
+  text-align: center
+  width: 100%
+  z-index: 1
+  
+  @media screen and (max-width: $break-small)
+    display: block
+  
+  .background
+    background: $header-background-color
+    height: 100%
+    left: 0
+    opacity: .9
+    position: absolute
+    top: 0
+    width: 100%
+    
+  a
+    +vertical-align
+    display: inline-block
+    position: relative
+    
+    svg
+      fill: $header-text-color
+      height: 25px
+      width: 25px
+  
+h1, h2, h3, h4, h5, h6
+  font-weight: normal
+  margin: 0
+  padding: 0
+  
+h1
+  font-size: 32px
+  margin-bottom: 60px
+  
+  @media screen and (max-width: $break-small)
+    font-size: 24px
+
+.welcome_image
+  background-image: url('#{"{{ 'welcome.png' | theme_image_url }}"}')
+  background-position: 50% 50%
+  background-repeat: no-repeat
+  background-attachment: fixed
+  background-size: cover
+  color: $welcome-text-color
+  height: 500px
+  left: 0
+  text-align: center
+  top: 0
+  width: 100%
+  
+  .welcome_text
+    +vertical-align
+    
+    h1
+      margin-bottom: 20px
+    
+    .welcome_button
+      border: 1px solid $welcome-text-color
+      color: $welcome-text-color
+      display: inline-block
+      font-size: 16px
+      padding: 10px
+  
+section.content
+  margin: 0 auto
+  max-width: 1300px
+  padding: 0 20px 100px
+  width: 100%
+  
+  &.custom
+    max-width: 800px
+    
+    img
+      display: block
+      max-width: 100%
+    
+    p
+      color: $secondary-text-color
+      line-height: 1.4em
+      margin: 0 auto 20px
+      max-width: 600px
+    
+  &.page-contact
+    max-width: 500px
+  
+  &.page-product
+    +pie-clearfix
+    max-width: 1200px
+    
+    h1
+      font-size: 26px
+      font-weight: normal
+      margin-bottom: 10px
+      text-align: left
+      
+    h2
+      color: $secondary-text-color
+      font-size: 18px
+      margin-top: 10px
+      
+  &.page-home
+    padding-top: 40px
+    
+  h1
+    text-align: center
+
+footer
+  +pie-clearfix
+  border-top: 1px solid $secondary-text-color
+  bottom: 0
+  min-height: 120px
+  padding: 60px 20px
+  position: absolute
+  width: 100%
+  
+  @media screen and (max-width: $break-small)
+    margin-top: 20px
+    position: relative
+    height: auto
+    
+  .footer_wrap
+    +pie-clearfix
+    margin: 0 auto
+    max-width: 1200px
+  
+  .footer_pages
+    float: left
+    font-size: 14px
+    
+    ul
+      +column-count(3)
+      +column-gap(40px)
+      
+      @media screen and (max-width: $break-small)
+        +column-count(1)
+        +column-gap(0)
+        margin-bottom: 40px
+      
+      li
+        display: block
+        
+        a
+          display: block
+          padding: 6px 0
+    
+    @media screen and (max-width: $break-small)
+      float: none
+      text-align: center
+      width: 100%
+    
+  .footer_credit_icons
+    float: right
+    text-align: right
+    
+    @media screen and (max-width: $break-small)
+      float: none
+      text-align: center
+      width: 100%
+    
+  .footer_credit
+    font-size: 13px
+    
+  .footer_icons
+    margin-top: 20px
+    
+    li
+      display: inline-block
+      font-size: 0
+      margin-left: 20px
+      
+      a
+        display: block
+        font-size: 14px
+        
+        svg
+          fill: $primary-text-color
+          height: 20px
+          width: 20px
+
+.mini_cart
+  +box-shadow(0 2px 2px $primary-text-color) 
+  height: 400px
+  display: none
+  position: absolute
+  right: 20px
+  top: 90px
+  margin: 0
+  max-width: 370px
+  width: 370px
+  background: #FFF
+  z-index: 100
+  
+  @media screen and (max-width: $break-small)
+    display: none !important
+  
+  .triangle
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 2px 15px 14px 15px
+    border-color: transparent transparent white transparent
+    position: absolute
+    top: -12px
+    right: 55px
+
+  .cart_holder
+    
+    .item_holder
+      height: 277px
+      position: absolute
+      overflow-y: scroll
+      padding: 0 20px
+      padding-top: 30px
+      
+      .cart_item
+        +pie-clearfix
+        display: block
+        margin-bottom: 20px
+        
+        .item_image
+          float: left
+          width: 30%
+          
+        .item_info
+          color: $primary-text-color
+          float: left
+          font-size: 14px
+          padding-left: 20px
+          width: 70%
+          
+          > span
+            color: $secondary-text-color
+            display: block
+            margin-top: 4px
+            
+        .item_price
+          color: $secondary-text-color
+          margin-top: 8px
+  
+    .cart_footer
+      bottom: 0
+      height: 145px
+      left: 0
+      padding: 20px
+      position: absolute
+      right: 0
+      
+      .item_subtotal
+        +pie-clearfix
+        padding: 20px 0
+        
+        >span
+          float: right
+        
+      .button
+        max-width: none
+        width: 100%
+        
+.message_alert
+  display: none
+  height: 40px
+  background: #FFF
+  color: #000
+  font-size: 14px
+  z-index: 1000
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  text-align: center
+  line-height: 40px
+  
+  .close_alert
+    fill: #000
+    height: 20px
+    position: absolute
+    right: 10px
+    top: 10px
+    width: 20px
+    

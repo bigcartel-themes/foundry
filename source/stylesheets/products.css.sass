@@ -1,0 +1,187 @@
+@import 'config'
+
+.category_list
+  margin: 0 auto 60px
+  max-width: 1200px
+  text-align: center
+  
+  @media screen and (max-width: $break-small)
+    margin-bottom: 40px
+  
+  ul
+  
+    li
+      display: inline-block
+      font-size: 0
+      
+      &.current a
+        color: $primary-text-color
+      
+      a
+        display: block
+        font-size: 14px
+        line-height: 14px
+        padding: 10px
+        
+    @media screen and (max-width: $break-small)
+      display: none
+  
+  .select
+    display: none
+    max-width: 100%
+    
+    @media screen and (max-width: $break-small)
+      display: block
+
+.product_list
+  +pie-clearfix
+  margin: 0 -10px 10px
+  padding: 0
+  position: relative
+
+  li
+    +all-transitions
+    float: left
+    padding: 0 10px 40px 10px
+    position: relative
+    width: 25%
+    
+    @media screen and (max-width: 1000px)
+      width: 33.3333%
+
+    @media screen and (max-width: $break-small)
+      width: 50%
+      
+    a
+      display: block
+      position: relative
+      text-align: center
+      width: 100%
+      
+      &:hover
+        opacity: 1
+
+      img
+        +all-transitions
+        +filter(blur(0))
+        display: block
+        height: auto
+        max-width: 100%
+        width: auto
+        
+      .product_details
+        +all-transitions
+        color: $primary-text-color
+        padding-top: 30px
+        position: relative
+        text-align: center
+        width: 100%
+        
+        .details_background
+          background: $background-color
+          height: 100%
+          opacity: .8
+          position: absolute
+          width: 100%
+        
+        .product_name
+          font-size: 14px
+          line-height: 16px
+          margin: 0
+          padding: 0 20px
+          position: relative
+          
+        .product_status
+          color: $secondary-text-color
+          font-size: 12px
+          position: absolute
+          text-transform: uppercase
+          top: 12px
+          width: 100%
+          
+        .product_price
+          color: $secondary-text-color
+          font-size: 13px
+          margin: 10px 0 30px
+          position: relative
+          
+        @media screen and (max-width: $break-small)
+          bottom: auto
+          opacity: 1
+          position: relative
+          
+          .product_status
+            font-size: 11px
+            
+          .product_name
+            font-size: 12px
+            padding: 30px 10px 0 10px
+            margin: 0
+          
+          .product_price
+            font-size: 12px
+    
+    @media screen and (max-width: $break-small)
+      padding-bottom: 0
+              
+    &.sold
+      img
+        opacity: .6
+        
+    &:hover
+      .product_details
+        opacity: 1
+
+.flexbox .product_list
+  +flexbox
+  +flex-direction(row)
+  +flex-wrap(wrap)
+  
+  li
+    +flexbox
+    float: none
+    
+.pagination
+  +pie-clearfix
+  font-size: 17px
+  margin: 0 auto
+  max-width: 400px
+  padding-top: 40px
+  text-align: center
+  width: 100%
+  
+  span, a
+    display: inline-block
+    padding: 12px 10px
+    
+    i
+      font-size: 12px
+      position: relative
+      
+  .current
+    background: $header-background-color
+    color: $header-text-color
+      
+  .previous, .next
+    svg
+      +all-transitions
+      height: 14px
+      position: relative
+      top: 0
+      width: 13px
+  
+  .previous
+    
+    svg
+      +rotate(90deg)
+
+  .next
+
+    svg
+      +rotate(-90deg)
+
+  .disabled
+    display: none
+    
+.no_products
+  text-align: center
