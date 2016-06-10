@@ -39,29 +39,35 @@ $(function() {
     , valMin = 1
     , item_id = $(this).data("cart-id");
     if(isNaN(val) || val < valMin) {
-      input.val(valMin);
+      var new_val = valMin;
+      input.val(new_val);
       return false;
     }
     else if (val > valMax) {
-      input.val(valMax);
+      var new_val = valMax;
+      input.val(new_val);
       return false;
     }
     if ($t.data('func') == 'plus') {
       if (val < valMax) {
-        input.val(val + 1);
+        var new_val = val + 1;
+        input.val(new_val);
       }
     }
     else {
       if (val > valMin) {
-        input.val(val - 1);
+        var new_val = val - 1;
+        input.val(new_val);
       }
     }
-    Cart.updateItem(item_id, val, function(cart) {
-      var sub_total = Format.money(cart.subtotal, true, true);
-      var item_count = cart.item_count;
-      $('.cart_info h3 > span').html(sub_total);
-      $('.value').html(item_count);
-    });
+    if (new_val > 0) { 
+      Cart.updateItem(item_id, new_val, function(cart) {
+        var sub_total = Format.money(cart.subtotal, true, true);
+        var item_count = cart.item_count;
+        $('.cart_info h3 > span').html(sub_total);
+        $('.value').html(item_count);
+      });
+    }
   });
   if ($('.welcome_text').length) {
     var waypoint = new Waypoint({
