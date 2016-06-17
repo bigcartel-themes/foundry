@@ -1,11 +1,11 @@
 {
   "name": "Foundry",
-  "version": "0.0.17",
+  "version": "0.0.46",
   "images": [
     {
       "variable": "header_logo",
       "label": "Header logo",
-      "description": "Good for an image up to 1300 by 250 pixels"
+      "description": "Good for a logo up to 208 x 66 pixels"
     },
     {
       "variable": "welcome_image",
@@ -30,27 +30,32 @@
     {
       "variable": "background_color",
       "label": "Background",
-      "default": "#FFF"
+      "default": "#FFFFFF"
     },
     {
       "variable": "header_background_color",
       "label": "Header & button background",
-      "default": "#222"
+      "default": "#222222"
     },
     {
       "variable": "header_text_color",
       "label": "Header & button text",
-      "default": "#FFF"
+      "default": "#FFFFFF"
     },
     {
-      "variable": "welcome_text_color",
-      "label": "Welcome text",
-      "default": "#FFF"
+      "variable": "home_image_overlay_color",
+      "label": "Overlay background color",
+      "default": "#222222"
+    },
+    {
+      "variable": "home_image_text_color",
+      "label": "Overlay text color",
+      "default": "#FFFFFF"
     },
     {
       "variable": "primary_text_color",
       "label": "Primary text",
-      "default": "#222"
+      "default": "#222222"
     },
     {
       "variable": "secondary_text_color",
@@ -60,7 +65,7 @@
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#999"
+      "default": "#999999"
     },
     {
       "variable": "error_text_color",
@@ -74,15 +79,45 @@
       "label": "Welcome Text",
       "type": "text",
       "description": "Welcome message for your visitors",
-      "default": "Welcome to my ultra rad shop"
+      "default": "Welcome our new insect overlords"
+    },
+    {
+      "variable": "home_tagline",
+      "label": "Home page tagline",
+      "type": "text",
+      "description": "Home page tagline",
+      "default": "Welcome to my ultra rad shop, i am cool?"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays search in the header"
     },
     {
       "variable": "show_overlay",
       "label": "Product list info",
       "type": "select",
       "options": ["On rollover", "Under image"],
-      "default": "Under image",
+      "default": "On rollover",
       "description": "Shows a product's name & price on hover or under the image"
+    },
+    {
+      "variable": "featured_categories",
+      "label": "Featured categories",
+      "type": "select",
+      "options": ["0","2","3","4","5","6","7","8","9","10"],
+      "default": "5",
+      "description": "The number of featured categories on the Home page"
+    },
+    {
+      "variable": "featured_products",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 8,
+      "description": "The number of featured products on the Home page"
     },
     {
       "variable": "products_per_page",

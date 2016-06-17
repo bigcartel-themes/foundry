@@ -63,10 +63,11 @@
       width: 20%
 
       img
+        +transition(opacity .02s linear)
         display: block
         width: 100%
         
-      &:first-child
+      &.active
         img
           opacity: .5
         
@@ -87,13 +88,20 @@
     padding-left: 0
   
   .product_description
+    color: $secondary-text-color
     font-size: 14px
-    line-height: 1.5em
-    margin-top: 20px
+    line-height: 1.6em
+    margin-top: 40px
   
   .product_form
-    margin-top: 20px
+    margin-top: 40px
     
+    .errors
+      display: none
+      font-size: 13px
+      line-height: 20px
+      margin-bottom: 20px
+      
     #quantity
       display: none
     

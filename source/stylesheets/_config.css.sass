@@ -9,7 +9,8 @@ $background-color: #{'{{ theme.background_color }}'}
 $header-background-color: #{'{{ theme.header_background_color }}'}
 $header-text-color: #{'{{ theme.header_text_color }}'}
 
-$welcome-text-color: #{'{{ theme.welcome_text_color }}'}
+$home-overlay-color: #{'{{ theme.home_image_overlay_color }}'}
+$home-text-color: #{'{{ theme.home_image_text_color }}'}
 
 $primary-text-color: #{'{{ theme.primary_text_color }}'}
 $secondary-text-color: #{'{{ theme.secondary_text_color }}'}
@@ -84,3 +85,26 @@ $break-extra-small: 500px
   -webkit-justify-content: $value
   -moz-justify-content: $value
   justify-content: $value
+
+@mixin keyframes($animation)
+  @-webkit-keyframes #{$animation}
+    @content
+  
+  @-moz-keyframes #{$animation}
+    @content
+  
+  @-ms-keyframes #{$animation}
+    @content
+  
+  @-o-keyframes #{$animation}
+    @content
+  
+  @keyframes #{$animation}
+    @content
+      
+@mixin animation($str)
+  -webkit-animation: $str
+  -moz-animation: $str
+  -ms-animation: $str
+  -o-animation: $str
+  animation: $str

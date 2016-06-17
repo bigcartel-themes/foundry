@@ -1,31 +1,55 @@
-{% paginate products from products.current by theme.products_per_page %}
-  {% if products != blank %}
-    <ul class="product_list">
-      {% for product in products %}
-        <li class="{{ product.css_class }}">
-          <a href="{{ product.url }}">
-            <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 600  }}">
-            <div class="product_details">
-    					<div class="details_background"></div>
-    					{% case product.status %}
-    						{% when 'active' %}
-    							{% if product.on_sale %}<div class="product_status">On Sale</div>{% endif %}
-    						{% when 'sold-out' %}
-    							<div class="product_status">Sold Out</div>
-    						{% when 'coming-soon' %}
-    							<div class="product_status">Coming Soon</div>
-    					{% endcase %}
-              <div class="product_name">{{ product.name }}</div>
-              <div class="product_price">{{ product.default_price | money_with_sign }}</div>
+{% if theme.home_tagline %}
+  <div class="home_tagline">
+    {{ theme.home_tagline }}
+  </div>
+{% endif %}
+
+{% if theme.featured_categories != 0 %}
+  <ul class="featured_categories">
+    {% for category in categories.active limit:theme.featured_categories %}
+      {% for product in category.products limit:1 %}
+        <li>
+          <a href="{{ category.url }}" title="Shop {{ category.name | escape }}">
+            <img src="{{ product.image.url }}?fit=crop&w=600&h=600">
+            <div class="category_overlay"></div>
+            <div class="category_info">
+              <div>{{ category.name }}</div>
             </div>
           </a>
         </li>
       {% endfor %}
-    </ul>
-    {% if paginate.pages > 1 %}
-      {{ paginate | default_pagination, 'pagination', 'pagination', '<svg viewBox="0 0 20 20"><path d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg>', '<svg viewBox="0 0 20 20"><path d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg>' }}
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if theme.featured_products > 0 %}
+  {% get products from products.current limit:theme.featured_products %}
+    {% if products != blank %}
+      <h2 class="featured_products">Featured Products</h2>
+      <ul class="product_list">
+        {% for product in products %}
+          <li class="{{ product.css_class }}">
+            <a href="{{ product.url }}">
+              <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 600  }}">
+              <div class="product_details">
+      					<div class="details_background"></div>
+      					{% case product.status %}
+      						{% when 'active' %}
+      							{% if product.on_sale %}<div class="product_status">On Sale</div>{% endif %}
+      						{% when 'sold-out' %}
+      							<div class="product_status">Sold Out</div>
+      						{% when 'coming-soon' %}
+      							<div class="product_status">Coming Soon</div>
+      					{% endcase %}
+                <div class="product_name">{{ product.name }}</div>
+                <div class="product_price">{{ product.default_price | money_with_sign }}</div>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no_products">No products found.</p>
     {% endif %}
-  {% else %}
-    <p>No products found.</p>
-  {% endif %}
-{% endpaginate %}
+  {% endget %}
+{% endif %}

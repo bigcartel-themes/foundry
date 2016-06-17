@@ -11,16 +11,14 @@ body
   background: $background-color
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
+  color: $primary-text-color
   font-family: $primary-font
   font-size: 15px
   line-height: 1
   margin: auto
-  margin-bottom: 120px
+  margin-bottom: 60px
   overflow-y: scroll
-  padding-top: 140px
-  
-  @media screen and (max-width: $break-small)
-    padding-top: 100px
+  padding-top: 130px
   
   &#cart
     .footer_cart
@@ -51,24 +49,29 @@ body
             padding: 0 6px
           
           svg
-            height: 22px
-            width: 22px
+            height: 30px
+            width: 30px
             
             @media screen and (max-width: $break-small)
-              height: 16px
-              width: 16px
+              height: 26px
+              width: 26px
   
 header
   +pie-clearfix
+  +transition(background .1s linear)
   background: $header-background-color
-  height: 90px
   font-family: $secondary-font
+  height: 90px
   left: 0
   margin: 0
-  position: absolute
+  padding: 20px 0
+  position: fixed
   right: 0
   top: 0
-  z-index: 1
+  z-index: 3
+  
+  @media screen and (max-width: $break-small)
+    position: absolute
   
   &.has_image
     background: transparent
@@ -83,9 +86,33 @@ header
     color: $header-text-color
     float: left
     font-size: 20px
-    line-height: 90px
     margin-left: 20px
+    max-width: 60%
     
+    a
+      color: $header-text-color
+      display: block
+      line-height: 1em
+      
+    &.text
+      height: 50px
+      
+      a
+        +vertical-align
+  
+    &.image
+      +vertical-align
+      
+      a
+        height: 100%
+        max-height: 50px
+    
+        img
+          display: block
+          height: auto
+          max-height: 100%
+          width: auto
+      
   .header_icons
     +vertical-align
     height: 30px
@@ -122,7 +149,6 @@ header
       &.open_menu a
         +vertical-align
         height: 16px
-        
         width: 22px
         
         span
@@ -147,18 +173,17 @@ header
               
 .cart_count
   position: absolute
-  right: -12px
+  right: -13px
   top: 0
 
-  .value
+  .cart_value
     +border-radius(3em)
-    background-image: linear-gradient(#fff, #eee)
-    background-color: #fff
-    color: #000
+    background-color: $header-text-color
+    color: $header-background-color
     display: inline-block
     font-size: 12px
     line-height: 1.3
-    padding: 2px 6px
+    padding: 2px 8px
               
 a
   color: $secondary-text-color
@@ -176,9 +201,9 @@ button, a.button
   color: $header-text-color
   cursor: pointer
   display: inline-block
-  font-size: 14px
-  height: 50px
-  line-height: 46px
+  font-size: 16px
+  height: 60px
+  line-height: 60px
   max-width: 300px
   outline: none
   padding: 0
@@ -187,14 +212,17 @@ button, a.button
 
   &:hover, &:focus, &.active
     border: none
-    opacity: .9
-    
+    opacity: .8
+
+.errors
+  color: $error-text-color
+     
 .select
   +all-transitions
   position: relative
-  border: 1px solid $secondary-text-color
+  border: 2px solid $secondary-text-color
   color: $secondary-text-color
-  height: 50px
+  height: 60px
   margin-bottom: 15px
   padding: 0
   position: relative
@@ -207,7 +235,7 @@ button, a.button
     background: none
     border: 0
     color: $secondary-text-color
-    font-size: 14px
+    font-size: 16px
     height: 100%
     line-height: 2em
     padding: 0 38px 0 12px
@@ -248,8 +276,6 @@ button, a.button
       fill: $primary-text-color
   
 .overlay
-  background-color: rgba(black, .9)
-  color: #FFF
   display: none
   height: 100%
   left: 0
@@ -258,31 +284,48 @@ button, a.button
   text-align: center
   top: 0
   width: 100%
-  z-index: 2
+  z-index: 5
+  
+  .overlay_background
+    background: $home-overlay-color
+    bottom: 0
+    left: 0
+    opacity: .95
+    position: absolute
+    right: 0
+    top: 0
+    z-index: 5
+  
+  @media screen and (max-width: $break-small)
+    padding-top: 25%
   
   .close_overlay
     cursor: pointer
-    fill: #FFF
+    fill: $home-text-color
     height: 34px
     position: absolute
     right: 16px
     top: 31px
     width: 34px
+    z-index: 6
     
   .page_list
     display: none
+    position: relative
+    z-index: 6
     
     li
       display: block
       
       a
-        color: #FFF
+        color: $home-text-color
         display: block
         font-size: 18px
         padding: 10px
         
   .search_form
     display: none
+    z-index: 6
         
   &.navigation
     .page_list
@@ -291,30 +334,34 @@ button, a.button
   &.search
     .search_form
       display: block
+      position: relative
       
       input
         border: none
-        color: #fff
+        color: $home-text-color
         display: block
         margin: 0 auto
-        width: 80%
+        width: 60%
         padding: 15px
-        background: #222
+        background: none
         font-size: 1.5em
+        
+        @media screen and (max-width: $break-small)
+          width: 80%
       
         &:focus
           border: none
-          color: #FFF
-          outline-color: #111
+          color: $home-text-color
+          outline: none
       
         &::-moz-placeholder
-          color: #CCC
+          color: $home-text-color
       
         &::-webkit-input-placeholder
-          color: #CCC
+          color: $home-text-color
       
         &:-ms-input-placeholder
-          color: #CCC
+          color: $home-text-color
 
 .footer_cart
   bottom: 0
@@ -324,7 +371,7 @@ button, a.button
   position: fixed
   text-align: center
   width: 100%
-  z-index: 1
+  z-index: 4
   
   @media screen and (max-width: $break-small)
     display: block
@@ -338,7 +385,7 @@ button, a.button
     top: 0
     width: 100%
     
-  a
+  .open_cart
     +vertical-align
     display: inline-block
     position: relative
@@ -359,41 +406,70 @@ h1
   
   @media screen and (max-width: $break-small)
     font-size: 24px
-
+    
+h2.featured_products
+  font-size: 28px
+  margin: 40px 0
+  text-align: center
+    
++keyframes(welcome-text)
+  0%
+    opacity: 0
+    +transform(translate3d(0, 10%, 0))
+    
+  100%
+    opacity: 1
+ 
 .welcome_image
-  background-image: url('#{"{{ 'welcome.png' | theme_image_url }}"}')
+  background-image: #{"{% if theme.images.welcome_image != blank %} url(\"{{ theme.images.welcome_image.url }}\") {% else %} none {% endif %}"}
   background-position: 50% 50%
   background-repeat: no-repeat
   background-attachment: fixed
   background-size: cover
-  color: $welcome-text-color
-  height: 500px
+  color: $home-text-color
+  height: 100vh
   left: 0
+  position: relative
   text-align: center
   top: 0
   width: 100%
   
+  .welcome_overlay
+    background: $home-overlay-color
+    position: absolute
+    width: 100%
+    height: 100%
+    left: 0
+    right: 0
+    top: 0
+    opacity: .35
+    bottom: 0
+  
   .welcome_text
     +vertical-align
+    +animation(welcome-text 900ms)
     
     h1
+      font-size: 60px
       margin-bottom: 20px
     
     .welcome_button
-      border: 1px solid $welcome-text-color
-      color: $welcome-text-color
-      display: inline-block
-      font-size: 16px
+      color: $home-text-color
+      font-size: 17px
       padding: 10px
   
 section.content
   margin: 0 auto
   max-width: 1300px
-  padding: 0 20px 100px
+  padding: 0 20px 0
+  margin-bottom: 240px
   width: 100%
   
+  @media screen and (max-width: $break-small)
+    margin-bottom: 40px
+  
   &.custom
-    max-width: 800px
+    max-width: 600px
     
     img
       display: block
@@ -401,9 +477,8 @@ section.content
     
     p
       color: $secondary-text-color
-      line-height: 1.4em
+      line-height: 1.7em
       margin: 0 auto 20px
-      max-width: 600px
     
   &.page-contact
     max-width: 500px
@@ -415,6 +490,7 @@ section.content
     h1
       font-size: 26px
       font-weight: normal
+      line-height: 28px
       margin-bottom: 10px
       text-align: left
       
@@ -424,14 +500,13 @@ section.content
       margin-top: 10px
       
   &.page-home
-    padding-top: 40px
+    padding-top: 20px
     
   h1
     text-align: center
 
 footer
   +pie-clearfix
-  border-top: 1px solid $secondary-text-color
   bottom: 0
   min-height: 120px
   padding: 60px 20px
@@ -439,6 +514,7 @@ footer
   width: 100%
   
   @media screen and (max-width: $break-small)
+    border-top: 1px solid $secondary-text-color
     margin-top: 20px
     position: relative
     height: auto
@@ -447,10 +523,13 @@ footer
     +pie-clearfix
     margin: 0 auto
     max-width: 1200px
+    padding: 0 20px
   
   .footer_pages
     float: left
     font-size: 14px
+    max-width: 50%
+    width: 100%
     
     ul
       +column-count(3)
@@ -467,23 +546,35 @@ footer
         a
           display: block
           padding: 6px 0
+          
+          @media screen and (max-width: $break-small)
+            padding: 8px 0
     
     @media screen and (max-width: $break-small)
       float: none
+      max-width: 100%
       text-align: center
-      width: 100%
+      
     
   .footer_credit_icons
     float: right
+    max-width: 50%
     text-align: right
+    width: 100%
     
     @media screen and (max-width: $break-small)
       float: none
+      max-width: 100%
       text-align: center
-      width: 100%
+      
     
   .footer_credit
     font-size: 13px
+    
+    .credit
+      @media screen and (max-width: $break-small)
+        display: block
+        margin-top: 20px
     
   .footer_icons
     margin-top: 20px
@@ -498,22 +589,32 @@ footer
         font-size: 14px
         
         svg
+          +all-transitions
           fill: $primary-text-color
-          height: 20px
-          width: 20px
+          height: 30px
+          width: 30px
+          
+        &:hover svg
+          fill: $secondary-text-color
 
+.home_tagline
+  color: $secondary-text-color
+  font-size: 16px
+  margin: 40px 0
+  text-align: center
+  
 .mini_cart
   +box-shadow(0 2px 2px $primary-text-color) 
-  height: 400px
+  height: 410px
   display: none
-  position: absolute
+  position: fixed
   right: 20px
   top: 90px
   margin: 0
   max-width: 370px
   width: 370px
-  background: #FFF
-  z-index: 100
+  background: $background-color
+  z-index: 4
   
   @media screen and (max-width: $break-small)
     display: none !important
@@ -523,7 +624,7 @@ footer
     height: 0
     border-style: solid
     border-width: 2px 15px 14px 15px
-    border-color: transparent transparent white transparent
+    border-color: transparent transparent $background-color transparent
     position: absolute
     top: -12px
     right: 55px
@@ -550,6 +651,7 @@ footer
           color: $primary-text-color
           float: left
           font-size: 14px
+          line-height: 15px
           padding-left: 20px
           width: 70%
           
@@ -561,10 +663,10 @@ footer
         .item_price
           color: $secondary-text-color
           margin-top: 8px
-  
+      
     .cart_footer
       bottom: 0
-      height: 145px
+      height: 155px
       left: 0
       padding: 20px
       position: absolute
@@ -581,26 +683,10 @@ footer
         max-width: none
         width: 100%
         
-.message_alert
-  display: none
-  height: 40px
-  background: #FFF
-  color: #000
-  font-size: 14px
-  z-index: 1000
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  width: 100%
-  text-align: center
-  line-height: 40px
-  
-  .close_alert
-    fill: #000
-    height: 20px
-    position: absolute
-    right: 10px
-    top: 10px
-    width: 20px
+  &.empty
+    height: auto
+    padding: 40px
+    text-align: center
     
+    .button
+      margin-top: 40px

@@ -10,16 +10,25 @@
 </head>
 <body id="{{ page.permalink }}" class="{{ page.category }}">
   <header class="header{% if theme.images.welcome_image != blank and page.permalink == 'home' %} has_image{% endif %}">
-    <a class="store_name" href="/">{{ store.name }}</a>
+    <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
+      <a href="/" title="{{ store.name | escape }}">
+        {% if theme.header_logo != blank %}
+          <img src="{{ theme.header_logo.url | constrain: '800', '120' }}" alt="{{ store.name }}">
+        {% else %}
+          {{ store.name }}
+        {% endif %}
+      </a>
+    </div>
     <ul class="header_icons">
-      <li class="open_search"><a href="#"><svg viewBox="0 0 30 30"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/></svg></a></li>
-      <li class="open_cart" ><a href="/cart"><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="value">{{ cart.item_count }}</span></span></a></li>
+      {% if theme.show_search %}<li class="open_search"><a href="#"><svg viewBox="0 0 30 30"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/></svg></a></li>{% endif %}
+      <li class="open_cart" ><a href="/cart"><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span></a></li>
       <li class="open_menu"><a href="#" title="Menu"><span></span><span></span><span></span><span></span></a></li>
     </ul>
   </header>
   {% if page.permalink == 'home' %}
-    {% if theme.images.welcome_image or theme.welcome_text %}
+    {% if theme.images.welcome_image or theme.welcome_text != blank %}
       <div class="welcome_image">
+        <div class="welcome_overlay"></div>
         <div class="welcome_text">
           <h1>{{ theme.welcome_text }}</h1>
           <a href="/products" class="welcome_button">Shop Now</a>
@@ -50,30 +59,31 @@
       </div>
       <div class="footer_credit_icons">
         <div class="footer_credit">
-          &copy; {{ store.name }}. {{ bigcartel_credit }}
+          &copy; {{ store.name }}. <span class="credit">{{ bigcartel_credit }}</span>
         </div>
         {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
           <div class="footer_icons">
             <ul>
+              {% if theme.instagram_url != blank %}
+                <li><a title="Instagram" href="{{ theme.instagram_url }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M22.7 5H7.3C6 5 5 6 5 7.3v15.4C5 24 6 25 7.3 25h15.4c1.3 0 2.3-1 2.3-2.3V7.3C25 6 24 5 22.7 5zM15 11.2c2.1 0 3.8 1.7 3.8 3.8 0 2.1-1.7 3.8-3.8 3.8-2.1 0-3.8-1.7-3.8-3.8 0-2.1 1.7-3.8 3.8-3.8zm7.7 10.7c0 .4-.3.8-.8.8H8.1c-.4 0-.8-.3-.8-.8v-8.5H9c-.1.5-.2 1-.2 1.5 0 3.4 2.8 6.2 6.2 6.2 3.4 0 6.2-2.8 6.2-6.2 0-.5-.1-1-.2-1.5h1.7v8.5zm0-11.5c0 .4-.3.8-.8.8h-2.3c-.4 0-.8-.3-.8-.8V8.1c0-.4.3-.8.8-.8h2.3c.4 0 .8.3.8.8v2.3z"/></svg></a></li>
+              {% endif %}
+              
               {% if theme.twitter_url != blank %}
-                <li><a title="Twitter" href="{{ theme.twitter_url }}"><svg width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg></a></li>
+                <li><a title="Twitter" href="{{ theme.twitter_url }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M25.4 6.5c-.9.5-1.8.9-2.9 1.1-.8-.9-2-1.4-3.3-1.4-2.5 0-4.5 2-4.5 4.4 0 .3 0 .7.1 1-3.8-.2-7.1-2-9.3-4.6-.4.7-.6 1.4-.6 2.3 0 1.5.8 2.9 2 3.7-.7 0-1.4-.2-2-.6v.1c0 2.1 1.6 3.9 3.6 4.4-.4 0-.8.1-1.2.1-.3 0-.6 0-.8-.1.6 1.8 2.2 3 4.2 3.1-1.5 1.2-3.5 1.9-5.6 1.9-.4 0-.7 0-1.1-.1 2 1.3 4.4 2 6.9 2 8.3 0 12.8-6.8 12.8-12.6v-.6c.9-.6 1.6-1.4 2.3-2.3-.8.4-1.7.6-2.6.7.9-.6 1.7-1.4 2-2.5z"/></svg></a></li>
               {% endif %}
   
               {% if theme.facebook_url != blank %}
-                <li><a title="Facebook" href="{{ theme.facebook_url }}"><svg width="36" height="36" viewBox="0 0 30 30"><path d="M23.9 5H6.1C5.5 5 5 5.5 5 6.1v17.7c0 .7.5 1.2 1.1 1.2h9.5v-7.7H13v-3h2.6V12c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.2 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V25h5.1c.6 0 1.1-.5 1.1-1.1V6.1c.1-.6-.4-1.1-1-1.1z"/></svg></a></li>
-              {% endif %}
-  
-              {% if theme.instagram_url != blank %}
-                <li><a title="Instagram" href="{{ theme.instagram_url }}"><svg width="36" height="36" viewBox="0 90 612 612"><path d="M540.273 90H71.727C32.19 90 0 122.19 0 161.727v468.67C0 669.81 32.19 702 71.727 702h468.67c39.535 0 71.726-32.19 71.726-71.727V161.727C612 122.313 579.687 90 540.273 90zM306 280.332c63.893 0 115.668 51.775 115.668 115.668S369.893 511.668 306 511.668 190.332 459.893 190.332 396 242.107 280.332 306 280.332zM542.232 608.12c0 13.096-10.77 23.867-23.868 23.867H92.412c-13.097 0-23.868-10.77-23.868-23.868V348.51h56.304c-3.917 15.177-6.12 31.21-6.12 47.49 0 103.55 83.966 187.272 187.272 187.272S493.272 499.552 493.272 396c0-16.524-2.204-32.313-6.12-47.49h55.08v259.61zm0-353.002c0 13.097-10.77 23.868-23.868 23.868h-69.77c-13.096 0-23.867-10.77-23.867-23.868V185.35c0-13.097 10.77-23.868 23.868-23.868h69.77c13.096 0 23.867 10.77 23.867 23.868v69.768z"/></svg></a></li>
-              {% endif %}
-  
-              {% if theme.tumblr_url != blank %}
-                <li><a title="Tumblr" href="{{ theme.tumblr_url }}"><svg width="36" height="36" viewBox="117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.18 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31V90H241.74c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.98 62.424 36.475 92.656 36.475 92.656 115.055 89.964 272.83 9.67 272.83 9.67v-99.02l-1.348 1.344z"/></svg></a></li>
+                <li><a title="Facebook" href="{{ theme.facebook_url }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M23.9 5H6.1C5.5 5 5 5.5 5 6.1v17.7c0 .7.5 1.2 1.1 1.2h9.5v-7.7H13v-3h2.6V12c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.2 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V25h5.1c.6 0 1.1-.5 1.1-1.1V6.1c.1-.6-.4-1.1-1-1.1z"/></svg></a></li>
               {% endif %}
   
               {% if theme.pinterest_url != blank %}
-                <li><a title="Pinterest" href="{{ theme.pinterest_url }}"><svg width="36" height="36" viewBox="0 0 30 30"><path d="M15 25c-1 0-2-.2-3-.4.4-.7 1-1.8 1.2-2.6.1-.5.6-2.4.6-2.4.3.6 1.3 1.1 2.3 1.1 3 0 5.2-2.8 5.2-6.2 0-3.3-2.7-5.8-6.2-5.8-4.3 0-6.6 2.9-6.6 6.1 0 1.5.8 3.3 2 3.9.2.1.3 0 .3-.1s.2-.8.3-1.1c0-.1 0-.2-.1-.3-.4-.5-.7-1.4-.7-2.3 0-2.2 1.7-4.3 4.5-4.3 2.5 0 4.2 1.7 4.2 4.1 0 2.7-1.4 4.6-3.1 4.6-1 0-1.7-.8-1.5-1.8.3-1.2.8-2.5.8-3.3 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5s-1 4.2-1.2 5c-.2.9-.1 2.1 0 2.9C7.6 22.9 5 19.2 5 15 5 9.5 9.5 5 15 5s10 4.5 10 10-4.5 10-10 10z"/><path d="M15 5C9.5 5 5 9.5 5 15c0 4.2 2.6 7.9 6.4 9.3-.1-.8-.2-2 0-2.9.2-.8 1.2-5 1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2 1 .5 1.8 1.5 1.8 1.8 0 3.1-1.9 3.1-4.6 0-2.4-1.7-4.1-4.2-4.1-2.8 0-4.5 2.1-4.5 4.3 0 .9.3 1.8.7 2.3.1.1.1.2.1.3-.1.3-.2 1-.3 1.1 0 .2-.1.2-.3.1-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.6-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.4-2.2 6.2-5.2 6.2-1 0-2-.5-2.3-1.1 0 0-.5 1.9-.6 2.4-.2.9-.8 2-1.2 2.6.8.5 1.8.7 2.8.7 5.5 0 10-4.5 10-10S20.5 5 15 5z"/></svg></a></li>
+                <li><a title="Pinterest" href="{{ theme.pinterest_url }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 25c-1 0-2-.2-3-.4.4-.7 1-1.8 1.2-2.6.1-.5.6-2.4.6-2.4.3.6 1.3 1.1 2.3 1.1 3 0 5.2-2.8 5.2-6.2 0-3.3-2.7-5.8-6.2-5.8-4.3 0-6.6 2.9-6.6 6.1 0 1.5.8 3.3 2 3.9.2.1.3 0 .3-.1s.2-.8.3-1.1c0-.1 0-.2-.1-.3-.4-.5-.7-1.4-.7-2.3 0-2.2 1.7-4.3 4.5-4.3 2.5 0 4.2 1.7 4.2 4.1 0 2.7-1.4 4.6-3.1 4.6-1 0-1.7-.8-1.5-1.8.3-1.2.8-2.5.8-3.3 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5s-1 4.2-1.2 5c-.2.9-.1 2.1 0 2.9C7.6 22.9 5 19.2 5 15 5 9.5 9.5 5 15 5s10 4.5 10 10-4.5 10-10 10z"/><path d="M15 5C9.5 5 5 9.5 5 15c0 4.2 2.6 7.9 6.4 9.3-.1-.8-.2-2 0-2.9.2-.8 1.2-5 1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2 1 .5 1.8 1.5 1.8 1.8 0 3.1-1.9 3.1-4.6 0-2.4-1.7-4.1-4.2-4.1-2.8 0-4.5 2.1-4.5 4.3 0 .9.3 1.8.7 2.3.1.1.1.2.1.3-.1.3-.2 1-.3 1.1 0 .2-.1.2-.3.1-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.6-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.4-2.2 6.2-5.2 6.2-1 0-2-.5-2.3-1.1 0 0-.5 1.9-.6 2.4-.2.9-.8 2-1.2 2.6.8.5 1.8.7 2.8.7 5.5 0 10-4.5 10-10S20.5 5 15 5z"/></svg></a></li>
+              {% endif %}  
+              {% if theme.tumblr_url != blank %}
+                <li><a title="Tumblr" href="{{ theme.tumblr_url }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M18.1 21.8c-.6 0-1.1-.1-1.5-.4-.3-.2-.6-.5-.7-.8-.1-.3-.2-1.1-.2-2.2v-5.1h4.7v-3.1h-4.7V5h-2.8c-.1 1-.4 1.9-.7 2.5-.3.7-.8 1.2-1.3 1.7-.6.5-1.2.8-2 1.1v2.8H11v7c0 .9.1 1.6.3 2.1.2.5.5.9 1 1.4.5.4 1.1.8 1.8 1 .7.2 1.5.3 2.4.3.8 0 1.6-.1 2.2-.2.7-.2 1.5-.4 2.3-.8v-3.1c-.9.6-1.9 1-2.9 1z"/></svg></a></li>
               {% endif %}
+  
+              
             </ul>
           </div>
         {% endif %}
@@ -81,26 +91,30 @@
     </div>
   </footer>
   <div class="overlay">
+    <div class="overlay_background"></div>
     <svg class="close_overlay" viewBox="0 0 20 20"><path d="M15 6.4L13.6 5 10 8.6 6.4 5 5 6.4 8.6 10 5 13.6 6.4 15l3.6-3.6 3.6 3.6 1.4-1.4-3.6-3.6z"/></svg>
     <ul class="page_list">
       <li><a href="/products">Shop</a></li>
       {% for page in pages.all %}
         <li>{{ page | link_to }}</li>
       {% endfor %}
+      <li><a href="/contact">Contact</a></li>
     </ul>
-    <form action="/products" method="get" class="search_form">
-      <input type="text" name="search" id="search" placeholder="Search products...">
-    </form>
+    {% if theme.show_search %}
+      <form action="/products" method="get" class="search_form">
+        <input type="text" name="search" id="search" placeholder="Search products...">
+      </form>
+    {% endif %}
   </div>
-  <div class="footer_cart">
+  <a class="footer_cart" href="/cart">
     <div class="background"></div>
-    <a class="open_cart" href="/cart"><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="value">{{ cart.item_count }}</span></span></a>
-  </div>
-  <div class="mini_cart">
+    <span class="open_cart" href="/cart"><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span></span>
+  </a>
+  {% if page.permalink != 'cart' %}
+  <div class="mini_cart{% if cart.item_count == 0 %} empty{% endif %}">
     <div class="triangle"></div>
     <div class="cart_holder">
-      {% if page.name != 'Cart' %}
-      <div class="min_cart">
+      {% if cart.items != blank %}
         <div class="item_holder">
           {% for item in cart.items %}
             <a class="cart_item" href="{{ item.product.url }}">
@@ -121,10 +135,15 @@
           </div>
           <a class="button view_bag" href="/cart">View/edit your bag</a>
         </div>
-      </div>
+      {% else %}
+        <div>
+          Your bag is empty
+        </div>
+        <a class="button view_bag" href="/products">Start shopping</a>
       {% endif %}
     </div>
   </div>
+  {% endif %}
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="{{ 'api' | theme_js_url }}"></script>
   <script src="{{ theme | theme_js_url }}"></script>

@@ -14,14 +14,22 @@
       
       button
         margin-left: 0
-  
+        
+  input
+    height: 56px
+    
   input, textarea
-    font-size: 14px
-    padding: 6px 10px
+    border: 2px solid $secondary-text-color
+    font-size: 16px
+    padding: 14px
     width: 100%
+    
+    &:active, &:focus
+      border: 2px solid $primary-text-color
+      outline: none
   
   textarea  
-    height: 300px
+    height: 260px
   
   label  
     display: block
@@ -29,26 +37,10 @@
     margin-bottom: 10px
     
   .contact_name, .contact_spam, .contact_send, .contact_email 
-    display: inline-block
+    display: block
     position: relative
-    width: 48%
-    
-    @media screen and (max-width: $break-small)
-      display: block
-      width: 100%
-  
-  .contact_name
-    float: left
-    
-    @media screen and (max-width: $break-small)
-      float: none
-      
-  .contact_email
-    float: right
-    
-    @media screen and (max-width: $break-small)
-      float: none
-      
+    width: 100%
+
   .contact_spam
     width: 100%
     
@@ -63,14 +55,14 @@
   #captcha
     &:active, &:focus
       #captcha_image
-        border-left: 1px solid $primary-text-color
+        border-left: 2px solid $primary-text-color
   
   #captcha_image
     position: absolute
     right: 2px
-    border-left: 1px solid $primary-text-color
-    height: 48px
-    top: 1px
+    border-left: 2px solid $primary-text-color
+    height: 52px
+    top: 2px
     
   .contact_send
     text-align: center
@@ -80,8 +72,8 @@
       text-align: center
     
     button
-      margin: 40px auto
-      width: 320px
+      margin: 30px auto
+      width: 300px
       
       @media screen and (max-width: $break-small)
         width: 100%

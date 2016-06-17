@@ -1,6 +1,6 @@
 @import 'config'
 
-#cart .min_cart
+#cart .cart_holder
   display: none
 
 .cart_form
@@ -14,14 +14,15 @@
   width: 100%
   
   @media screen and (max-width: $break-extra-large)
-    max-width: 65%
-    
+    max-width: 50%
+  
   @media screen and (max-width: $break-small)
     float: none
     max-width: 100%
   
   li
     +pie-clearfix
+    +transform(translateZ(0px))
     display: block
     font-size: 14px
     height: 250px
@@ -32,15 +33,20 @@
     a.item_image
       +vertical-align
       float: left
-      height: 250px
-      margin-right: 20px
+      height: 100%
+      margin-right: 40px
+      max-height: 200px
       max-width: 200px
       overflow: hidden
       text-align: center
       width: 100%
       
       @media screen and (max-width: $break-extra-large)
-        max-width: 40%
+        max-width: 150px
+        max-height: 150px
+        
+      @media screen and (max-width: $break-small)
+        margin-right: 20px
 
       img
         +vertical-align
@@ -58,14 +64,17 @@
       @media screen and (max-width: $break-extra-large)
         max-width: 50%
 
-      a  
+      a
+        color: $primary-text-color
         display: block
         font-size: 18px
+        line-height: 20px
       
-        span
+        > span
+          color: $secondary-text-color
           display: block
-          font-size: 14px
-          line-height: 1.4em
+          font-size: 15px
+          line-height: 1.3em
           margin-top: 6px
           
     .qty_holder
@@ -74,6 +83,7 @@
       
       button
         +border-radius(3ex)
+        +transform(translateZ(0px))
         background: none
         border: 1px solid $secondary-text-color
         color: $secondary-text-color
@@ -83,22 +93,32 @@
         width: 32px
         
         svg
-          fill: $secondary-text-color
+          fill: $primary-text-color
           height: 14px
+          position: relative
+          top: 1px
           width: 14px
         
       input
+        +appearance(none)
+        background: none
         border: none
+        color: $secondary-text-color
         float: left
-        font-size: 13px
+        font-size: 15px
         height: 32px
         text-align: center
         width: 60px
+        
+        &:focus
+          box-shadow: none
+          outline: none
     
 .cart_info
-  border: 1px solid $secondary-text-color
+  border: 2px solid $secondary-text-color
+  color: $secondary-text-color
   float: right
-  max-width: 400px
+  max-width: 360px
   padding: 45px 40px 20px 40px
   position: -webkit-sticky
   position: sticky
@@ -106,29 +126,66 @@
   top: 110px
   width: 100%
   
-  h3
+  h3, h4
     margin-bottom: 20px
     text-align: left
     
     >span
       float: right
+  h3
+    color: $primary-text-color
+    font-size: 20px
+        
+  h4
+    font-size: 13px
       
   button, .button
     max-width: 100%
   
-  @media screen and (max-width: $break-extra-large)
-    max-width: 35%
-  
   @media screen and (max-width: $break-small)
+    border: none
     float: none
     max-width: 100%
+    padding: 45px 0
   
   .continue_shopping
     background: none
-    color: #000
+    color: $secondary-text-color
     font-size: 12px
     margin-top: 20px
-  
+    
+  .cart_shipping
+    .select
+      max-width: 100%
+      
+  .cart_discounts
+    border: 2px solid $secondary-text-color
+    font-size: 14px
+    height: 50px
+    line-height: 46px
+    margin-bottom: 20px
+    padding: 0 10px
+    text-align: left
+    
+    input
+      background: none
+      border: none
+      font-size: 14px
+      height: 46px
+      text-align: left
+      
+      &:active, &:focus
+        outline: none
+        
+    .cancel_discount
+      float: right
+      margin-top: 7px
+      
+      svg
+        fill: $secondary-text-color
+        height: 20px
+        width: 20px
+      
 .cart_empty
   text-align: center
   
