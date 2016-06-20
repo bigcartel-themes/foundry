@@ -31,6 +31,13 @@
 {% if cart.items != blank %}
   <h1>Your bag</h1>
   <form method="post" action="/cart" id="cart_form" class="cart_form">
+    {% if errors != blank %}
+      <ul class="errors">
+        {% for error in errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     <ul class="cart_items">
       {% for item in cart.items %}
         <li class="cart_item" data-cart-id="{{ item.id }}">
@@ -55,8 +62,6 @@
       {% endfor %}
     </ul>
     <div class="cart_info sticky">
-      <div class="errors"></div>
-      
       {% if cart.shipping.enabled %}
         <div class="cart_shipping">
           <div class="select">

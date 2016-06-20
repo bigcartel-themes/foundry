@@ -2,8 +2,8 @@
 
 .previous_next
   +pie-clearfix
-  font-size: 13px
-  margin-bottom: 40px
+  font-size: 11px
+  margin-bottom: 60px
   
   @media screen and (max-width: $break-small)
     margin-bottom: 20px
@@ -27,10 +27,10 @@
     svg
       display: inline-block
       fill: $secondary-text-color
-      height: 15px
+      height: 10px
       position: relative
-      top: 3px
-      width: 15px
+      top: 1px
+      width: 10px
       
 .product_images
   float: left
@@ -97,10 +97,10 @@
     margin-top: 40px
     
     .errors
-      display: none
-      font-size: 13px
+      font-size: 12px
       line-height: 20px
       margin-bottom: 20px
+      text-align: left
       
     #quantity
       display: none
@@ -122,6 +122,9 @@
         fill: $secondary-text-color
         height: 18px
         width: 18px
+        
+      &:hover svg
+        opacity: .8
 
     &.social_pinterest
     
@@ -147,17 +150,17 @@
   
 .facebook_popup
   +border-radius(2px)
-  +box-shadow(0px 0px 1px 1px $header-text-color)
-  background-color: $header-background-color
+  +box-shadow(0px 0px 1px 1px $secondary-text-color)
+  background-color: $background-color
   padding: 10px
   position: relative
 
 .facebook_popup:after
-  +box-shadow(-1px 1px 1px 0 $header-text-color)
+  +box-shadow(-1px 1px 1px 0 $secondary-text-color)
   +transform(rotate(-45deg))
   +transform-origin(0 0)
   border: 10px solid black
-  border-color: transparent transparent $header-background-color $header-background-color
+  border-color: transparent transparent $background-color $background-color
   bottom: -10px
   content: ""
   height: 0
