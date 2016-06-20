@@ -1,19 +1,19 @@
 API.onError = function(errors) {
   var $errorList = $('<ul>', { class: 'errors'} )
-    , $cartErrorsLocation = $('.cart_items')
-    , $productErrorsLocation = $('.product_form');
+    , $cartError = $('.cart_form')
+    , $productError = $('.product_form');
 
   $.each(errors, function(index, error) {
     $errorList.append($('<li>').html(error));
   });
 
-  if ($cartErrorsLocation.length > 0) {
-    $cartErrorsLocation.find('.errors').hide();
-    $(window).scrollTop()
-    $cartErrorsLocation.prepend($errorList);
-  } else if ($productErrorsLocation.length > 0) {
-    $productErrorsLocation.find('.errors').hide();
-    $productErrorsLocation.prepend($errorList).slideDown('fast');
+  if ($cartError.length > 0) {
+    $cartError.find('.errors').hide();
+    $cartError.prepend($errorList);
+    $(window).scrollTop();
+  } else if ($productError.length > 0) {
+    $productError.find('.errors').hide();
+    $productError.prepend($errorList);
   }
 }
 
@@ -113,10 +113,11 @@ $(function() {
         var screenWidth = Waypoint.viewportWidth();
         if (screenWidth > 800) {
           if (direction === 'down') {
-            $('.welcome_text').animate({ opacity: 0 });
+            console.log('hi');
+            $('.welcome_text').fadeOut('fast');
           }
           else {
-            $('.welcome_text').animate({ opacity: 1 });
+            $('.welcome_text').fadeIn('fast');
           }
         }
       },
@@ -211,15 +212,22 @@ $(function() {
     addText.html(addingText);
     Cart.addItem(itemID, quantity, function(cart) { 
       addText.html(addedText);
-      if ($('.product_form .errors').length) { 
-        $('.product_form .errors').hide();
+      if ($('.errors').length) { 
+        $('.errors').hide();
       }
-      setTimeout(function() {
-        addText.html(addTextValue);
-      }, 900);
       updateCart(cart);
     });
-    addButton.blur();
+    setTimeout(function() {
+      addText.clone().appendTo(addButton).html(addTextValue).hide();
+      addButton.find('span').first().remove();
+      addButton.find('span').first().fadeIn(400);
+      addButton.blur();
+    }, 900);
+  });
+  
+  $('.social_facebook').click(function() { 
+    $('.facebook_popup_holder').fadeToggle('fast');
+    return false;
   });
 
   var num_cats = $('.featured_categories > li').length;
@@ -249,5 +257,8 @@ $(document).click(function(e) {
     if (container.is(':visible')) {
       container.fadeOut();
     }
+  }
+  if (!$(event.target).closest('.social_facebook').length) {
+    $('.facebook_popup_holder').fadeOut('fast');
   }
 });

@@ -9,6 +9,14 @@
   {{ head_content }}
 </head>
 <body id="{{ page.permalink }}" class="{{ page.category }}">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
   <header class="header{% if theme.images.welcome_image != blank and page.permalink == 'home' %} has_image{% endif %}">
     <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
       <a href="/" title="{{ store.name | escape }}">
@@ -92,7 +100,7 @@
   </footer>
   <div class="overlay">
     <div class="overlay_background"></div>
-    <svg class="close_overlay" viewBox="0 0 20 20"><path d="M15 6.4L13.6 5 10 8.6 6.4 5 5 6.4 8.6 10 5 13.6 6.4 15l3.6-3.6 3.6 3.6 1.4-1.4-3.6-3.6z"/></svg>
+    <svg class="close_overlay" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
     <ul class="page_list">
       <li><a href="/products">Shop</a></li>
       {% for page in pages.all %}
@@ -147,5 +155,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="{{ 'api' | theme_js_url }}"></script>
   <script src="{{ theme | theme_js_url }}"></script>
+  {% if page.full_url contains '/product/' %}
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  {% endif %}
 </body>
 </html>

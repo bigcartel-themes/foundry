@@ -58,7 +58,7 @@ body
   
 header
   +pie-clearfix
-  +transition(background .1s linear)
+  +transition(background .3s linear)
   background: $header-background-color
   font-family: $secondary-font
   height: 90px
@@ -88,6 +88,9 @@ header
     font-size: 20px
     margin-left: 40px
     max-width: 60%
+    
+    @media screen and (max-width: $break-small)
+      margin-left: 20px
     
     a
       color: $header-text-color
@@ -119,6 +122,9 @@ header
     list-style: none
     position: absolute
     right: 40px
+    
+    @media screen and (max-width: $break-small)
+      right: 20px
     
     li
       display: inline-block
@@ -216,6 +222,12 @@ button, a.button
 
 .errors
   color: $error-text-color
+  margin-bottom: 40px
+  text-align: center
+  
+  li
+    line-height: 1.5em
+    margin-bottom: 20px
      
 .select
   +all-transitions
@@ -302,12 +314,15 @@ button, a.button
   .close_overlay
     cursor: pointer
     fill: $home-text-color
-    height: 34px
+    height: 18px
     position: absolute
-    right: 16px
-    top: 31px
-    width: 34px
+    right: 42px
+    top: 37px
+    width: 18px
     z-index: 6
+    
+    @media screen and (max-width: $break-small)
+      right: 22px
     
   .page_list
     display: none
@@ -321,7 +336,10 @@ button, a.button
         color: $home-text-color
         display: block
         font-size: 36px
-        padding-bottom: 30px
+        padding: 15px 0
+        
+        @media screen and (max-width: $break-small)
+          font-size: 20px
         
   .search_form
     display: none
@@ -337,6 +355,7 @@ button, a.button
       position: relative
       
       input
+        +appearance(none)
         border: none
         color: $home-text-color
         display: block
@@ -411,6 +430,9 @@ h2.featured_products
   font-size: 26px
   margin: 200px 0 60px
   text-align: center
+  
+  @media screen and (max-width: $break-small)
+    margin-top: 60px
     
 +keyframes(welcome-text)
   0%
@@ -418,6 +440,7 @@ h2.featured_products
     +transform(translate3d(0, 10%, 0))
     
   100%
+    +transform(none)
     opacity: 1
  
 .welcome_image
@@ -447,11 +470,15 @@ h2.featured_products
   
   .welcome_text
     +vertical-align
-    +animation(welcome-text 900ms)
+    +animation(welcome-text ease-in 900ms forwards)
+    padding: 0 20px
     
     h1
       font-size: 60px
       margin-bottom: 20px
+      
+      @media screen and (max-width: $break-small)
+        font-size: 9vw
     
     .welcome_button
       color: $home-text-color
@@ -547,6 +574,7 @@ footer
           padding: 6px 0
           
           @media screen and (max-width: $break-small)
+            font-size: 15px
             padding: 8px 0
     
     @media screen and (max-width: $break-small)
@@ -578,6 +606,9 @@ footer
   .footer_icons
     margin-top: 20px
     
+    @media screen and (max-width: $break-small)
+      margin-top: 40px
+    
     li
       display: inline-block
       font-size: 0
@@ -599,9 +630,13 @@ footer
 .home_tagline
   color: $secondary-text-color
   font-size: 26px
+  line-height: 1.3em
   margin: 200px auto
   max-width: 640px
   text-align: center
+  
+  @media screen and (max-width: $break-small)
+    margin: 60px auto
   
 .mini_cart
   +box-shadow(0 2px 10px 0 $secondary-text-color) 
