@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.0.54",
+  "version": "0.0.70",
   "images": [
     {
       "variable": "header_logo",
@@ -10,7 +10,7 @@
     {
       "variable": "welcome_image",
       "label": "Welcome image",
-      "description": "Displays a full screen image",
+      "description": "Displays a full screen image on the Home page",
       "default": "welcome.png"
     }
   ],
@@ -44,12 +44,12 @@
     },
     {
       "variable": "home_image_overlay_color",
-      "label": "Overlay background color",
+      "label": "Home overlay background color",
       "default": "#222222"
     },
     {
       "variable": "home_image_text_color",
-      "label": "Overlay text color",
+      "label": "Home overlay text color",
       "default": "#FFFFFF"
     },
     {
@@ -66,6 +66,11 @@
       "variable": "error_text_color",
       "label": "Errors",
       "default": "#CF3636"
+    },
+    {
+      "variable": "border_color",
+      "label": "Borders",
+      "default": "#999999"
     }
   ],
   "options": [
@@ -103,7 +108,7 @@
       "label": "Featured categories",
       "type": "select",
       "options": ["0","2","3","4","5","6","7","8","9","10"],
-      "default": "5",
+      "default": "8",
       "description": "The number of featured categories on the Home page"
     },
     {
@@ -111,7 +116,7 @@
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 8,
+      "default": 3,
       "description": "The number of featured products on the Home page"
     },
     {

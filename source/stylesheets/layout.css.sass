@@ -107,8 +107,7 @@ header
       +vertical-align
       
       a
-        height: 100%
-        max-height: 50px
+        height: 50px
     
         img
           display: block
@@ -232,7 +231,7 @@ button, a.button
 .select
   +all-transitions
   position: relative
-  border: 2px solid $secondary-text-color
+  border: 2px solid $border-color
   color: $secondary-text-color
   height: 60px
   margin-bottom: 20px
@@ -288,18 +287,26 @@ button, a.button
       fill: $primary-text-color
   
 .overlay
-  display: none
+  +transform(scale(0.9))
+  +transition(transform 0.2s, opacity 0.2s, visibility 0s 0.2s)
   height: 100%
   left: 0
-  padding-top: 90px
+  opacity: 0
   position: fixed
   text-align: center
   top: 0
   width: 100%
   z-index: 5
+  visibility: hidden
+  
+  &.open
+    +transform(scale(1))
+    +transition(transform 0.4s, opacity 0.4s)
+    opacity: 1
+    visibility: visible
   
   .overlay_background
-    background: $home-overlay-color
+    background: $header-background-color
     bottom: 0
     left: 0
     opacity: .95
@@ -311,9 +318,14 @@ button, a.button
   @media screen and (max-width: $break-small)
     padding-top: 25%
   
+  .overlay_content
+    height: 100%
+    overflow-y: scroll
+    padding: 90px 0
+  
   .close_overlay
     cursor: pointer
-    fill: $home-text-color
+    fill: $header-text-color
     height: 18px
     position: absolute
     right: 42px
@@ -333,9 +345,9 @@ button, a.button
       display: block
       
       a
-        color: $home-text-color
+        color: $header-text-color
         display: block
-        font-size: 36px
+        font-size: 26px
         padding: 15px 0
         
         @media screen and (max-width: $break-small)
@@ -357,7 +369,7 @@ button, a.button
       input
         +appearance(none)
         border: none
-        color: $home-text-color
+        color: $header-text-color
         display: block
         margin: 0 auto
         width: 60%
@@ -370,17 +382,17 @@ button, a.button
       
         &:focus
           border: none
-          color: $home-text-color
+          color: $header-text-color
           outline: none
       
         &::-moz-placeholder
-          color: $home-text-color
+          color: $header-text-color
       
         &::-webkit-input-placeholder
-          color: $home-text-color
+          color: $header-text-color
       
         &:-ms-input-placeholder
-          color: $home-text-color
+          color: $header-text-color
 
 .footer_cart
   bottom: 0
@@ -457,6 +469,9 @@ h2.featured_products
   top: 0
   width: 100%
   
+  @media screen and (max-width: $break-medium)
+    background-attachment: scroll
+  
   .welcome_overlay
     background: $home-overlay-color
     position: absolute
@@ -496,7 +511,7 @@ section.content
     margin-bottom: 40px
   
   &.custom
-    max-width: 600px
+    max-width: 640px
     
     img
       display: block
@@ -537,82 +552,22 @@ footer
   min-height: 120px
   padding: 60px 20px
   position: absolute
+  text-align: center
   width: 100%
   
   @media screen and (max-width: $break-small)
-    border-top: 1px solid $secondary-text-color
+    border-top: 1px solid $border-color
     margin-top: 20px
     position: relative
     height: auto
     
-  .footer_wrap
-    +pie-clearfix
-    margin: 0 auto
-    max-width: 1200px
-    padding: 0 20px
-  
-  .footer_pages
-    float: left
-    font-size: 14px
-    max-width: 50%
-    width: 100%
-    
-    ul
-      +column-count(3)
-      +column-gap(40px)
-      
-      @media screen and (max-width: $break-small)
-        +column-count(1)
-        +column-gap(0)
-        margin-bottom: 40px
-      
-      li
-        display: block
-        
-        a
-          display: block
-          padding: 6px 0
-          
-          @media screen and (max-width: $break-small)
-            font-size: 15px
-            padding: 8px 0
-    
-    @media screen and (max-width: $break-small)
-      float: none
-      max-width: 100%
-      text-align: center
-      
-    
-  .footer_credit_icons
-    float: right
-    max-width: 50%
-    text-align: right
-    width: 100%
-    
-    @media screen and (max-width: $break-small)
-      float: none
-      max-width: 100%
-      text-align: center
-      
-    
-  .footer_credit
-    font-size: 14px
-    
-    .credit
-      @media screen and (max-width: $break-small)
-        display: block
-        margin-top: 20px
-    
   .footer_icons
-    margin-top: 20px
-    
-    @media screen and (max-width: $break-small)
-      margin-top: 40px
-    
+    margin: 10px auto
+
     li
       display: inline-block
       font-size: 0
-      margin-left: 20px
+      margin: 0 10px
       
       a
         display: block
@@ -625,8 +580,28 @@ footer
           width: 30px
           
         &:hover svg
-          fill: $secondary-text-color
+          fill: $secondary-text-color    
+          
 
+  .footer_pages
+    font-size: 0
+    margin: 10px auto
+    max-width: 640px
+    text-align: center
+    width: 100%
+    
+    li
+      display: inline-block
+      
+      a
+        display: block
+        font-size: 14px
+        padding: 10px
+        
+  .footer_credit
+    font-size: 12px
+    margin-top: 14px
+        
 .home_tagline
   color: $secondary-text-color
   font-size: 26px

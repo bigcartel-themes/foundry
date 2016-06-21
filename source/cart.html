@@ -88,7 +88,7 @@
         
       {% if cart.shipping.enabled or cart.discount.enabled %}
         {% if cart.shipping.enabled %}
-          <h4>
+          <h4 class="cart_shipping_amount">
             Shipping:
             {% if cart.shipping.pending %}
               {% if cart.country %}
@@ -104,20 +104,24 @@
         {% if cart.discount.enabled %}
           {% if cart.discount.pending %}
           {% elsif cart.discount.free_shipping %}
-            <h4>Discount: <span class="small_message">Free shipping</span></h4>
+            <h4 class="cart_discount_amount">Discount: <span class="small_message">Free shipping</span></h4>
           {% else %}
-            <h4>Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
+            <h4 class="cart_discount_amount">Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
           {% endif %}
         {% endif %}
       {% endif %}
-      <h3>Subtotal  <span>{{ cart.total | money_with_sign }}</span></h3>
+      <h3>Total  <span>{{ cart.total | money_with_sign }}</span></h3>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
       <a class="button continue_shopping" href="/products">Continue Shopping</a>
     </div>
   </form>
+  <div class="cart_empty_message" style="display: none;">
+    <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
+    <p><a class="button" href="/products">Start Shopping</a></p>
+  </div>
 {% else %}
   <h1>Your bag is empty</h1>
-  <div class="cart_empty">
+  <div class="cart_empty_message">
     <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
     <p><a class="button" href="/products">Start Shopping</a></p>
   </div>

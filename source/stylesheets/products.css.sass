@@ -153,9 +153,11 @@
     
     @media screen and (max-width: 1000px)
       width: 33.3333%
-
-    @media screen and (max-width: $break-small)
+    
+    @media screen and (max-width: $break-medium)
       padding-bottom: 40px !important
+      
+    @media screen and (max-width: $break-small)
       width: 100%
       
     a
@@ -263,6 +265,9 @@
   +flexbox
   +flex-direction(row)
   +flex-wrap(wrap)
+  
+  &.justify_center
+    +justify-content(center)
   
   li
     +flexbox
