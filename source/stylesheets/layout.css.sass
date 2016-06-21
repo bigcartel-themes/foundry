@@ -313,9 +313,6 @@ button, a.button
     top: 0
     z-index: 5
   
-  @media screen and (max-width: $break-small)
-    padding-top: 25%
-  
   .overlay_content
     height: 100%
     overflow-y: scroll
@@ -336,6 +333,8 @@ button, a.button
     
   .page_list
     display: none
+    margin: 0 auto
+    max-width: 80%
     opacity: 0
     position: relative
     z-index: 6
@@ -443,12 +442,15 @@ h1
     
 h2.featured_products
   font-size: 26px
-  margin: 200px 0 60px
+  margin: 0 0 60px
   text-align: center
   
-  @media screen and (max-width: $break-small)
+.featured_categories + h2.featured_products
+  margin-top: 200px
+  
+  @media screen and (max-width: $break-medium)
     margin-top: 60px
-    
+      
 +keyframes(welcome-text)
   0%
     opacity: 0
