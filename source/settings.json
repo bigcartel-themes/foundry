@@ -23,7 +23,7 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Karla"
+      "default": "Work Sans"
     }
   ],
   "colors": [
