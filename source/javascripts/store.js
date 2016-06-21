@@ -146,7 +146,7 @@ $(function() {
       element: $('.welcome_text'),
       handler: function(direction) {
         var screenWidth = Waypoint.viewportWidth();
-        if (screenWidth > 800) {
+        if (screenWidth > 765) {
           if (direction === 'down') {
             console.log('hi');
             $('.welcome_text').fadeOut('fast');
@@ -164,7 +164,7 @@ $(function() {
       element: $('.content'),
       handler: function(direction) {
         var screenWidth = Waypoint.viewportWidth();
-        if ($('.welcome_image').length && screenWidth > 800) {
+        if ($('.welcome_image').length && screenWidth > 765) {
           if (direction === 'down') {
             $('header').addClass('background_overlay');
           }
@@ -268,7 +268,7 @@ $(function() {
     $('.facebook_popup_holder').fadeToggle('fast');
     return false;
   });
-
+  
   var num_cats = $('.featured_categories > li').length;
   if (num_cats > 0) { 
     if (num_cats == 2) { $('.featured_categories').addClass('two_categories'); }
@@ -301,4 +301,25 @@ $(document).click(function(e) {
   if (!$(event.target).closest('.social_facebook').length) {
     $('.facebook_popup_holder').fadeOut('fast');
   }
+});
+var inPreview = (/\/admin\/design/.test(top.location.pathname));
+if (inPreview) { 
+  var timeout_start = 1000;
+} 
+else { 
+  timeout_start = 1;
+}
+$(document).ready(function() { 
+  setTimeout(function() { 
+    $('.featured_categories li').each(function() {
+      var container = $(this).find('a');
+      var image = $(this).find('img');
+      var img = new Image();
+      img.src = image.attr('src');
+      img.onload = function() {
+        console.log('width: '+container.width());
+        container.css('height',container.width()+'px')
+      };
+    });  
+  }, timeout_start);
 });
