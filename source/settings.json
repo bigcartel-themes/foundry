@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.0.83",
+  "version": "0.0.84",
   "images": [
     {
       "variable": "header_logo",
@@ -94,7 +94,7 @@
       "label": "Welcome Text",
       "type": "text",
       "description": "Welcome message for your visitors",
-      "default": "Summer Sale!"
+      "default": "Summer Sale"
     },
     {
       "variable": "home_tagline",
@@ -131,7 +131,7 @@
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 3,
+      "default": 4,
       "description": "The number of featured products on the Home page"
     },
     {

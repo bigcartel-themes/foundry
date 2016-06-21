@@ -8,7 +8,7 @@
   <link href='https://fonts.googleapis.com/css?family=Work+Sans|Karla' rel='stylesheet' type='text/css'>
   {{ head_content }}
 </head>
-<body id="{{ page.permalink }}" class="{{ page.category }}">
+<body id="{{ page.permalink }}" class="{{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -17,7 +17,7 @@
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-  <header class="header{% if theme.images.welcome_image != blank and page.permalink == 'home' %} has_image{% endif %}">
+  <header class="header">
     <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
       <a href="/" title="{{ store.name | escape }}">
         {% if theme.header_logo != blank %}
@@ -39,7 +39,7 @@
         <div class="welcome_overlay"></div>
         <div class="welcome_text">
           <h1>{{ theme.welcome_text }}</h1>
-          <a href="/products" class="welcome_button">Shop Now</a>
+          <a href="/products" class="welcome_button">Start Shopping</a>
         </div>
       </div>
     {% endif %}

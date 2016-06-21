@@ -18,7 +18,13 @@ body
   margin: auto
   margin-bottom: 60px
   overflow-y: scroll
-  padding-top: 160px
+  padding-top: 90px
+  
+  &.has_welcome 
+    padding-top: 0
+    
+    header
+      background: transparent
   
   &#cart
     .footer_cart
@@ -72,12 +78,9 @@ header
   
   @media screen and (max-width: $break-small)
     position: absolute
-  
-  &.has_image
-    background: transparent
     
   &.background_overlay
-    background: $header-background-color
+    background: $header-background-color !important
 
   .store_name
     color: $header-text-color
@@ -486,7 +489,9 @@ h2.featured_products
     width: 100%
   
   .welcome_text
-    +vertical-align
+    +transform(translateY(-50%))
+    position: relative
+    top: calc(50% - 45px)
     +animation(welcome-text ease-in 900ms forwards)
     padding: 0 20px
     
@@ -505,7 +510,7 @@ h2.featured_products
 section.content
   margin: 0 auto 360px auto
   max-width: 1300px
-  padding: 0 20px 0
+  padding: 0 20px
   width: 100%
   
   @media screen and (max-width: $break-small)
@@ -560,7 +565,7 @@ section.content
       font-size: 18px
       
   &.page-home
-    padding-top: 20px
+    padding-top: 200px
     
   h1
     text-align: center
@@ -631,7 +636,7 @@ footer
   color: $secondary-text-color
   font-size: 26px
   line-height: 1.3em
-  margin: 200px auto
+  margin: 0 auto 200px
   max-width: 640px
   text-align: center
   
@@ -729,3 +734,9 @@ footer
     
     .button
       margin-top: 40px
+      
+.success_message
+  text-align: center
+  
+  p
+    margin: 80px 0
