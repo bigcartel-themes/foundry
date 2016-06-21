@@ -301,17 +301,23 @@ if (inPreview) {
 else { 
   timeout_start = 1;
 }
+var update_featured_categories = function() { 
+  $('.featured_categories li').each(function() {
+    var container = $(this).find('a');
+    var image = $(this).find('img');
+    var img = new Image();
+    img.src = image.attr('src');
+    img.onload = function() {
+      container.css('height',container.width()+'px')
+      image.centerImage();
+    };
+  }); 
+}
 $(document).ready(function() { 
   setTimeout(function() { 
-    $('.featured_categories li').each(function() {
-      var container = $(this).find('a');
-      var image = $(this).find('img');
-      var img = new Image();
-      img.src = image.attr('src');
-      img.onload = function() {
-        container.css('height',container.width()+'px')
-        image.centerImage();
-      };
-    });  
+    update_featured_categories(); 
   }, timeout_start);
+});
+$(window).on("load resize", function() {
+  update_featured_categories();
 });
