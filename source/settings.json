@@ -71,6 +71,21 @@
       "variable": "border_color",
       "label": "Borders",
       "default": "#999999"
+    },
+    {
+      "variable": "footer_background_color",
+      "label": "Footer background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "variable": "footer_icon_color",
+      "label": "Footer icon color",
+      "default": "#222222"
+    },
+    {
+      "variable": "footer_text_color",
+      "label": "Footer text color",
+      "default": "#646464"
     }
   ],
   "options": [

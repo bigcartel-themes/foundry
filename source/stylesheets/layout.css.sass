@@ -552,6 +552,7 @@ section.content
     text-align: center
 
 footer
+  background-color: $footer-background-color
   +pie-clearfix
   bottom: 0
   min-height: 120px
@@ -561,8 +562,7 @@ footer
   width: 100%
   
   @media screen and (max-width: $break-small)
-    border-top: 1px solid $border-color
-    margin-top: 20px
+    margin: 20px 0 60px
     position: relative
     height: auto
     
@@ -580,15 +580,16 @@ footer
         
         svg
           +all-transitions
-          fill: $primary-text-color
+          fill: $footer-icon-color
           height: 30px
           width: 30px
           
         &:hover svg
-          fill: $secondary-text-color    
+          opacity: .8    
           
 
   .footer_pages
+    color: $footer-text-color
     font-size: 0
     margin: 10px auto
     max-width: 640px
@@ -604,6 +605,7 @@ footer
         padding: 10px
         
   .footer_credit
+    color: $footer-text-color
     font-size: 12px
     margin-top: 14px
         
