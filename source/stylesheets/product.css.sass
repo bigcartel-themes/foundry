@@ -6,7 +6,7 @@
   margin-bottom: 60px
   
   @media screen and (max-width: $break-small)
-    margin-bottom: 20px
+    margin-bottom: 30px
   
   .previous_product
     float: left
@@ -92,6 +92,23 @@
     font-size: 14px
     line-height: 1.6em
     margin-top: 40px
+    
+    ol, ul
+      margin: 1em 0
+      padding-left: 1em
+      
+    ul
+      list-style: disc
+    
+    ol
+      list-style: decimal
+      
+    a[href]
+      +all-transitions
+      text-decoration: underline
+      
+      &:hover
+        opacity: .8
   
   .product_form
     margin-top: 40px

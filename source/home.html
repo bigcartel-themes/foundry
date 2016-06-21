@@ -4,22 +4,24 @@
   </div>
 {% endif %}
 
-{% if theme.featured_categories != 0 %}
-  <ul class="featured_categories">
-    {% for category in categories.active limit:theme.featured_categories %}
-      {% for product in category.products limit:1 %}
-        <li>
-          <a href="{{ category.url }}" title="Shop {{ category.name | escape }}">
-            <img src="{{ product.image | product_image_url | constrain: 1000,1000 }}">
-            <div class="category_overlay"></div>
-            <div class="category_info">
-              <div>{{ category.name }}</div>
-            </div>
-          </a>
-        </li>
+{% if theme.featured_categories != '0' %}
+  {% if categories.active != blank %}
+    <ul class="featured_categories">
+      {% for category in categories.active limit:theme.featured_categories %}
+        {% for product in category.products limit:1 %}
+          <li>
+            <a href="{{ category.url }}" title="Shop {{ category.name | escape }}">
+              <img src="{{ product.image | product_image_url | constrain: 1000,1000 }}">
+              <div class="category_overlay"></div>
+              <div class="category_info">
+                <div>{{ category.name }}</div>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
-  </ul>
+    </ul>
+  {% endif %}
 {% endif %}
 
 {% if theme.featured_products > 0 %}

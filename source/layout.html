@@ -47,7 +47,7 @@
   <section class="content page-{{ page.permalink }} {{ page.category }}">
     {% if page.category == 'custom' %}
       <h1>{{ page.name }}</h1>
-      {{ page_content | paragraphs }}
+      <div class="custom_page">{{ page_content | paragraphs }}</div>
     {% else %}
       {{ page_content }}
     {% endif %}
@@ -85,7 +85,7 @@
       <li><a href="/contact">Contact</a></li>
     </ul>
     <div class="footer_credit">
-      &copy; {{ store.name }}. <span class="credit">{{ bigcartel_credit }}</span>
+      &copy; {{ 'Today' | date: '%Y' }} {{ store.name }}. <span class="credit">{{ bigcartel_credit }}</span>
     </div>
   </footer>
   <div class="overlay">

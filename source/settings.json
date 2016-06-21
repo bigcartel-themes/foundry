@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.0.80",
+  "version": "0.0.83",
   "images": [
     {
       "variable": "header_logo",
@@ -63,14 +63,29 @@
       "default": "#646464"
     },
     {
+      "variable": "border_color",
+      "label": "Borders",
+      "default": "#999999"
+    },
+    {
       "variable": "error_text_color",
       "label": "Errors",
       "default": "#CF3636"
     },
     {
-      "variable": "border_color",
-      "label": "Borders",
-      "default": "#999999"
+      "variable": "footer_background_color",
+      "label": "Footer background",
+      "default": "#F9F9F9"
+    },
+    {
+      "variable": "footer_icon_color",
+      "label": "Footer icons",
+      "default": "#222222"
+    },
+    {
+      "variable": "footer_text_color",
+      "label": "Footer text",
+      "default": "#646464"
     }
   ],
   "options": [
