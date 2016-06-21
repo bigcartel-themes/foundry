@@ -134,13 +134,6 @@ $(function() {
     }
   });
   
-  
-
-  
-  
-  
-  
-  
   if ($('.welcome_text').length) {
     var waypoint = new Waypoint({
       element: $('.welcome_text'),
@@ -148,7 +141,6 @@ $(function() {
         var screenWidth = Waypoint.viewportWidth();
         if (screenWidth > 765) {
           if (direction === 'down') {
-            console.log('hi');
             $('.welcome_text').fadeOut('fast');
           }
           else {
@@ -317,8 +309,8 @@ $(document).ready(function() {
       var img = new Image();
       img.src = image.attr('src');
       img.onload = function() {
-        console.log('width: '+container.width());
         container.css('height',container.width()+'px')
+        image.centerImage();
       };
     });  
   }, timeout_start);
