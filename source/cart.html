@@ -50,7 +50,7 @@
               {% unless item.product.has_default_option %}
                 <span>{{ item.option.name }}</span>
               {% endunless %}
-              <span class="price">{{ item.price | money_with_sign }}</span>
+              <span class="price">{{ item.unit_price | money_with_sign }}</span>
             </a>
             <div class="qty_holder" data-cart-id="{{ item.id }}">
               <button class="qty" type="button" data-func="minus"><svg viewBox="0 0 20 20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg></button>
