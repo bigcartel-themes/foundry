@@ -2,6 +2,9 @@
 
 #cart .cart_holder
   display: none
+  
+#cart footer
+  padding-bottom: 60px
 
 .cart_form
   +pie-clearfix
@@ -81,6 +84,10 @@
         display: block
         font-size: 18px
         line-height: 20px
+        
+        @media screen and (max-width: $break-small)
+          font-size: 14px
+          line-height: 16px
       
         > span
           color: $secondary-text-color
@@ -88,6 +95,9 @@
           font-size: 14px
           line-height: 1.3em
           margin-top: 6px
+          
+          @media screen and (max-width: $break-small)
+            margin-top: 2px
           
     .qty_holder
       +pie-clearfix
@@ -103,6 +113,10 @@
         height: 40px
         line-height: normal
         width: 40px
+        
+        @media screen and (max-width: $break-small)
+          height: 32px
+          width: 32px
         
         svg
           fill: $secondary-text-color
@@ -122,6 +136,9 @@
         text-align: center
         width: 60px
         
+        @media screen and (max-width: $break-small)
+          height: 32px
+        
         &:focus
           box-shadow: none
           outline: none
@@ -130,13 +147,16 @@
   border: 2px solid $border-color
   color: $secondary-text-color
   float: right
-  max-width: 360px
+  max-width: 400px
   padding: 45px 40px 20px 40px
   position: -webkit-sticky
   position: sticky
   text-align: center
   top: 110px
   width: 100%
+  
+  @media screen and (max-width: $break-large)
+    max-width: 50%
   
   @media screen and (max-width: $break-medium)
     max-width: 40%

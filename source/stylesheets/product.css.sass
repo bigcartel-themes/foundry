@@ -121,7 +121,7 @@
       
     .select, button
     
-      @media screen and (max-width: $break-small)
+      @media screen and (max-width: $break-medium)
         max-width: 100%
       
     #quantity
@@ -129,11 +129,17 @@
     
 .share_buttons
   margin-top: 40px
+  
+  @media screen and (max-width: $break-small)
+    text-align: center
 
   li
     display: inline-block
-    margin-right: 18px
+    margin-right: 20px
     position: relative
+    
+    @media screen and (max-width: $break-small)
+      margin: 0 10px
     
     a
       cursor: pointer
@@ -142,8 +148,8 @@
       svg
         +all-transitions
         fill: $secondary-text-color
-        height: 18px
-        width: 18px
+        height: 24px
+        width: 24px
         
       &:hover svg
         opacity: .8

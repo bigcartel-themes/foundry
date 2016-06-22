@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.0.84",
+  "version": "0.0.86",
   "images": [
     {
       "variable": "header_logo",
@@ -23,7 +23,7 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Karla"
+      "default": "Work Sans"
     }
   ],
   "colors": [

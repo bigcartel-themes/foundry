@@ -15,8 +15,6 @@ body
   font-family: $primary-font
   font-size: 14px
   line-height: 1
-  margin: auto
-  margin-bottom: 60px
   overflow-y: scroll
   padding-top: 90px
   
@@ -439,6 +437,7 @@ h1
   
   @media screen and (max-width: $break-small)
     font-size: 24px
+    margin-bottom: 30px
     
 h2.featured_products
   font-size: 26px
@@ -511,10 +510,12 @@ section.content
   margin: 0 auto 360px auto
   max-width: 1300px
   padding: 0 20px
+  padding-top: 90px
   width: 100%
   
   @media screen and (max-width: $break-small)
-    margin-bottom: 40px
+    padding-bottom: 40px
+    padding-top: 60px
   
   .custom_page
     color: $secondary-text-color
@@ -552,6 +553,11 @@ section.content
   
   &.page-product
     +pie-clearfix
+    max-width: 1200px
+    padding-top: 60px
+    
+    @media screen and (max-width: $break-small)
+      padding-top: 30px
     
     h1
       font-size: 26px
@@ -566,6 +572,9 @@ section.content
       
   &.page-home
     padding-top: 200px
+    
+    @media screen and (max-width: $break-small)
+      padding-top: 100px
     
   h1
     text-align: center
@@ -582,8 +591,8 @@ footer
   
   @media screen and (max-width: $break-small)
     height: auto
-    margin: 20px 0 60px
-    position: relative
+    margin: 20px 0 0
+    padding-bottom: 120px
     
   .footer_icons
     margin: 10px auto
@@ -617,6 +626,9 @@ footer
     li
       display: inline-block
       
+      @media screen and (max-width: $break-small)
+        display: block
+      
       a
         +all-transitions
         color: $footer-text-color
@@ -631,6 +643,11 @@ footer
     color: $footer-text-color
     font-size: 12px
     margin-top: 14px
+    
+    .credit
+      @media screen and (max-width: $break-medium)
+        display: block
+        margin-top: 20px
         
 .home_tagline
   color: $secondary-text-color

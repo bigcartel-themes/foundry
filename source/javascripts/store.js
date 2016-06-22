@@ -10,7 +10,7 @@ API.onError = function(errors) {
   if ($cartError.length > 0) {
     $cartError.find('.errors').remove();
     $cartError.prepend($errorList);
-    $(window).scrollTop();
+    $("html, body").animate({ scrollTop: 0 }, "fast");
   } else if ($productError.length > 0) {
     $productError.find('.errors').hide();
     $productError.prepend($errorList);
@@ -23,9 +23,10 @@ var processUpdate = function(input, item_id, new_val, cart) {
     $('.cart_form').slideUp('fast',function() { 
       $('.cart_empty_message').fadeIn('fast');
       $('h1').html('Your bag is empty');
+      $('.cart_value').fadeOut('fast');
+      $('.cart_value').html('0');
+      $("html, body").animate({ scrollTop: 0 }, "fast");
     });
-    $('.cart_value').fadeOut('fast');
-    $('.cart_value').html('0');
   }
   else {
     $('.errors').hide(); 
@@ -81,7 +82,7 @@ $(function() {
     $('.cart_form').submit();
   });
   $('[name="cart[shipping_country_id]"]').on('change',function() {
-    $(this).closest('form').submit();
+    $('.cart_form').submit();
   });
   $('[name="cart[discount_code]"]').on('keyup',function(e) { 
     if (e.keyCode == 13) {
@@ -307,4 +308,5 @@ $(document).ready(function() {
 });
 $(window).on("load resize", function() {
   update_featured_categories();
+  $('body').css('margin-bottom', $('footer').outerHeight());
 });
