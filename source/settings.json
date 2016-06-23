@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.0.86",
+  "version": "0.0.90",
   "images": [
     {
       "variable": "header_logo",
@@ -115,7 +115,7 @@
       "label": "Product list info",
       "type": "select",
       "options": ["On rollover", "Under image"],
-      "default": "On rollover",
+      "default": "Under image",
       "description": "Shows a product's name & price on hover, or under the image"
     },
     {

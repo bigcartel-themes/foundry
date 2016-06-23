@@ -10,7 +10,8 @@
     </ul>
     <div class="select">
       <select class="category_select">
-        <option value="products">All Products</option>
+        <option value="" selected disabled>Browse products...</option>
+        <option value="products">View All</option>
         {% for category in categories.active %}
           <option value="/category/{{ category.permalink }}">{{ category.name }}</option>
         {% endfor %}
@@ -48,6 +49,13 @@
       {{ paginate | default_pagination, 'pagination', 'pagination', '<svg viewBox="0 0 20 20"><path d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg>', '<svg viewBox="0 0 20 20"><path d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg>' }}
     {% endif %}
   {% else %}
-    <p class="no_products">No products found.</p>
+    {% if page.full_url contains "search=" %}
+      <div class="start_shopping_message">
+        <p>Sorry, no products were found.</p>
+        {% if artists.active == blank %}<p><a class="button" href="/products">Start Shopping</a></p>{% endif %}
+      </div>
+    {% else %}
+      <p class="no_products">No products found.</p>
+    {% endif %}
   {% endif %}
 {% endpaginate %}

@@ -249,6 +249,10 @@ $(function() {
   });
   
   var num_cats = $('.featured_categories > li').length;
+  var num_products = $('.product_list > li').length;
+  if (num_products < 4) { 
+    $('.product_list').addClass('justify_center');
+  }
   if (num_cats > 0) {
     if (num_cats == 1) { $('.featured_categories').remove(); }
     if (num_cats == 2) { $('.featured_categories').addClass('two_categories'); }

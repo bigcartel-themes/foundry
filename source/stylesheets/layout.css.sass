@@ -509,7 +509,6 @@ h2.featured_products
 section.content
   margin: 0 auto 360px auto
   max-width: 1300px
-  overflow: auto
   padding: 0 20px
   padding-top: 90px
   width: 100%
@@ -523,6 +522,7 @@ section.content
     line-height: 1.7em
     margin: 0 auto
     max-width: 640px
+    overflow: auto
     width: 100%
     
     a[href]
@@ -754,8 +754,13 @@ footer
     .button
       margin-top: 40px
       
-.success_message
+.start_shopping_message
+  line-height: 1.3em
   text-align: center
   
   p
     margin: 80px 0
+    
+  @media screen and (max-width: $break-small)
+    .button
+      max-width: 100%

@@ -127,16 +127,24 @@
     
 .product_list
   +pie-clearfix
+  +flexbox
+  +flex-direction(row)
+  +flex-wrap(wrap)
+  font-size: 0
   margin: 0 -10px 10px
   padding: 0
   position: relative
   text-align: center
+  
+  &.justify_center
+    +justify-content(center)
 
   li
     +all-transitions
-    display: inline-block
+    +flexbox
     padding: 0 10px 40px 10px
     position: relative
+    vertical-align: top
     width: 25%
     
     @media screen and (max-width: $break-large)
@@ -160,7 +168,6 @@
 
       img
         +all-transitions
-        +filter(blur(0))
         display: block
         height: auto
         max-width: 100%
@@ -262,17 +269,6 @@
             
 .featured_categories + .product_list
   margin-top: 80px
-  
-.flexbox .product_list
-  +flexbox
-  +flex-direction(row)
-  +flex-wrap(wrap)
-  
-  &.justify_center
-    +justify-content(center)
-  
-  li
-    +flexbox
     
 .pagination
   +pie-clearfix
