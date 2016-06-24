@@ -47,31 +47,35 @@
       
     a
       display: block
-      position: relative
       overflow: hidden
+      position: relative
     
       img
-        height: 100%
         display: block
+        height: 100%
         margin: auto
       
       .category_overlay
         +transition(opacity .1s linear)
-        width: 100%
-        height: 100%
-        position: absolute
+        -webkit-backface-visibility: hidden
         background: $home-overlay-color
-        opacity: .35
-        top: 0
-        left: 0
-        right: 0
         bottom: 0
+        height: 100%
+        left: 0
+        opacity: .4
+        position: absolute
+        right: 0
+        top: 0
+        width: 100%
           
       .category_info
-        +vertical-align
+        +transform(rotate(0) translateY(-50%) translateZ(0))
+        position: relative
+        top: 50%
+        -webkit-backface-visibility: hidden
         color: $home-text-color
-        line-height: 1.3em
         font-size: 26px
+        line-height: 1.3em
         padding: 20px
         text-align: center
         
@@ -177,7 +181,7 @@
         z-index: 1
         
       .product_details
-        +all-transitions
+        +transition(.3s linear)
         color: $primary-text-color
         padding-top: 30px
         position: relative
@@ -244,7 +248,7 @@
         
       .product_details
         @media screen and (min-width: $break-medium)
-          bottom: -5em
+          bottom: -150px
           opacity: 0
           padding: 30px 0
           position: absolute

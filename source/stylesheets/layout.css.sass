@@ -53,12 +53,17 @@ body
             padding: 0 6px
           
           svg
+            +all-transitions
+            fill: $primary-text-color
             height: 30px
             width: 30px
             
             @media screen and (max-width: $break-small)
               height: 26px
               width: 26px
+              
+          &:hover svg
+            opacity: .8 
   
 header
   +pie-clearfix

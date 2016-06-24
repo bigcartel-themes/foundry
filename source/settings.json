@@ -1,17 +1,16 @@
 {
   "name": "Foundry",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "images": [
     {
       "variable": "header_logo",
       "label": "Header logo",
-      "description": "Good for a logo up to 208 x 66 pixels"
+      "description": "Good for a logo up to 200 x 50 pixels"
     },
     {
       "variable": "welcome_image",
       "label": "Welcome image",
-      "description": "Displays a full screen image on the Home page",
-      "default": "welcome.png"
+      "description": "Displays a full screen image on the Home page"
     }
   ],
   "fonts": [
@@ -91,23 +90,21 @@
   "options": [
     {
       "variable": "welcome_text",
-      "label": "Welcome Text",
+      "label": "Welcome text",
       "type": "text",
-      "description": "Welcome message for your visitors",
-      "default": "Summer Sale"
+      "description": "Home page message for your visitors, use this with a welcome image"
     },
     {
       "variable": "home_tagline",
       "label": "Home page tagline",
       "type": "text",
-      "description": "Home page tagline",
-      "default": "We've got some great products for you."
+      "description": "Home page tagline"
     },
     {
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Displays a product search icon in the header"
     },
     {
@@ -123,7 +120,7 @@
       "label": "Featured categories",
       "type": "select",
       "options": ["0","2","3","4","5","6","7","8","9","10"],
-      "default": "3",
+      "default": "0",
       "description": "The number of featured categories on the Home page"
     },
     {
@@ -139,47 +136,44 @@
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 12,
+      "default": 24,
       "description": "The number of products displayed per page"
     },
     {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel",
-      "default": "http://twitter.com/bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel",
-      "default": "http://twitter.com/bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com",
-      "default": "http://twitter.com/bigcartel"
+      "description": "Ex: http://bigcartel.tumblr.com"
     },
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel",
-      "default": "http://twitter.com/bigcartel"
+      "description": "Ex: http://instagram.com/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel",
-      "default": "http://twitter.com/bigcartel"
+      "description": "Ex: http://pinterest.com/bigcartel"
     }
   ],
   "checkout": {
     "header_image": "{{ header_logo }}",
+    "header_image_max_width": "200px",
+    "header_image_max_height": "50px",
     "title_font": "{{ primary_font }}",
     "title_font_size": "26px",
     "title_color": "{{ header_color }}",

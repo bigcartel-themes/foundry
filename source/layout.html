@@ -118,7 +118,7 @@
         <div class="item_holder">
           {% for item in cart.items %}
             <a class="cart_item" href="{{ item.product.url }}">
-              <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}?w=240&h=240&fit=crop" alt="Image of {{ item.product.name | escape }}">
+              <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="Image of {{ item.product.name | escape }}">
               <div class="item_info">
                 {{ item.product.name }}
                 {% unless item.product.has_default_option %}
