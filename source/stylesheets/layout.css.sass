@@ -12,7 +12,7 @@ body
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   color: $primary-text-color
-  font-family: $primary-font
+  font-family: $secondary-font
   font-size: 14px
   line-height: 1
   overflow-y: scroll
@@ -64,7 +64,7 @@ header
   +pie-clearfix
   +transition(background .3s linear)
   background: $header-background-color
-  font-family: $secondary-font
+  font-family: $primary-font
   height: 90px
   left: 0
   margin: 0
@@ -108,6 +108,7 @@ header
         height: 50px
     
         img
+          +vertical-align
           display: block
           height: auto
           max-height: 100%
@@ -184,6 +185,7 @@ header
     background-color: $header-text-color
     color: $header-background-color
     display: inline-block
+    font-family: $secondary-font
     font-size: 12px
     line-height: 1.3
     padding: 2px 8px
@@ -231,6 +233,7 @@ button, a.button
   position: relative
   border: 2px solid $border-color
   color: $secondary-text-color
+  font-family: $secondary-font
   height: 60px
   margin-bottom: 20px
   max-width: 300px
@@ -244,6 +247,7 @@ button, a.button
     background: none
     border: 0
     color: $secondary-text-color
+    font-family: $secondary-font
     font-size: 14px
     height: 100%
     line-height: 2em
@@ -427,6 +431,7 @@ button, a.button
       width: 25px
   
 h1, h2, h3, h4, h5, h6
+  font-family: $primary-font
   font-weight: normal
   margin: 0
   padding: 0
@@ -458,6 +463,15 @@ h2.featured_products
   100%
     +transform(none)
     opacity: 1
+    
++keyframes(hide-welcome-text)
+  0%
+    +transform(none)
+    opacity: 1
+    
+  100%
+    opacity: 0
+    +transform(translate3d(0, 10%, 0))
  
 .welcome_image
   background-image: #{"{% if theme.images.welcome_image != blank %} url(\"{{ theme.images.welcome_image.url }}\") {% else %} none {% endif %}"}
@@ -494,6 +508,9 @@ h2.featured_products
     +animation(welcome-text ease-in 900ms forwards)
     padding: 0 20px
     
+    &.fade_out
+      +animation(hide-welcome-text ease-in 200ms forwards)
+    
     h1
       font-size: 60px
       margin-bottom: 20px
@@ -522,7 +539,8 @@ section.content
     line-height: 1.7em
     margin: 0 auto
     max-width: 640px
-    overflow: auto
+    overflow-y: auto
+    padding: 0 1px
     width: 100%
     
     a[href]
@@ -541,13 +559,14 @@ section.content
       
     ol, ul
       margin: 1em 0
-      padding-left: 1em
       
     ul
       list-style: disc
+      list-style-position: inside
     
     ol
       list-style: decimal
+      list-style-position: inside
     
   &.page-contact
     max-width: 500px
@@ -584,6 +603,7 @@ section.content
 footer
   +pie-clearfix
   background: $footer-background-color
+  font-family: $secondary-font
   bottom: 0
   min-height: 120px
   padding: 60px 20px
@@ -647,12 +667,17 @@ footer
     margin-top: 14px
     
     .credit
+    
+      a
+        color: $footer-text-color
+        
       @media screen and (max-width: $break-medium)
         display: block
         margin-top: 20px
         
 .home_tagline
   color: $secondary-text-color
+  font-family: $secondary-font
   font-size: 26px
   line-height: 1.3em
   margin: 0 auto 200px
@@ -709,6 +734,7 @@ footer
         .item_info
           color: $primary-text-color
           float: left
+          font-family: $primary-font
           font-size: 18px
           line-height: 18px
           padding-left: 20px
@@ -716,12 +742,14 @@ footer
           
           > span
             color: $secondary-text-color
+            font-family: $secondary-font
             font-size: 14px
             display: block
             margin-top: 4px
             
         .item_price
           color: $secondary-text-color
+          font-family: $secondary-font
           font-size: 14px
           margin-top: 2px
       
@@ -755,11 +783,11 @@ footer
       margin-top: 40px
       
 .start_shopping_message
-  line-height: 1.3em
+  line-height: 1.5em
   text-align: center
   
   p
-    margin: 80px 0
+    margin: 80px 40px
     
   @media screen and (max-width: $break-small)
     .button

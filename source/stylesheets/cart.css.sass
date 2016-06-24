@@ -53,15 +53,13 @@
       width: 100%
       
       @media screen and (max-width: $break-extra-large)
+        margin-right: 20px
         max-width: 150px
         max-height: 150px
         
       @media screen and (max-width: $break-medium)
         max-width: 120px
         max-height: 120px
-        
-      @media screen and (max-width: $break-small)
-        margin-right: 20px
 
       img
         +vertical-align
@@ -71,13 +69,17 @@
         width: 100%
       
     .item_details
-      +vertical-align  
+      +vertical-align
+      font-family: $primary-font  
       float: left
       max-width: 300px
       width: auto
       
       @media screen and (max-width: $break-extra-large)
-        max-width: 48%
+        max-width: 55%
+      
+      @media screen and (max-width: $break-small)
+        max-width: 65%
 
       a
         color: $primary-text-color
@@ -92,6 +94,7 @@
         > span
           color: $secondary-text-color
           display: block
+          font-family: $secondary-font
           font-size: 14px
           line-height: 1.3em
           margin-top: 6px
@@ -156,9 +159,6 @@
   width: 100%
   
   @media screen and (max-width: $break-large)
-    max-width: 50%
-  
-  @media screen and (max-width: $break-medium)
     max-width: 40%
   
   h3, h4
@@ -206,11 +206,15 @@
     text-align: left
     
     input
+      +appearance(none)
+      +border-radius(0)
       background: none
       border: none
       font-size: 14px
       height: 56px
+      line-height: 56px
       text-align: left
+      width: 240px
       
       &::-ms-clear
         height: 0

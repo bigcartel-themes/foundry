@@ -52,7 +52,7 @@
     {% if page.full_url contains "search=" %}
       <div class="start_shopping_message">
         <p>Sorry, no products were found.</p>
-        {% if artists.active == blank %}<p><a class="button" href="/products">Start Shopping</a></p>{% endif %}
+        {% if categories.active == blank %}<p><a class="button" href="/products">Start Shopping</a></p>{% endif %}
       </div>
     {% else %}
       <p class="no_products">No products found.</p>

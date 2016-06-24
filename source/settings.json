@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.0.90",
+  "version": "0.1.1",
   "images": [
     {
       "variable": "header_logo",
@@ -123,7 +123,7 @@
       "label": "Featured categories",
       "type": "select",
       "options": ["0","2","3","4","5","6","7","8","9","10"],
-      "default": "8",
+      "default": "3",
       "description": "The number of featured categories on the Home page"
     },
     {
@@ -189,7 +189,7 @@
     "body_font_size": "14px",
     "step_border_color": "{{ border_color }}",
     "step_header_color": "{{ header_color }}",
-    "step_border_width": "1px",
+    "step_border_width": "2px",
     "step_border_style": "solid",
     "step_border_radius": "2px",
     "step_inactive_header_color": " {{ primary_text_color }}",
@@ -216,11 +216,11 @@
     "input_background_color": "#ffffff",
     "input_error_background_color": "#ffffff",
     "input_border_radius": "2px",
-    "input_border_width": "1px",
+    "input_border_width": "2px",
     "input_font": "{{ secondary_font }}",
     "button_color": "{{ header_text_color }}",
     "button_border_width": "0px",
-    "button_border_radius": "2px",
+    "button_border_radius": "0px",
     "button_font": "{{ secondary_font }}",
     "button_hover_color": "{{ header_text_color }}",
     "button_background_color": "{{ header_background_color }}",

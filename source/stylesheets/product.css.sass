@@ -78,6 +78,9 @@
   padding-left: 8%
   width: 100%
   
+  h2
+    font-family: $secondary-font
+  
   @media screen and (max-width: 1200px)
     padding-left: 5%
   
@@ -95,13 +98,14 @@
     
     ol, ul
       margin: 1em 0
-      padding-left: 1em
       
     ul
       list-style: disc
+      list-style-position: inside
     
     ol
       list-style: decimal
+      list-style-position: inside
       
     a[href]
       +all-transitions
