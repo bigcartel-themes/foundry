@@ -37,10 +37,12 @@
     {% if theme.images.welcome_image or theme.welcome_text != blank %}
       <div class="welcome_image">
         <div class="welcome_overlay"></div>
-        <div class="welcome_text">
-          <h1>{{ theme.welcome_text }}</h1>
-          <a href="/products" class="welcome_button">Start Shopping</a>
-        </div>
+        {% if theme.welcome_text != blank %}
+          <div class="welcome_text">
+            <h1>{{ theme.welcome_text }}</h1>
+            <a href="/products" class="welcome_button">Start Shopping</a>
+          </div>
+        {% endif %}
       </div>
     {% endif %}
   {% endif %}
