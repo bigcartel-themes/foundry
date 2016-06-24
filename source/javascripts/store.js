@@ -140,7 +140,6 @@ $(function() {
         var new_val = val - 1;
       }
     }
-    
     if (new_val > 0) { 
       Cart.updateItem(item_id, new_val, function(cart) {
         processUpdate(input, item_id, new_val, cart);

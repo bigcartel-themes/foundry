@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "images": [
     {
       "variable": "header_logo",
@@ -128,7 +128,7 @@
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 4,
+      "default": 8,
       "description": "The number of featured products on the Home page"
     },
     {
