@@ -330,5 +330,5 @@ $(document).ready(function() {
 });
 $(window).on("load resize", function() {
   center_featured_categories();
-  $('body').css('margin-bottom', $('footer').outerHeight());
+  $('body').css('margin-bottom', $('.footer').outerHeight());
 });
