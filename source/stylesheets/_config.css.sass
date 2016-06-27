@@ -90,6 +90,20 @@ $break-extra-small: 500px
   -moz-justify-content: $value
   justify-content: $value
 
+@mixin align-items($value: stretch)
+  @if $value == flex-start 
+    -webkit-box-align: start
+    -ms-flex-align: start
+  @else if $value == flex-end 
+    -webkit-box-align: end
+    -ms-flex-align: end
+  @else 
+    -webkit-box-align: $value
+    -ms-flex-align: $value
+  -webkit-align-items: $value
+  -moz-align-items: $value
+  align-items: $value
+
 @mixin keyframes($animation)
   @-webkit-keyframes #{$animation}
     @content
