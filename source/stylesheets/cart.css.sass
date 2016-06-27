@@ -60,6 +60,10 @@
       @media screen and (max-width: $break-medium)
         max-width: 120px
         max-height: 120px
+        
+      @media screen and (max-width: $break-extra-small)
+        max-height: 100px
+        max-width: 100px
 
       img
         +vertical-align
@@ -80,6 +84,9 @@
       
       @media screen and (max-width: $break-small)
         max-width: 65%
+        
+      @media screen and (max-width: $break-extra-small)
+        max-width: 150px
 
       a
         color: $primary-text-color
@@ -90,6 +97,10 @@
         @media screen and (max-width: $break-small)
           font-size: 14px
           line-height: 16px
+          
+        @media screen and (max-width: $break-extra-small)
+          font-size: 12px
+          line-height: 14px
       
         > span
           color: $secondary-text-color
@@ -100,8 +111,9 @@
           margin-top: 6px
           
           @media screen and (max-width: $break-small)
+            font-size: 12px
             margin-top: 2px
-          
+            
     .qty_holder
       +pie-clearfix
       margin-top: 20px
@@ -120,6 +132,10 @@
         @media screen and (max-width: $break-small)
           height: 32px
           width: 32px
+          
+        @media screen and (max-width: $break-extra-small)
+          height: 26px
+          width: 26px
         
         svg
           fill: $secondary-text-color
@@ -127,6 +143,10 @@
           position: relative
           top: 2px
           width: 20px
+          
+          @media screen and (max-width: $break-extra-small)
+            height: 16px
+            width: 16px
         
       input
         +appearance(none)
@@ -141,6 +161,11 @@
         
         @media screen and (max-width: $break-small)
           height: 32px
+          
+        @media screen and (max-width: $break-small)
+          height: 26px
+          font-size: 12px
+          width: 40px
         
         &:focus
           box-shadow: none
