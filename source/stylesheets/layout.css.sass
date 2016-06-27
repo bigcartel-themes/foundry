@@ -703,14 +703,14 @@ footer.footer
 .mini_cart
   +box-shadow(0 2px 10px 0 $secondary-text-color) 
   background: $background-color
-  height: 410px
+  height: 430px
   display: none
   position: fixed
   margin: 0
-  max-width: 370px
+  max-width: 380px
   right: 40px
   top: 90px
-  width: 370px
+  width: 380px
   z-index: 4
   
   @media screen and (max-width: $break-small)
@@ -732,7 +732,7 @@ footer.footer
       height: 277px
       position: absolute
       overflow-y: scroll
-      padding: 0 20px
+      padding: 0 30px
       padding-top: 30px
       
       .cart_item
@@ -749,15 +749,16 @@ footer.footer
           float: left
           font-family: $primary-font
           font-size: 18px
-          line-height: 18px
+          line-height: 22px
           padding-left: 20px
           width: 70%
           
           > span
             color: $secondary-text-color
+            display: block
             font-family: $secondary-font
             font-size: 14px
-            display: block
+            line-height: 18px
             margin-top: 4px
             
         .item_price
@@ -768,9 +769,9 @@ footer.footer
       
     .cart_footer
       bottom: 0
-      height: 158px
+      height: 178px
       left: 0
-      padding: 20px
+      padding: 30px
       position: absolute
       right: 0
       
@@ -789,11 +790,12 @@ footer.footer
   &.empty
     font-size: 18px
     height: auto
-    padding: 40px
+    padding: 30px
     text-align: center
     
     .button
       margin-top: 40px
+      max-width: none
       
 .start_shopping_message
   line-height: 1.5em
