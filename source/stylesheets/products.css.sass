@@ -6,6 +6,7 @@
   
   @media screen and (max-width: $break-small)
     margin-bottom: 40px
+    padding: 0 20px
   
   ul
   
@@ -37,12 +38,16 @@
   font-family: $primary-font
   margin: 0 -10px 0
   
+  @media screen and (max-width: $break-small)
+    margin: 0
+  
   li
     float: left
     padding: 10px
     width: 33.33%
     
     @media screen and (max-width: $break-small)
+      padding: 0 0 20px 0
       width: 100% !important
       
     a
@@ -141,6 +146,9 @@
   position: relative
   text-align: center
   
+  @media screen and (max-width: $break-small)
+    margin: 0
+  
   &.justify_center
     +justify-content(center)
     
@@ -163,6 +171,7 @@
       width: 50%
 
     @media screen and (max-width: $break-small)
+      padding: 0 0 40px 0
       width: 100%
       
     a
@@ -230,7 +239,7 @@
             
           .product_name
             font-size: 18px
-            padding: 0 10px 0 10px
+            padding: 0 20px
             margin: 0
           
           .product_price
