@@ -143,6 +143,9 @@
   
   &.justify_center
     +justify-content(center)
+    
+    @media screen and (max-width: $break-medium)
+      +justify-content(flex-start)
 
   li
     +all-transitions
@@ -295,12 +298,18 @@
   
   span, a
     display: inline-block
-    font-size: 20px
-    height: 54px
-    line-height: 54px
+    font-size: 18px
+    height: 60px
+    line-height: 60px
     text-align: center
-    width: 54px
+    width: 60px
     
+    @media screen and (max-width: $break-medium)
+      font-size: 16px
+      height: 44px
+      line-height: 44px
+      width: 44px
+      
     @media screen and (max-width: $break-small)
       font-size: 14px
       height: 40px
