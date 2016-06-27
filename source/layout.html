@@ -40,7 +40,7 @@
         {% if theme.welcome_text != blank %}
           <div class="welcome_text">
             <h1>{{ theme.welcome_text }}</h1>
-            <a href="/products" class="welcome_button">Start Shopping</a>
+            <a href="/products" class="welcome_button">Start shopping</a>
           </div>
         {% endif %}
       </div>
@@ -79,7 +79,7 @@
     {% endif %}
     <ul class="footer_pages">
       {% if store.website != blank %}
-        <li><a href="{{ store.website }}">Back to Site</a></li>
+        <li><a href="{{ store.website }}">Back to site</a></li>
       {% endif %}
       {% for page in pages.all %}
         <li>{{ page | link_to }}</li>
@@ -135,7 +135,7 @@
           <div class="item_subtotal">
             Subtotal <span>{{ cart.total | money_with_sign }}</span>
           </div>
-          <a class="button view_bag" href="/cart">View/edit your bag</a>
+          <a class="button view_bag" href="/cart">View your bag</a>
         </div>
       {% else %}
         <div>

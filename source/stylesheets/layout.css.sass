@@ -63,7 +63,7 @@ body
               width: 26px
               
           &:hover svg
-            opacity: .8 
+            opacity: .6 
   
 header
   +pie-clearfix
@@ -223,7 +223,7 @@ button, a.button
 
   &:hover, &:focus, &.active
     border: none
-    opacity: .8
+    opacity: .6
 
 .errors
   color: $error-text-color
@@ -528,9 +528,13 @@ h2.featured_products
         font-size: 9vw
     
     .welcome_button
+      +transition(opacity .2s linear)
       color: $home-text-color
       font-size: 18px
       padding: 10px
+      
+      &:hover
+        opacity: .6
   
 section.content
   margin: 0 auto 360px auto
@@ -557,7 +561,7 @@ section.content
       text-decoration: underline
       
       &:hover
-        opacity: .8
+        opacity: .6
       
     img
       display: block
@@ -645,7 +649,7 @@ footer.footer
           width: 30px
           
         &:hover svg
-          opacity: .8    
+          opacity: .6    
           
   .footer_pages
     font-size: 0
@@ -668,7 +672,7 @@ footer.footer
         padding: 10px
         
         &:hover
-          opacity: .8
+          opacity: .6
         
   .footer_credit
     color: $footer-text-color

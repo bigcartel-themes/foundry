@@ -18,7 +18,7 @@
       <div class="item_subtotal">
         Subtotal <span>{{ cart.total | money_with_sign }}</span>
       </div>
-      <a class="button view_bag" href="/cart">View/edit your bag</a>
+      <a class="button view_bag" href="/cart">View your bag</a>
     </div>
   {% else %}
     <div>
@@ -112,17 +112,17 @@
       {% endif %}
       <h3>Total  <span>{{ cart.total | money_with_sign }}</span></h3>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
-      <a class="button continue_shopping" href="/products">Continue Shopping</a>
+      <a class="button continue_shopping" href="/products">Continue shopping</a>
     </div>
   </form>
   <div class="cart_empty_message" style="display: none;">
     <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
-    <p><a class="button" href="/products">Start Shopping</a></p>
+    <p><a class="button" href="/products">Start shopping</a></p>
   </div>
 {% else %}
   <h1>Your bag is empty</h1>
   <div class="cart_empty_message">
     <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
-    <p><a class="button" href="/products">Start Shopping</a></p>
+    <p><a class="button" href="/products">Start shopping</a></p>
   </div>
 {% endif %}
