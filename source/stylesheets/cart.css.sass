@@ -62,7 +62,7 @@
     .item_details
       font-family: $primary-font  
       float: left
-      max-width: 340px
+      max-width: 500px
       padding-left: 40px
       width: auto
       
@@ -77,27 +77,23 @@
         color: $primary-text-color
         display: block
         font-size: 18px
-        line-height: 20px
+        line-height: 22px
         
         @media screen and (max-width: $break-small)
-          font-size: 14px
-          line-height: 16px
-          
-        @media screen and (max-width: $break-extra-small)
-          font-size: 12px
-          line-height: 14px
+          font-size: 16px
+          line-height: 20px
       
         > span
           color: $secondary-text-color
           display: block
           font-family: $secondary-font
           font-size: 14px
-          line-height: 1.3em
+          line-height: 18px
           margin-top: 6px
           
           @media screen and (max-width: $break-small)
             font-size: 12px
-            margin-top: 2px
+            margin-top: 4px
             
     .qty_holder
       +pie-clearfix
@@ -117,10 +113,6 @@
         @media screen and (max-width: $break-small)
           height: 32px
           width: 32px
-          
-        @media screen and (max-width: $break-extra-small)
-          height: 26px
-          width: 26px
         
         svg
           fill: $secondary-text-color
@@ -131,6 +123,7 @@
           
           @media screen and (max-width: $break-extra-small)
             height: 16px
+            top: 1px
             width: 16px
         
       input
@@ -146,10 +139,7 @@
         
         @media screen and (max-width: $break-small)
           height: 32px
-          
-        @media screen and (max-width: $break-small)
-          height: 26px
-          font-size: 12px
+          font-size: 14px
           width: 40px
         
         &:focus
