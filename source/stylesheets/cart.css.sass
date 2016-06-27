@@ -45,7 +45,6 @@
       +vertical-align
       float: left
       height: 100%
-      margin-right: 40px
       max-height: 200px
       max-width: 200px
       overflow: hidden
@@ -53,17 +52,13 @@
       width: 100%
       
       @media screen and (max-width: $break-extra-large)
-        margin-right: 20px
         max-width: 150px
-        max-height: 150px
         
       @media screen and (max-width: $break-medium)
-        max-width: 120px
-        max-height: 120px
+        max-width: 35%
         
-      @media screen and (max-width: $break-extra-small)
-        max-height: 100px
-        max-width: 100px
+      @media screen and (max-width: $break-small)
+        max-width: 30%
 
       img
         +vertical-align
@@ -76,17 +71,16 @@
       +vertical-align
       font-family: $primary-font  
       float: left
-      max-width: 300px
+      max-width: 340px
+      padding-left: 40px
       width: auto
       
       @media screen and (max-width: $break-extra-large)
-        max-width: 55%
+        max-width: 60%
+        padding-left: 20px
       
       @media screen and (max-width: $break-small)
-        max-width: 65%
-        
-      @media screen and (max-width: $break-extra-small)
-        max-width: 150px
+        max-width: 70%
 
       a
         color: $primary-text-color
