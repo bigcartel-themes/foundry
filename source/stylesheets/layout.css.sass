@@ -611,8 +611,17 @@ section.content
     &.has_welcome
       padding-top: 200px
       
+      @media screen and (max-width: $break-medium)
+        padding-top: 30px
+      
       @media screen and (max-width: $break-small)
         padding-top: 100px
+        
+        .home_tagline
+          margin-bottom: 160px
+        
+    @media screen and (max-width: $break-medium)
+      padding-top: 160px
     
     @media screen and (max-width: $break-small)
       padding-left: 0
@@ -711,6 +720,9 @@ footer.footer
   margin: 0 auto 200px
   max-width: 640px
   text-align: center
+  
+  @media screen and (max-width: $break-medium)
+    margin: 90px auto 120px
   
   @media screen and (max-width: $break-small)
     margin: 60px auto
