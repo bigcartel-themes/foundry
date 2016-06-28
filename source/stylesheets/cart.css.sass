@@ -176,12 +176,24 @@
   h3
     color: $primary-text-color
     font-size: 26px
+    
+    @media screen and (max-width: $break-medium)
+      font-size: 18px
+      
+    @media screen and (max-width: $break-small)
+      font-size: 26px
         
   h4
     font-size: 13px
       
   button, .button
     max-width: 100%
+    
+    @media screen and (max-width: $break-medium)
+      font-size: 16px
+    
+    @media screen and (max-width: $break-small)
+      font-size: 18px
     
   .continue_shopping
     background: none
