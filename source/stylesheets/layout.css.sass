@@ -98,7 +98,7 @@ header
     a
       color: $header-text-color
       display: block
-      line-height: 1em
+      line-height: 1.2em
       
     &.text
       height: 50px
@@ -257,7 +257,7 @@ button, a.button
     font-size: 14px
     height: 100%
     line-height: 2em
-    padding: 0 38px 0 12px
+    padding: 0 50px 0 20px
     position: relative
     width: 100%
     z-index: 2
@@ -279,7 +279,7 @@ button, a.button
     height: 8px
     margin-top: -2px
     position: absolute
-    right: 14px
+    right: 20px
     top: 50%
     width: 13px
     z-index: 1
@@ -606,12 +606,18 @@ section.content
       font-size: 18px
       
   &.page-home
-    padding-top: 200px
+    padding-top: 290px
+    
+    &.has_welcome
+      padding-top: 200px
+      
+      @media screen and (max-width: $break-small)
+        padding-top: 100px
     
     @media screen and (max-width: $break-small)
       padding-left: 0
       padding-right: 0
-      padding-top: 100px
+      padding-top: 110px
   
   &.page-products
     

@@ -46,7 +46,7 @@
       </div>
     {% endif %}
   {% endif %}
-  <section class="content page-{{ page.permalink }} {{ page.category }}">
+  <section class="content page-{{ page.permalink }} {{ page.category }}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}">
     {% if page.category == 'custom' %}
       <h1>{{ page.name }}</h1>
       <div class="custom_page">{{ page_content | paragraphs }}</div>
