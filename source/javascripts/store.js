@@ -94,6 +94,12 @@ var center_featured_categories = function() {
 }
 
 $(function() {
+  if ($('.page-home').length) {
+    var home_items = $('.page-home').children().length;
+    if (home_items == 0) { 
+      $('.page-home').addClass('home-empty')
+    } 
+  }
   $('.cart_info').Stickyfill();
   $('[name="cart[discount_code]"]').on('change',function() { 
     $(this).closest('.checkout_btn').attr('name','update');
