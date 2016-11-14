@@ -483,7 +483,7 @@ h2.featured_products
     +transform(translate3d(0, 10%, 0))
  
 .welcome_image
-  background-image: #{"{% if theme.images.welcome_image != blank %} url(\"{{ theme.images.welcome_image.url }}\") {% else %} none {% endif %}"}
+  background-image: #{"{% if theme.images.welcome_image != blank %}url(\'{{ theme.images.welcome_image.url | constrain: 1400 }}\'){% else %}none{% endif %}"}
   background-position: 50% 50%
   background-repeat: no-repeat
   background-attachment: fixed
