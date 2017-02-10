@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "images": [
     {
       "variable": "header_logo",
