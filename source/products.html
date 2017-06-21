@@ -27,7 +27,7 @@
       {% for product in products %}
         <li class="{{ product.css_class }}{% if theme.show_overlay == 'On rollover' %} show_overlay{% endif %}">
           <a href="{{ product.url }}">
-            <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 600,600  }}">
+            <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 1200  }}">
             <div class="product_details">
     					<div class="details_background"></div>
     					{% case product.status %}
