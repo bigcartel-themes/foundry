@@ -264,11 +264,6 @@ $(function() {
     }, 800);
   });
   
-  $('.social_facebook').click(function() { 
-    $('.facebook_popup_holder').fadeToggle('fast');
-    return false;
-  });
-  
   var num_cats = $('.featured_categories > li').length;
   var num_products = $('.product_list > li').length;
   
@@ -323,9 +318,6 @@ $(document).click(function(e) {
     if (container.is(':visible')) {
       container.fadeOut();
     }
-  }
-  if (!$(event.target).closest('.social_facebook').length) {
-    $('.facebook_popup_holder').fadeOut('fast');
   }
 });
 
