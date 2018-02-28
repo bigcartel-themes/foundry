@@ -29,20 +29,6 @@ var processUpdate = function(input, item_id, new_val, cart) {
   }
   else {
     $('.errors').hide(); 
-    if ($('.cart_shipping_amount').length) { 
-      if (cart.shipping.pending) {
-        if (cart.country) { 
-          var shipping_amount = 'Shipping: <span class="small_message">Select another country</span>';
-        }
-        else { 
-          var shipping_amount = 'Shipping: <span class="small_message">Select country</span>';
-        }
-      }
-      else { 
-        var shipping_amount = 'Shipping: <span>'+Format.money(cart.shipping && cart.shipping.amount ? cart.shipping.amount : 0, true, true)+'</span>';
-      }
-      $('.cart_shipping_amount').html(shipping_amount);
-    }
     $('.cart_info h3 > span').html(sub_total);
     $('.cart_value').fadeIn('fast');
     $('.cart_value').html(item_count);
@@ -101,25 +87,6 @@ $(function() {
     } 
   }
   $('.cart_info').Stickyfill();
-  $('[name="cart[discount_code]"]').on('change',function() { 
-    $(this).closest('.checkout_btn').attr('name','update');
-    $('.cart_form').submit();
-  });
-  $('[name="cart[shipping_country_id]"]').on('change',function() {
-    $('.cart_form').submit();
-  });
-  $('[name="cart[discount_code]"]').on('keyup',function(e) { 
-    if (e.keyCode == 13) {
-      e.preventDefault(); 
-      $(this).closest('.checkout_btn').attr('name','update');
-      $('.cart_form').submit();
-    }
-  });
-  $('.cancel_discount').click(function(e) {
-    e.preventDefault(); 
-    $('.cart_form').append('<input name="cart[discount_code]" type="hidden" value="">');
-    $('.cart_form').submit();
-  });
   $('.category_select').change(function() { 
     document.location.href = $(this).val();
   })
