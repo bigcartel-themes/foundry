@@ -44,7 +44,7 @@
       							<div class="product_status">Coming Soon</div>
       					{% endcase %}
                 <div class="product_name">{{ product.name }}</div>
-                <div class="product_price">{{ product.default_price | money_with_sign }}</div>
+                <div class="product_price">{{ product.default_price | money: theme.money_format }}</div>
               </div>
             </a>
           </li>
