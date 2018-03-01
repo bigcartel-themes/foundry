@@ -41,7 +41,7 @@
         <div class="select">
           <select id="option" name="[cart][add][id]">
             {% for option in product.options %}
-              <option value="{{ option.id }}" data-option-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled"{% endif %}>{{ option.name }} - {{ option.price | money: theme.money_format }} {% if option.sold_out %}(Sold out){% endif %}</option>
+              <option value="{{ option.id }}" data-option-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled"{% endif %}>{{ option.name }}{% if option.price != product.default_price %} - {{ option.price | money: theme.money_format }}{% endif %} {% if option.sold_out %}(Sold out){% endif %}</option>
             {% endfor %}
           </select>
           <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
