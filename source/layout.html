@@ -116,14 +116,14 @@
                 {% unless item.product.has_default_option %}
                   <span>{{ item.option.name }}</span>
                 {% endunless %}
-                <div class="item_price">{{ item.unit_price | money_with_sign }}</div>
+                <div class="item_price">{{ item.unit_price | money: theme.money_format }}</div>
               </div>
             </a>
           {% endfor %}
         </div>
         <div class="cart_footer">
           <div class="item_subtotal">
-            Subtotal <span>{{ cart.total | money_with_sign }}</span>
+            Subtotal <span>{{ cart.total | money: theme.money_format }}</span>
           </div>
           <a class="button view_bag" href="/cart">View your bag</a>
         </div>
