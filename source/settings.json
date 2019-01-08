@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "images": [
     {
       "variable": "header_logo",
@@ -208,7 +208,7 @@
     "content_header_color": "{{ primary_text_color }}",
     "content_color": "{{ primary_text_color }}",
     "content_header_font_size": "18px",
-    "content_border_color": "transparent", 
+    "content_border_color": "transparent",
     "content_border_radius": "0px",
     "error_background_color": "#ea4859",
     "error_color": "#ffffff",
