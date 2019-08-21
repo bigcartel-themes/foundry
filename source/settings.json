@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "images": [
     {
       "variable": "header_logo",
@@ -106,6 +106,14 @@
       "type": "boolean",
       "default": false,
       "description": "Displays a product search icon in the header"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
     },
     {
       "variable": "show_overlay",
