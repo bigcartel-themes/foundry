@@ -22,7 +22,13 @@
 <div class="product_detail">
   <h1>{{ product.name }}</h1>
   <h2>
-    <span class="product_price">{{ product.default_price | money: theme.money_format }}</span>
+    <span class="product_price">
+      {% if product.variable_pricing %}
+        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+      {% else %}
+        {{ product.default_price | money: theme.money_format }}
+      {% endif %}
+    </span>
 		{% case product.status %}
 			{% when 'active' %}
 				{% if product.on_sale %}<span class="small_status {{ product.css_class }}">- On sale</span>{% endif %}
