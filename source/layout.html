@@ -3,9 +3,8 @@
 <head>
   <title>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %} | {{ store.name }}</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Work+Sans|Karla' rel='stylesheet' type='text/css'>
   {{ head_content }}
 </head>
 <body id="{{ page.permalink }}" class="{{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
@@ -136,7 +135,7 @@
     </div>
   </div>
   {% endif %}
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="{{ 'api' | theme_js_url }}"></script>
   <script>
     var formatMoney = Format.money;
@@ -154,6 +153,10 @@
   <script src="{{ theme | theme_js_url }}"></script>
   {% if page.full_url contains '/product/' %}
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script>
+      var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
+      Product.find('{{ product.permalink }}', processProduct)
+    </script>
   {% endif %}
 </body>
 </html>

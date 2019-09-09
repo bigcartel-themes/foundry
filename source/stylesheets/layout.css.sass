@@ -2,11 +2,11 @@
 
 *
   +box-sizing(border-box)
-  
+
 html
   min-height: 100%
   position: relative
-   
+
 body
   background: $background-color
   -moz-osx-font-smoothing: grayscale
@@ -17,54 +17,54 @@ body
   line-height: 1
   overflow-y: scroll
   padding-top: 90px
-  
-  &.has_welcome 
+
+  &.has_welcome
     padding-top: 0
-    
+
     header
       background: transparent
-  
+
   &#cart
     .footer_cart
       display: none
-      
+
   &#home
     padding-top: 0
-    
+
   &.standalone
     padding: 70px
     text-align: center
-    
+
     h1
       font-size: 22px
       line-height: 1.6em
-    
+
     .maintenance_icons
       display: block
-      
+
       li
         display: inline-block
-        
+
         a
           display: block
           padding: 0 10px
-          
+
           @media screen and (max-width: $break-small)
             padding: 0 6px
-          
+
           svg
             +all-transitions
             fill: $primary-text-color
             height: 30px
             width: 30px
-            
+
             @media screen and (max-width: $break-small)
               height: 26px
               width: 26px
-              
+
           &:hover svg
-            opacity: .6 
-  
+            opacity: .6
+
 header
   +pie-clearfix
   +transition(background .3s linear)
@@ -78,10 +78,10 @@ header
   right: 0
   top: 0
   z-index: 3
-  
+
   @media screen and (max-width: $break-small)
     position: absolute
-    
+
   &.background_overlay
     background: $header-background-color !important
 
@@ -91,27 +91,27 @@ header
     font-size: 20px
     margin-left: 40px
     max-width: 60%
-    
+
     @media screen and (max-width: $break-medium)
       margin-left: 20px
-    
+
     a
       color: $header-text-color
       display: block
       line-height: 1.2em
-      
+
     &.text
       height: 50px
-      
+
       a
         +vertical-align
-  
+
     &.image
       +vertical-align
-      
+
       a
         height: 50px
-    
+
         img
           +vertical-align
           display: block
@@ -119,48 +119,48 @@ header
           max-height: 100%
           max-width: 100%
           width: auto
-      
+
   .header_icons
     +vertical-align
     height: 30px
     list-style: none
     position: absolute
     right: 40px
-    
+
     @media screen and (max-width: $break-medium)
       right: 20px
-    
+
     li
       display: inline-block
       font-size: 0
       height: 30px
       margin-left: 30px
-      
+
       a
         color: $header-text-color
         display: block
         font-size: 14px
         position: relative
-        
+
         svg
           fill: $header-text-color
           height: 30px
           width: 30px
-          
+
       &.open_search a
         top: 1px
-          
+
       &.open_cart
         margin-left: 23px
-        
+
         @media screen and (max-width: $break-small)
           display: none
-            
+
       &.open_menu a
         +vertical-align
         height: 16px
         width: 22px
-        
+
         span
           +border-radius(2px)
           +transform(rotate(0deg))
@@ -171,16 +171,16 @@ header
           position: absolute
           left: 0
           opacity: 1
-    
+
           &:nth-child(1)
             top: 0px
-    
+
           &:nth-child(2), &:nth-child(3)
             top: 50%
-    
+
           &:nth-child(4)
             top: 99%
-              
+
 .cart_count
   position: absolute
   right: -13px
@@ -195,16 +195,16 @@ header
     font-size: 12px
     line-height: 1.3
     padding: 2px 8px
-              
+
 a
   color: $secondary-text-color
   text-decoration: none
-  
+
 ul, ol
   list-style: none
   margin: 0
   padding: 0
-  
+
 button, a.button
   +all-transitions
   background-color: $header-background-color
@@ -225,15 +225,19 @@ button, a.button
     border: none
     opacity: .6
 
+  &:disabled, &.disabled
+    cursor: not-allowed
+    opacity: .3
+
 .errors
   color: $error-text-color
   margin-bottom: 40px
   text-align: center
-  
+
   li
     line-height: 1.5em
     margin-bottom: 20px
-     
+
 .select
   +all-transitions
   position: relative
@@ -290,10 +294,10 @@ button, a.button
 
     select
       color: $primary-text-color
-      
+
     svg
       fill: $primary-text-color
-  
+
 .overlay
   +transition(opacity 0.2s, visibility 0s 0.2s)
   height: 100%
@@ -305,12 +309,12 @@ button, a.button
   visibility: hidden
   width: 100%
   z-index: 5
-  
+
   &.open
     +transition(opacity 0.4s)
     opacity: 1
     visibility: visible
-  
+
   .overlay_background
     background: $header-background-color
     bottom: 0
@@ -320,12 +324,12 @@ button, a.button
     right: 0
     top: 0
     z-index: 5
-  
+
   .overlay_content
     height: 100%
     overflow-y: scroll
     padding: 90px 0
-  
+
   .close_overlay
     cursor: pointer
     fill: $header-text-color
@@ -335,10 +339,10 @@ button, a.button
     top: 37px
     width: 18px
     z-index: 6
-    
+
     @media screen and (max-width: $break-small)
       right: 22px
-    
+
   .page_list
     display: none
     margin: 0 auto
@@ -347,35 +351,35 @@ button, a.button
     position: relative
     z-index: 6
     visibility: hidden
-    
+
     li
       display: block
-      
+
       a
         color: $header-text-color
         display: block
         font-size: 26px
         padding: 15px 0
-        
+
         @media screen and (max-width: $break-small)
           font-size: 20px
-        
+
   .search_form
     display: none
     z-index: 6
-        
+
   &.navigation
     .page_list
       display: block
       +transition(opacity 0.2s, visibility 0s 0.2s)
       opacity: 1
       visibility: visible
-      
+
   &.search
     .search_form
       display: block
       position: relative
-      
+
       input
         +appearance(none)
         background: none
@@ -386,21 +390,21 @@ button, a.button
         margin: 0 auto
         padding: 15px
         width: 60%
-        
+
         @media screen and (max-width: $break-small)
           width: 80%
-      
+
         &:focus
           border: none
           color: $header-text-color
           outline: none
-      
+
         &::-moz-placeholder
           color: $header-text-color
-      
+
         &::-webkit-input-placeholder
           color: $header-text-color
-      
+
         &:-ms-input-placeholder
           color: $header-text-color
 
@@ -413,10 +417,10 @@ button, a.button
   text-align: center
   width: 100%
   z-index: 4
-  
+
   @media screen and (max-width: $break-small)
     display: block
-  
+
   .background
     background: $header-background-color
     height: 100%
@@ -425,63 +429,63 @@ button, a.button
     position: absolute
     top: 0
     width: 100%
-    
+
   .open_cart
     +vertical-align
     display: inline-block
     position: relative
-    
+
     svg
       fill: $header-text-color
       height: 25px
       width: 25px
-  
+
 h1, h2, h3, h4, h5, h6
   font-family: $primary-font
   font-weight: normal
   margin: 0
   padding: 0
-  
+
 h1
   font-size: 36px
   margin-bottom: 60px
-  
+
   @media screen and (max-width: $break-small)
     font-size: 24px
     margin-bottom: 30px
-    
+
 h2.featured_products
   font-size: 26px
   margin: 0 0 60px
   text-align: center
-  
+
   @media screen and (max-width: $break-small)
     margin: 60px 0
-  
+
 .featured_categories + h2.featured_products
   margin-top: 200px
-  
+
   @media screen and (max-width: $break-medium)
     margin-top: 60px
-      
+
 +keyframes(welcome-text)
   0%
     opacity: 0
     +transform(translate3d(0, 10%, 0))
-    
+
   100%
     +transform(none)
     opacity: 1
-    
+
 +keyframes(hide-welcome-text)
   0%
     +transform(none)
     opacity: 1
-    
+
   100%
     opacity: 0
     +transform(translate3d(0, 10%, 0))
- 
+
 .welcome_image
   background-image: #{"{% if theme.images.welcome_image != blank %}url(\'{{ theme.images.welcome_image.url | constrain: 1400 }}\'){% else %}none{% endif %}"}
   background-position: 50% 50%
@@ -495,10 +499,10 @@ h2.featured_products
   text-align: center
   top: 0
   width: 100%
-  
+
   @media screen and (max-width: 1024px)
     background-attachment: scroll
-  
+
   .welcome_overlay
     background: $home-overlay-color
     bottom: 0
@@ -509,44 +513,44 @@ h2.featured_products
     right: 0
     top: 0
     width: 100%
-  
+
   .welcome_text
     +transform(translateY(-50%))
     position: relative
     top: calc(50% - 45px)
     +animation(welcome-text ease-in 900ms forwards)
     padding: 0 20px
-    
+
     &.fade_out
       +animation(hide-welcome-text ease-in 200ms forwards)
-    
+
     h1
       font-size: 60px
       line-height: 1.6em
       margin-bottom: 20px
-      
+
       @media screen and (max-width: $break-small)
         font-size: 9vw
-    
+
     .welcome_button
       +transition(opacity .2s linear)
       color: $home-text-color
       font-size: 18px
       padding: 10px
-      
+
       &:hover
         opacity: .6
-  
+
 section.content
   margin: 0 auto 360px auto
   max-width: 1300px
   padding: 0 20px
   padding-top: 90px
   width: 100%
-  
+
   @media screen and (max-width: $break-small)
     padding: 60px 20px 40px
-  
+
   .custom_page
     color: $secondary-text-color
     line-height: 1.7em
@@ -555,90 +559,90 @@ section.content
     overflow-y: auto
     padding: 0 1px
     width: 100%
-    
+
     a[href]
       +all-transitions
       text-decoration: underline
-      
+
       &:hover
         opacity: .6
-      
+
     img, iframe
       display: block
       max-width: 100%
-    
+
     p
       margin: 0 auto 20px
-      
+
     ol, ul
       margin: 1em 0
-      
+
     ul
       list-style: disc
       list-style-position: inside
-    
+
     ol
       list-style: decimal
       list-style-position: inside
-    
+
   &.page-contact
     max-width: 500px
-  
+
   &.page-product
     +pie-clearfix
     max-width: 1200px
     padding-top: 60px
-    
+
     @media screen and (max-width: $break-small)
       overflow: hidden
       padding-left: 0
       padding-right: 0
       padding-top: 30px
-    
+
     h1
       font-size: 26px
       font-weight: normal
       line-height: 36px
       margin-bottom: 15px
       text-align: left
-      
+
     h2
       color: $secondary-text-color
       font-size: 18px
-      
+
   &.page-home
     padding-top: 290px
-    
+
     &.has_welcome
       padding-top: 200px
-      
+
       @media screen and (max-width: $break-medium)
         padding-top: 30px
-      
+
       @media screen and (max-width: $break-small)
         padding-top: 100px
-        
+
         .home_tagline
           margin-bottom: 160px
-        
+
     @media screen and (max-width: $break-medium)
       padding-top: 160px
-    
+
     @media screen and (max-width: $break-small)
       padding-left: 0
       padding-right: 0
       padding-top: 110px
-      
+
     &.home-empty
       margin: 0 !important
       padding: 0 !important
-  
+
   &.page-products
-    
+
     @media screen and (max-width: $break-small)
       padding-left: 0
       padding-right: 0
-    
+
   h1
     text-align: center
 
@@ -652,12 +656,12 @@ footer.footer
   position: absolute
   text-align: center
   width: 100%
-  
+
   @media screen and (max-width: $break-small)
     height: auto
     margin: 20px 0 0
     padding-bottom: 120px
-    
+
   .footer_icons
     margin: 10px auto
 
@@ -665,58 +669,58 @@ footer.footer
       display: inline-block
       font-size: 0
       margin: 0 10px
-      
+
       a
         color: $footer-text-color
         display: block
         font-size: 12px
-        
+
         svg
           +all-transitions
           fill: $footer-icon-color
           height: 30px
           width: 30px
-          
+
         &:hover svg
-          opacity: .6    
-          
+          opacity: .6
+
   .footer_pages
     font-size: 0
     margin: 10px auto
     max-width: 640px
     text-align: center
     width: 100%
-    
+
     li
       display: inline-block
-      
+
       @media screen and (max-width: $break-small)
         display: block
-      
+
       a
         +all-transitions
         color: $footer-text-color
         display: block
         font-size: 14px
         padding: 10px
-        
+
         &:hover
           opacity: .6
-        
+
   .footer_credit
     color: $footer-text-color
     font-size: 12px
     margin-top: 14px
-    
+
     .credit
-    
+
       a
         color: $footer-text-color
-        
+
       @media screen and (max-width: $break-medium)
         display: block
         margin-top: 20px
-        
+
 .home_tagline
   color: $secondary-text-color
   font-family: $secondary-font
@@ -727,15 +731,15 @@ footer.footer
   padding: 0 20px
   text-align: center
   width: 100%
-  
+
   @media screen and (max-width: $break-medium)
     margin: 90px auto 120px
-  
+
   @media screen and (max-width: $break-small)
     margin: 60px auto
-  
+
 .mini_cart
-  +box-shadow(0 2px 10px 0 $secondary-text-color) 
+  +box-shadow(0 2px 10px 0 $secondary-text-color)
   background: $background-color
   height: 430px
   display: none
@@ -746,10 +750,10 @@ footer.footer
   top: 90px
   width: 380px
   z-index: 4
-  
+
   @media screen and (max-width: $break-small)
     display: none !important
-  
+
   .triangle
     height: 0
     border-style: solid
@@ -759,28 +763,28 @@ footer.footer
     right: 57px
     top: -12px
     width: 0
-    
+
     @media screen and (max-width: $break-medium)
       right: 37px
 
   .cart_holder
-    
+
     .item_holder
       height: 277px
       position: absolute
       overflow-y: scroll
       padding: 0 30px
       padding-top: 30px
-      
+
       .cart_item
         +pie-clearfix
         display: block
         margin-bottom: 20px
-        
+
         .item_image
           float: left
           width: 30%
-          
+
         .item_info
           color: $primary-text-color
           float: left
@@ -789,7 +793,7 @@ footer.footer
           line-height: 22px
           padding-left: 20px
           width: 70%
-          
+
           > span
             color: $secondary-text-color
             display: block
@@ -797,13 +801,13 @@ footer.footer
             font-size: 14px
             line-height: 18px
             margin-top: 4px
-            
+
         .item_price
           color: $secondary-text-color
           font-family: $secondary-font
           font-size: 14px
           margin-top: 2px
-      
+
     .cart_footer
       bottom: 0
       height: 178px
@@ -811,36 +815,36 @@ footer.footer
       padding: 30px
       position: absolute
       right: 0
-      
+
       .item_subtotal
         +pie-clearfix
         font-size: 18px
         padding: 20px 0
-        
+
         >span
           float: right
-        
+
       .button
         max-width: none
         width: 100%
-        
+
   &.empty
     font-size: 18px
     height: auto
     padding: 30px
     text-align: center
-    
+
     .button
       margin-top: 40px
       max-width: none
-      
+
 .start_shopping_message
   line-height: 1.5em
   text-align: center
-  
+
   p
     margin: 80px 40px
-    
+
   @media screen and (max-width: $break-small)
     .button
       max-width: 100%

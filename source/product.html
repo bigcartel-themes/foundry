@@ -22,7 +22,13 @@
 <div class="product_detail">
   <h1>{{ product.name }}</h1>
   <h2>
-    <span class="product_price">{{ product.default_price | money: theme.money_format }}</span>
+    <span class="product_price">
+      {% if product.variable_pricing %}
+        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+      {% else %}
+        {{ product.default_price | money: theme.money_format }}
+      {% endif %}
+    </span>
 		{% case product.status %}
 			{% when 'active' %}
 				{% if product.on_sale %}<span class="small_status {{ product.css_class }}">- On sale</span>{% endif %}
@@ -32,28 +38,46 @@
 				<span class="small_status {{ product.css_class }}">- Coming soon</span>
 		{% endcase %}
   </h2>
-  
+
 	{% if product.status == 'active' %}
-    <form method="post" action="/cart" class="product_form">
+    <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
+      <input type="hidden" name="utf8" value='✓'>
       {% if product.has_default_option %}
         {{ product.option | hidden_option_input }}
       {% else %}
-        <div class="select">
-          <select id="option" name="[cart][add][id]">
-            {% for option in product.options %}
-              <option value="{{ option.id }}" data-option-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled"{% endif %}>{{ option.name }}{% if option.price != product.default_price %} - {{ option.price | money: theme.money_format }}{% endif %} {% if option.sold_out %}(Sold out){% endif %}</option>
+        {% if product.has_option_groups %}
+          <div class="product_option_groups">
+            <input id="option" name="cart[add][id]" type="hidden" value="0">
+            {% for option_group in product.option_groups %}
+              <div class="select">
+                <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                  <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                  {% for value in option_group.values %}
+                    <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                  {% endfor %}
+                </select>
+                <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+              </div>
             {% endfor %}
-          </select>
-          <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
-        </div>
+          </div>
+        {% else %}
+          <div class="select">
+            <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select option">
+              <option value="0" disabled="disabled" selected>Select option</option>
+              {% for option in product.options %}
+                <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+              {% endfor %}
+            </select>
+            <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+          </div>
+        {% endif %}
       {% endif %}
-      <input autocomplete="off" type="text" value="1" id="quantity">
-      <button class="button add-to-cart" type="submit" data-added-text="Added!" data-adding-text="Adding...">
+      <button class="button add-to-cart-button" name="submit" type="submit" title="Add to bag" data-added-text="Added!" data-adding-text="Adding..." data-add-title="Add to bag" data-sold-title="Sold out">
         <span class="status_text">Add to bag</span>
       </button>
     </form>
 	{% endif %}
-  
+
 	<div class="product_description">
 		{% if product.description != blank %}
 			{{ product.description | paragraphs }}
@@ -61,7 +85,7 @@
 	</div>
   <ul class="share_buttons">
     <li class="social_twitter">
-      <a title="Tweet" href="http://twitter.com/home?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M25.4 6.5c-.9.5-1.8.9-2.9 1.1-.8-.9-2-1.4-3.3-1.4-2.5 0-4.5 2-4.5 4.4 0 .3 0 .7.1 1-3.8-.2-7.1-2-9.3-4.6-.4.7-.6 1.4-.6 2.3 0 1.5.8 2.9 2 3.7-.7 0-1.4-.2-2-.6v.1c0 2.1 1.6 3.9 3.6 4.4-.4 0-.8.1-1.2.1-.3 0-.6 0-.8-.1.6 1.8 2.2 3 4.2 3.1-1.5 1.2-3.5 1.9-5.6 1.9-.4 0-.7 0-1.1-.1 2 1.3 4.4 2 6.9 2 8.3 0 12.8-6.8 12.8-12.6v-.6c.9-.6 1.6-1.4 2.3-2.3-.8.4-1.7.6-2.6.7.9-.6 1.7-1.4 2-2.5z"/></svg>
+      <a title="Tweet" href="https://twitter.com/intent/tweet?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M25.4 6.5c-.9.5-1.8.9-2.9 1.1-.8-.9-2-1.4-3.3-1.4-2.5 0-4.5 2-4.5 4.4 0 .3 0 .7.1 1-3.8-.2-7.1-2-9.3-4.6-.4.7-.6 1.4-.6 2.3 0 1.5.8 2.9 2 3.7-.7 0-1.4-.2-2-.6v.1c0 2.1 1.6 3.9 3.6 4.4-.4 0-.8.1-1.2.1-.3 0-.6 0-.8-.1.6 1.8 2.2 3 4.2 3.1-1.5 1.2-3.5 1.9-5.6 1.9-.4 0-.7 0-1.1-.1 2 1.3 4.4 2 6.9 2 8.3 0 12.8-6.8 12.8-12.6v-.6c.9-.6 1.6-1.4 2.3-2.3-.8.4-1.7.6-2.6.7.9-.6 1.7-1.4 2-2.5z"/></svg>
       </a>
     </li>
     <li class="social_facebook">
