@@ -76,8 +76,21 @@
         img
           opacity: .5
 
-option[disabled-type="unavailable"]
+.reset-selection-button-container
+  max-width: 300px
+  text-align: center
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+button.reset-selection-button
   display: none
+  height: auto
+  line-height: normal
+  margin-top: 20px
+  padding: 4px
+  width: auto
 
 .product_detail
   +all-transitions

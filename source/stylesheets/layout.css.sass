@@ -221,13 +221,26 @@ button, a.button
   text-align: center
   width: 100%
 
-  &:hover, &:focus, &.active
+  &.minimal-button
+    background: none
+    color: $header-background-color
     border: none
-    opacity: .6
+    font-size: 13px
+    padding: 0
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      background: none
+      text-decoration: underline
+      opacity: 1
 
   &:disabled, &.disabled
     cursor: not-allowed
     opacity: .3
+
+  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+    border: none
+    opacity: .6
+
 
 .errors
   color: $error-text-color

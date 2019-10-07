@@ -1,8 +1,14 @@
 @import 'config'
 
+.mini-cart
+  position: absolute
+  top: 0
+  right: 50px
+  display: block
+
 #cart .cart_holder
   display: none
-  
+
 #cart footer
   padding-bottom: 60px
 
@@ -10,59 +16,59 @@
   +pie-clearfix
   margin: 0 auto
   max-width: 1200px
-  
+
   .errors
     margin: 0 auto 40px auto
     max-width: 540px
     width: 100%
-    
+
 .cart_items
   float: left
   max-width: 60%
   width: 100%
-  
+
   @media screen and (max-width: $break-extra-large)
     max-width: 65%
-    
+
   @media screen and (max-width: $break-large)
     max-width: 60%
-    
+
   @media screen and (max-width: $break-small)
     float: none
     max-width: 100%
-  
+
   li
     +pie-clearfix
     font-size: 14px
     line-height: 15px
     padding-bottom: 40px
-    
+
     a.item_image
       float: left
       height: 100%
       max-width: 40%
       text-align: center
       width: 100%
-      
+
       @media screen and (max-width: $break-medium)
         max-width: 35%
-      
+
       img
         display: block
         height: auto
         margin: 0 auto
         width: 100%
-      
+
     .item_details
-      font-family: $primary-font  
+      font-family: $primary-font
       float: left
       max-width: 500px
       padding: 0 40px
       width: auto
-      
+
       @media screen and (max-width: $break-large)
         padding-left: 20px
-        
+
       @media screen and (max-width: $break-small)
         padding-right: 0
 
@@ -71,11 +77,11 @@
         display: block
         font-size: 26px
         line-height: 36px
-        
+
         @media screen and (max-width: $break-large)
           font-size: 18px
           line-height: 26px
-      
+
         > span
           color: $secondary-text-color
           display: block
@@ -83,15 +89,15 @@
           font-size: 18px
           line-height: 26px
           margin-top: 6px
-          
+
           @media screen and (max-width: $break-large)
             font-size: 14px
             line-height: 22px
-            
+
     .qty_holder
       +pie-clearfix
       margin-top: 20px
-      
+
       button
         +border-radius(3ex)
         +transform(translateZ(0px))
@@ -102,22 +108,22 @@
         height: 40px
         line-height: normal
         width: 40px
-        
+
         @media screen and (max-width: $break-small)
           height: 36px
           width: 36px
-        
+
         svg
           fill: $secondary-text-color
           height: 20px
           position: relative
           top: 2px
           width: 20px
-          
+
           @media screen and (max-width: $break-small)
             height: 18px
             width: 18px
-        
+
       input
         +appearance(none)
         background: none
@@ -128,20 +134,20 @@
         height: 40px
         text-align: center
         width: 60px
-        
+
         @media screen and (max-width: $break-small)
           font-size: 14px
           height: 36px
           width: 56px
-        
+
         &:focus
           box-shadow: none
           outline: none
-          
+
 .flexbox .cart_items li
   +flexbox
   +align-items(center)
-    
+
 .cart_info
   border: 2px solid $border-color
   color: $secondary-text-color
@@ -153,48 +159,48 @@
   text-align: center
   top: 110px
   width: 100%
-  
+
   @media screen and (max-width: $break-extra-large)
     max-width: 35%
-  
+
   @media screen and (max-width: $break-large)
     max-width: 40%
     padding: 40px 35px 25px 35px
-  
+
   @media screen and (max-width: $break-small)
     border: none
     float: none
     max-width: 100%
     padding: 40px 0 0
-  
+
   h3, h4
     margin-bottom: 20px
     text-align: left
-    
+
     >span
       float: right
   h3
     color: $primary-text-color
     font-size: 26px
-    
+
     @media screen and (max-width: $break-medium)
       font-size: 18px
-      
+
     @media screen and (max-width: $break-small)
       font-size: 26px
-        
+
   h4
     font-size: 13px
-      
+
   button, .button
     max-width: 100%
-    
+
     @media screen and (max-width: $break-medium)
       font-size: 16px
-    
+
     @media screen and (max-width: $break-small)
       font-size: 18px
-    
+
   .continue_shopping
     background: none
     color: $secondary-text-color
@@ -203,10 +209,10 @@
 
 .cart_empty_message
   text-align: center
-  
+
   p
     margin: 80px 0
-    
+
   svg
     fill: $secondary-text-color
     height: 40px
