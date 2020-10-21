@@ -59,7 +59,7 @@ var updateCart = function(cart) {
   });
 }
 
-var inPreview = (/\/admin\/design/.test(top.location.pathname));
+var inPreview = (/http(s?):\/\/draft-+\w+\.bigcartel\.(test|biz|com)/.test(window.origin)||(/\/admin\/design/.test(top.location.pathname)));
 if (inPreview) {
   var timeout_start = 1000;
 }
