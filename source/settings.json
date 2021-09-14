@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "images": [
     {
       "variable": "header_logo",
@@ -59,7 +59,7 @@
     {
       "variable": "secondary_text_color",
       "label": "Secondary text",
-      "default": "#646464"
+      "default": "#424242"
     },
     {
       "variable": "border_color",
@@ -84,7 +84,7 @@
     {
       "variable": "footer_text_color",
       "label": "Footer text",
-      "default": "#646464"
+      "default": "#424242"
     }
   ],
   "options": [
@@ -203,7 +203,6 @@
     "body_font": "{{ secondary_font }}",
     "body_font_size": "14px",
     "step_border_color": "{{ border_color }}",
-    "step_header_color": "{{ primary_color }}",
     "step_border_width": "2px",
     "step_border_style": "solid",
     "step_border_radius": "0px",
