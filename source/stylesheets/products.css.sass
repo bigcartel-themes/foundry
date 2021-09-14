@@ -3,33 +3,36 @@
 .category_list
   margin: 0 auto 60px
   text-align: center
-  
+
   @media screen and (max-width: $break-small)
     margin-bottom: 40px
     padding: 0 20px
-  
+
   ul
-  
+
     li
       display: inline-block
       font-size: 0
-      
+
       &.current a
         color: $primary-text-color
-      
+
       a
         display: block
         font-size: 18px
         line-height: 24px
-        padding: 0 10px 10px 
-        
+        padding: 0 10px 10px
+
+        &:hover
+          text-decoration: underline
+
     @media screen and (max-width: $break-small)
       display: none
-  
+
   .select
     display: none
     max-width: 100%
-    
+
     @media screen and (max-width: $break-small)
       display: block
 
@@ -37,29 +40,29 @@
   +pie-clearfix
   font-family: $primary-font
   margin: 0 -10px 0
-  
+
   @media screen and (max-width: $break-small)
     margin: 0
-  
+
   li
     float: left
     padding: 10px
     width: 33.33%
-    
+
     @media screen and (max-width: $break-small)
       padding: 0 0 20px 0
       width: 100% !important
-      
+
     a
       display: block
       overflow: hidden
       position: relative
-    
+
       img
         display: block
         height: 100%
         margin: auto
-      
+
       .category_overlay
         +transition(opacity .1s linear)
         -webkit-backface-visibility: hidden
@@ -72,7 +75,7 @@
         right: 0
         top: 0
         width: 100%
-          
+
       .category_info
         +transform(rotate(0) translateY(-50%) translateZ(0))
         position: relative
@@ -83,58 +86,58 @@
         line-height: 1.3em
         padding: 20px
         text-align: center
-        
+
       &:hover .category_overlay
         opacity: .25
-        
+
   &.two_categories li
     width: 50%
-  
+
   &.three_categories li
     width: 33.33%
-  
+
   &.four_categories li
     width: 50%
-    
+
   &.five_categories li
     width: 50%
-    
+
   &.five_categories li:nth-child(-n+3)
     width: 33.33%
-  
+
   &.six_categories li
     width: 33.33%
 
   &.seven_categories li
     width: 50%
-    
+
   &.seven_categories li:nth-child(n+3):nth-child(-n+5)
     width: 33.33%
-    
+
   &.eight_categories li
     width: 33.33%
-    
+
   &.eight_categories li:nth-child(n+4):nth-child(-n+5)
     width: 50%
-    
+
   &.nine_categories li
     width: 33.33%
-  
+
   &.ten_categories li
     width: 50%
-    
+
   &.ten_categories li
     width: 33.333%
 
   &.ten_categories li:nth-child(n+4)
     width: 50%
-    
+
   &.ten_categories li:nth-child(n+6)
     width: 33.33%
-    
+
   &.ten_categories li:nth-child(n+9)
     width: 50%
-    
+
 .product_list
   +pie-clearfix
   +flexbox
@@ -145,13 +148,13 @@
   padding: 0
   position: relative
   text-align: center
-  
+
   @media screen and (max-width: $break-small)
     margin: 0
-  
+
   &.justify_center
     +justify-content(center)
-    
+
     @media screen and (max-width: $break-medium)
       +justify-content(flex-start)
 
@@ -162,10 +165,10 @@
     position: relative
     vertical-align: top
     width: 25%
-    
+
     @media screen and (max-width: $break-large)
       width: 33.33%
-      
+
     @media screen and (max-width: $break-medium)
       padding-bottom: 40px !important
       width: 50%
@@ -173,13 +176,13 @@
     @media screen and (max-width: $break-small)
       padding: 0 0 40px 0
       width: 100%
-      
+
     a
       display: block
       position: relative
       text-align: center
       width: 100%
-      
+
       &:hover
         opacity: 1
 
@@ -191,7 +194,7 @@
         position: relative
         width: 100%
         z-index: 1
-        
+
       .product_details
         +transition(.3s linear)
         color: $primary-text-color
@@ -200,7 +203,7 @@
         text-align: center
         width: 100%
         z-index: 2
-        
+
         .details_background
           background: $background-color
           height: 100%
@@ -208,7 +211,7 @@
           position: absolute
           top: 0
           width: 100%
-        
+
         .product_name
           font-family: $primary-font
           font-size: 18px
@@ -216,81 +219,81 @@
           margin: 0
           padding: 0 20px
           position: relative
-          
+
         .product_status
           color: $secondary-text-color
-          font-size: 10px
+          font-size: 12px
           letter-spacing: 1px
           position: absolute
           text-transform: uppercase
           top: 12px
           width: 100%
-          
+
         .product_price
           color: $secondary-text-color
-          font-size: 14px
+          font-size: 16px
           margin: 10px 0 0
           position: relative
-          
+
         @media screen and (max-width: $break-small)
           bottom: auto
           opacity: 1
           position: relative
-            
+
           .product_name
             font-size: 18px
             padding: 0 20px
             margin: 0
-          
+
           .product_price
             font-size: 14px
-                          
+
     &.sold
       img
         opacity: .5
-        
+
       .product_price
         text-decoration: line-through
-          
+
     &.show_overlay
       padding-bottom: 20px
-      
+
       > a
         overflow: hidden
-        
+
       .product_details
         @media screen and (min-width: $break-medium)
           bottom: -150px
           opacity: 0
           padding: 30px 0
           position: absolute
-        
+
       &:hover
         .product_details
           @media screen and (min-width: $break-medium)
             opacity: 1
             bottom: 0
-            
+
       @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
         .product_details
           bottom: auto
           opacity: 1
           position: relative
-            
+
           .product_name
             font-size: 18px
             padding: 0 10px 0 10px
             margin: 0
-          
+
           .product_price
             font-size: 14px
-            
+
 .no-flexbox .product_list li
   display: inline-block
-            
+
 .featured_categories + .product_list
   margin-top: 80px
-    
+
 .pagination
   +pie-clearfix
   font-size: 0
@@ -300,11 +303,11 @@
   padding-top: 40px
   text-align: center
   width: 100%
-  
+
   @media screen and (max-width: $break-small)
     line-height: 40px
     max-width: 100%
-  
+
   span, a
     display: inline-block
     font-size: 18px
@@ -312,27 +315,27 @@
     line-height: 60px
     text-align: center
     width: 60px
-    
+
     @media screen and (max-width: $break-medium)
       font-size: 16px
       height: 44px
       line-height: 44px
       width: 44px
-      
+
     @media screen and (max-width: $break-small)
       font-size: 14px
       height: 40px
       line-height: 40px
       width: 40px
-    
+
     i
       font-size: 12px
       position: relative
-      
+
   .current
     background: $header-background-color
     color: $header-text-color
-      
+
   .previous, .next
     svg
       +all-transitions
@@ -341,9 +344,9 @@
       position: relative
       top: 6px
       width: 22px
-  
+
   .previous
-    
+
     svg
       +rotate(90deg)
 
@@ -354,6 +357,6 @@
 
   .disabled
     display: none
-    
+
 .no_products
   text-align: center
