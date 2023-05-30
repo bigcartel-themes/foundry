@@ -94,19 +94,22 @@
             font-size: 14px
 
     .qty_holder
-      +pie-clearfix
+      display: flex
+      align-items: center
       margin-top: 20px
 
       button
         border-radius: 50%
-        +transform(translateZ(0px))
         background: none
         border: 2px solid $border-color
         color: $secondary-text-color
-        float: left
+        cursor: pointer
         height: 40px
         line-height: normal
         width: 40px
+
+        &:hover
+          border: 2px solid $secondary-text-color
 
         @media screen and (max-width: $break-small)
           height: 36px
@@ -128,7 +131,6 @@
         background: none
         border: none
         color: $secondary-text-color
-        float: left
         font-size: 16px
         height: 40px
         text-align: center

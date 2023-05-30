@@ -59,13 +59,6 @@ var updateCart = function(cart) {
   });
 }
 
-var inPreview = (/http(s?):\/\/draft-+\w+\.bigcartel\.(test|biz|com)/.test(window.origin)||(/\/admin\/design/.test(top.location.pathname)));
-if (inPreview) {
-  var timeout_start = 1000;
-}
-else {
-  timeout_start = 1;
-}
 var center_featured_categories = function() {
   $('.featured_categories li').each(function() {
     var container = $(this).find('a');
@@ -167,6 +160,18 @@ $(function() {
       processUpdate(input, item_id, new_val, cart);
     });
   });
+  $('body').on('keydown','.qty_holder input', function(e) {
+    if (e.keyCode == 13) {
+      item_id = $(this).parent().data("cart-id");
+      new_val = $(this).val();
+      input = $(this);
+      Cart.updateItem(item_id, new_val, function(cart) {
+        processUpdate(input, item_id, new_val, cart);
+      });
+      e.preventDefault();
+      return false;
+    }
+  })
 
   $('.open_search_btn').click(function(e) {
     $('body').addClass('overlay_open');
