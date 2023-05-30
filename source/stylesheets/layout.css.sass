@@ -340,17 +340,25 @@ button, a.button
     padding: 90px 0
 
   .close_overlay
+    +appearance(none)
+    background: none
+    border: none
     cursor: pointer
-    fill: $header-text-color
-    height: 18px
+    color: $header-text-color
+    height: 32px
+    padding: 8px
     position: absolute
-    right: 42px
-    top: 37px
-    width: 18px
+    right: 35px
+    top: 30px
+    width: 32px
     z-index: 6
 
+    svg
+      fill: currentColor
+      display: block
+
     @media screen and (max-width: $break-small)
-      right: 22px
+      right: 15px
 
   .page_list
     display: none
@@ -366,9 +374,12 @@ button, a.button
 
       a
         color: $header-text-color
-        display: block
+        display: inline-block
         font-size: 26px
-        padding: 15px 0
+        padding: 15px
+
+        &:hover
+          text-decoration: underline
 
         @media screen and (max-width: $break-small)
           font-size: 20px
@@ -656,6 +667,7 @@ section.content
 
 footer.footer
   background: $footer-background-color
+  color: $footer-text-color
   font-family: $secondary-font
   bottom: 0
   display: flex
@@ -670,6 +682,7 @@ footer.footer
   width: 100%
 
   a
+    color: $footer-text-color
     transition: opacity .2s linear
 
     &:hover
@@ -685,7 +698,6 @@ footer.footer
     gap: 20px
 
     a
-      color: $footer-text-color
       display: block
 
       svg
@@ -698,9 +710,10 @@ footer.footer
     display: flex
     gap: 10px
     max-width: 640px
+    flex-wrap: wrap
+    justify-content: center
 
     a
-      color: $footer-text-color
       display: block
       font-size: 16px
       padding: 2px
