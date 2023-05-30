@@ -655,15 +655,25 @@ section.content
     text-align: center
 
 footer.footer
-  +pie-clearfix
   background: $footer-background-color
   font-family: $secondary-font
   bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  gap: 40px
   min-height: 120px
   padding: 60px 20px
   position: absolute
   text-align: center
   width: 100%
+
+  a
+    transition: opacity .2s linear
+
+    &:hover
+      opacity: .75
 
   @media screen and (max-width: $break-small)
     height: auto
@@ -671,63 +681,47 @@ footer.footer
     padding-bottom: 120px
 
   .footer_icons
-    margin: 10px auto
+    display: flex
+    gap: 20px
 
-    li
-      display: inline-block
-      font-size: 0
-      margin: 0 10px
+    a
+      color: $footer-text-color
+      display: block
 
-      a
-        color: $footer-text-color
+      svg
+        fill: currentColor
         display: block
-        font-size: 12px
-
-        svg
-          transition: opacity .2s linear
-          fill: $footer-icon-color
-          height: 30px
-          width: 30px
-
-        &:hover svg
-          opacity: .6
+        height: 32px
+        width: 32px
 
   .footer_pages
-    font-size: 0
-    margin: 10px auto
+    display: flex
+    gap: 10px
     max-width: 640px
-    text-align: center
-    width: 100%
 
-    li
-      display: inline-block
+    a
+      color: $footer-text-color
+      display: block
+      font-size: 16px
+      padding: 2px
 
-      @media screen and (max-width: $break-small)
-        display: block
-
-      a
-        transition: opacity .2s linear
-        color: $footer-text-color
-        display: block
-        font-size: 16px
-        padding: 10px
-
-        &:hover
-          opacity: .6
-
-  .footer_credit
-    color: $footer-text-color
+  .bigcartel-credit
     font-size: 14px
-    margin-top: 14px
+    line-height: 1em
+    display: flex
+    align-items: center
+    gap: 8px
+    outline-offset: 4px
+    padding: 2px 0
 
-    .credit
+    &__text
+      position: relative
 
-      a
-        color: $footer-text-color
-
-      @media screen and (max-width: $break-medium)
-        display: block
-        margin-top: 20px
+    &__lockup
+      display: block
+      fill: currentColor
+      padding-top: 1px
+      width: 80px
 
 .home_tagline
   color: $secondary-text-color
