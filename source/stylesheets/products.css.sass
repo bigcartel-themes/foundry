@@ -9,10 +9,13 @@
     padding: 0 20px
 
   ul
+    display: flex
+    flex-wrap: wrap
+    gap: 20px
+    justify-content: center
+
 
     li
-      display: inline-block
-      font-size: 0
 
       &.current a
         color: $primary-text-color
@@ -21,7 +24,7 @@
         display: block
         font-size: 18px
         line-height: 24px
-        padding: 0 10px 10px
+        padding: 2px
 
         &:hover
           text-decoration: underline
