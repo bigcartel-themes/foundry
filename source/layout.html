@@ -7,7 +7,7 @@
   <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
   {{ head_content }}
 </head>
-<body id="{{ page.permalink }}" class="{{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
+<body id="{{ page.permalink }}" class="loading {{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
   <header class="header">
     <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
       <a href="/" title="{{ store.name | escape }}">
@@ -19,9 +19,22 @@
       </a>
     </div>
     <ul class="header_icons">
-      {% if theme.show_search %}<li class="open_search"><a href="#"><svg viewBox="0 0 30 30"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/></svg></a></li>{% endif %}
-      <li class="open_cart" ><a href="#"><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span></a></li>
-      <li class="open_menu"><a href="#" title="Menu"><span></span><span></span><span></span><span></span></a></li>
+      {% if theme.show_search %}
+        <li class="open_search">
+          <button type="button" title="Show search" class="open_search_btn">
+            <svg viewBox="0 0 30 30"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/></svg>
+          </button>
+        </li>
+      {% endif %}
+      <li class="open_cart">
+        <button type="button" title="View bag" class="open_cart_btn">
+          <svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg>
+          <span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span>
+        </button>
+      </li>
+      <li class="open_menu">
+        <button type="button" title="Open navigation menu" class="open_menu_btn"><span></span><span></span><span></span><span></span></button>
+      </li>
     </ul>
   </header>
   {% if page.permalink == 'home' %}
