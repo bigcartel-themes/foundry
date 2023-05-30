@@ -59,19 +59,6 @@ var updateCart = function(cart) {
   });
 }
 
-var center_featured_categories = function() {
-  $('.featured_categories li').each(function() {
-    var container = $(this).find('a');
-    var image = $(this).find('img');
-    var img = new Image();
-    img.src = image.attr('src');
-    img.onload = function() {
-      container.css('height',container.width()+'px')
-      image.centerImage();
-    };
-  });
-}
-
 $(function() {
   if ($('.page-home').length) {
     var home_items = $('.page-home').children().length;
@@ -227,44 +214,6 @@ $(function() {
     }, 800);
   });
 
-  var num_cats = $('.featured_categories > li').length;
-  var num_products = $('.product_list > li').length;
-
-  if (num_products < 4) {
-    $('.product_list').addClass('justify_center');
-  }
-
-  switch (num_cats) {
-    case 1:
-      $('.featured_categories').remove();
-      break;
-    case 2:
-      $('.featured_categories').addClass('two_categories');
-      break;
-    case 3:
-      $('.featured_categories').addClass('three_categories');
-      break;
-    case 4:
-      $('.featured_categories').addClass('four_categories');
-      break;
-    case 5:
-      $('.featured_categories').addClass('five_categories');
-      break;
-    case 6:
-      $('.featured_categories').addClass('six_categories');
-      break;
-    case 7:
-      $('.featured_categories').addClass('seven_categories');
-      break;
-    case 8:
-      $('.featured_categories').addClass('eight_categories');
-      break;
-    case 9:
-      $('.featured_categories').addClass('nine_categories');
-      break;
-    case 10:
-      $('.featured_categories').addClass('ten_categories');
-  }
 });
 $(document).on('keyup',function(e) {
   if (e.keyCode == 27) {
@@ -285,13 +234,9 @@ $(document).click(function(e) {
 });
 
 $(document).ready(function() {
-  setTimeout(function() {
-    center_featured_categories();
-  }, timeout_start);
   $('body').removeClass('loading');
 });
 $(window).on("load resize", function() {
-  center_featured_categories();
   $('body').css('margin-bottom', $('.footer').outerHeight());
 });
 var isGreaterThanZero = function(currentValue) {

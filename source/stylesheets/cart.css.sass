@@ -38,13 +38,12 @@
     max-width: 100%
 
   li
-    +pie-clearfix
+    display: flex
+    gap: 20px
     font-size: 14px
-    line-height: 15px
     padding-bottom: 40px
 
     a.item_image
-      float: left
       height: 100%
       max-width: 40%
       text-align: center
@@ -61,16 +60,8 @@
 
     .item_details
       font-family: $primary-font
-      float: left
       max-width: 500px
-      padding: 0 40px
       width: auto
-
-      @media screen and (max-width: $break-large)
-        padding-left: 20px
-
-      @media screen and (max-width: $break-small)
-        padding-right: 0
 
       a
         color: $primary-text-color
@@ -103,6 +94,9 @@
         background: none
         border: 2px solid $border-color
         color: $secondary-text-color
+        display: flex
+        align-items: center
+        justify-content: center
         cursor: pointer
         height: 40px
         line-height: normal
@@ -116,10 +110,10 @@
           width: 36px
 
         svg
+          display: block
           fill: $secondary-text-color
           height: 20px
           position: relative
-          top: 2px
           width: 20px
 
           @media screen and (max-width: $break-small)

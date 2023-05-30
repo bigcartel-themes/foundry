@@ -116,28 +116,32 @@
       "requires": "inventory"
     },
     {
-      "variable": "show_overlay",
-      "label": "Product list info",
+      "variable": "featured_items_type",
+      "label": "Featured items type",
       "type": "select",
-      "options": ["On rollover", "Under image"],
-      "default": "Under image",
-      "description": "Shows a product's name & price on hover, or under the image"
+      "options": ["Categories", "Products"],
+      "default": "Products",
+      "description": "Displays featured products or categories on the Home page"
     },
     {
-      "variable": "featured_categories",
-      "label": "Featured categories",
-      "type": "select",
-      "options": ["0","2","3","4","5","6","7","8","9","10"],
-      "default": "0",
-      "description": "The number of featured categories on the Home page"
-    },
-    {
-      "variable": "featured_products",
-      "label": "Featured products",
+      "variable": "featured_items",
+      "label": "Featured items",
       "type": "select",
       "options": "0..100",
-      "default": 8,
-      "description": "The number of featured products on the Home page"
+      "default": 12,
+      "description": "The number of items featured on the Home page"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Default", "default"],
+        ["Crop to square", "cover"],
+        ["Fit to square", "contain"]
+      ],
+      "default": "cover",
+      "description": "Sets the display of images in the product grid"
     },
     {
       "variable": "products_per_page",

@@ -335,7 +335,7 @@ ul, ol
     background: $header-background-color
     bottom: 0
     left: 0
-    opacity: .95
+    opacity: .99
     position: absolute
     right: 0
     top: 0
@@ -378,6 +378,7 @@ ul, ol
 
     li
       display: block
+      margin: 10px 0
 
       a
         color: $header-text-color
@@ -477,8 +478,8 @@ h1, h2, h3, h4, h5, h6
   padding: 0
 
 h1
-  font-size: 36px
-  margin-bottom: 60px
+  font-size: 32px
+  margin-bottom: 50px
 
   @media screen and (max-width: $break-small)
     font-size: 24px
@@ -529,6 +530,8 @@ h2.featured_products
   text-align: center
   top: 0
   width: 100%
+  display: flex
+  align-items: center
 
   @media screen and (max-width: 1024px)
     background-attachment: scroll
@@ -545,19 +548,19 @@ h2.featured_products
     width: 100%
 
   .welcome_text
-    +transform(translateY(-50%))
     position: relative
-    top: calc(50% - 45px)
     +animation(welcome-text ease-in 900ms forwards)
     padding: 0 20px
+    max-width: 1200px
+    margin: 0 auto
 
     &.fade_out
       +animation(hide-welcome-text ease-in 200ms forwards)
 
     h1
       font-size: 60px
-      line-height: 1.6em
-      margin-bottom: 20px
+      line-height: 1.2em
+      margin-bottom: 40px
 
       @media screen and (max-width: $break-small)
         font-size: 9vw
@@ -565,11 +568,11 @@ h2.featured_products
     .welcome_button
       transition: opacity .2s linear
       color: $home-text-color
-      font-size: 18px
+      font-size: 20px
       padding: 10px
 
       &:hover
-        opacity: .6
+        opacity: .8
 
 section.content
   margin: 0 auto 360px auto
@@ -641,6 +644,10 @@ section.content
       font-size: 18px
 
   &.page-home
+    display: flex
+    flex-direction: column
+    gap: 40px
+
     padding-top: 290px
 
     &.has_welcome

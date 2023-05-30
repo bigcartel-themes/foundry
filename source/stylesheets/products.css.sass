@@ -9,13 +9,10 @@
     padding: 0 20px
 
   ul
-    display: flex
-    flex-wrap: wrap
-    gap: 20px
-    justify-content: center
-
 
     li
+      display: inline-block
+      font-size: 0
 
       &.current a
         color: $primary-text-color
@@ -24,7 +21,7 @@
         display: block
         font-size: 18px
         line-height: 24px
-        padding: 2px
+        padding: 10px
 
         &:hover
           text-decoration: underline
@@ -39,265 +36,135 @@
     @media screen and (max-width: $break-small)
       display: block
 
-.featured_categories
-  +pie-clearfix
-  font-family: $primary-font
-  margin: 0 -10px 0
-
-  @media screen and (max-width: $break-small)
-    margin: 0
-
-  li
-    float: left
-    padding: 10px
-    width: 33.33%
-
-    @media screen and (max-width: $break-small)
-      padding: 0 0 20px 0
-      width: 100% !important
-
-    a
-      display: block
-      overflow: hidden
-      position: relative
-
-      img
-        display: block
-        height: 100%
-        margin: auto
-
-      .category_overlay
-        transition: opacity .2s linear
-        -webkit-backface-visibility: hidden
-        background: $home-overlay-color
-        bottom: 0
-        height: 100%
-        left: 0
-        opacity: .4
-        position: absolute
-        right: 0
-        top: 0
-        width: 100%
-
-      .category_info
-        +transform(rotate(0) translateY(-50%) translateZ(0))
-        position: relative
-        top: 50%
-        -webkit-backface-visibility: hidden
-        color: $home-text-color
-        font-size: 26px
-        line-height: 1.3em
-        padding: 20px
-        text-align: center
-
-      &:hover .category_overlay
-        opacity: .25
-
-  &.two_categories li
-    width: 50%
-
-  &.three_categories li
-    width: 33.33%
-
-  &.four_categories li
-    width: 50%
-
-  &.five_categories li
-    width: 50%
-
-  &.five_categories li:nth-child(-n+3)
-    width: 33.33%
-
-  &.six_categories li
-    width: 33.33%
-
-  &.seven_categories li
-    width: 50%
-
-  &.seven_categories li:nth-child(n+3):nth-child(-n+5)
-    width: 33.33%
-
-  &.eight_categories li
-    width: 33.33%
-
-  &.eight_categories li:nth-child(n+4):nth-child(-n+5)
-    width: 50%
-
-  &.nine_categories li
-    width: 33.33%
-
-  &.ten_categories li
-    width: 50%
-
-  &.ten_categories li
-    width: 33.333%
-
-  &.ten_categories li:nth-child(n+4)
-    width: 50%
-
-  &.ten_categories li:nth-child(n+6)
-    width: 33.33%
-
-  &.ten_categories li:nth-child(n+9)
-    width: 50%
-
-.product_list
-  +pie-clearfix
-  +flexbox
-  +flex-direction(row)
-  +flex-wrap(wrap)
-  font-size: 0
-  margin: 0 -10px 10px
-  padding: 0
+.product-list-container
   position: relative
-  text-align: center
 
-  @media screen and (max-width: $break-small)
-    margin: 0
+.product-list
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  margin: $base-padding -$base-padding
+  padding: 0 10px
 
-  &.justify_center
+  &.justify-center
     +justify-content(center)
 
+.prod-thumb
+  +flex-basis(calc(100% / 3))
+  color: $primary-text-color
+  display: block
+  font-size: 0
+  padding: $base-padding
+  padding-bottom: $base-padding * 2
+  position: relative
+  text-decoration: none
+  vertical-align: middle
+  width: calc(100% / 3)
+
+  &.sold img
+    opacity: .5
+
+  &.product-image-small
+    +flex-basis(calc(100% / 4))
+    width: calc(100% / 4)
+
     @media screen and (max-width: $break-medium)
-      +justify-content(flex-start)
-
-  li
-    +flexbox
-    padding: 0 10px 40px 10px
-    position: relative
-    vertical-align: top
-    width: 25%
-
-    @media screen and (max-width: $break-large)
-      width: 33.33%
-
-    @media screen and (max-width: $break-medium)
-      padding-bottom: 40px !important
-      width: 50%
+      +flex-basis(calc(100% / 3))
+      width: calc(100% / 3)
 
     @media screen and (max-width: $break-small)
-      padding: 0 0 40px 0
-      width: 100%
+      +flex-basis(calc(100% / 2))
+      width: calc(100% / 2)
 
-    a
-      display: block
-      position: relative
-      text-align: center
-      width: 100%
+  &.product-image-medium
+    +flex-basis(calc(100% / 3))
+    width: calc(100% / 3)
 
-      &:hover
-        opacity: 1
+    @media screen and (max-width: $break-medium)
+      +flex-basis(calc(100% / 2))
+      width: calc(100% / 2)
 
-      img
-        display: block
-        height: auto
-        max-width: 100%
-        position: relative
-        width: 100%
-        z-index: 1
+  &.product-image-large
+    +flex-basis(calc(100% / 2))
+    width: calc(100% / 2)
 
-      .product_details
-        color: $primary-text-color
-        padding-top: 30px
-        position: relative
-        text-align: center
-        width: 100%
-        z-index: 2
+.prod-thumb-container
+  position: relative
+  width: 100%
 
-        .details_background
-          background: $background-color
-          height: 100%
-          opacity: .9
-          position: absolute
-          top: 0
-          width: 100%
+.product-list-image-container
+  overflow: hidden
+  position: relative
 
-        .product_name
-          font-family: $primary-font
-          font-size: 18px
-          line-height: 22px
-          margin: 0
-          padding: 0 20px
-          position: relative
-          word-break: break-word
+  &.product-list-image-container-default:before
+    display: none
 
-        .product_status
-          color: $secondary-text-color
-          font-size: 12px
-          letter-spacing: 1px
-          position: absolute
-          text-transform: uppercase
-          top: 12px
-          width: 100%
+  &:before
+    display: block
+    width: 100%
+    content: ""
+    padding-bottom: 100%
+    height: 0
 
-        .product_price
-          color: $secondary-text-color
-          font-size: 16px
-          margin: 10px 0 0
-          position: relative
+.product-list-image
+  transform: translate3d(0, 0, 0)
+  position: absolute
+  display: block
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
 
-        @media screen and (max-width: $break-small)
-          bottom: auto
-          opacity: 1
-          position: relative
+  &.grid-default
+    position: relative
 
-          .product_name
-            font-size: 18px
-            padding: 0 20px
-            margin: 0
+  &.grid-cover
+    object-fit: cover
 
-          .product_price
-            font-size: 14px
+  &.grid-contain
+    object-fit: contain
 
-    &.sold
-      img
-        opacity: .5
+.prod-thumb-info
+  +flexbox
+  +justify-content(flex-start)
+  +flex-direction(column)
+  line-height: 1.25em
+  font-size: 18px
+  padding: $base-padding 0
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
 
-      .product_price
-        text-decoration: line-through
+  &:hover .prod-thumb-name
+    text-decoration: underline
 
-    &.show_overlay
-      padding-bottom: 20px
+.prod-thumb-name
+  margin-top: $base-padding * 2
+  position: relative
+  overflow-wrap: break-word
 
-      > a
-        overflow: hidden
+.prod-thumb-price
+  color: $secondary-text-color
+  font-size: .875em
+  font-weight: normal
+  margin-top: $base-padding / 2
 
-      .product_details
-        @media screen and (min-width: $break-medium)
-          bottom: -150px
-          opacity: 0
-          padding: 30px 0
-          position: absolute
+.prod-thumb-status
+  color: $secondary-text-color
+  font-size: .725em
+  line-height: 1em
+  position: absolute
+  text-align: center
+  text-transform: uppercase
+  top: $base-padding
+  width: 100%
 
-      &:hover
-        .product_details
-          @media screen and (min-width: $break-medium)
-            opacity: 1
-            bottom: 0
-
-      @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
-        .product_details
-          bottom: auto
-          opacity: 1
-          position: relative
-
-          .product_name
-            font-size: 18px
-            padding: 0 10px 0 10px
-            margin: 0
-
-          .product_price
-            font-size: 14px
-
-.no-flexbox .product_list li
-  display: inline-block
-
-.featured_categories + .product_list
+.featured_categories + .product-list-container
   margin-top: 80px
 
 .pagination
-  +pie-clearfix
-  font-size: 0
+  +flexbox
   line-height: 60px
   margin: 0 auto
   max-width: 800px
@@ -339,7 +206,6 @@
 
   .previous, .next
     svg
-      transition: fill .2s linear
       fill: $secondary-text-color
       height: 24px
       position: relative
@@ -349,15 +215,58 @@
   .previous
 
     svg
-      rotate: 90deg
+      transform: rotate(90deg)
 
   .next
 
     svg
-      rotate: -90deg
+      transform: rotate(-90deg)
 
   .disabled
     display: none
 
 .no_products
   text-align: center
+
+.featured_categories
+  display: grid
+  grid-gap: 20px
+  grid-template-columns: repeat(3, 1fr)
+  padding: 0
+  margin: 0
+
+  a.prod-thumb
+    display: block
+    padding: 0
+    position: relative
+    width: 100%
+
+    img
+      transition: transform .2s ease
+
+    &:hover img
+      transform: scale(1.05)
+
+  .category_overlay
+    background: $home-overlay-color
+    bottom: 0
+    height: 100%
+    left: 0
+    opacity: .6
+    position: absolute
+    right: 0
+    top: 0
+    width: 100%
+
+  .category_info
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    color: $home-text-color
+    font-size: 26px
+    height: 100%
+    left: 0
+    position: absolute
+    text-align: center
+    top: 0
+    width: 100%
