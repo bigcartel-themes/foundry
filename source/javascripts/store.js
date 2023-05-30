@@ -86,7 +86,6 @@ $(function() {
       $('.page-home').addClass('home-empty')
     }
   }
-  $('.cart_info').Stickyfill();
   $('.category_select').change(function() {
     document.location.href = $(this).val();
   })
