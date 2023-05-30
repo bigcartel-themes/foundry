@@ -64,7 +64,7 @@
         margin: auto
 
       .category_overlay
-        +transition(opacity .1s linear)
+        transition: opacity .2s linear
         -webkit-backface-visibility: hidden
         background: $home-overlay-color
         bottom: 0
@@ -159,7 +159,6 @@
       +justify-content(flex-start)
 
   li
-    +all-transitions
     +flexbox
     padding: 0 10px 40px 10px
     position: relative
@@ -187,7 +186,6 @@
         opacity: 1
 
       img
-        +all-transitions
         display: block
         height: auto
         max-width: 100%
@@ -196,7 +194,6 @@
         z-index: 1
 
       .product_details
-        +transition(.3s linear)
         color: $primary-text-color
         padding-top: 30px
         position: relative
@@ -338,7 +335,7 @@
 
   .previous, .next
     svg
-      +all-transitions
+      transition: fill .2s linear
       fill: $secondary-text-color
       height: 24px
       position: relative
@@ -348,12 +345,12 @@
   .previous
 
     svg
-      +rotate(90deg)
+      rotate: 90deg
 
   .next
 
     svg
-      +rotate(-90deg)
+      rotate: -90deg
 
   .disabled
     display: none

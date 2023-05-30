@@ -1,7 +1,7 @@
 @import 'config'
 
 *
-  +box-sizing(border-box)
+  box-sizing: border-box
 
 html
   min-height: 100%
@@ -53,7 +53,7 @@ body
             padding: 0 6px
 
           svg
-            +all-transitions
+            transition: fill .2s linear
             fill: $primary-text-color
             height: 30px
             width: 30px
@@ -67,7 +67,7 @@ body
 
 header
   +pie-clearfix
-  +transition(background .3s linear)
+  transition: background .2s linear
   background: $header-background-color
   font-family: $primary-font
   height: 90px
@@ -162,7 +162,7 @@ header
         width: 22px
 
         span
-          +border-radius(2px)
+          border-radius: 2px
           +transform(rotate(0deg))
           display: block
           background: $header-text-color
@@ -187,7 +187,7 @@ header
   top: 0
 
   .cart_value
-    +border-radius(3em)
+    border-radius: 3em
     background-color: $header-text-color
     color: $header-background-color
     display: inline-block
@@ -206,7 +206,7 @@ ul, ol
   padding: 0
 
 button, a.button
-  +all-transitions
+  transition: background-color .2s linear
   background-color: $header-background-color
   border: none
   color: $header-text-color
@@ -251,7 +251,6 @@ button, a.button
     margin-bottom: 20px
 
 .select
-  +all-transitions
   position: relative
   border: 2px solid $border-color
   color: $secondary-text-color
@@ -264,7 +263,6 @@ button, a.button
   width: 100%
 
   select
-    +all-transitions
     +appearance(none)
     background: none
     border: 0
@@ -289,7 +287,7 @@ button, a.button
       display: none
 
   svg
-    +all-transitions
+    transition: fill .2s linear
     fill: $secondary-text-color
     height: 8px
     margin-top: -2px
@@ -543,7 +541,7 @@ h2.featured_products
         font-size: 9vw
 
     .welcome_button
-      +transition(opacity .2s linear)
+      transition: opacity .2s linear
       color: $home-text-color
       font-size: 18px
       padding: 10px
@@ -571,7 +569,7 @@ section.content
     width: 100%
 
     a[href]
-      +all-transitions
+      transition: opacity .2s linear
       text-decoration: underline
 
       &:hover
@@ -686,7 +684,7 @@ footer.footer
         font-size: 12px
 
         svg
-          +all-transitions
+          transition: opacity .2s linear
           fill: $footer-icon-color
           height: 30px
           width: 30px
@@ -708,7 +706,7 @@ footer.footer
         display: block
 
       a
-        +all-transitions
+        transition: opacity .2s linear
         color: $footer-text-color
         display: block
         font-size: 16px
@@ -749,7 +747,7 @@ footer.footer
     margin: 60px auto
 
 .mini_cart
-  +box-shadow(0 2px 10px 0 $secondary-text-color)
+  box-shadow: 0 2px 10px 0 $secondary-text-color
   background: $background-color
   height: 430px
   display: none

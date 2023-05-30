@@ -14,13 +14,13 @@
     float: left
 
     svg
-      +rotate(90deg)
+      rotate: 90deg
 
   .next_product
     float: right
 
     svg
-      +rotate(-90deg)
+      rotate: -90deg
 
   a
     display: block
@@ -68,7 +68,7 @@
       width: 20%
 
       img
-        +transition(opacity .02s linear)
+        transition: opacity .2s linear
         display: block
         width: 100%
 
@@ -93,7 +93,6 @@ button.reset-selection-button
   width: auto
 
 .product_detail
-  +all-transitions
   float: left
   max-width: 50%
   padding-left: 8%
@@ -134,7 +133,6 @@ button.reset-selection-button
       list-style-position: inside
 
     a[href]
-      +all-transitions
       text-decoration: underline
 
       &:hover
@@ -184,7 +182,7 @@ button.reset-selection-button
       display: block
 
       svg
-        +all-transitions
+        transition: fill .2s linear
         fill: $secondary-text-color
         height: 24px
         width: 24px
