@@ -189,7 +189,7 @@ $(function() {
   });
 
   $('.open_cart a').click(function(e) {
-    $('.mini_cart').fadeToggle();
+    $('.mini_cart').fadeToggle('fast');
     return false;
   });
 
@@ -215,8 +215,6 @@ $(function() {
     , addTextValue = addText.html()
     , addedText = addButton.data('added-text')
     , addingText = addButton.data('adding-text');
-    console.log(addText);
-    console.log(addingText);
     addText.html(addingText);
     Cart.addItem(itemID, quantity, function(cart) {
       addText.html(addedText);
