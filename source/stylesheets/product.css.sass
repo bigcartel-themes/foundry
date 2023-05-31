@@ -1,7 +1,7 @@
 @import 'config'
 
 .previous_next
-  +pie-clearfix
+  display: flex
   font-size: 14px
   margin-bottom: 60px
 
@@ -11,13 +11,12 @@
     padding-right: 20px
 
   .previous_product
-    float: left
 
     svg
       rotate: 90deg
 
   .next_product
-    float: right
+    margin-left: auto
 
     svg
       rotate: -90deg
@@ -28,9 +27,12 @@
     padding: 4px 0
     outline-offset: 4px
 
+    &:hover
+      color: $hover-color
+
     svg
       display: inline-block
-      fill: $secondary-text-color
+      fill: currentColor
       height: 10px
       position: relative
       top: 1px
@@ -47,7 +49,6 @@
 
   a
     display: block
-    outline: none
 
   .primary_image
     display: block
@@ -76,10 +77,10 @@
 
       &.active
         img
-          opacity: .5
+          opacity: .6
 
 .reset-selection-button-container
-  max-width: 300px
+  max-width: 360px
   text-align: center
   width: 100%
 
@@ -88,11 +89,8 @@
 
 button.reset-selection-button
   display: none
-  height: auto
   line-height: normal
-  margin-top: 20px
-  padding: 4px
-  width: auto
+  margin-top: 10px
 
 .product_detail
   float: left
@@ -114,9 +112,9 @@ button.reset-selection-button
     padding-right: 20px
 
   .product_description
-    color: $secondary-text-color
+    color: $primary-text-color
     font-size: 16px
-    line-height: 1.6em
+    line-height: 1.5em
     margin-top: 40px
 
     img, iframe
@@ -135,10 +133,11 @@ button.reset-selection-button
       list-style-position: inside
 
     a[href]
+      color: $secondary-text-color
       text-decoration: underline
 
       &:hover
-        opacity: .6
+        color: $hover-color
 
   .product-form
     margin-top: 40px
@@ -180,17 +179,18 @@ button.reset-selection-button
       margin: 0 10px
 
     a
+      color: $secondary-text-color
       cursor: pointer
       display: block
 
+      &:hover
+        color: $hover-color
+
       svg
         transition: fill .2s linear
-        fill: $secondary-text-color
+        fill: currentColor
         height: 24px
         width: 24px
-
-      &:hover svg
-        opacity: .6
 
     &.social_pinterest
 
@@ -208,7 +208,7 @@ button.reset-selection-button
 
 #instant-checkout-button
   margin-top: 12px
-  max-width: 300px
+  max-width: 360px
 
   @media screen and (max-width: $break-small)
     max-width: 100%

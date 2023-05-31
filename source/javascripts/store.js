@@ -147,6 +147,7 @@ $(function() {
       processUpdate(input, item_id, new_val, cart);
     });
   });
+
   $('body').on('keydown','.qty_holder input', function(e) {
     if (e.keyCode == 13) {
       item_id = $(this).parent().data("cart-id");
@@ -188,32 +189,6 @@ $(function() {
     $(this).parent().addClass('active');
     return false;
   });
-
-  $('.product-form').submit(function(e) {
-    e.preventDefault();
-    var quantity = $(this).find("#quantity").val()
-    , itemID = $(this).find("#option").val()
-    , addButton = $(this).find('.add-to-cart-button')
-    , addText = $(this).find('.status_text')
-    , addTextValue = addText.html()
-    , addedText = addButton.data('added-text')
-    , addingText = addButton.data('adding-text');
-    addText.html(addingText);
-    Cart.addItem(itemID, quantity, function(cart) {
-      addText.html(addedText);
-      if ($('.errors').length) {
-        $('.errors').hide();
-      }
-      updateCart(cart);
-    });
-    setTimeout(function() {
-      addText.clone().appendTo(addButton).html(addTextValue).hide();
-      addButton.find('span').first().remove();
-      addButton.find('span').first().fadeIn(400);
-      addButton.blur();
-    }, 800);
-  });
-
 });
 $(document).on('keyup',function(e) {
   if (e.keyCode == 27) {

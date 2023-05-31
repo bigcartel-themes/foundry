@@ -62,11 +62,9 @@
       {% endfor %}
     </ul>
     <div class="cart_info sticky">
-
-
       <h3>Total  <span>{{ cart.total | money: theme.money_format }}</span></h3>
       <button type="submit" name="checkout" title="Checkout" class="button checkout_btn">Checkout</button>
-      <a class="button continue_shopping" href="/products">Continue shopping</a>
+      <a class="button minimal-button continue-shopping" href="/products">Continue shopping</a>
     </div>
   </form>
   <div class="cart_empty_message" style="display: none;">

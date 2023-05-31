@@ -90,35 +90,31 @@
       margin-top: 20px
 
       button
+        +appearance(none)
         border-radius: 50%
         background: none
-        border: 2px solid $border-color
-        color: $secondary-text-color
+        border: 1px solid $header-background-color
+        color: $header-background-color
         display: flex
         align-items: center
         justify-content: center
         cursor: pointer
-        height: 40px
+        height: 36px
         line-height: normal
-        width: 40px
+        padding: 0
+        width: 36px
+        outline: 2px solid transparent
+        transition: outline .2s linear
 
-        &:hover
-          border: 2px solid $secondary-text-color
-
-        @media screen and (max-width: $break-small)
-          height: 36px
-          width: 36px
+        &:hover, &:focus
+          outline: 2px solid $header-background-color
 
         svg
           display: block
-          fill: $secondary-text-color
+          fill: currentColor
           height: 20px
           position: relative
           width: 20px
-
-          @media screen and (max-width: $break-small)
-            height: 18px
-            width: 18px
 
       input
         +appearance(none)
@@ -139,7 +135,7 @@
           outline: none
 
 .cart_info
-  border: 2px solid $border-color
+  border: 2px solid $secondary-text-color
   color: $secondary-text-color
   float: right
   max-width: 30%
@@ -188,11 +184,8 @@
     @media screen and (max-width: $break-small)
       font-size: 18px
 
-  .continue_shopping
-    background: none
-    color: $secondary-text-color
-    font-size: 14px
-    margin-top: 20px
+  .continue-shopping
+    margin-top: 10px
 
 .cart_empty_message
   text-align: center

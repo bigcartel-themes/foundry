@@ -14,16 +14,15 @@
       display: inline-block
       font-size: 0
 
-      &.current a
-        color: $primary-text-color
-
       a
+        transition: color .2s ease
         display: block
         font-size: 18px
         line-height: 24px
         padding: 10px
 
         &:hover
+          color: $hover-color
           text-decoration: underline
 
     @media screen and (max-width: $break-small)
@@ -61,8 +60,18 @@
   vertical-align: middle
   width: calc(100% / 3)
 
+  &:hover
+    color: $hover-color
+
+    .prod-thumb-name
+      text-decoration: underline
+
+    .product-list-image
+
+      transform: translate3d(0, 0, 0) scale(1.04)
+
   &.sold img
-    opacity: .5
+    opacity: .6
 
   &.product-image-small
     +flex-basis(calc(100% / 4))
@@ -114,6 +123,7 @@
   left: 0
   width: 100%
   height: 100%
+  transition: transform .3s ease-in-out
 
   &.grid-default
     position: relative
@@ -136,22 +146,18 @@
   width: 100%
   z-index: 1
 
-  &:hover .prod-thumb-name
-    text-decoration: underline
-
 .prod-thumb-name
   margin-top: $base-padding * 2
   position: relative
   overflow-wrap: break-word
 
 .prod-thumb-price
-  color: $secondary-text-color
   font-size: .875em
   font-weight: normal
   margin-top: $base-padding / 2
+  opacity: .9
 
 .prod-thumb-status
-  color: $secondary-text-color
   font-size: .725em
   line-height: 1em
   position: absolute
@@ -159,9 +165,7 @@
   text-transform: uppercase
   top: $base-padding
   width: 100%
-
-.featured_categories + .product-list-container
-  margin-top: 80px
+  opacity: .9
 
 .pagination
   +flexbox
@@ -227,46 +231,3 @@
 
 .no_products
   text-align: center
-
-.featured_categories
-  display: grid
-  grid-gap: 20px
-  grid-template-columns: repeat(3, 1fr)
-  padding: 0
-  margin: 0
-
-  a.prod-thumb
-    display: block
-    padding: 0
-    position: relative
-    width: 100%
-
-    img
-      transition: transform .2s ease
-
-    &:hover img
-      transform: scale(1.05)
-
-  .category_overlay
-    background: $home-overlay-color
-    bottom: 0
-    height: 100%
-    left: 0
-    opacity: .6
-    position: absolute
-    right: 0
-    top: 0
-    width: 100%
-
-  .category_info
-    +flexbox
-    +align-items(center)
-    +justify-content(center)
-    color: $home-text-color
-    font-size: 26px
-    height: 100%
-    left: 0
-    position: absolute
-    text-align: center
-    top: 0
-    width: 100%
