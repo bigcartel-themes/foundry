@@ -1,7 +1,7 @@
 @import 'config'
 
 *
-  +box-sizing(border-box)
+  box-sizing: border-box
 
 html
   min-height: 100%
@@ -18,11 +18,15 @@ body
   overflow-y: scroll
   padding-top: 90px
 
+  &.loading *
+    transition: none !important
+
   &.has_welcome
     padding-top: 0
 
     header
       background: transparent
+      transition: background .2s linear
 
   &#cart
     .footer_cart
@@ -46,15 +50,19 @@ body
         display: inline-block
 
         a
+          color: $primary-text-color
           display: block
           padding: 0 10px
+
+          &:hover
+            color: $hover-color
 
           @media screen and (max-width: $break-small)
             padding: 0 6px
 
           svg
-            +all-transitions
-            fill: $primary-text-color
+            transition: fill .2s linear
+            fill: currentColor
             height: 30px
             width: 30px
 
@@ -62,22 +70,23 @@ body
               height: 26px
               width: 26px
 
-          &:hover svg
-            opacity: .6
-
 header
-  +pie-clearfix
-  +transition(background .3s linear)
   background: $header-background-color
+  display: flex
+  align-items: center
   font-family: $primary-font
   height: 90px
   left: 0
   margin: 0
-  padding: 20px 0
+  padding: 20px 40px
   position: fixed
   right: 0
   top: 0
   z-index: 3
+  width: 100%
+
+  @media screen and (max-width: $break-medium)
+    padding: 20px
 
   @media screen and (max-width: $break-small)
     position: absolute
@@ -87,24 +96,21 @@ header
 
   .store_name
     color: $header-text-color
-    float: left
-    font-size: 20px
-    margin-left: 40px
+    font-size: 24px
     max-width: 60%
 
-    @media screen and (max-width: $break-medium)
-      margin-left: 20px
+    @media screen and (max-width: $break-small)
+      font-size: 20px
 
     a
       color: $header-text-color
-      display: block
+      display: flex
+      align-items: center
       line-height: 1.2em
+      transition: color .2s ease
 
-    &.text
-      height: 50px
-
-      a
-        +vertical-align
+      &:hover
+        color: $header-text-hover-color
 
     &.image
       +vertical-align
@@ -121,80 +127,94 @@ header
           width: auto
 
   .header_icons
-    +vertical-align
-    height: 30px
-    list-style: none
-    position: absolute
-    right: 40px
-
-    @media screen and (max-width: $break-medium)
-      right: 20px
+    margin-left: auto
+    display: flex
+    align-items: center
+    gap: 20px
 
     li
-      display: inline-block
-      font-size: 0
-      height: 30px
-      margin-left: 30px
 
-      a
+      button
+        appearance: none
+        background: none
+        border: none
         color: $header-text-color
-        display: block
+        cursor: pointer
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 40px
+        height: 40px
         font-size: 14px
         position: relative
+        transition: color .2s linear
+
+        > *
+          pointer-events: none
+
+        &:hover
+          color: $header-text-hover-color
 
         svg
-          fill: $header-text-color
+          fill: currentColor
           height: 30px
           width: 30px
 
-      &.open_search a
-        top: 1px
+      &.open_search
+        svg
+          position: relative
+          top: 2px
 
       &.open_cart
-        margin-left: 23px
+        &:hover
+          .cart_value
+            background: $header-text-hover-color
 
         @media screen and (max-width: $break-small)
           display: none
 
-      &.open_menu a
-        +vertical-align
-        height: 16px
-        width: 22px
+      &.open_menu
+        button
+          &:hover
+            span
+              background: $header-text-hover-color
 
-        span
-          +border-radius(2px)
-          +transform(rotate(0deg))
-          display: block
-          background: $header-text-color
-          width: 100%
-          height: 2px
-          position: absolute
-          left: 0
-          opacity: 1
+          span
+            border-radius: 2px
+            +transform(rotate(0deg))
+            display: block
+            background: $header-text-color
+            width: 100%
+            height: 2px
+            position: absolute
+            opacity: 1
+            width: 24px
+            transition: background .2s ease
 
-          &:nth-child(1)
-            top: 0px
+            &:nth-child(1)
+              top: 12px
 
-          &:nth-child(2), &:nth-child(3)
-            top: 50%
+            &:nth-child(2), &:nth-child(3)
+              top: 50%
 
-          &:nth-child(4)
-            top: 99%
+            &:nth-child(4)
+              bottom: 10px
 
 .cart_count
   position: absolute
-  right: -13px
-  top: 0
+  right: -5px
+  top: 2px
 
-  .cart_value
-    +border-radius(3em)
-    background-color: $header-text-color
-    color: $header-background-color
-    display: inline-block
-    font-family: $secondary-font
-    font-size: 12px
-    line-height: 1.3
-    padding: 2px 8px
+.cart_value
+  border-radius: 3em
+  background-color: $header-text-color
+  color: $header-background-color
+  display: inline-block
+  font-family: $secondary-font
+  font-size: 12px
+  line-height: 1.3
+  padding: 2px 8px
+  transition: background-color .2s ease
 
 a
   color: $secondary-text-color
@@ -205,70 +225,78 @@ ul, ol
   margin: 0
   padding: 0
 
-button, a.button
-  +all-transitions
-  background-color: $header-background-color
+.button
+  transition: background-color .2s linear
+  background-color: $button-background-color
   border: none
-  color: $header-text-color
+  color: $button-text-color
   cursor: pointer
-  display: inline-block
+  display: inline-flex
+  align-items: center
+  justify-content: center
   font-size: 18px
   height: 60px
-  line-height: 60px
-  max-width: 300px
+  max-width: 360px
   padding: 0
   text-align: center
   width: 100%
 
   &.minimal-button
     background: none
-    color: $header-background-color
+    color: $primary-text-color
     border: none
-    font-size: 14px
+    font-size: 15px
     padding: 0
+    height: 50px
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
       background: none
-      text-decoration: underline
+      color: $hover-color
       opacity: 1
+
+    &:not(:disabled):hover
+      text-decoration: underline
 
   &:disabled, &.disabled
     cursor: not-allowed
     opacity: .3
 
   &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+    background-color: $button-background-hover-color
     border: none
-    opacity: .7
-
 
 .errors
-  color: $error-text-color
+  background: #b11a2a
+  color: #ffffff
   margin-bottom: 40px
   text-align: center
+  padding: 10px
+  display: flex
+  flex-direction: column
+  gap: 10px
 
   li
     line-height: 1.5em
-    margin-bottom: 20px
 
 .select
-  +all-transitions
   position: relative
-  border: 2px solid $border-color
+  border: 2px solid $secondary-text-color
   color: $secondary-text-color
   font-family: $secondary-font
   height: 60px
   margin-bottom: 20px
-  max-width: 300px
+  max-width: 360px
   padding: 0
   position: relative
+  transition: border .2s linear
   width: 100%
 
   select
-    +all-transitions
     +appearance(none)
     background: none
     border: 0
     color: $secondary-text-color
+    cursor: pointer
     font-family: $secondary-font
     font-size: 16px
     height: 100%
@@ -289,7 +317,7 @@ button, a.button
       display: none
 
   svg
-    +all-transitions
+    transition: fill .2s linear
     fill: $secondary-text-color
     height: 8px
     margin-top: -2px
@@ -298,16 +326,6 @@ button, a.button
     top: 50%
     width: 13px
     z-index: 1
-
-  &:hover
-    color: $secondary-text-color
-    border-color: $secondary-text-color
-
-    select
-      color: $primary-text-color
-
-    svg
-      fill: $primary-text-color
 
 .overlay
   +transition(opacity 0.2s, visibility 0s 0.2s)
@@ -330,7 +348,7 @@ button, a.button
     background: $header-background-color
     bottom: 0
     left: 0
-    opacity: .95
+    opacity: .99
     position: absolute
     right: 0
     top: 0
@@ -342,21 +360,32 @@ button, a.button
     padding: 90px 0
 
   .close_overlay
+    +appearance(none)
+    background: none
+    border: none
     cursor: pointer
-    fill: $header-text-color
-    height: 18px
+    color: $header-text-color
+    height: 40px
+    padding: 8px
     position: absolute
-    right: 42px
-    top: 37px
-    width: 18px
+    right: 40px
+    top: 26px
+    width: 40px
     z-index: 6
 
+    &:hover
+      color: $header-text-hover-color
+
+    svg
+      fill: currentColor
+      display: block
+
     @media screen and (max-width: $break-small)
-      right: 22px
+      right: 20px
 
   .page_list
     display: none
-    margin: 0 auto
+    margin: 40px auto
     max-width: 80%
     opacity: 0
     position: relative
@@ -365,12 +394,17 @@ button, a.button
 
     li
       display: block
+      margin: 10px 0
 
       a
         color: $header-text-color
-        display: block
+        display: inline-block
         font-size: 26px
-        padding: 15px 0
+        padding: 15px
+
+        &:hover
+          color: $header-text-hover-color
+          text-decoration: underline
 
         @media screen and (max-width: $break-small)
           font-size: 20px
@@ -435,7 +469,7 @@ button, a.button
     background: $header-background-color
     height: 100%
     left: 0
-    opacity: .9
+    opacity: .98
     position: absolute
     top: 0
     width: 100%
@@ -447,8 +481,12 @@ button, a.button
 
     svg
       fill: $header-text-color
-      height: 25px
-      width: 25px
+      height: 32px
+      width: 32px
+
+    .cart_count
+      top: -4px
+      right: -13px
 
 h1, h2, h3, h4, h5, h6
   font-family: $primary-font
@@ -457,26 +495,12 @@ h1, h2, h3, h4, h5, h6
   padding: 0
 
 h1
-  font-size: 36px
-  margin-bottom: 60px
+  font-size: 32px
+  margin-bottom: 50px
 
   @media screen and (max-width: $break-small)
     font-size: 24px
     margin-bottom: 30px
-
-h2.featured_products
-  font-size: 26px
-  margin: 0 0 60px
-  text-align: center
-
-  @media screen and (max-width: $break-small)
-    margin: 60px 0
-
-.featured_categories + h2.featured_products
-  margin-top: 200px
-
-  @media screen and (max-width: $break-medium)
-    margin-top: 60px
 
 +keyframes(welcome-text)
   0%
@@ -502,19 +526,21 @@ h2.featured_products
   background-repeat: no-repeat
   background-attachment: fixed
   background-size: cover
-  color: $home-text-color
+  color: $header-text-color
   height: 100vh
   left: 0
   position: relative
   text-align: center
   top: 0
   width: 100%
+  display: flex
+  align-items: center
 
   @media screen and (max-width: 1024px)
     background-attachment: scroll
 
   .welcome_overlay
-    background: $home-overlay-color
+    background: $header-background-color
     bottom: 0
     height: 100%
     left: 0
@@ -525,31 +551,30 @@ h2.featured_products
     width: 100%
 
   .welcome_text
-    +transform(translateY(-50%))
     position: relative
-    top: calc(50% - 45px)
     +animation(welcome-text ease-in 900ms forwards)
     padding: 0 20px
+    max-width: 1200px
+    margin: 0 auto
 
     &.fade_out
       +animation(hide-welcome-text ease-in 200ms forwards)
 
     h1
       font-size: 60px
-      line-height: 1.6em
-      margin-bottom: 20px
+      line-height: 1.2em
+      margin-bottom: 40px
 
       @media screen and (max-width: $break-small)
         font-size: 9vw
 
     .welcome_button
-      +transition(opacity .2s linear)
-      color: $home-text-color
-      font-size: 18px
+      color: $header-text-color
+      font-size: 20px
       padding: 10px
 
       &:hover
-        opacity: .6
+        text-decoration: underline
 
 section.content
   margin: 0 auto 360px auto
@@ -562,8 +587,8 @@ section.content
     padding: 60px 20px 40px
 
   .custom_page
-    color: $secondary-text-color
-    line-height: 1.7em
+    color: $primary-text-color
+    line-height: 1.5em
     margin: 0 auto
     max-width: 640px
     overflow-y: auto
@@ -571,11 +596,12 @@ section.content
     width: 100%
 
     a[href]
-      +all-transitions
+      color: $secondary-text-color
+      transition: color .2s linear
       text-decoration: underline
 
       &:hover
-        opacity: .6
+        color: $hover-color
 
     img, iframe
       display: block
@@ -621,7 +647,10 @@ section.content
       font-size: 18px
 
   &.page-home
-    padding-top: 290px
+    display: flex
+    flex-direction: column
+    gap: 40px
+    padding-top: 200px
 
     &.has_welcome
       padding-top: 200px
@@ -641,7 +670,6 @@ section.content
     @media screen and (max-width: $break-small)
       padding-left: 0
       padding-right: 0
-      padding-top: 110px
 
     &.home-empty
       margin: 0 !important
@@ -657,15 +685,27 @@ section.content
     text-align: center
 
 footer.footer
-  +pie-clearfix
   background: $footer-background-color
+  color: $primary-text-color
   font-family: $secondary-font
   bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  gap: 40px
   min-height: 120px
   padding: 60px 20px
   position: absolute
   text-align: center
   width: 100%
+
+  a
+    color: $primary-text-color
+    transition: color .2s linear
+
+    &:hover
+      color: $hover-color
 
   @media screen and (max-width: $break-small)
     height: auto
@@ -673,63 +713,50 @@ footer.footer
     padding-bottom: 120px
 
   .footer_icons
-    margin: 10px auto
+    display: flex
+    gap: 20px
 
-    li
-      display: inline-block
-      font-size: 0
-      margin: 0 10px
+    a
+      display: block
 
-      a
-        color: $footer-text-color
+      svg
+        fill: currentColor
         display: block
-        font-size: 12px
-
-        svg
-          +all-transitions
-          fill: $footer-icon-color
-          height: 30px
-          width: 30px
-
-        &:hover svg
-          opacity: .6
+        height: 32px
+        width: 32px
 
   .footer_pages
-    font-size: 0
-    margin: 10px auto
+    display: flex
+    gap: 30px
     max-width: 640px
-    text-align: center
-    width: 100%
+    flex-wrap: wrap
+    justify-content: center
 
-    li
-      display: inline-block
+    a
+      display: block
+      font-size: 16px
+      padding: 2px
 
-      @media screen and (max-width: $break-small)
-        display: block
+      &:hover
+        text-decoration: underline
 
-      a
-        +all-transitions
-        color: $footer-text-color
-        display: block
-        font-size: 16px
-        padding: 10px
-
-        &:hover
-          opacity: .6
-
-  .footer_credit
-    color: $footer-text-color
+  .bigcartel-credit
     font-size: 14px
-    margin-top: 14px
+    line-height: 1em
+    display: flex
+    align-items: center
+    gap: 8px
+    outline-offset: 4px
+    padding: 2px 0
 
-    .credit
+    &__text
+      position: relative
 
-      a
-        color: $footer-text-color
-
-      @media screen and (max-width: $break-medium)
-        display: block
-        margin-top: 20px
+    &__lockup
+      display: block
+      fill: currentColor
+      padding-top: 1px
+      width: 80px
 
 .home_tagline
   color: $secondary-text-color
@@ -749,10 +776,11 @@ footer.footer
     margin: 60px auto
 
 .mini_cart
-  +box-shadow(0 2px 10px 0 $secondary-text-color)
+  box-shadow: 0 2px 10px 0 $secondary-text-color
   background: $background-color
   height: 430px
-  display: none
+  visibility: hidden
+  opacity: 0
   position: fixed
   margin: 0
   max-width: 380px
@@ -760,6 +788,11 @@ footer.footer
   top: 90px
   width: 380px
   z-index: 4
+  transition: opacity .2s linear, visibility .2s linear
+
+  &.visible
+    opacity: 1
+    visibility: visible
 
   @media screen and (max-width: $break-small)
     display: none !important
@@ -770,7 +803,7 @@ footer.footer
     border-width: 2px 15px 14px 15px
     border-color: transparent transparent $background-color transparent
     position: absolute
-    right: 57px
+    right: 65px
     top: -12px
     width: 0
 

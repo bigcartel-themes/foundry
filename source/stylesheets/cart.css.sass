@@ -38,13 +38,12 @@
     max-width: 100%
 
   li
-    +pie-clearfix
+    display: flex
+    gap: 20px
     font-size: 14px
-    line-height: 15px
     padding-bottom: 40px
 
     a.item_image
-      float: left
       height: 100%
       max-width: 40%
       text-align: center
@@ -61,16 +60,8 @@
 
     .item_details
       font-family: $primary-font
-      float: left
       max-width: 500px
-      padding: 0 40px
       width: auto
-
-      @media screen and (max-width: $break-large)
-        padding-left: 20px
-
-      @media screen and (max-width: $break-small)
-        padding-right: 0
 
       a
         color: $primary-text-color
@@ -94,41 +85,42 @@
             font-size: 14px
 
     .qty_holder
-      +pie-clearfix
+      display: flex
+      align-items: center
       margin-top: 20px
 
       button
-        +border-radius(3ex)
-        +transform(translateZ(0px))
+        +appearance(none)
+        border-radius: 50%
         background: none
-        border: 2px solid $border-color
-        color: $secondary-text-color
-        float: left
-        height: 40px
+        border: 1px solid $header-background-color
+        color: $header-background-color
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+        height: 36px
         line-height: normal
-        width: 40px
+        padding: 0
+        width: 36px
+        outline: 2px solid transparent
+        transition: outline .2s linear
 
-        @media screen and (max-width: $break-small)
-          height: 36px
-          width: 36px
+        &:hover, &:focus
+          outline: 2px solid $header-background-color
 
         svg
-          fill: $secondary-text-color
+          display: block
+          fill: currentColor
           height: 20px
           position: relative
-          top: 2px
           width: 20px
-
-          @media screen and (max-width: $break-small)
-            height: 18px
-            width: 18px
 
       input
         +appearance(none)
         background: none
         border: none
         color: $secondary-text-color
-        float: left
         font-size: 16px
         height: 40px
         text-align: center
@@ -142,12 +134,8 @@
           box-shadow: none
           outline: none
 
-.flexbox .cart_items li
-  +flexbox
-  +align-items(center)
-
 .cart_info
-  border: 2px solid $border-color
+  border: 2px solid $secondary-text-color
   color: $secondary-text-color
   float: right
   max-width: 30%
@@ -187,7 +175,7 @@
     @media screen and (max-width: $break-small)
       font-size: 26px
 
-  button, .button
+  .button
     max-width: 100%
 
     @media screen and (max-width: $break-medium)
@@ -196,11 +184,8 @@
     @media screen and (max-width: $break-small)
       font-size: 18px
 
-  .continue_shopping
-    background: none
-    color: $secondary-text-color
-    font-size: 14px
-    margin-top: 20px
+  .continue-shopping
+    margin-top: 10px
 
 .cart_empty_message
   text-align: center

@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.5.6",
+  "version": "1.6.0",
   "images": [
     {
       "variable": "header_logo",
@@ -17,12 +17,12 @@
     {
       "variable": "primary_font",
       "label": "Primary Font",
-      "default": "Work Sans"
+      "default": "Inter"
     },
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Work Sans"
+      "default": "Inter"
     }
   ],
   "colors": [
@@ -33,23 +33,33 @@
     },
     {
       "variable": "header_background_color",
-      "label": "Header & button background",
+      "label": "Header background",
       "default": "#222222"
     },
     {
       "variable": "header_text_color",
-      "label": "Header & button text",
+      "label": "Header text",
       "default": "#FFFFFF"
     },
     {
-      "variable": "home_image_overlay_color",
-      "label": "Home overlay background color",
+      "variable": "header_text_hover_color",
+      "label": "Header text hover",
+      "default": "#BBBBBB"
+    },
+    {
+      "variable": "button_background_color",
+      "label": "Button background",
       "default": "#222222"
     },
     {
-      "variable": "home_image_text_color",
-      "label": "Home overlay text color",
+      "variable": "button_text_color",
+      "label": "Button text",
       "default": "#FFFFFF"
+    },
+    {
+      "variable": "button_background_hover_color",
+      "label": "Button background hover",
+      "default": "#116e56"
     },
     {
       "variable": "primary_text_color",
@@ -59,32 +69,17 @@
     {
       "variable": "secondary_text_color",
       "label": "Secondary text",
-      "default": "#424242"
+      "default": "#555555"
     },
     {
-      "variable": "border_color",
-      "label": "Borders",
-      "default": "#999999"
-    },
-    {
-      "variable": "error_text_color",
-      "label": "Errors",
-      "default": "#CF3636"
+      "variable": "link_hover_color",
+      "label": "Link hover",
+      "default": "#116e56"
     },
     {
       "variable": "footer_background_color",
       "label": "Footer background",
       "default": "#F9F9F9"
-    },
-    {
-      "variable": "footer_icon_color",
-      "label": "Footer icons",
-      "default": "#222222"
-    },
-    {
-      "variable": "footer_text_color",
-      "label": "Footer text",
-      "default": "#424242"
     }
   ],
   "options": [
@@ -116,28 +111,32 @@
       "requires": "inventory"
     },
     {
-      "variable": "show_overlay",
-      "label": "Product list info",
+      "variable": "featured_items_type",
+      "label": "Featured items type",
       "type": "select",
-      "options": ["On rollover", "Under image"],
-      "default": "Under image",
-      "description": "Shows a product's name & price on hover, or under the image"
+      "options": ["Categories", "Products"],
+      "default": "Products",
+      "description": "Displays featured products or categories on the Home page"
     },
     {
-      "variable": "featured_categories",
-      "label": "Featured categories",
-      "type": "select",
-      "options": ["0","2","3","4","5","6","7","8","9","10"],
-      "default": "0",
-      "description": "The number of featured categories on the Home page"
-    },
-    {
-      "variable": "featured_products",
-      "label": "Featured products",
+      "variable": "featured_items",
+      "label": "Featured items",
       "type": "select",
       "options": "0..100",
-      "default": 8,
-      "description": "The number of featured products on the Home page"
+      "default": 12,
+      "description": "The number of items featured on the Home page"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Default", "default"],
+        ["Crop to square", "cover"],
+        ["Fit to square", "contain"]
+      ],
+      "default": "cover",
+      "description": "Sets the display of images in the product grid"
     },
     {
       "variable": "products_per_page",
@@ -202,7 +201,7 @@
     "background_color": "{{ header_background_color }}",
     "body_font": "{{ secondary_font }}",
     "body_font_size": "14px",
-    "step_border_color": "{{ border_color }}",
+    "step_border_color": "{{ secondary_text_color }}",
     "step_border_width": "2px",
     "step_border_style": "solid",
     "step_border_radius": "0px",
@@ -217,14 +216,14 @@
     "content_header_font_size": "18px",
     "content_border_color": "transparent",
     "content_border_radius": "0px",
-    "error_background_color": "#ea4859",
+    "error_background_color": "#b11a2a",
     "error_color": "#ffffff",
     "error_border_radius": "0",
-    "error_border_color": "#ea4859",
+    "error_border_color": "#b11a2a",
     "input_focus_color": "#000000",
     "input_focus_background_color": "#ffffff",
     "input_focus_border_color": "#bfbfbf",
-    "input_error_border_color": "#ea4859",
+    "input_error_border_color": "#b11a2a",
     "input_color": "#000000",
     "input_error_color": "#000000",
     "input_border_color": "#bfbfbf",
@@ -237,11 +236,11 @@
     "button_border_width": "0px",
     "button_border_radius": "0px",
     "button_font": "{{ secondary_font }}",
-    "button_hover_color": "{{ header_text_color }}",
-    "button_background_color": "{{ header_background_color }}",
-    "button_hover_background_color": "{{ header_background_color }}",
-    "button_border_color": "{{ button_color }}",
-    "button_hover_border_color": "{{ button_color }}",
+    "button_hover_color": "{{ button_text_color }}",
+    "button_background_color": "{{ button_background_color }}",
+    "button_hover_background_color": "{{ button_background_hover_color }}",
+    "button_border_color": "{{ button_background_color }}",
+    "button_hover_border_color": "{{ button_background_hover_color }}",
     "button_text_transform": "none",
     "link_color": "{{ secondary_text_color }}",
     "link_hover_color": "{{ secondary_text_color }}",
@@ -250,7 +249,7 @@
     "summary_color": "{{ primary_text_color }}",
     "summary_secondary_color": "{{ secondary_text_color }}",
     "summary_submit_background_color": "{{ background_color }}",
-    "summary_item_border_color": "{{ border_color }}",
-    "summary_item_list_border_color": "{{ border_color }}"
+    "summary_item_border_color": "{{ secondary_text_color }}",
+    "summary_item_list_border_color": "{{ secondary_text_color }}"
   }
 }
