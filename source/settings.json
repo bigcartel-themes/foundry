@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "images": [
     {
       "variable": "header_logo",
@@ -83,6 +83,13 @@
     }
   ],
   "options": [
+    {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "type": "text",
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+    },
     {
       "variable": "welcome_text",
       "label": "Welcome text",
