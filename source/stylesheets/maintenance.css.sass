@@ -1,0 +1,33 @@
+@import 'config'
+
+#maintenance
+  +align-items(center)
+  +justify-content(center)
+  +flexbox
+  font-size: 20px
+  padding: 100px 20px
+  text-align: center
+
+  .maintenance-container
+    display: grid
+    gap: 32px
+
+  .maintenance-store-name
+    font-size: 1.5em
+
+  .social-links
+    +flexbox
+    +justify-content(center)
+    gap: 16px
+
+    a
+      color: $secondary-text-color
+
+      &:hover
+        color: $hover-color
+
+    svg
+      fill: currentColor
+      display: block
+      height: 32px
+      width: 32px
