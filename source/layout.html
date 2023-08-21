@@ -39,7 +39,7 @@
   </header>
   {% if page.permalink == 'home' %}
     {% if theme.images.welcome_image or theme.welcome_text != blank %}
-      <div class="welcome_image">
+      <div class="welcome_image" role="banner" aria-label="Welcome Banner">
         <div class="welcome_overlay"></div>
           <div class="welcome_text">
             {% if theme.welcome_text != blank %}<h1>{{ theme.welcome_text }}</h1>{% endif %}
