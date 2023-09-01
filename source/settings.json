@@ -119,7 +119,7 @@
     },
     {
       "variable": "featured_items_type",
-      "label": "Featured items type",
+      "label": "Featured products type",
       "type": "select",
       "options": ["Categories", "Products"],
       "default": "Products",
@@ -127,11 +127,11 @@
     },
     {
       "variable": "featured_items",
-      "label": "Featured items",
+      "label": "Featured products",
       "type": "select",
       "options": "0..100",
       "default": 12,
-      "description": "The number of items featured on the Home page"
+      "description": "The number of products featured on the Home page"
     },
     {
       "variable": "grid_image_style",
