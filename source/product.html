@@ -1,10 +1,10 @@
 {% if product.previous_product or product.next_product %}
   <ul class="previous_next">
     {% if product.previous_product %}
-      <li class="previous_product"><a href="{{ product.previous_product.url }}" title="View Previous Product"><svg viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg> <span>Previous</span></a></li>
+      <li class="previous_product"><a href="{{ product.previous_product.url }}" title="View Previous Product"><svg aria-hidden="true" viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg> <span>Previous</span></a></li>
     {% endif %}
     {% if product.next_product %}
-      <li class="next_product"><a href="{{ product.next_product.url }}" title="View Next Product"><span>Next</span> <svg viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg></a></li>
+      <li class="next_product"><a href="{{ product.next_product.url }}" title="View Next Product"><span>Next</span> <svg aria-hidden="true" viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg></a></li>
     {% endif %}
   </ul>
 {% endif %}
@@ -50,7 +50,7 @@
             <input id="option" name="cart[add][id]" type="hidden" value="0">
             {% for option_group in product.option_groups %}
               <div class="select">
-                <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" title="Select {{ option_group.name | escape }}" required>
+                <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
                   <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
                   {% for value in option_group.values %}
                     <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
@@ -62,7 +62,7 @@
           </div>
         {% else %}
           <div class="select">
-            <select class="product_option_select" id="option" name="cart[add][id]" title="Select variant" required>
+            <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
               <option value="" disabled="disabled" selected>Select variant</option>
               {% for option in product.options %}
                 <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
