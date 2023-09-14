@@ -22,21 +22,22 @@
       rotate: -90deg
 
   a
-    display: block
+    display: flex
+    align-items: center
     position: relative
     padding: 4px 0
+    gap: 6px
     outline-offset: 4px
 
     &:hover
       color: $hover-color
+      text-decoration: underline
 
     svg
-      display: inline-block
+      display: block
       fill: currentColor
-      height: 10px
-      position: relative
-      top: 1px
-      width: 10px
+      height: 12px
+      width: 12px
 
 .product_images
   float: left
