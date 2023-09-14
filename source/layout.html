@@ -8,6 +8,7 @@
   {{ head_content }}
 </head>
 <body id="{{ page.permalink }}" class="loading {{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
+  <a class="skip-link" href="#main">Skip to main content</a>
   {% if theme.announcement_message_text != blank %}
     <aside role="complementary" aria-label="Announcement message" class="announcement-message" id="announce-message">
       <div class="announcement-wrapper">
@@ -58,14 +59,14 @@
       </div>
     {% endif %}
   {% endif %}
-  <section class="content page-{{ page.permalink }} {{ page.category }}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}">
+  <main class="content page-{{ page.permalink }} {{ page.category }}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}" id="main">
     {% if page.category == 'custom' %}
       <h1>{{ page.name }}</h1>
       <div class="custom_page">{{ page_content | paragraphs }}</div>
     {% else %}
       {{ page_content }}
     {% endif %}
-  </section>
+  </main>
   <footer class="footer">
     {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
       <ul class="footer_icons">
