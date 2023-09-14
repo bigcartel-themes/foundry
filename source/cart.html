@@ -2,8 +2,8 @@
   {% if cart.items != blank %}
     <div class="item_holder">
       {% for item in cart.items %}
-        <a class="cart_item" href="{{ item.product.url }}">
-          <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="Image of {{ item.product.name | escape }}">
+        <a class="cart_item" href="{{ item.product.url }}" title="View {{ item.product.name }}">
+          <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="">
           <div class="item_info">
             {{ item.product.name }}
             {% unless item.product.has_default_option %}
@@ -42,7 +42,7 @@
       {% for item in cart.items %}
         <li class="cart_item" data-cart-id="{{ item.id }}">
           <a href="{{ item.product.url }}" class="item_image" title="View {{ item.product.name }}">
-            <img src="{{ item.product.image | product_image_url | constrain: 576 }}">
+            <img alt="" src="{{ item.product.image | product_image_url | constrain: 576 }}">
           </a>
           <div class="item_details">
             <a href="{{ item.product.url }}">
@@ -53,28 +53,28 @@
               <span class="price">{{ item.unit_price | money: theme.money_format }}</span>
             </a>
             <div class="qty_holder" data-cart-id="{{ item.id }}">
-              <button class="qty" type="button" data-func="minus"><svg viewBox="0 0 20 20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg></button>
-              {{ item | item_quantity_input, 'quantity', 'quantity' }}
-              <button class="qty" type="button" data-func="plus"><svg viewBox="0 0 20 20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg></button>
+              <button title="Decrease quantity of {{ item.product.name | escape }}" class="qty" type="button" data-func="minus"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg></button>
+              <input aria-label="Quantity of {{ item.product.name | escape }}" type="text" autocomplete="off" class="product-quantity" name="cart[update][{{ item.id }}]" value="{{ item.quantity }}" data-item-id="{{ item.id }}">
+              <button title="Increase quantity of {{ item.product.name | escape }}" class="qty" type="button" data-func="plus"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg></button>
             </div>
           </div>
         </li>
       {% endfor %}
     </ul>
     <div class="cart_info sticky">
-      <h3>Total  <span>{{ cart.total | money: theme.money_format }}</span></h3>
-      <button type="submit" name="checkout" title="Checkout" class="button checkout_btn">Checkout</button>
+      <div class="cart_total">Total  <span>{{ cart.total | money: theme.money_format }}</span></div>
+      <button type="submit" name="checkout" class="button checkout_btn">Checkout</button>
       <a class="button minimal-button continue-shopping" href="/products">Continue shopping</a>
     </div>
   </form>
   <div class="cart_empty_message" style="display: none;">
-    <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
+    <p><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
     <p><a class="button" href="/products">Start shopping</a></p>
   </div>
 {% else %}
   <h1>Your bag is empty</h1>
   <div class="cart_empty_message">
-    <p><svg viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
+    <p><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
     <p><a class="button" href="/products">Start shopping</a></p>
   </div>
 {% endif %}

@@ -87,7 +87,7 @@ var processUpdate = function(input, item_id, new_val, cart) {
   }
   else {
     $('.errors').hide();
-    $('.cart_info h3 > span').html(sub_total);
+    $('.cart_info .cart_total > span').html(sub_total);
     $('.cart_value').fadeIn('fast');
     $('.cart_value').html(item_count);
     input.val(new_val);
@@ -185,12 +185,6 @@ $(function() {
     }
   })
 
-  $('.open_search_btn').click(function(e) {
-    $('body').addClass('overlay_open');
-    $('.overlay').addClass('open search');
-    $('#search').focus();
-  });
-
   $('.open_menu_btn').click(function(e) {
     $('body').addClass('overlay_open');
     $('.overlay').addClass('open navigation');
@@ -202,7 +196,7 @@ $(function() {
   });
 
   $('.close_overlay').click(function(e) {
-    $('.overlay').removeClass('open navigation search');
+    $('.overlay').removeClass('open navigation');
     $('body').removeClass('overlay_open');
   });
 
@@ -217,7 +211,7 @@ $(function() {
 $(document).on('keyup',function(e) {
   if (e.keyCode == 27) {
     $('body').removeClass('overlay_open');
-    $('.overlay').removeClass('open').removeClass('navigation search');
+    $('.overlay').removeClass('open').removeClass('navigation');
     if ($(".mini_cart").hasClass('visible')) {
       $('.mini_cart').removeClass('visible')
     }

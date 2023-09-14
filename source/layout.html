@@ -116,13 +116,29 @@
         {% endfor %}
         <li><a href="/contact">Contact</a></li>
       </ul>
-      {% if theme.show_search %}
-        <form action="/products" method="get" class="search_form" role="search">
-          <input type="text" name="search" id="search" placeholder="Search products...">
-        </form>
-      {% endif %}
     </div>
   </div>
+  {% if theme.show_search %}
+    <div id="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-content--inner">
+          <div class="wrapper">
+            <button class="close-modal" aria-label="Close search dialog" data-dismiss="modal" type="button">
+              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="218.92 -741.08 522.15 522.15"><path d="m250.923-218.924-31.999-31.999L448.001-480 218.924-709.077l31.999-31.999L480-511.999l229.077-229.077 31.999 31.999L511.999-480l229.077 229.077-31.999 31.999L480-448.001 250.923-218.924Z"></path></svg>
+            </button>
+            <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
+              <input type="hidden" name="utf8" value='✓'>
+              <label for="desktop-search">Search products</label>
+              <input class="search-input" id="desktop-search" name="search" type="search" autocomplete="off" />
+              <button type="submit" class="button search-button" aria-label="Submit search form">
+                <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="120 -841 720 720"><path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"></path></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
   <a class="footer_cart" href="/cart" title="View cart">
     <div class="background"></div>
     <span class="open_cart"><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span></span>
