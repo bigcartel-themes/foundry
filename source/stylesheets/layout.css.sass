@@ -1,4 +1,6 @@
 @import 'config'
+\:root
+  --header-height: 96px
 
 *
   box-sizing: border-box
@@ -16,13 +18,11 @@ body
   font-size: 16px
   line-height: 1
   overflow-y: scroll
-  padding-top: 90px
 
   &.loading *
     transition: none !important
 
   &.has_welcome
-    padding-top: 0
 
     header
       background: transparent
@@ -31,9 +31,6 @@ body
   &#cart
     .footer_cart
       display: none
-
-  &#home
-    padding-top: 0
 
   &.standalone
     padding: 70px
@@ -75,21 +72,20 @@ header
   display: flex
   align-items: center
   font-family: $primary-font
-  height: 90px
-  left: 0
+  height: var(--header-height)
   margin: 0
   padding: 20px 40px
-  position: fixed
-  right: 0
-  top: 0
+  position: relative
   z-index: 3
   width: 100%
 
+  &.fixed
+    position: fixed
+    top: 0
+    left: 0
+
   @media screen and (max-width: $break-medium)
     padding: 20px
-
-  @media screen and (max-width: $break-small)
-    position: absolute
 
   &.background_overlay
     background: $header-background-color !important
@@ -504,80 +500,6 @@ h1
   @media screen and (max-width: $break-small)
     font-size: 24px
     margin-bottom: 30px
-
-+keyframes(welcome-text)
-  0%
-    opacity: 0
-    +transform(translate3d(0, 10%, 0))
-
-  100%
-    +transform(none)
-    opacity: 1
-
-+keyframes(hide-welcome-text)
-  0%
-    +transform(none)
-    opacity: 1
-
-  100%
-    opacity: 0
-    +transform(translate3d(0, 10%, 0))
-
-.welcome_image
-  background-image: #{"{% if theme.images.welcome_image != blank %}url(\'{{ theme.images.welcome_image.url | constrain: 1400 }}\'){% else %}none{% endif %}"}
-  background-position: 50% 50%
-  background-repeat: no-repeat
-  background-attachment: fixed
-  background-size: cover
-  color: $header-text-color
-  height: 100vh
-  left: 0
-  position: relative
-  text-align: center
-  top: 0
-  width: 100%
-  display: flex
-  align-items: center
-
-  @media screen and (max-width: 1024px)
-    background-attachment: scroll
-
-  .welcome_overlay
-    background: $header-background-color
-    bottom: 0
-    height: 100%
-    left: 0
-    opacity: .35
-    position: absolute
-    right: 0
-    top: 0
-    width: 100%
-
-  .welcome_text
-    position: relative
-    +animation(welcome-text ease-in 900ms forwards)
-    padding: 0 20px
-    max-width: 1200px
-    margin: 0 auto
-
-    &.fade_out
-      +animation(hide-welcome-text ease-in 200ms forwards)
-
-    h1
-      font-size: 60px
-      line-height: 1.2em
-      margin-bottom: 40px
-
-      @media screen and (max-width: $break-small)
-        font-size: 9vw
-
-    .welcome_button
-      color: $header-text-color
-      font-size: 20px
-      padding: 10px
-
-      &:hover
-        text-decoration: underline
 
 section.content
   margin: 0 auto 360px auto
