@@ -56,20 +56,16 @@
     width: 100%
 
   .product_thumbnails
-    +pie-clearfix
-    font-size: 0
-    margin: 2px -1px 0 -1px
+    --gap: 8px
+    --thumbnail-width: calc((100% - (var(--gap) * 4)) / 5)
+    display: flex
+    flex-wrap: wrap
+    gap: var(--gap)
+    margin: var(--gap) 0
     padding: 0
-    text-align: center
-
-    @media screen and (max-width: $break-small)
-      margin: 2px 1px
 
     li
-      display: inline-block
-      padding: 0 1px
-      vertical-align: top
-      width: 20%
+      width: var(--thumbnail-width)
 
       img
         transition: opacity .2s linear

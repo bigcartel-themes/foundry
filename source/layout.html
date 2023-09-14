@@ -180,6 +180,13 @@
   <script>
     const themeOptions = {
       hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %},
+      desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
+      mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
+      productImageZoom: '{{ theme.product_image_zoom }}',
+    }
+    const themeColors = {
+      textColor: '{{ theme.text_color }}',
+      backgroundColor: '{{ theme.background_color }}',
     }
     function setCookie(name,value,days) {
       var expires = "";
