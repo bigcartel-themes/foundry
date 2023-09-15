@@ -79,11 +79,37 @@
         {% endfor %}
       </div>
     </div>
-    {% if paginate.pages > 1 %}
-      <nav role="navigation" aria-label="Pagination">
-        {{ paginate | default_pagination, 'pagination', 'pagination', '<svg height="20" width="20" viewBox="0 0 20 20"><path d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg>', '<svg height="20" width="20" viewBox="0 0 20 20"><path d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg>' }}
-      </nav>
-    {% endif %}
+      {% if paginate.pages > 1 %}
+        <nav role="navigation" aria-label="Pagination" class="pagination">
+          <div class="page-arrows">
+            {% if paginate.previous.is_link %}
+              <a aria-label="Go to previous page" class="page-link page-link--previous" href="{{ paginate.previous.url }}">
+                <svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
+                <span>Previous</span>
+              </a>
+            {% else %}
+              <span class="page-link page-link--previous disabled">
+                <svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
+                <span>Previous</span>
+              </span>
+            {% endif %}
+
+            {{ paginate | default_pagination, 'page-numbers', 'page-numbers' }}
+
+            {% if paginate.next.is_link %}
+              <a aria-label="Go to next page" class="page-link page-link--next" href="{{ paginate.next.url }}">
+                <span>Next</span>
+                <svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
+              </a>
+            {% else %}
+              <span class="page-link page-link--next disabled">
+                <span>Next</span>
+                <svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
+              </span>
+            {% endif %}
+          </div>
+        </nav>
+      {% endif %}
   {% else %}
     {% if page.full_url contains "search=" %}
       <div class="start_shopping_message">

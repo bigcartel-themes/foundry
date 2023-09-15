@@ -167,63 +167,93 @@
   width: 100%
   opacity: .9
 
-.pagination
-  +flexbox
-  margin: 0 auto
-  max-width: 800px
-  padding-top: 40px
+.no_products
   text-align: center
-  width: 100%
+
+.pagination
+  display: grid
+  font-size: 1rem
+  padding: 32px 0
+  justify-content: center
+  margin-top: 32px
 
   @media screen and (max-width: $break-small)
-    line-height: 40px
-    max-width: 100%
+    margin-top: 8px
 
-  span, a
-    display: inline-block
-    font-size: 18px
-    height: 60px
-    text-align: center
-    width: 60px
-
-    @media screen and (max-width: $break-medium)
-      font-size: 16px
-      height: 44px
-      width: 44px
-
-    @media screen and (max-width: $break-small)
-      font-size: 14px
-      height: 40px
-      width: 40px
-
-    i
-      font-size: 12px
-      position: relative
-
-  .current
-    background: $header-background-color
-    color: $header-text-color
+.page-arrows
+  display: flex
+  border: 1px solid var(--border-color)
+  border-radius: var(--border-radius)
+  height: 46px
 
   .previous, .next
-    svg
-      fill: $secondary-text-color
-      height: 24px
-      position: relative
-      top: 6px
-      width: 22px
+    display: none
 
-  .previous
+.page-link
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  min-width: 100px
+  padding: 0 12px
+
+  @media screen and (max-width: $break-small)
+    min-width: 44px
+
+    span
+      display: none
+
+  svg
+    width: 12px
+
+  &--previous
+    border-right: 1px solid var(--border-color)
 
     svg
       transform: rotate(90deg)
 
-  .next
+  &--next
+    border-left: 1px solid var(--border-color)
 
     svg
       transform: rotate(-90deg)
 
-  .disabled
-    display: none
+  &.disabled
+    opacity: .5
 
-.no_products
-  text-align: center
+  &:not(.disabled)
+    &:hover, &:focus
+      text-decoration: underline
+
+.page-numbers
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 12px
+
+  span, a
+    display: flex
+    cursor: pointer
+    align-items: center
+    justify-content: center
+    height: 100%
+    min-width: 44px
+    text-align: center
+
+    @media screen and (max-width: $break-small)
+      min-width: 40px
+
+    &.gap
+      opacity: .5
+      padding: 8px
+      min-width: 0
+
+    &.current
+      font-weight: bold
+      background: var(--button-background-color)
+      color: var(--button-text-color)
+
+    &:not(.current):not(.gap)
+      &:hover, &:focus
+        background: var(--button-background-color)
+        color: var(--button-text-color)
