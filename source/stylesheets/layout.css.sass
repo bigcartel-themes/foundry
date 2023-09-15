@@ -82,40 +82,6 @@ body
     .footer_cart
       display: none
 
-  &.standalone
-    padding: 70px
-    text-align: center
-
-    h1
-      font-size: 22px
-
-    .maintenance_icons
-      display: block
-
-      li
-        display: inline-block
-
-        a
-          color: $primary-text-color
-          display: block
-          padding: 0 10px
-
-          &:hover
-            color: $hover-color
-
-          @media screen and (max-width: $break-small)
-            padding: 0 6px
-
-          svg
-            transition: fill .2s linear
-            fill: currentColor
-            height: 30px
-            width: 30px
-
-            @media screen and (max-width: $break-small)
-              height: 26px
-              width: 26px
-
 a.skip-link
   transition: all .3s linear
   background: $background-color
@@ -152,7 +118,7 @@ header
     padding: 20px
 
   &.background_overlay
-    background: $header-background-color !important
+    background: $header-background-color
 
   .store_name
     color: $header-text-color
@@ -195,9 +161,6 @@ header
     li
 
       button
-        appearance: none
-        background: none
-        border: none
         color: $header-text-color
         cursor: pointer
         display: flex
@@ -291,7 +254,6 @@ ul, ol
 .button
   transition: background-color .2s linear
   background-color: $button-background-color
-  border: none
   color: $button-text-color
   cursor: pointer
   display: inline-flex
@@ -307,15 +269,12 @@ ul, ol
   &.minimal-button
     background: none
     color: $primary-text-color
-    border: none
     font-size: 15px
     padding: 0
     height: 50px
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-      background: none
       color: $hover-color
-      opacity: 1
 
     &:not(:disabled):hover
       text-decoration: underline
@@ -326,7 +285,6 @@ ul, ol
 
   &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
     background-color: $button-background-hover-color
-    border: none
 
 .errors
   background: #b11a2a
@@ -352,8 +310,6 @@ ul, ol
   width: 100%
 
   select
-    background: none
-    border: 0
     color: $secondary-text-color
     cursor: pointer
     font-family: $secondary-font
@@ -417,9 +373,6 @@ ul, ol
     padding: 90px 0
 
   .close_overlay
-    +appearance(none)
-    background: none
-    border: none
     cursor: pointer
     color: $header-text-color
     height: 40px
@@ -435,7 +388,6 @@ ul, ol
 
     svg
       fill: currentColor
-      display: block
 
     @media screen and (max-width: $break-small)
       right: 20px
@@ -466,48 +418,12 @@ ul, ol
         @media screen and (max-width: $break-small)
           font-size: 20px
 
-  .search_form
-    display: none
-    z-index: 6
-
   &.navigation
     .page_list
       display: block
       +transition(opacity 0.2s, visibility 0s 0.2s)
       opacity: 1
       visibility: visible
-
-  &.search
-    .search_form
-      display: block
-      position: relative
-
-      input
-        +appearance(none)
-        background: none
-        border: none
-        font-size: 1.5em
-        color: $header-text-color
-        display: block
-        margin: 0 auto
-        padding: 15px
-        width: 60%
-
-        @media screen and (max-width: $break-small)
-          width: 80%
-
-        &:focus
-          border: none
-          color: $header-text-color
-
-        &::-moz-placeholder
-          color: $header-text-color
-
-        &::-webkit-input-placeholder
-          color: $header-text-color
-
-        &:-ms-input-placeholder
-          color: $header-text-color
 
 .footer_cart
   bottom: 0
