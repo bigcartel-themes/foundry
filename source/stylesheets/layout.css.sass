@@ -335,6 +335,7 @@ ul, ol
     height: 8px
     margin-top: -2px
     position: absolute
+    pointer-events: none
     right: 20px
     top: 50%
     width: 13px
@@ -547,36 +548,7 @@ main.content
     display: flex
     flex-direction: column
     gap: 40px
-    padding-top: 200px
-
-    &.has_welcome
-      padding-top: 200px
-
-      @media screen and (max-width: $break-medium)
-        padding-top: 30px
-
-      @media screen and (max-width: $break-small)
-        padding-top: 100px
-
-        .home_tagline
-          margin-bottom: 160px
-
-    @media screen and (max-width: $break-medium)
-      padding-top: 160px
-
-    @media screen and (max-width: $break-small)
-      padding-left: 0
-      padding-right: 0
-
-    &.home-empty
-      margin: 0 !important
-      padding: 0 !important
-
-  &.page-products
-
-    @media screen and (max-width: $break-small)
-      padding-left: 0
-      padding-right: 0
+    padding-top: 60px
 
   h1
     text-align: center
@@ -654,23 +626,6 @@ footer.footer
       fill: currentColor
       padding-top: 1px
       width: 80px
-
-.home_tagline
-  color: $secondary-text-color
-  font-family: $secondary-font
-  font-size: 26px
-  line-height: 1.3em
-  margin: 0 auto 200px
-  max-width: 680px
-  padding: 0 20px
-  text-align: center
-  width: 100%
-
-  @media screen and (max-width: $break-medium)
-    margin: 90px auto 120px
-
-  @media screen and (max-width: $break-small)
-    margin: 60px auto
 
 .mini_cart
   box-shadow: 0 2px 10px 0 $secondary-text-color
