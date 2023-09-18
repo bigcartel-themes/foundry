@@ -6,7 +6,6 @@
 
   @media screen and (max-width: $break-small)
     margin-bottom: 40px
-    padding: 0 20px
 
   ul
 
@@ -42,7 +41,7 @@
   +flexbox
   +flex-wrap(wrap)
   +justify-content(flex-start)
-  margin: $base-padding -$base-padding
+  margin: 10px -10px
   padding: 0
 
   &.justify-center
@@ -60,15 +59,15 @@
   vertical-align: middle
   width: calc(100% / 3)
 
-  &:hover
-    color: $hover-color
+  @media (hover: hover)
+    &:hover
+      color: $hover-color
 
-    .prod-thumb-name
-      text-decoration: underline
+      .prod-thumb-name
+        text-decoration: underline
 
-    .product-list-image
-
-      transform: translate3d(0, 0, 0) scale(1.04)
+      .product-list-image
+        transform: translate3d(0, 0, 0) scale(1.04)
 
   &.sold img
     opacity: .6
@@ -182,7 +181,6 @@
 
 .page-arrows
   display: flex
-  border: 1px solid var(--primary-text-color)
   border-radius: var(--border-radius)
   height: 46px
 
@@ -207,13 +205,11 @@
     width: 12px
 
   &--previous
-    border-right: 1px solid var(--primary-text-color)
 
     svg
       transform: rotate(90deg)
 
   &--next
-    border-left: 1px solid var(--primary-text-color)
 
     svg
       transform: rotate(-90deg)
