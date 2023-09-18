@@ -60,15 +60,19 @@ ol, ul
 html
   min-height: 100%
   position: relative
+  height: 100%
 
 body
   background: $background-color
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   color: $primary-text-color
+  display: flex
+  flex-direction: column
   font-family: $secondary-font
   font-size: 16px
-  overflow-y: scroll
+  min-height: 100%
+  height: 100%
 
   &.overlay-open
     height: 100vh
@@ -103,10 +107,11 @@ header
   display: flex
   align-items: center
   font-family: $primary-font
+  flex-shrink: 0
   height: var(--header-height)
   gap: 20px
   margin: 0
-  padding: 20px 40px
+  padding: 0 40px
   position: relative
   z-index: 3
   width: 100%
@@ -164,6 +169,7 @@ header
     gap: 20px
 
     li
+      position: relative
 
       button
         color: $header-text-color
@@ -397,7 +403,8 @@ h1
     margin-bottom: 30px
 
 main.content
-  margin: 0 auto 360px auto
+  flex: 1
+  margin: 0 auto 40px auto
   max-width: 1300px
   padding: 60px 20px 40px
   width: 100%
@@ -444,7 +451,6 @@ main.content
     max-width: 1200px
 
     @media screen and (max-width: $break-small)
-      overflow: hidden
       padding-left: 0
       padding-right: 0
       padding-top: 30px
@@ -472,15 +478,14 @@ footer.footer
   background: $footer-background-color
   color: $primary-text-color
   font-family: $secondary-font
-  bottom: 0
   display: flex
+  flex-shrink: 0
   justify-content: center
   align-items: center
   flex-direction: column
   gap: 40px
   min-height: 120px
   padding: 60px 20px
-  position: absolute
   text-align: center
   width: 100%
 
@@ -492,8 +497,6 @@ footer.footer
       color: $hover-color
 
   @media screen and (max-width: $break-small)
-    height: auto
-    margin: 20px 0 0
     padding-bottom: 120px
 
   .footer_icons
@@ -548,16 +551,16 @@ footer.footer
   height: 430px
   visibility: hidden
   opacity: 0
-  position: fixed
+  position: absolute
   margin: 0
   max-width: 380px
-  right: 40px
-  top: 90px
+  right: -60px
+  top: 60px
   width: 380px
   z-index: 4
   transition: opacity .2s linear, visibility .2s linear
 
-  &.visible
+  &[aria-hidden="false"]
     opacity: 1
     visibility: visible
 
@@ -645,3 +648,20 @@ footer.footer
       margin-top: 40px
       max-width: none
 
+.visually-hidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+
+.blur-up
+  transition: filter .2s ease
+  filter: blur(2px)
+  transform: translate3d(0, 0, 0)
+
+  &.lazyloaded
+    filter: blur(0)
