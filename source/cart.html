@@ -42,7 +42,13 @@
       {% for item in cart.items %}
         <li class="cart_item" data-cart-id="{{ item.id }}">
           <a href="{{ item.product.url }}" class="item_image" title="View {{ item.product.name }}">
-            <img alt="" src="{{ item.product.image | product_image_url | constrain: 576 }}">
+            <img
+              alt=""
+              class="lazyload blur-up"
+              src="{{ item.product.image | product_image_url | constrain: 100 }}"
+              data-srcset="{{ item.product.image | product_image_url | constrain: 288 }} 288w, {{ item.product.image | product_image_url | constrain: 576 }} 576w"
+              data-sizes="auto"
+            >
           </a>
           <div class="item_details">
             <a href="{{ item.product.url }}">
@@ -62,19 +68,19 @@
       {% endfor %}
     </ul>
     <div class="cart_info sticky">
-      <div class="cart_total">Total  <span>{{ cart.total | money: theme.money_format }}</span></div>
+      <div class="cart_total">Subtotal  <span>{{ cart.total | money: theme.money_format }}</span></div>
       <button type="submit" name="checkout" class="button checkout_btn">Checkout</button>
       <a class="button minimal-button continue-shopping" href="/products">Continue shopping</a>
     </div>
   </form>
   <div class="cart_empty_message" style="display: none;">
-    <p><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
-    <p><a class="button" href="/products">Start shopping</a></p>
+    <svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg>
+    <a class="button" href="/products">Start shopping</a>
   </div>
 {% else %}
   <h1>Your bag is empty</h1>
   <div class="cart_empty_message">
-    <p><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg></p>
-    <p><a class="button" href="/products">Start shopping</a></p>
+    <svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg>
+    <a class="button" href="/products">Start shopping</a>
   </div>
 {% endif %}

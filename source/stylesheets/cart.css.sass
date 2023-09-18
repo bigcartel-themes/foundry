@@ -135,7 +135,7 @@
   position: -webkit-sticky
   position: sticky
   text-align: center
-  top: 110px
+  top: 120px
   width: 100%
 
   @media screen and (max-width: $break-extra-large)
@@ -179,10 +179,11 @@
     margin-top: 10px
 
 .cart_empty_message
-  text-align: center
-
-  p
-    margin: 80px 0
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+  gap: 80px
 
   svg
     fill: $secondary-text-color
