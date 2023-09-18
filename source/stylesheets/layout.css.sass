@@ -104,6 +104,7 @@ header
   align-items: center
   font-family: $primary-font
   height: var(--header-height)
+  gap: 20px
   margin: 0
   padding: 20px 40px
   position: relative
@@ -144,10 +145,9 @@ header
         color: $header-text-hover-color
 
     &.image
-      +vertical-align
 
       a
-        height: 50px
+        height: 54px
 
         img
           +vertical-align
@@ -580,6 +580,8 @@ footer.footer
   .cart_holder
 
     .item_holder
+      display: grid
+      gap: 20px
       height: 277px
       position: absolute
       overflow-y: scroll
@@ -588,29 +590,30 @@ footer.footer
 
       .cart_item
         display: flex
-        margin-bottom: 20px
+        align-items: flex-start
         gap: 20px
 
         .item_image
-          width: 30%
+          object-fit: cover
+          width: 90px
+          height: 90px
 
         .item_info
           color: $primary-text-color
           font-family: $primary-font
-          font-size: 18px
+          font-size: 16px
+          display: grid
+          gap: 2px
 
-          > span
-            color: $secondary-text-color
-            display: block
-            font-family: $secondary-font
-            font-size: 14px
-            margin-top: 4px
+        .item_option
+          color: $secondary-text-color
+          font-family: $secondary-font
+          font-size: 14px
 
         .item_price
           color: $secondary-text-color
           font-family: $secondary-font
           font-size: 14px
-          margin-top: 2px
 
     .cart_footer
       bottom: 0
