@@ -4,3 +4,4 @@
 //= require javascripts/search
 //= require javascripts/product
 //= require javascripts/product-carousel
+//= require javascripts/overlay

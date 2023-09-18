@@ -7,7 +7,7 @@
   <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
   {{ head_content }}
 </head>
-<body id="{{ page.permalink }}" class="loading {{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
+<body id="{{ page.permalink }}" class="loading {{ page.category }}">
   <a class="skip-link" href="#main">Skip to main content</a>
   {% if theme.announcement_message_text != blank %}
     <aside role="complementary" aria-label="Announcement message" class="announcement-message" id="announce-message">
@@ -19,7 +19,7 @@
       </button>
     </aside>
   {% endif %}
-  <header class="header">
+  <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
     <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
       <a href="/" title="{{ store.name | escape }}">
         {% if theme.header_logo != blank %}
@@ -42,6 +42,40 @@
           <svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg>
           <span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span>
         </button>
+        {% if page.permalink != 'cart' %}
+          <div class="mini_cart{% if cart.item_count == 0 %} empty{% endif %}">
+            <div class="triangle"></div>
+            <div class="cart_holder" tabindex="0">
+              {% if cart.items != blank %}
+                <div class="item_holder">
+                  {% for item in cart.items %}
+                    <a class="cart_item" href="{{ item.product.url }}">
+                      <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="Image of {{ item.product.name | escape }}">
+                      <div class="item_info">
+                        {{ item.product.name }}
+                        {% unless item.product.has_default_option %}
+                          <span>{{ item.option.name }}</span>
+                        {% endunless %}
+                        <div class="item_price">{{ item.unit_price | money: theme.money_format }}</div>
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+                <div class="cart_footer">
+                  <div class="item_subtotal">
+                    Subtotal <span>{{ cart.total | money: theme.money_format }}</span>
+                  </div>
+                  <a class="button view_bag" href="/cart">View your bag</a>
+                </div>
+              {% else %}
+                <div>
+                  Your bag is empty
+                </div>
+                <a class="button view_bag" href="/products">Start shopping</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
       </li>
       <li class="open_menu">
         <button type="button" title="Open navigation menu" class="open_menu_btn"><span></span><span></span><span></span><span></span></button>
@@ -59,7 +93,7 @@
       </div>
     {% endif %}
   {% endif %}
-  <main class="content page-{{ page.permalink }} {{ page.category }}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}" id="main">
+  <main class="content page-{{ page.permalink }} {{ page.category }}" id="main">
     {% if page.category == 'custom' %}
       <h1>{{ page.name }}</h1>
       <div class="custom_page">{{ page_content | paragraphs }}</div>
@@ -103,19 +137,21 @@
       <span class="credit">{{ powered_by_big_cartel }}</span>
     </div>
   </footer>
-  <div class="overlay">
+  <div id="navigation-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="overlay_background"></div>
     <div class="overlay_content">
       <button type="button" class="close_overlay" title="Close navigation">
         <svg aria-hidden="true" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
       </button>
-      <ul class="page_list">
-        <li><a href="/products">Shop</a></li>
-        {% for page in pages.all %}
-          <li>{{ page | link_to }}</li>
-        {% endfor %}
-        <li><a href="/contact">Contact</a></li>
-      </ul>
+      <nav class="primary_navigation">
+        <ul class="page_list">
+          <li><a href="/products">Shop</a></li>
+          {% for page in pages.all %}
+            <li>{{ page | link_to }}</li>
+          {% endfor %}
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
   {% if theme.show_search %}
@@ -143,40 +179,6 @@
     <div class="background"></div>
     <span class="open_cart"><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span></span>
   </a>
-  {% if page.permalink != 'cart' %}
-  <div class="mini_cart{% if cart.item_count == 0 %} empty{% endif %}">
-    <div class="triangle"></div>
-    <div class="cart_holder">
-      {% if cart.items != blank %}
-        <div class="item_holder">
-          {% for item in cart.items %}
-            <a class="cart_item" href="{{ item.product.url }}">
-              <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="Image of {{ item.product.name | escape }}">
-              <div class="item_info">
-                {{ item.product.name }}
-                {% unless item.product.has_default_option %}
-                  <span>{{ item.option.name }}</span>
-                {% endunless %}
-                <div class="item_price">{{ item.unit_price | money: theme.money_format }}</div>
-              </div>
-            </a>
-          {% endfor %}
-        </div>
-        <div class="cart_footer">
-          <div class="item_subtotal">
-            Subtotal <span>{{ cart.total | money: theme.money_format }}</span>
-          </div>
-          <a class="button view_bag" href="/cart">View your bag</a>
-        </div>
-      {% else %}
-        <div>
-          Your bag is empty
-        </div>
-        <a class="button view_bag" href="/products">Start shopping</a>
-      {% endif %}
-    </div>
-  </div>
-  {% endif %}
   <script>
     const themeOptions = {
       hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %},

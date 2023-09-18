@@ -43,6 +43,7 @@ img, picture, video, canvas, svg, iframe, embed, audio
 input, button, textarea, select
   +appearance(none)
   border: 0
+  border-radius: 0
   background: none
   color: inherit
   font: inherit
@@ -69,14 +70,14 @@ body
   font-size: 16px
   overflow-y: scroll
 
+  &.overlay-open
+    height: 100vh
+    width: 100vw
+    overflow: hidden
+    overscroll-behavior: none
+
   &.loading *
     transition: none !important
-
-  &.has_welcome
-
-    header
-      background: transparent
-      transition: background .2s linear
 
   &#cart
     .footer_cart
@@ -116,6 +117,10 @@ header
 
   @media screen and (max-width: $break-medium)
     padding: 20px
+
+  &.has_welcome
+    background: transparent
+    transition: background .2s linear
 
   &.background_overlay
     background: $header-background-color
@@ -341,91 +346,6 @@ ul, ol
     width: 13px
     z-index: 1
 
-.overlay
-  +transition(opacity 0.2s, visibility 0s 0.2s)
-  height: 100%
-  left: 0
-  opacity: 0
-  position: fixed
-  text-align: center
-  top: 0
-  visibility: hidden
-  width: 100%
-  z-index: 5
-
-  &.open
-    +transition(opacity 0.4s)
-    opacity: 1
-    visibility: visible
-
-  .overlay_background
-    background: $header-background-color
-    bottom: 0
-    left: 0
-    opacity: .99
-    position: absolute
-    right: 0
-    top: 0
-    z-index: 5
-
-  .overlay_content
-    height: 100%
-    overflow-y: scroll
-    padding: 90px 0
-
-  .close_overlay
-    cursor: pointer
-    color: $header-text-color
-    height: 40px
-    padding: 8px
-    position: absolute
-    right: 40px
-    top: 26px
-    width: 40px
-    z-index: 6
-
-    &:hover
-      color: $header-text-hover-color
-
-    svg
-      fill: currentColor
-
-    @media screen and (max-width: $break-small)
-      right: 20px
-
-  .page_list
-    display: none
-    margin: 40px auto
-    max-width: 80%
-    opacity: 0
-    position: relative
-    z-index: 6
-    visibility: hidden
-
-    li
-      display: block
-      margin: 10px 0
-
-      a
-        color: $header-text-color
-        display: inline-block
-        font-size: 26px
-        padding: 15px
-
-        &:hover
-          color: $header-text-hover-color
-          text-decoration: underline
-
-        @media screen and (max-width: $break-small)
-          font-size: 20px
-
-  &.navigation
-    .page_list
-      display: block
-      +transition(opacity 0.2s, visibility 0s 0.2s)
-      opacity: 1
-      visibility: visible
-
 .footer_cart
   bottom: 0
   display: none
@@ -479,12 +399,8 @@ h1
 main.content
   margin: 0 auto 360px auto
   max-width: 1300px
-  padding: 0 20px
-  padding-top: 90px
+  padding: 60px 20px 40px
   width: 100%
-
-  @media screen and (max-width: $break-small)
-    padding: 60px 20px 40px
 
   .custom_page
     color: $primary-text-color
@@ -526,7 +442,6 @@ main.content
   &.page-product
     +pie-clearfix
     max-width: 1200px
-    padding-top: 60px
 
     @media screen and (max-width: $break-small)
       overflow: hidden
@@ -548,7 +463,7 @@ main.content
     display: flex
     flex-direction: column
     gap: 40px
-    padding-top: 60px
+    padding-top: 0
 
   h1
     text-align: center
@@ -672,21 +587,17 @@ footer.footer
       padding-top: 30px
 
       .cart_item
-        +pie-clearfix
-        display: block
+        display: flex
         margin-bottom: 20px
+        gap: 20px
 
         .item_image
-          float: left
           width: 30%
 
         .item_info
           color: $primary-text-color
-          float: left
           font-family: $primary-font
           font-size: 18px
-          padding-left: 20px
-          width: 70%
 
           > span
             color: $secondary-text-color
@@ -731,12 +642,3 @@ footer.footer
       margin-top: 40px
       max-width: none
 
-.start_shopping_message
-  text-align: center
-
-  p
-    margin: 80px 40px
-
-  @media screen and (max-width: $break-small)
-    .button
-      max-width: 100%
