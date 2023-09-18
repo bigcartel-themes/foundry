@@ -51,31 +51,6 @@
   a
     display: block
 
-  .primary_image
-    display: block
-    width: 100%
-
-  .product_thumbnails
-    --gap: 8px
-    --thumbnail-width: calc((100% - (var(--gap) * 4)) / 5)
-    display: flex
-    flex-wrap: wrap
-    gap: var(--gap)
-    margin: var(--gap) 0
-    padding: 0
-
-    li
-      width: var(--thumbnail-width)
-
-      img
-        transition: opacity .2s linear
-        display: block
-        width: 100%
-
-      &.active
-        img
-          opacity: .6
-
 .reset-selection-button-container
   max-width: 360px
   text-align: center
@@ -92,14 +67,11 @@ button.reset-selection-button
 .product_detail
   float: left
   max-width: 50%
-  padding-left: 8%
+  padding-left: 5%
   width: 100%
 
   h2
     font-family: $secondary-font
-
-  @media screen and (max-width: 1200px)
-    padding-left: 5%
 
   @media screen and (max-width: $break-small)
     float: none
