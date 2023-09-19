@@ -67,8 +67,8 @@
         </li>
       {% endfor %}
     </ul>
-    <div class="cart_info sticky">
-      <div class="cart_total">Subtotal  <span>{{ cart.total | money: theme.money_format }}</span></div>
+    <div class="cart_info sticky" aria-live="polite" aria-atomic="true">
+      <div class="cart_total">Subtotal: <span>{{ cart.total | money: theme.money_format }}</span></div>
       <button type="submit" name="checkout" class="button checkout_btn">Checkout</button>
       <a class="button minimal-button continue-shopping" href="/products">Continue shopping</a>
     </div>
