@@ -15,7 +15,7 @@
         <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
       </div>
       <button class="announcement-message-close" title="Close announcement message">
-        <svg aria-hidden="true" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
       </button>
     </aside>
   {% endif %}
@@ -23,7 +23,7 @@
     <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
       <a href="/" title="{{ store.name | escape }}">
         {% if theme.header_logo != blank %}
-          <img src="{{ theme.header_logo.url | constrain: '800', '120' }}" alt="{{ store.name }}">
+          <img src="{{ theme.header_logo.url | constrain: '400', '120' }}" alt="{{ store.name }}">
         {% else %}
           {{ store.name }}
         {% endif %}
@@ -38,44 +38,10 @@
         </li>
       {% endif %}
       <li class="open_cart">
-        <button type="button" title="View bag" class="open_cart_btn">
+        <a href="/cart" title="View bag">
           <svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg>
           <span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span>
-        </button>
-        {% if page.permalink != 'cart' %}
-          <div class="mini_cart{% if cart.item_count == 0 %} empty{% endif %}" aria-hidden="true">
-            <div class="triangle"></div>
-            <div class="cart_holder" tabindex="0">
-              {% if cart.items != blank %}
-                <div class="item_holder">
-                  {% for item in cart.items %}
-                    <a class="cart_item" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}">
-                      <img class="item_image" loading="lazy" src="{{ item.product.image | product_image_url | constrain: 180, 180 }}" alt="">
-                      <div class="item_info">
-                        <div class="item_product_name">{{ item.product.name }}</div>
-                        {% unless item.product.has_default_option %}
-                          <div class="item_option">{{ item.option.name }}</div>
-                        {% endunless %}
-                        <div class="item_price">{{ item.unit_price | money: theme.money_format }}</div>
-                      </div>
-                    </a>
-                  {% endfor %}
-                </div>
-                <div class="cart_footer">
-                  <div class="item_subtotal">
-                    Subtotal <span>{{ cart.total | money: theme.money_format }}</span>
-                  </div>
-                  <a class="button view_bag" href="/cart">View your bag</a>
-                </div>
-              {% else %}
-                <div>
-                  Your bag is empty
-                </div>
-                <a class="button view_bag" href="/products">Start shopping</a>
-              {% endif %}
-            </div>
-          </div>
-        {% endif %}
+        </a>
       </li>
       <li class="open_menu">
         <button type="button" title="Open navigation menu" class="open_menu_btn"><span></span><span></span><span></span><span></span></button>
@@ -83,12 +49,25 @@
     </ul>
   </header>
   {% if page.permalink == 'home' %}
-    {% if theme.images.welcome_image or theme.welcome_text != blank %}
+    {% if theme.images.welcome_image or theme.welcome_text != blank or theme.welcome_button_text != blank %}
       <div class="welcome_image">
+        {% if theme.images.welcome_image %}
+          <img
+            alt="Welcome image"
+            class="welcome-image-bg lazyload"
+            fetchpriority="high"
+            src="{{ theme.images.welcome_image.url | constrain: 600 }}"
+            data-srcset="
+              {{ theme.images.welcome_image.url | constrain: 1000 }} 1000w,
+              {{ theme.images.welcome_image.url | constrain: 1500 }} 1500w,
+            "
+            data-sizes="auto"
+          >
+        {% endif %}
         <div class="welcome_overlay"></div>
           <div class="welcome_text">
             {% if theme.welcome_text != blank %}<h1>{{ theme.welcome_text }}</h1>{% endif %}
-            <a href="/products" class="welcome_button">Start shopping</a>
+            {% if theme.welcome_button_text != blank %}<a href="/products" class="welcome_button">{{ theme.welcome_button_text }}</a>{% endif %}
           </div>
       </div>
     {% endif %}
@@ -123,14 +102,14 @@
         </ul>
       {% endif %}
       <ul class="footer_pages">
-        <li><a href="/products">Shop</a></li>
+        <li><a href="/products">{{ pages.products.name }}</a></li>
         {% for page in pages.all %}
           <li>{{ page | link_to }}</li>
         {% endfor %}
         {% if store.website != blank %}
           <li><a href="{{ store.website }}">Back to site</a></li>
         {% endif %}
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/contact">{{ pages.contact.name }}</a></li>
       </ul>
     </nav>
     <div class="footer_credit">
@@ -141,15 +120,15 @@
     <div class="overlay_background"></div>
     <div class="overlay_content">
       <button type="button" class="close_overlay" title="Close navigation">
-        <svg aria-hidden="true" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
+        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
       </button>
       <nav class="primary_navigation" aria-label="Primary navigation">
         <ul class="page_list">
-          <li><a href="/products">Shop</a></li>
+          <li><a href="/products">{{ pages.products.name }}</a></li>
           {% for page in pages.all %}
             <li>{{ page | link_to }}</li>
           {% endfor %}
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/contact">{{ pages.contact.name }}</a></li>
         </ul>
       </nav>
     </div>
@@ -160,7 +139,7 @@
         <div class="modal-content--inner">
           <div class="wrapper">
             <button class="close-modal" aria-label="Close search dialog" data-dismiss="modal" type="button">
-              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="218.92 -741.08 522.15 522.15"><path d="m250.923-218.924-31.999-31.999L448.001-480 218.924-709.077l31.999-31.999L480-511.999l229.077-229.077 31.999 31.999L511.999-480l229.077 229.077-31.999 31.999L480-448.001 250.923-218.924Z"></path></svg>
+              <svg aria-hidden="true" fill="currentColor" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
             </button>
             <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
               <input type="hidden" name="utf8" value='✓'>
@@ -175,10 +154,6 @@
       </div>
     </div>
   {% endif %}
-  <a class="footer_cart" href="/cart" title="View cart">
-    <div class="background"></div>
-    <span class="open_cart"><svg aria-hidden="true" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg><span class="cart_count"><span class="cart_value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span></span>
-  </a>
   <script>
     const themeOptions = {
       hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %},

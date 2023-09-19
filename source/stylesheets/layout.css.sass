@@ -20,7 +20,8 @@
   --error-text-color: #{'{{ theme.error_text_color }}'}
 
   --footer-background-color: #{'{{ theme.footer_background_color }}'}
-
+  --announcement-background-color: #{"{{ theme.announcement_background_color }}"}
+  --announcement-text-color: #{"{{ theme.announcement_text_color }}"}
   --border-radius: 0
   --header-height: 96px
 
@@ -83,10 +84,6 @@ body
   &.loading *
     transition: none !important
 
-  &#cart
-    .footer_cart
-      display: none
-
 a.skip-link
   transition: all .3s linear
   background: $background-color
@@ -115,6 +112,7 @@ header
   position: relative
   z-index: 3
   width: 100%
+  transition: background .2s linear
 
   &.fixed
     position: fixed
@@ -126,7 +124,6 @@ header
 
   &.has_welcome
     background: transparent
-    transition: background .2s linear
 
   &.background_overlay
     background: $header-background-color
@@ -152,7 +149,8 @@ header
     &.image
 
       a
-        height: 54px
+        height: 60px
+        max-width: 200px
 
         img
           +vertical-align
@@ -168,10 +166,13 @@ header
     align-items: center
     gap: 20px
 
+    @media screen and (max-width: $break-small)
+      gap: 15px
+
     li
       position: relative
 
-      button
+      > *
         color: $header-text-color
         cursor: pointer
         display: flex
@@ -179,13 +180,9 @@ header
         justify-content: center
         width: 40px
         height: 40px
-        font-size: 14px
         position: relative
         padding: 0
         transition: color .2s linear
-
-        > *
-          pointer-events: none
 
         &:hover
           color: $header-text-hover-color
@@ -207,9 +204,6 @@ header
           .cart_value
             background: $header-text-hover-color
 
-        @media screen and (max-width: $break-small)
-          display: none
-
       &.open_menu
         button
           &:hover
@@ -225,7 +219,7 @@ header
             height: 2px
             position: absolute
             opacity: 1
-            width: 24px
+            width: 28px
             transition: background .2s ease
 
             &:nth-child(1)
@@ -270,7 +264,6 @@ ul, ol
   display: inline-flex
   align-items: center
   justify-content: center
-  font-size: 18px
   height: 60px
   max-width: 360px
   padding: 0
@@ -352,42 +345,6 @@ ul, ol
     width: 13px
     z-index: 1
 
-.footer_cart
-  bottom: 0
-  display: none
-  height: 60px
-  left: 0
-  position: fixed
-  text-align: center
-  width: 100%
-  z-index: 4
-
-  @media screen and (max-width: $break-small)
-    display: block
-
-  .background
-    background: $header-background-color
-    height: 100%
-    left: 0
-    opacity: .98
-    position: absolute
-    top: 0
-    width: 100%
-
-  .open_cart
-    +vertical-align
-    display: inline-block
-    position: relative
-
-    svg
-      fill: $header-text-color
-      height: 32px
-      width: 32px
-
-    .cart_count
-      top: -4px
-      right: -13px
-
 h1, h2, h3, h4, h5, h6
   font-family: $primary-font
   font-weight: normal
@@ -456,14 +413,15 @@ main.content
       padding-top: 30px
 
     h1
-      font-size: 26px
+      font-size: 1.5em
       font-weight: normal
       margin-bottom: 0
       text-align: left
 
     h2
       color: $secondary-text-color
-      font-size: 18px
+      font-family: $secondary-font
+      font-size: 1.2em
 
   &.page-home
     display: flex
@@ -544,109 +502,6 @@ footer.footer
       fill: currentColor
       padding-top: 1px
       width: 80px
-
-.mini_cart
-  box-shadow: 0 2px 10px 0 $secondary-text-color
-  background: $background-color
-  height: 430px
-  visibility: hidden
-  opacity: 0
-  position: absolute
-  margin: 0
-  max-width: 380px
-  right: -60px
-  top: 60px
-  width: 380px
-  z-index: 4
-  transition: opacity .2s linear, visibility .2s linear
-
-  &[aria-hidden="false"]
-    opacity: 1
-    visibility: visible
-
-  @media screen and (max-width: $break-small)
-    display: none !important
-
-  .triangle
-    height: 0
-    border-style: solid
-    border-width: 2px 15px 14px 15px
-    border-color: transparent transparent $background-color transparent
-    position: absolute
-    right: 65px
-    top: -12px
-    width: 0
-
-    @media screen and (max-width: $break-medium)
-      right: 37px
-
-  .cart_holder
-
-    .item_holder
-      display: grid
-      gap: 20px
-      height: 277px
-      position: absolute
-      overflow-y: scroll
-      padding: 0 30px
-      padding-top: 30px
-
-      .cart_item
-        display: flex
-        align-items: flex-start
-        gap: 20px
-
-        .item_image
-          object-fit: cover
-          width: 90px
-          height: 90px
-
-        .item_info
-          color: $primary-text-color
-          font-family: $primary-font
-          font-size: 16px
-          display: grid
-          gap: 2px
-
-        .item_option
-          color: $secondary-text-color
-          font-family: $secondary-font
-          font-size: 14px
-
-        .item_price
-          color: $secondary-text-color
-          font-family: $secondary-font
-          font-size: 14px
-
-    .cart_footer
-      bottom: 0
-      height: 178px
-      left: 0
-      padding: 30px
-      position: absolute
-      right: 0
-
-      .item_subtotal
-        +pie-clearfix
-        font-size: 18px
-        padding: 20px 0
-
-        >span
-          float: right
-
-      .button
-        max-width: none
-        width: 100%
-
-  &.empty
-    font-size: 18px
-    height: auto
-    padding: 30px
-    text-align: center
-
-    .button
-      margin-top: 40px
-      max-width: none
 
 .visually-hidden
   border: 0

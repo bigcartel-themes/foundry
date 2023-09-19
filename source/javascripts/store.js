@@ -34,27 +34,28 @@ document.addEventListener("DOMContentLoaded", function () {
 function camelCaseToDash(string) {
   return string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
-
 window.addEventListener("load", () => {
-  resizeHomeWelcome();
   setDocHeight();
   setHeaderPosition();
+  resizeHomeWelcome();
+  animateHomeElements();
+  $(".welcome-image-bg").css("opacity", "1");
 });
 window.addEventListener("resize", () => {
   setDocHeight();
   resizeHomeWelcome();
 });
 window.addEventListener("scroll", () => {
-  animateElementsOnScroll();
+  animateHomeElements();
   setHeaderPosition();
 });
 
 function setHeaderPosition() {
-  let header_nav_height = $("header").outerHeight();
+  let header_nav_height = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
   let annMessageHeight = $(".announcement-message.visible").outerHeight() > 0 ? $(".announcement-message.visible").outerHeight() : 0;
   if ($(window).scrollTop() >= annMessageHeight) {
     $("header").addClass("fixed");
-    $("body").css("padding-top", header_nav_height + "px");
+    $("body").css("padding-top", header_nav_height);
   } else {
     $("header").removeClass("fixed");
     $("body").css("padding-top", 0);
@@ -65,7 +66,7 @@ function resizeHomeWelcome() {
   let announceDiv = document.querySelector(".announcement-message");
   let welcomeContainer = document.querySelector(".welcome_image");
   if (announceDiv && welcomeContainer) {
-    $(".welcome_image").css("height", "calc(calc((var(--vh, 1vh) * 100)) - " + announceDiv.offsetHeight + "px)");
+    $(".welcome_image").css("height", "calc(100vh - " + announceDiv.offsetHeight + "px)");
   }
 }
 
@@ -74,7 +75,7 @@ function setDocHeight() {
   document.documentElement.style.setProperty("--vh", win_height / 100 + "px");
 }
 
-function animateElementsOnScroll() {
+function animateHomeElements() {
   const featured = document.querySelector(".welcome_text");
   const content_container = document.querySelector(".content");
   const contentRec = content_container.getBoundingClientRect();
@@ -86,7 +87,7 @@ function animateElementsOnScroll() {
       featured.classList.remove("fade_out")
     }
   }
-  if (contentRec.top <= 200) {
+  if (contentRec.top <= 195) {
     $("header").addClass("background_overlay");
   } else {
     $("header").removeClass("background_overlay");
@@ -142,28 +143,11 @@ var updateCart = function(cart) {
   var item_count = cart.item_count;
   $('.cart_value').fadeIn('fast');
   $('.cart_value').html(item_count);
-  $('.mini_cart').removeClass('empty');
-  var $container = $('.cart_holder');
-  var window_width = $(window).width();
-  $container.load("/cart?" + $.now() + " .cart_holder > *", function() {
-    if (window_width > 800) {
-      if (!$('.mini_cart').hasClass('visible')) {
-        $('.mini_cart').addClass('visible')
-      }
-    }
-  });
 }
-
+$('.category_select').change(function() {
+  document.location.href = $(this).val();
+})
 $(function() {
-  if ($('.page-home').length) {
-    var home_items = $('.page-home').children().length;
-    if (home_items == 0) {
-      $('.page-home').addClass('home-empty')
-    }
-  }
-  $('.category_select').change(function() {
-    document.location.href = $(this).val();
-  })
   $('.qty').click(function() {
     var $t = $(this)
     , input = $(this).parent().find('input')
@@ -221,27 +205,6 @@ $(function() {
       return false;
     }
   })
-
-  $('.open_cart_btn').click(function(e) {
-    e.preventDefault();
-    $('.mini_cart').toggleClass('visible');
-  });
-
-});
-$(document).on('keyup',function(e) {
-  if (e.keyCode == 27) {
-    if ($(".mini_cart").hasClass('visible')) {
-      $('.mini_cart').removeClass('visible')
-    }
-  }
-});
-$(document).click(function(e) {
-  var container = $(".mini_cart");
-  if (container.hasClass('visible')) {
-    if (!$('.add-to-cart-button').is(e.target) && !$('.status_text').is(e.target) && !$('.open_cart_btn').is(e.target) && !container.is(e.target) && container.has(e.target).length === 0) {
-      $('.mini_cart').removeClass('visible')
-    }
-  }
 });
 
 $(document).ready(function() {
@@ -326,72 +289,4 @@ if (!Array.prototype.includes) {
 
 Array.prototype.count = function(filterMethod) {
   return this.reduce((count, item) => filterMethod(item)? count + 1 : count, 0);
-}
-
-$('.product_option_select').on('change',function() {
-  var option_price = $(this).find("option:selected").attr("data-price");
-  enableAddButton(option_price);
-});
-function enableAddButton(updated_price) {
-  var addButton = $('.add-to-cart-button');
-  var addButtonTextElement = addButton.find('.status_text');
-  var addButtonTitle = addButton.attr('data-add-title');
-  addButton.attr("disabled",false);
-  if (updated_price) {
-    priceTitle = ' - ' + Format.money(updated_price, true, true);
-  }
-  else {
-    priceTitle = '';
-  }
-  addButtonTextElement.html(addButtonTitle + priceTitle);
-}
-
-function disableAddButton(type) {
-  var addButton = $('.add-to-cart-button');
-  var addButtonTextElement = addButton.find('.status_text');
-  var addButtonTitle = addButton.attr('data-add-title');
-  if (type == "sold-out") {
-    var addButtonTitle = addButton.attr('data-sold-title');
-  }
-  if (!addButton.is(":disabled")) {
-    addButton.attr("disabled","disabled");
-  }
-  addButtonTextElement.html(addButtonTitle);
-}
-
-function enableSelectOption(select_option) {
-  select_option.removeAttr("disabled");
-  select_option.text(select_option.attr("data-name"));
-  select_option.removeAttr("disabled-type");
-  if ((select_option.parent().is('span'))) {
-    select_option.unwrap();
-  }
-}
-function disableSelectOption(select_option, type) {
-  if (type === "sold-out") {
-    disabled_text = select_option.parent().attr("data-sold-text");
-    disabled_type = "sold-out";
-    if (show_sold_out_product_options === 'false') {
-      hide_option = true;
-    }
-    else {
-      hide_option = false;
-    }
-  }
-  if (type === "unavailable") {
-    disabled_text = select_option.parent().attr("data-unavailable-text");
-    disabled_type = "unavailable";
-    hide_option = true;
-  }
-  if (select_option.val() > 0) {
-    var name = select_option.attr("data-name");
-    select_option.attr("disabled",true);
-    select_option.text(name + ' ' + disabled_text);
-    select_option.attr("disabled-type",disabled_type);
-    if (hide_option === true) {
-      if (!(select_option.parent().is('span'))) {
-        select_option.wrap('<span>');
-      }
-    }
-  }
 }
