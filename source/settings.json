@@ -5,7 +5,7 @@
     {
       "variable": "header_logo",
       "label": "Header logo",
-      "description": "Good for a logo up to 200 x 50 pixels"
+      "description": "Good for a logo up to 200 x 60 pixels"
     },
     {
       "variable": "welcome_image",
@@ -113,6 +113,12 @@
       "description": "Home page message for your visitors, use this with a welcome image"
     },
     {
+      "variable": "welcome_button_text",
+      "label": "Welcome button text",
+      "type": "text",
+      "description": "Displays underneath the welcome text on the Home page, links to your Products page"
+    },
+    {
       "variable": "home_tagline",
       "label": "Home page tagline",
       "type": "text",
@@ -166,7 +172,7 @@
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 24,
+      "default": 48,
       "description": "The number of products displayed per page"
     },
     {
