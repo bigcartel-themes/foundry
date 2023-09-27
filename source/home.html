@@ -4,10 +4,9 @@
   </div>
 {% endif %}
 
-
 {% if theme.featured_items_type == 'Categories' %}
   {% if categories.active != blank and theme.featured_items > 0 %}
-    <h1 class="featured_products">Featured categories</h1>
+    <h1 class="featured_products">{{ theme.featured_header }}</h1>
     <div class="product-list-container">
       {% for category in categories.active limit:theme.featured_items %}
         {% assign forloopsize = forloop.length %}
@@ -57,7 +56,7 @@
     {% if theme.featured_items > 0 %}
       {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
         {% if products != blank %}
-          <h1 class="featured_products">Featured products</h1>
+          <h1 class="featured_products">{{ theme.featured_header }}</h1>
           <div class="product-list-container">
             <div class="product-list {% if products.size < 3 %} justify-center{% endif %}">
               {% for product in products %}
