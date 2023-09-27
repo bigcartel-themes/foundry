@@ -26,11 +26,11 @@
       <label for="message">Message</label>
       {{ contact | contact_input: 'message' }}
     </div>
-    <div class="contact_recaptcha">
-      <div class="recaptcha-note">{{ contact.recaptcha }}</div>
-    </div>
     <div class="contact_send">
       <button class="button" type="submit" name="submit">Send message</button>
+    </div>
+    <div class="contact_recaptcha">
+      <div class="recaptcha-note">{{ contact.recaptcha }}</div>
     </div>
   </form>
 {% endif %}
