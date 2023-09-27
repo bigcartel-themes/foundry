@@ -64,7 +64,7 @@
     &.fade_out
       +animation(hide-welcome-text ease-in 200ms forwards)
 
-    h1
+    .welcome_text_header
       font-size: 60px
       line-height: 1.2em
       margin-bottom: 40px
@@ -76,20 +76,26 @@
       color: $header-text-color
       font-size: 24px
       padding: 10px
+      text-decoration-color: transparent
+      transition: text-decoration-color .1s linear
+      outline-offset: 4px
 
       &:hover
+        text-decoration-color: $header-text-color
         text-decoration: underline
+        text-underline-offset: 6px
+        text-decoration-thickness: 2px
 
 .home_tagline
   color: $secondary-text-color
   font-family: $secondary-font
   font-size: 1.5em
   line-height: 1.3em
-  margin: 90px auto 120px
+  margin: 0 auto 60px
   max-width: 680px
   padding: 0 20px
   text-align: center
   width: 100%
 
   @media screen and (max-width: $break-small)
-    margin: 60px auto
+    margin: 0 auto

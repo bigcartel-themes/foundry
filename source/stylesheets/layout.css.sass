@@ -251,11 +251,6 @@ a
   color: $secondary-text-color
   text-decoration: none
 
-ul, ol
-  list-style: none
-  margin: 0
-  padding: 0
-
 .button
   transition: background-color .2s linear
   background-color: $button-background-color
@@ -353,11 +348,10 @@ h1, h2, h3, h4, h5, h6
 
 h1
   font-size: 32px
-  margin-bottom: 50px
+  margin-bottom: 30px
 
   @media screen and (max-width: $break-small)
     font-size: 24px
-    margin-bottom: 30px
 
 main.content
   flex: 1
@@ -381,10 +375,6 @@ main.content
 
       &:hover
         color: $hover-color
-
-    img, iframe
-      display: block
-      max-width: 100%
 
     p
       margin: 0 auto 20px
@@ -427,7 +417,6 @@ main.content
     display: flex
     flex-direction: column
     gap: 40px
-    padding-top: 0
 
   h1
     text-align: center
