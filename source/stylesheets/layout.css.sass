@@ -378,18 +378,22 @@ main.content
         color: $hover-color
 
     p
-      margin: 0 auto 20px
+      margin: revert
+
+    &>:first-child
+      margin-top: 0
+
+    &>:last-child
+      margin-bottom: 0
 
     ol, ul
-      margin: 1em 0
+      margin: 1em
 
     ul
       list-style: disc
-      list-style-position: inside
 
     ol
       list-style: decimal
-      list-style-position: inside
 
   &.page-contact
     max-width: 500px
@@ -461,10 +465,11 @@ footer.footer
 
   .footer_pages
     display: flex
-    gap: 30px
+    column-gap: 30px
     max-width: 640px
     flex-wrap: wrap
     justify-content: center
+    row-gap: 15px
 
     a
       display: block

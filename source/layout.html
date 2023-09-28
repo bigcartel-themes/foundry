@@ -21,9 +21,9 @@
   {% endif %}
   <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
     <div class="store_name {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
-      <a href="/" title="{{ store.name | escape }}">
+      <a href="/" title="{{ store.name | escape }} Home">
         {% if theme.header_logo != blank %}
-          <img src="{{ theme.header_logo.url | constrain: '400', '120' }}" alt="{{ store.name }}">
+          <img alt="{{ store.name }} logo" class="store-image" src="{{ theme.images.header_logo.url | constrain: '', 120 }}" srcset="{{ theme.images.header_logo.url | constrain: '', 120 }} 2x, {{ theme.images.header_logo.url | constrain: '', 60 }} 1x">
         {% else %}
           {{ store.name }}
         {% endif %}

@@ -1,11 +1,11 @@
 {
   "name": "Foundry",
-  "version": "1.7.0",
+  "version": "1.7.2",
   "images": [
     {
       "variable": "header_logo",
       "label": "Header logo",
-      "description": "Good for a logo up to 200 x 60 pixels"
+      "description": "Good for a logo up to 60 pixels high"
     },
     {
       "variable": "welcome_image",
@@ -122,7 +122,7 @@
       "variable": "home_tagline",
       "label": "Home page tagline",
       "type": "text",
-      "description": "Home page tagline"
+      "description": "Home page tagline, displays above the featured header"
     },
     {
       "variable": "featured_header",
