@@ -9,7 +9,7 @@
 {% if contact.sent %}
   <p class="message_sent">Your message has been sent and we'll get back to you soon.</p>
 {% else %}
-  <form method="post" action="/contact" class="contact_form">
+  <form method="post" action="/contact" class="contact-form">
     <div class="contact_name">
       <label for="name">Name</label>
       {{ contact | contact_input: 'name' }}

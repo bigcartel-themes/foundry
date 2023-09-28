@@ -1,7 +1,8 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-  let contactFields = document.querySelectorAll(".contact_form input, .contact_form textarea");
+  document.body.classList.remove("preloader");
+  let contactFields = document.querySelectorAll(".contact-form input, .contact-form textarea");
   contactFields.forEach(function (contactField) {
     contactField.removeAttribute("tabindex");
   });
@@ -34,7 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function camelCaseToDash(string) {
   return string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
+
 window.addEventListener("load", () => {
+  document.body.classList.remove("transition-preloader");
   setDocHeight();
   setHeaderPosition();
   resizeHomeWelcome();
@@ -66,7 +69,7 @@ function resizeHomeWelcome() {
   let announceDiv = document.querySelector(".announcement-message");
   let welcomeContainer = document.querySelector(".welcome_image");
   if (announceDiv && welcomeContainer) {
-    $(".welcome_image").css("height", "calc(100vh - " + announceDiv.offsetHeight + "px)");
+    $(".welcome_image").css("height", "calc(100svh - " + announceDiv.offsetHeight + "px)");
   }
 }
 
