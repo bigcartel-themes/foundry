@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.7.2",
+  "version": "1.8.1",
   "images": [
     {
       "variable": "header_logo",
@@ -135,7 +135,7 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Displays a product search icon in the header"
     },
     {
