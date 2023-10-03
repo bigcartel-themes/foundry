@@ -425,6 +425,35 @@ main.content
   h1
     text-align: center
 
+.social_icons
+  +flexbox
+  gap: 24px 32px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    gap: 16px 24px
+
+  a
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    outline-offset: 4px
+    width: 20px
+    height: 20px
+
+    svg
+      fill: currentColor
+      height: 20px
+      width: 20px
+
+      &.tumblr-icon
+        width: 14px
+
 footer.footer
   background: $footer-background-color
   color: $primary-text-color
@@ -434,7 +463,7 @@ footer.footer
   justify-content: center
   align-items: center
   flex-direction: column
-  gap: 40px
+  gap: 50px
   min-height: 120px
   padding: 60px 20px
   text-align: center
@@ -450,18 +479,10 @@ footer.footer
   @media screen and (max-width: $break-small)
     padding-bottom: 120px
 
-  .footer_icons
+  .footer-nav
     display: flex
-    gap: 20px
-
-    a
-      display: block
-
-      svg
-        fill: currentColor
-        display: block
-        height: 32px
-        width: 32px
+    flex-direction: column
+    row-gap: 40px
 
   .footer_pages
     display: flex
