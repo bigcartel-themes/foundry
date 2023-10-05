@@ -1,18 +1,18 @@
 @import 'config'
 
 \:root
-  --thumbnail-active-color: var(--secondary-text-color)
+  --thumbnail-active-color: var(--primary-text-color)
   --thumb-scroller-color: var(--primary-text-color)
+  --thumb-scroller-border-width: 1px
+  --thumb-scroller-border-color: var(--border-color)
   --thumb-scroller-background: var(--background-color)
-  --thumb-scroller-background-hover: var(--background-color-80)
+  --thumb-scroller-background-hover: transparent
   --current-slide-background: var(--background-color)
   --current-slide-color: var(--primary-text-color)
-
-  --arrow-background-color: var(--background-color)
-  --arrow-color: var(--primary-text-color)
-
   --active-slide-border-width: 2px
   --active-slide-border-width-offset: #{-2px}
+  --arrow-background-color: var(--background-color)
+  --arrow-color: var(--primary-text-color)
   --gap-width: 16px
   --num-images: 5
 
@@ -164,18 +164,16 @@
   margin-top: var(--gap-width)
   width: 100%
 
-  @media screen and (max-width: $break-small)
-    padding: 0 10px
-
   .thumb-scroller
     display: none
     align-items: center
     justify-content: center
     width: 32px
-    height: 56px
+    height: 48px
     color: var(--thumb-scroller-color)
     background: var(--thumb-scroller-background)
     border-radius: var(--border-radius)
+    border: var(--thumb-scroller-border-width) solid var(--thumb-scroller-border-color)
 
     @media screen and (max-width: $break-small)
       height: 44px
@@ -242,7 +240,7 @@
             display: block
             padding-bottom: 100%
 
-          a
+          .zoom-image-container
             position: absolute
             top: 0
             left: 0
@@ -337,7 +335,7 @@
   right: 10px
   bottom: 10px
   font-size: .8em
-  z-index: 1
+  z-index: 10
   background: var(--current-slide-background)
   color: var(--current-slide-color)
   padding: 6px 8px

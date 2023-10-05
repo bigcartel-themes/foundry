@@ -107,7 +107,7 @@
           {% endif %}
 
           {% if theme.facebook_url != blank %}
-            <li><a href="{{ theme.facebook_url }}" title="Facebook"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="5 5 19.91 20"><path d="M23.9 5H6.1C5.5 5 5 5.5 5 6.1v17.7c0 .7.5 1.2 1.1 1.2h9.5v-7.7H13v-3h2.6V12c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.2 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V25h5.1c.6 0 1.1-.5 1.1-1.1V6.1c.1-.6-.4-1.1-1-1.1z"></path></svg></a></li>
+            <li><a href="{{ theme.facebook_url }}" title="Facebook"><svg class="facebook-icon" height="36" width="36" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="5 5 19.91 20"><path d="M23.9 5H6.1C5.5 5 5 5.5 5 6.1v17.7c0 .7.5 1.2 1.1 1.2h9.5v-7.7H13v-3h2.6V12c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.2 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V25h5.1c.6 0 1.1-.5 1.1-1.1V6.1c.1-.6-.4-1.1-1-1.1z"></path></svg></a></li>
           {% endif %}
 
           {% if theme.pinterest_url != blank %}
@@ -182,9 +182,10 @@
   {% endif %}
   <script>
     const themeOptions = {
+      showSoldOutOptions: {{ theme.show_sold_out_product_options }},
       desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
       mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
-      productImageZoom: '{{ theme.product_image_zoom }}',
+      productImageZoom: {{ theme.product_image_zoom }},
     }
     const themeColors = {
       textColor: '{{ theme.text_color }}',
@@ -233,7 +234,6 @@
   {% if page.full_url contains '/product/' %}
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script>
-      var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
       Product.find('{{ product.permalink }}', processProduct)
     </script>
   {% endif %}

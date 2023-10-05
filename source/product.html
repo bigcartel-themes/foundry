@@ -167,9 +167,7 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to bag" data-added-text="Added!" data-adding-text="Adding..." data-add-title="Add to bag" data-sold-title="Sold out">
-          <span class="status_text">Add to bag</span>
-        </button>
+        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to bag" data-sold-title="Sold out">Add to bag</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">

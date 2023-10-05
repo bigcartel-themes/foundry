@@ -1,4 +1,4 @@
-if (themeOptions.productImageZoom === 'true') {
+if (themeOptions.productImageZoom === true) {
   let carouselImages = document.querySelector('.splide__list');
   let galleryElement = '.product-images';
   let galleryChildren = '.gallery-link';
@@ -34,7 +34,6 @@ $('.product_option_select').on('change',function() {
 });
 function enableAddButton(updated_price) {
   var addButton = $('.add-to-cart-button');
-  var addButtonTextElement = addButton.find('.status_text');
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
   if (updated_price) {
@@ -43,12 +42,12 @@ function enableAddButton(updated_price) {
   else {
     priceTitle = '';
   }
-  addButtonTextElement.html(addButtonTitle + priceTitle);
+  addButton.html(addButtonTitle + priceTitle);
+  addButton.attr('aria-label',addButton.text());
 }
 
 function disableAddButton(type) {
   var addButton = $('.add-to-cart-button');
-  var addButtonTextElement = addButton.find('.status_text');
   var addButtonTitle = addButton.attr('data-add-title');
   if (type == "sold-out") {
     var addButtonTitle = addButton.attr('data-sold-title');
@@ -56,7 +55,8 @@ function disableAddButton(type) {
   if (!addButton.is(":disabled")) {
     addButton.attr("disabled","disabled");
   }
-  addButtonTextElement.html(addButtonTitle);
+  addButton.html(addButtonTitle);
+  addButton.attr('aria-label','');
 }
 
 function enableSelectOption(select_option) {
@@ -71,7 +71,7 @@ function disableSelectOption(select_option, type) {
   if (type === "sold-out") {
     disabled_text = select_option.parent().attr("data-sold-text");
     disabled_type = "sold-out";
-    if (show_sold_out_product_options === 'false') {
+    if (themeOptions.showSoldOutOptions === false) {
       hide_option = true;
     }
     else {
