@@ -1,16 +1,6 @@
 /*
 *= require_directory ./stylesheets/vendor
- *= require stylesheets/layout
- *= require stylesheets/home
- *= require stylesheets/products
- *= require stylesheets/product
- *= require stylesheets/cart
- *= require stylesheets/contact
- *= require stylesheets/maintenance
- *= require stylesheets/announcement
- *= require stylesheets/search
- *= require stylesheets/product-carousel
- *= require stylesheets/overlay
+ *= require stylesheets/all
 */
 
 /*============================================================

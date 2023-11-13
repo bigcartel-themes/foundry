@@ -1,5 +1,3 @@
-@import 'config'
-
 \:root
   --thumbnail-active-color: var(--primary-text-color)
   --thumb-scroller-color: var(--primary-text-color)
@@ -13,8 +11,11 @@
   --active-slide-border-width-offset: #{-2px}
   --arrow-background-color: var(--background-color)
   --arrow-color: var(--primary-text-color)
-  --gap-width: 16px
+  --gap-width: 10px
   --num-images: 5
+
+  @media screen and (max-width: $break-small)
+    --gap-width: 12px
 
 .product-carousel
   .splide__list
@@ -24,6 +25,7 @@
     transition: height .2s ease
 
     img
+      border-radius: var(--border-radius)
       display: block
       width: 100%
       height: auto
