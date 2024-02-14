@@ -47,21 +47,6 @@
       "default": "#BBBBBB"
     },
     {
-      "variable": "button_background_color",
-      "label": "Button background",
-      "default": "#222222"
-    },
-    {
-      "variable": "button_text_color",
-      "label": "Button text",
-      "default": "#FFFFFF"
-    },
-    {
-      "variable": "button_background_hover_color",
-      "label": "Button background hover",
-      "default": "#116e56"
-    },
-    {
       "variable": "primary_text_color",
       "label": "Primary text",
       "default": "#222222"
@@ -74,6 +59,21 @@
     {
       "variable": "link_hover_color",
       "label": "Link hover",
+      "default": "#116e56"
+    },
+    {
+      "variable": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "button_background_color",
+      "label": "Button background",
+      "default": "#222222"
+    },
+    {
+      "variable": "button_background_hover_color",
+      "label": "Button background hover",
       "default": "#116e56"
     },
     {
@@ -146,33 +146,111 @@
       "description": "Shows sold out product options in the Product page dropdowns",
       "requires": "inventory"
     },
-    {
-      "variable": "featured_items_type",
-      "label": "Featured items type",
-      "type": "select",
-      "options": ["Categories", "Products"],
-      "default": "Products",
-      "description": "Displays featured products or categories on the Home page"
+{
+      "variable": "featured_header",
+      "label": "Featured products header",
+      "type": "text",
+      "description": "Displays above featured products on the Home page",
+      "default": "Featured Products"
     },
     {
-      "variable": "featured_items",
-      "label": "Featured items",
+      "variable": "featured_products",
+      "label": "Featured products",
       "type": "select",
       "options": "0..100",
       "default": 12,
-      "description": "The number of items featured on the Home page"
+      "description": "The number of products displayed on the Home page"
+    },
+    {
+      "variable": "featured_order",
+      "label": "Featured products order",
+      "type": "select",
+      "options": [
+        ["Regular", "regular"],
+        ["Top Selling", "sales"],
+        ["Newest", "newest"]
+      ],
+      "default": "regular",
+      "description": "The order of products on the Home page"
+    },
+    {
+      "variable": "all_products_button_text",
+      "label": "All products button text",
+      "type": "text",
+      "description": "Displays underneath featured products and links to your Product Page",
+      "default": "All Products"
+    },
+    {
+      "variable": "show_home_page_categories",
+      "label": "Display categories on Home page",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays categories as a grid on the Home page"
+    },
+    {
+      "variable": "home_page_categories_header",
+      "label": "Categories header",
+      "type": "text",
+      "description": "Displays above categories on the Home page",
+      "default": "Categories"
+    },
+    {
+      "variable": "category_image_style",
+      "label": "Category image style",
+      "type": "select",
+      "options": [
+        ["Over image", "hover"],
+        ["Under image", "under_image"]
+      ],
+      "default": "under_image",
+      "description": "Shows a category’s name over the image with an overlay, or under the image"
+    },
+    {
+      "variable": "max_categories_per_row",
+      "label": "Maximum categories per row",
+      "type": "select",
+      "options": "1..4",
+      "default": 3,
+      "description": "The maximum number of Home page categories displayed per row"
     },
     {
       "variable": "grid_image_style",
       "label": "Product grid image style",
       "type": "select",
       "options": [
-        ["Default", "default"],
-        ["Crop to square", "cover"],
-        ["Fit to square", "contain"]
+        ["Normal", "default"],
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
       ],
       "default": "cover",
       "description": "Sets the display of images in the product grid"
+    },
+    {
+      "variable": "product_grid_info",
+      "label": "Product grid info",
+      "type": "select",
+      "options": [
+        ["Show on hover", "hover"],
+        ["Under image", "under_image"]
+      ],
+      "default": "under_image",
+      "description": "Shows a product's name & price on hover, or under the image"
+    },
+    {
+      "variable": "max_products_per_row",
+      "label": "Maximum products per row",
+      "type": "select",
+      "options": "1..4",
+      "default": 3,
+      "description": "The maximum number of products displayed per row on larger screens"
+    },
+    {
+      "variable": "max_products_per_row_mobile",
+      "label": "Maximum products per row (mobile)",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The number of products displayed per row on smaller screens"
     },
     {
       "variable": "products_per_page",
@@ -180,7 +258,22 @@
       "type": "select",
       "options": "1..100",
       "default": 48,
-      "description": "The number of products displayed per page"
+      "description": "The number of products shown at a time on the Products page"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows the product search area"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
     },
     {
       "variable": "product_image_zoom",
@@ -199,7 +292,7 @@
         ["Stacked 2 column", "two-column"],
         ["Stacked full width", "stacked"]
       ],
-      "default": "thumbnails",
+      "default": "carousel",
       "description": "Sets the display of the Product page gallery"
     },
     {
@@ -214,6 +307,13 @@
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
+      "variable": "show_related_products",
+      "label": "Show related products",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays related products on the Product page"
+    },
+    {
       "variable": "money_format",
       "label": "Price display",
       "type": "select",
@@ -223,6 +323,19 @@
       ],
       "default": "sign",
       "description": "Sets the display of prices in your shop"
+    },
+    {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
     },
     {
       "variable": "instagram_url",
