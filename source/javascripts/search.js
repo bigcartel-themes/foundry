@@ -1,6 +1,6 @@
 // Search
 const searchModal = document.getElementById('search-modal');
-const searchBtn = document.querySelector('.open_search_btn');
+const searchBtn = document.querySelector('.open-search');
 const closeSearchBtn = document.querySelector('.close-modal');
 const inputField = document.querySelector('#search-modal input[type="search"]');
 const focusableSearchElements = searchModal?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
