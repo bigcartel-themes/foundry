@@ -17,8 +17,8 @@
     +transform(translate3d(0, 10%, 0))
 
 .welcome_image
-  background: $header-background-color
-  color: $header-text-color
+  background: var(--header-background-color)
+  color: var(--header-text-color)
   height: 100vh
   height: 100svh
   left: 0
@@ -42,7 +42,7 @@
     opacity: 0
 
   .welcome_overlay
-    background: $header-background-color
+    background: var(--header-background-color)
     bottom: 0
     height: 100%
     left: 0
@@ -71,7 +71,7 @@
         font-size: 9vw
 
     .welcome_button
-      color: $header-text-color
+      color: var(--header-text-color)
       font-size: 24px
       padding: 10px
       text-decoration-color: transparent
@@ -79,7 +79,7 @@
       outline-offset: 4px
 
       &:hover
-        text-decoration-color: $header-text-color
+        text-decoration-color: var(--header-text-color)
         text-decoration: underline
         text-underline-offset: 6px
         text-decoration-thickness: 2px
@@ -88,8 +88,8 @@
   margin-top: calc(var(--header-height) * -1)
 
 .home_tagline
-  color: $secondary-text-color
-  font-family: $secondary-font
+  color: var(--secondary-text-color)
+  font-family: var(--secondary-font)
   font-size: 1.25em
   margin: 0 auto 60px
   max-width: 680px
@@ -99,3 +99,20 @@
 
   @media screen and (max-width: $break-small)
     margin: 0 30px
+
+.home-featured-products
+  margin-bottom: var(--margin-size)
+
+a.all-products-button
+  margin-top: 48px
+
+.featured-categories
+
+  h2
+    text-align: center
+    margin-bottom: 48px
+    font-weight: 600
+    font-size: 2rem
+
+.category-list
+  --columns: #{"{{ theme.max_categories_per_row }}"}

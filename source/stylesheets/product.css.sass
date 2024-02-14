@@ -1,41 +1,8 @@
-.previous_next
-  display: flex
-  font-size: 14px
-  margin-bottom: 60px
-
-  @media screen and (max-width: $break-small)
-    margin-bottom: 30px
-    padding-left: 20px
-    padding-right: 20px
-
-  .previous_product
-
-    svg
-      rotate: 90deg
-
-  .next_product
-    margin-left: auto
-
-    svg
-      rotate: -90deg
+.product-breadcrumb
+  margin-bottom: 24px
 
   a
-    display: flex
-    align-items: center
-    position: relative
-    padding: 4px 0
-    gap: 6px
-    outline-offset: 4px
-
-    &:hover
-      color: $hover-color
-      text-decoration: underline
-
-    svg
-      display: block
-      fill: currentColor
-      height: 12px
-      width: 12px
+    text-decoration: underline
 
 .product_columns
   display: grid
@@ -60,14 +27,13 @@ button.reset-selection-button
   margin-top: 10px
 
 .product_detail
-  overflow: hidden
 
   @media screen and (max-width: $break-small)
     padding-left: 20px
     padding-right: 20px
 
   .product_description
-    color: $primary-text-color
+    color: var(--primary-text-color)
     margin-top: 40px
 
     p
@@ -89,11 +55,11 @@ button.reset-selection-button
       list-style: decimal
 
     a[href]
-      color: $secondary-text-color
+      color: var(--secondary-text-color)
       text-decoration: underline
 
       &:hover
-        color: $hover-color
+        color: var(--hover-color)
 
   .product-form
     margin-top: 40px

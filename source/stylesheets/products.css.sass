@@ -19,7 +19,7 @@
         padding: 10px
 
         &:hover
-          color: $hover-color
+          color: var(--hover-color)
           text-decoration: underline
 
     @media screen and (max-width: $break-small)
@@ -32,95 +32,56 @@
     @media screen and (max-width: $break-small)
       display: block
 
-.product-list-container
-  position: relative
-
 .product-list
-  +flexbox
-  +flex-wrap(wrap)
-  +justify-content(flex-start)
-  margin: 10px -10px
-  padding: 0
+  --gap: calc(var(--spacing-unit) * 3)
+  --row-gap: 32px
+  --columns: #{"{{ theme.max_products_per_row }}"}
+  --spacing-unit: 8px
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  margin: var(--spacing-unit) 0 0
+  gap: var(--gap)
+  row-gap: var(--row-gap)
+  margin-top: 36px
 
-  &.justify-center
-    +justify-content(center)
+  &--center
+    justify-content: center
 
-.prod-thumb
-  +flex-basis(calc(100% / 3))
-  color: $primary-text-color
-  display: block
-  font-size: 0
-  padding: $base-padding
-  padding-bottom: $base-padding * 2
+  @media screen and (max-width: $break-small)
+    --columns: #{"{{ theme.max_products_per_row_mobile }}"}
+    --gap: calc(var(--spacing-unit) * 2)
+
+.product-list-thumb
   position: relative
   text-decoration: none
-  vertical-align: middle
-  width: calc(100% / 3)
+  width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)))
 
-  @media (hover: hover)
-    &:hover
-      color: $hover-color
+a.product-list-link
+  text-decoration: none
+  outline-offset: 4px
+  position: relative
 
-      .prod-thumb-name
-        text-decoration: underline
-
-      .product-list-image
-        transform: translate3d(0, 0, 0) scale(1.04)
-
-  &.sold img
-    opacity: .6
-
-  &.product-image-small
-    +flex-basis(calc(100% / 4))
-    width: calc(100% / 4)
-
-    @media screen and (max-width: $break-medium)
-      +flex-basis(calc(100% / 3))
-      width: calc(100% / 3)
-
-    @media screen and (max-width: $break-small)
-      +flex-basis(calc(100% / 2))
-      width: calc(100% / 2)
-
-  &.product-image-medium
-    +flex-basis(calc(100% / 3))
-    width: calc(100% / 3)
-
-    @media screen and (max-width: $break-medium)
-      +flex-basis(calc(100% / 2))
-      width: calc(100% / 2)
-
-  &.product-image-large
-    +flex-basis(calc(100% / 2))
-    width: calc(100% / 2)
-
-.prod-thumb-container
+.product-list-image-container
+  margin: 0
+  overflow: hidden
+  padding-bottom: 100%
   position: relative
   width: 100%
 
-.product-list-image-container
-  overflow: hidden
-  position: relative
-
-  &.product-list-image-container-default:before
-    display: none
-
-  &:before
-    display: block
-    width: 100%
-    content: ""
-    padding-bottom: 100%
-    height: 0
+  &-default
+    padding-bottom: 0
 
 .product-list-image
+  border-radius: var(--border-radius)
   transform: translate3d(0, 0, 0)
   position: absolute
-  display: block
   top: 0
   left: 0
   width: 100%
   height: 100%
-  transition: transform .3s ease-in-out
+  transition: transform 0.3s ease-in-out
+  z-index: 1
 
   &.grid-default
     position: relative
@@ -131,133 +92,87 @@
   &.grid-contain
     object-fit: contain
 
-.prod-thumb-info
-  +flexbox
-  +justify-content(flex-start)
-  +flex-direction(column)
-  line-height: 1.25em
-  font-size: 18px
-  padding: $base-padding 0
-  position: relative
-  text-align: center
-  width: 100%
-  z-index: 1
-
-.prod-thumb-name
-  margin-top: $base-padding * 2
-  position: relative
-  overflow-wrap: break-word
-
-.prod-thumb-price
-  font-size: .875em
-  font-weight: normal
-  margin-top: $base-padding / 2
-  opacity: .9
-
-.prod-thumb-status
-  font-size: .725em
+.product-list-thumb-status
+  background: var(--product-status-background-color)
+  border-radius: var(--border-radius-sm)
+  color: var(--product-status-text-color)
+  top: 16px
+  right: 16px
+  font-size: .925rem
   line-height: 1em
+  letter-spacing: 1.12px
+  font-weight: 500
   position: absolute
-  text-align: center
   text-transform: uppercase
-  top: $base-padding
-  width: 100%
-  opacity: .9
+  padding: 6px
+  z-index: 2
 
-.no_products
+.product-list-thumb-info
+  line-height: normal
+  padding: 16px 0 0
+  position: relative
   text-align: center
+  display: grid
+  gap: 8px
+
+  .product-list-thumb-status
+    display: none
+
+.product-list-thumb-name
+  word-break: break-word
+  font-size: 1rem
+
+.product-list-thumb-price
+  font-size: 1rem
+  font-weight: 700
 
 .pagination
-  display: grid
-  font-size: 1rem
-  padding: 32px 0
-  justify-content: center
-  margin-top: 32px
-
-  @media screen and (max-width: $break-small)
-    margin-top: 8px
-
-.page-arrows
   display: flex
-  border-radius: var(--border-radius)
-  height: 46px
+  align-items: center
+  justify-content: center
+  color: var(--text-color)
+  position: relative
+  text-align: center
+  width: 100%
+  gap: 24px
+  line-height: 2em
+  margin-top: var(--margin-size)
+
+  .page-link
+    display: flex
+    align-items: center
+    gap: 12px
+    padding: 0 8px
+
+    &.disabled
+      display: none
+
+    svg
+      width: 10px
+      height: 16px
 
   .previous, .next
     display: none
 
-.page-link
-  display: flex
-  align-items: center
-  justify-content: center
-  gap: 8px
-  min-width: 100px
-  padding: 0 12px
-
-  @media screen and (max-width: $break-small)
-    min-width: 44px
-
-    span
-      display: none
-
-  svg
-    width: 12px
-
-  &--previous
-
-    svg
-      transform: rotate(90deg)
-
-  &--next
-
-    svg
-      transform: rotate(-90deg)
-
-  &.disabled
-    opacity: .5
-
-  &:not(.disabled)
-    &:hover, &:focus
-      text-decoration: underline
-
 .page-numbers
   display: flex
-  align-items: center
-  justify-content: center
-  gap: 12px
+  gap: 24px
 
-  span, a
-    display: flex
-    cursor: pointer
-    align-items: center
-    justify-content: center
-    height: 100%
-    min-width: 44px
-    text-align: center
+  .current
+    text-decoration: underline
 
-    @media screen and (max-width: $break-small)
-      min-width: 40px
+  > a, span
+    padding: 0 8px
+    text-underline-offset: 2px
 
-    &.gap
-      opacity: .5
-      padding: 8px
-      min-width: 0
+.pagination-arrow
+  display: block
+  fill: currentColor
+  height: 17px
+  width: 17px
 
-    &.current
-      font-weight: bold
-      background: var(--button-background-color)
-      color: var(--button-text-color)
+  &.prev-arrow
+    margin-right: auto
 
-    &:not(.current):not(.gap)
-      &:hover, &:focus
-        background: var(--button-background-color)
-        color: var(--button-text-color)
-
-.start_shopping_message
-  text-align: center
-
-  p
-    margin: 80px 40px
-
-  @media screen and (max-width: $break-small)
-    .button
-      max-width: 100%
+  &.next-arrow
+    margin-left: auto
