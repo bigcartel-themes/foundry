@@ -30,6 +30,8 @@
   --border-radius: #{'{{ theme.border_radius }}'}
   --header-height: 90px
 
+  --margin-size: 64px
+
 *, *::before, *::after
   box-sizing: border-box
 
@@ -520,7 +522,15 @@ footer.footer
       padding-top: 1px
       width: 80px
 
-.visually-hidden
+.blur-up
+  transition: filter .2s ease
+  filter: blur(2px)
+  transform: translate3d(0, 0, 0)
+
+  &.lazyloaded
+    filter: blur(0)
+
+.sr-only
   border: 0
   clip: rect(0 0 0 0)
   height: 1px
@@ -529,11 +539,3 @@ footer.footer
   padding: 0
   position: absolute
   width: 1px
-
-.blur-up
-  transition: filter .2s ease
-  filter: blur(2px)
-  transform: translate3d(0, 0, 0)
-
-  &.lazyloaded
-    filter: blur(0)

@@ -1,12 +1,7 @@
-{% if product.previous_product or product.next_product %}
-  <ul class="previous_next">
-    {% if product.previous_product %}
-      <li class="previous_product"><a href="{{ product.previous_product.url }}" title="View Previous Product"><svg aria-hidden="true" viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg> <span>Previous</span></a></li>
-    {% endif %}
-    {% if product.next_product %}
-      <li class="next_product"><a href="{{ product.next_product.url }}" title="View Next Product"><span>Next</span> <svg aria-hidden="true" viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg></a></li>
-    {% endif %}
-  </ul>
+{% if product.categories != blank %}
+  <div class="product-breadcrumb">
+    <a href="/products">{{ pages.products.name }}</a> / {{ product.categories.first | link_to }}
+  </div>
 {% endif %}
 <div class="product_columns">
   <div class="product_images">
@@ -167,7 +162,7 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to bag" data-sold-title="Sold out">Add to bag</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">

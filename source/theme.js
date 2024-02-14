@@ -1,7 +1,9 @@
 //= require_directory ./javascripts/vendor
+//= require javascripts/functions
+//= require javascripts/cart
 //= require javascripts/store
 //= require javascripts/product-option-groups
-//= require javascripts/search
-//= require javascripts/product
 //= require javascripts/product-carousel
+//= require javascripts/product
+//= require javascripts/search
 //= require javascripts/overlay

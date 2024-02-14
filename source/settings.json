@@ -107,6 +107,12 @@
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
+      "variable": "cart_text",
+      "label": "Cart page text",
+      "type": "text",
+      "description": "Displays a message within your cart page"
+    },
+    {
       "variable": "welcome_text",
       "label": "Welcome text",
       "type": "text",
