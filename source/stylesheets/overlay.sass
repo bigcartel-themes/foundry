@@ -1,5 +1,5 @@
 #navigation-modal
-  +transition(opacity 0.2s, visibility 0s 0.2s)
+  transition: opacity 0.2s, visibility 0s 0.2s
   height: 100%
   left: 0
   opacity: 0
@@ -10,72 +10,56 @@
   width: 100%
   z-index: 1000
   overscroll-behavior: contain
+  background: var(--header-background-color)
 
   &[aria-hidden="false"]
-    +transition(opacity 0.2s)
+    transition: opacity 0.2s
     opacity: 1
     visibility: visible
 
-  .overlay_background
-    background: var(--header-background-color)
-    bottom: 0
-    left: 0
-    opacity: 1
-    position: absolute
-    right: 0
-    top: 0
-
-  .overlay_content
+  .overlay-content
     height: 100%
     overflow-y: scroll
-    padding: 90px 0
+    padding: 0 0 90px
 
-  .close_overlay
+  .navigation-modal-header
+    height: var(--header-height)
+    padding: 20px
+    display: flex
+    align-items: center
+    justify-content: flex-end
+
+  .close-navigation
     cursor: pointer
     color: var(--header-text-color)
     height: 40px
     display: flex
     align-items: center
     justify-content: center
-    padding: 8px
-    position: absolute
-    right: 40px
-    top: 26px
+    padding: 0px
     width: 40px
 
     &:hover
-      color: var(--header-text-hover-color)
+      opacity: .85
 
     svg
-      display: block
-      height: 20px
-      width: 20px
       fill: currentColor
 
-    @media screen and (max-width: $break-small)
-      right: 20px
+  .navigation-modal-content
+    padding: 0 16px
 
-  .page_list
-    margin: 0 auto
-    position: relative
+  .overlay-page-list
+    text-align: left
+    font-size: 1.25rem
     display: flex
-    align-items: center
     flex-direction: column
+    align-items: center
+    gap: 24px
+    margin: 16px 0 32px
 
-    li
-      display: block
-      margin: 8px 0
-      max-width: 80%
+    a
+      color: var(--header-text-color)
 
-      a
-        color: var(--header-text-color)
-        display: inline-block
-        font-size: 26px
-        padding: 8px
-
-        &:hover
-          color: var(--header-text-hover-color)
-          text-decoration: underline
-
-        @media screen and (max-width: $break-small)
-          font-size: 20px
+      &:hover
+        text-decoration: underline
+        opacity: .85

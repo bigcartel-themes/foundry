@@ -4,45 +4,40 @@ $break-medium: 800px
 $break-small: 668px
 $break-extra-small: 500px
 
-@mixin vertical-align
-  +transform(translateY(-50%))
-  position: relative
-  top: 50%
-
-@mixin transition($transition...)
-  -webkit-transition: #{$transition}
-  transition: #{$transition}
-
-@mixin transform($str...)
-  -webkit-transform: $str
-  transform: $str
-
-@mixin transform-origin($str...)
-  -webkit-transform-origin: $str
-  transform-origin: $str
-
 @mixin appearance($str...)
   -webkit-appearance: none
+  -moz-appearance: none
   appearance: none
 
-@mixin keyframes($animation...)
-  @-webkit-keyframes #{$animation}
-    @content
+*, *::before, *::after
+  box-sizing: border-box
 
-  @keyframes #{$animation}
-    @content
+*
+  margin: 0
+  padding: 0
+  border: 0
 
-@mixin animation($str...)
-  -webkit-animation: $str
-  animation: $str
+body
+  line-height: 1.5
+  -webkit-font-smoothing: antialiased
 
-@mixin pie-clearfix
-  zoom: 1
+img, picture, video, canvas, svg, iframe, embed, audio
+  display: block
+  max-width: 100%
 
-  &:after
-    display: block
-    visibility: hidden
-    height: 0
-    clear: both
-    content: "."
+input, button, textarea, select
+  +appearance(none)
+  border: 0
+  border-radius: var(--border-radius)
+  background: none
+  color: inherit
+  font: inherit
 
+button
+  cursor: pointer
+
+p, h1, h2, h3, h4, h5, h6
+  overflow-wrap: break-word
+
+ol, ul
+  list-style: none

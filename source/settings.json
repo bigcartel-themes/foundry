@@ -34,7 +34,7 @@
     {
       "variable": "header_background_color",
       "label": "Header background",
-      "default": "#222222"
+      "default": "#111111"
     },
     {
       "variable": "header_text_color",
@@ -42,14 +42,9 @@
       "default": "#FFFFFF"
     },
     {
-      "variable": "header_text_hover_color",
-      "label": "Header text hover",
-      "default": "#BBBBBB"
-    },
-    {
       "variable": "primary_text_color",
       "label": "Primary text",
-      "default": "#222222"
+      "default": "#111111"
     },
     {
       "variable": "secondary_text_color",
@@ -69,27 +64,32 @@
     {
       "variable": "button_background_color",
       "label": "Button background",
-      "default": "#222222"
+      "default": "#111111"
     },
     {
-      "variable": "button_background_hover_color",
+      "variable": "button_hover_background_color",
       "label": "Button background hover",
       "default": "#116e56"
     },
     {
       "variable": "footer_background_color",
       "label": "Footer background",
-      "default": "#F9F9F9"
+      "default": "#F3F3F5"
+    },
+    {
+      "variable": "footer_text_color",
+      "label": "Footer text",
+      "default": "#111111"
     },
     {
       "variable": "announcement_text_color",
       "label": "Announcement Message Text",
-      "default": "#FFFFFF"
+      "default": "#111111"
     },
     {
       "variable": "announcement_background_color",
       "label": "Announcement Message Background",
-      "default": "#235575"
+      "default": "#F3F3F5"
     }
   ],
   "options": [
@@ -164,7 +164,7 @@
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 12,
+      "default": 4,
       "description": "The number of products displayed on the Home page"
     },
     {
@@ -201,17 +201,6 @@
       "default": "Categories"
     },
     {
-      "variable": "category_image_style",
-      "label": "Category image style",
-      "type": "select",
-      "options": [
-        ["Over image", "hover"],
-        ["Under image", "under_image"]
-      ],
-      "default": "under_image",
-      "description": "Shows a category’s name over the image with an overlay, or under the image"
-    },
-    {
       "variable": "max_categories_per_row",
       "label": "Maximum categories per row",
       "type": "select",
@@ -232,22 +221,11 @@
       "description": "Sets the display of images in the product grid"
     },
     {
-      "variable": "product_grid_info",
-      "label": "Product grid info",
-      "type": "select",
-      "options": [
-        ["Show on hover", "hover"],
-        ["Under image", "under_image"]
-      ],
-      "default": "under_image",
-      "description": "Shows a product's name & price on hover, or under the image"
-    },
-    {
       "variable": "max_products_per_row",
       "label": "Maximum products per row",
       "type": "select",
       "options": "1..4",
-      "default": 3,
+      "default": 4,
       "description": "The maximum number of products displayed per row on larger screens"
     },
     {
@@ -448,9 +426,9 @@
     "button_font": "{{ secondary_font }}",
     "button_hover_color": "{{ button_text_color }}",
     "button_background_color": "{{ button_background_color }}",
-    "button_hover_background_color": "{{ button_background_hover_color }}",
+    "button_hover_background_color": "{{ button_hover_background_color }}",
     "button_border_color": "{{ button_background_color }}",
-    "button_hover_border_color": "{{ button_background_hover_color }}",
+    "button_hover_border_color": "{{ button_hover_background_color }}",
     "button_text_transform": "none",
     "link_color": "{{ secondary_text_color }}",
     "link_hover_color": "{{ secondary_text_color }}",

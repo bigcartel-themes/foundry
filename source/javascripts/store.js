@@ -78,7 +78,7 @@ function setDocHeight() {
 
 function animateHomeElements() {
   const featured = document.querySelector(".welcome_text");
-  const content_container = document.querySelector(".content");
+  const content_container = document.querySelector("#main");
   const contentRec = content_container.getBoundingClientRect();
   if (featured) {
     const featuredRect = featured.getBoundingClientRect();
@@ -88,7 +88,7 @@ function animateHomeElements() {
       featured.classList.remove("fade_out")
     }
   }
-  if (contentRec.top <= 195) {
+  if (contentRec.top <= 90) {
     $("header").addClass("background_overlay");
   } else {
     $("header").removeClass("background_overlay");

@@ -14,7 +14,7 @@
       <div class="message-banner message-banner--cart">{{ theme.cart_text }}</div>
     {% endif %}
     <div class="message-banner message-banner--no-bg message-banner--centered message-banner--empty-cart">Your cart is empty! Sounds like a good time to start shopping.</div>
-    <a href="/products" class="button">Shop Now</a>
+    <a href="/products" class="button">Shop now</a>
   </div>
 {% else %}
   <form method="post" id="cart_form" class="cart-form" action="/cart" accept-charset="utf8">
@@ -57,7 +57,7 @@
                   <input aria-label="Quantity of {{ aria_label_name }}" type="number" autocomplete="off" class="product-quantity" name="cart[update][{{ item.id }}]" min="0" value="{{ item.quantity }}" data-item-id="{{ item.id }}">
 
                   <button title="Increase quantity of {{ aria_label_name }}" class="qty-button qty-button--increase" data-func="increase" type="button" data-item-id="{{ item.id }}">
-                    <svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13"> <path d="M7.5 1V5.5H12C12.5312 5.5 13 5.96875 13 6.5C13 7.0625 12.5312 7.5 12 7.5H7.5V12C7.5 12.5625 7.03125 13 6.5 13C5.9375 13 5.5 12.5625 5.5 12V7.5H1C0.4375 7.5 0 7.0625 0 6.5C0 5.96875 0.4375 5.5 1 5.5H5.5V1C5.5 0.46875 5.9375 0 6.5 0C7.03125 0 7.5 0.46875 7.5 1Z"></path> </svg>
+                    <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13"> <path d="M7.5 1V5.5H12C12.5312 5.5 13 5.96875 13 6.5C13 7.0625 12.5312 7.5 12 7.5H7.5V12C7.5 12.5625 7.03125 13 6.5 13C5.9375 13 5.5 12.5625 5.5 12V7.5H1C0.4375 7.5 0 7.0625 0 6.5C0 5.96875 0.4375 5.5 1 5.5H5.5V1C5.5 0.46875 5.9375 0 6.5 0C7.03125 0 7.5 0.46875 7.5 1Z"></path> </svg>
                   </button>
                 </div>
 

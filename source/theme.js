@@ -7,3 +7,4 @@
 //= require javascripts/product
 //= require javascripts/search
 //= require javascripts/overlay
+//= require javascripts/navigation

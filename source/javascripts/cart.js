@@ -65,7 +65,7 @@ updateCartCounts = (cart) => {
   const sub_total = Format.money(cart.total, true, true);
   const item_count = cart.item_count;
 
-  const cartCountElements = document.querySelectorAll('.cart-link span');
+  const cartCountElements = document.querySelectorAll('.cart-value');
   const cartTotalElements = document.querySelectorAll('.header-subtotal-amount');
 
   const cartSubtotal = document.querySelector('.cart-subtotal__amount');

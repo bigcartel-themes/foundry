@@ -1,8 +1,8 @@
 \:root
-  --thumbnail-active-color: var(--primary-text-color)
+  --thumbnail-active-color: var(--link-hover-color)
   --thumb-scroller-color: var(--primary-text-color)
   --thumb-scroller-border-width: 1px
-  --thumb-scroller-border-color: var(--border-color)
+  --thumb-scroller-border-color: var(--primary-text-color)
   --thumb-scroller-background: var(--background-color)
   --thumb-scroller-background-hover: transparent
   --current-slide-background: var(--background-color)
@@ -11,7 +11,7 @@
   --active-slide-border-width-offset: #{-2px}
   --arrow-background-color: var(--background-color)
   --arrow-color: var(--primary-text-color)
-  --gap-width: 10px
+  --gap-width: 16px
   --num-images: 5
 
   @media screen and (max-width: $break-small)
@@ -25,7 +25,6 @@
     transition: height .2s ease
 
     img
-      border-radius: var(--border-radius)
       display: block
       width: 100%
       height: auto
@@ -68,6 +67,7 @@
     opacity: 1
 
 .product-image
+  border-radius: var(--border-radius)
   width: 100%
 
 .product-thumbnails
@@ -157,6 +157,7 @@
         object-fit: cover
 
 .gallery-link
+  cursor: zoom-in
   display: block
 
 .product-thumbnails-buttons-container
@@ -304,7 +305,7 @@
 
     .mobile-buttons-indicator
       display: flex
-      font-size: .925em
+      font-size: .925rem
       gap: 24px
       align-items: center
       justify-content: center
@@ -336,7 +337,7 @@
   position: absolute
   right: 10px
   bottom: 10px
-  font-size: .8em
+  font-size: .8rem
   z-index: 10
   background: var(--current-slide-background)
   color: var(--current-slide-color)

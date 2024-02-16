@@ -1,9 +1,9 @@
 // Navigation overlay
 
 const navModal = document.getElementById('navigation-modal');
-const openNavBtn = document.querySelector('.open_menu_btn');
-const closeNavBtn = document.querySelector('.close_overlay');
-const focusableNavElements = navModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+const openNavBtn = document.querySelector('.open-navigation');
+const closeNavBtn = document.querySelector('.close-navigation');
+const focusableNavElements = navModal?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
 
 const openNavigation = () => {
   if (navModal) {

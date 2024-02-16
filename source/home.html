@@ -14,7 +14,7 @@
       {% endif %}
       {% if products != blank %}
         <div class="product-list-container">
-          <div class="product-list product-list--{{ theme.featured_products_layout }} {% if num_results < 3 %}product-list--center{% endif %}">
+          <div class="product-list {% if num_results < 4 %}product-list--center{% endif %}">
             {% for product in products %}
               {% assign image_width = product.image.width | times: 1.0 %}
               {% assign image_height = product.image.height | times: 1.0 %}
@@ -38,7 +38,7 @@
                 {% endif %}
               {% endcapture %}
               <div class="product-list-thumb {{ product.css_class }}">
-                <a class="product-list-link product-list-link--{{ theme.product_grid_info }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+                <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
                   <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                     <img
                       alt=""

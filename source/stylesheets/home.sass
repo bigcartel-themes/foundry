@@ -1,20 +1,20 @@
-+keyframes(welcome-text)
+@keyframes welcome-text
   0%
     opacity: 0
-    +transform(translate3d(0, 10%, 0))
+    transform: translate3d(0, 10%, 0)
 
   100%
-    +transform(none)
+    transform: none
     opacity: 1
 
-+keyframes(hide-welcome-text)
+@keyframes hide-welcome-text
   0%
-    +transform(none)
+    transform: none
     opacity: 1
 
   100%
     opacity: 0
-    +transform(translate3d(0, 10%, 0))
+    transform: translate3d(0, 10%, 0)
 
 .welcome_image
   background: var(--header-background-color)
@@ -54,13 +54,13 @@
 
   .welcome_text
     position: relative
-    +animation(welcome-text ease-in 900ms forwards)
+    animation: welcome-text ease-in 900ms forwards
     padding: 0 20px
     max-width: 1200px
     margin: 0 auto
 
     &.fade_out
-      +animation(hide-welcome-text ease-in 200ms forwards)
+      animation: hide-welcome-text ease-in 200ms forwards
 
     .welcome_text_header
       font-size: 60px
@@ -81,7 +81,6 @@
       &:hover
         text-decoration-color: var(--header-text-color)
         text-decoration: underline
-        text-underline-offset: 6px
         text-decoration-thickness: 2px
 
 .welcome_image + main
@@ -91,14 +90,13 @@
   color: var(--secondary-text-color)
   font-family: var(--secondary-font)
   font-size: 1.25em
-  margin: 0 auto 60px
+  margin: 0 auto 96px
   max-width: 680px
-  padding: 0 20px
   text-align: center
   width: 100%
 
   @media screen and (max-width: $break-small)
-    margin: 0 30px
+    margin: 0 auto 60px
 
 .home-featured-products
   margin-bottom: var(--margin-size)
@@ -110,8 +108,6 @@ a.all-products-button
 
   h2
     text-align: center
-    margin-bottom: 48px
-    font-weight: 600
     font-size: 2rem
 
 .category-list
