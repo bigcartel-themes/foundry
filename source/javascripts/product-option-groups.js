@@ -9,7 +9,7 @@ function processProduct(product) {
       enableAddButton();
     }
   }
-  if ($('.product_option_select').length) {
+  if ($('.product-option-select').length) {
     if (themeOptions.showSoldOutOptions === false) {
       $('option[disabled-type="sold-out"]').wrap('<span>');
     }

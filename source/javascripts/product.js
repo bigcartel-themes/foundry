@@ -28,7 +28,7 @@ if (themeOptions.productImageZoom === true) {
   });
   lightbox.init();
 }
-$('.product_option_select').on('change',function() {
+$('.product-option-select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
   enableAddButton(option_price);
 });

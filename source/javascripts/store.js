@@ -65,9 +65,9 @@ function setHeaderPosition() {
 
 function resizeHomeWelcome() {
   let announceDiv = document.querySelector(".announcement-message");
-  let welcomeContainer = document.querySelector(".welcome_image");
+  let welcomeContainer = document.querySelector(".welcome-image");
   if (announceDiv && welcomeContainer) {
-    $(".welcome_image").css("height", "calc(100svh - " + announceDiv.offsetHeight + "px)");
+    $(".welcome-image").css("height", "calc(100svh - " + announceDiv.offsetHeight + "px)");
   }
 }
 
@@ -77,7 +77,7 @@ function setDocHeight() {
 }
 
 function animateHomeElements() {
-  const featured = document.querySelector(".welcome_text");
+  const featured = document.querySelector(".welcome-text");
   const content_container = document.querySelector("#main");
   const contentRec = content_container.getBoundingClientRect();
   if (featured) {
@@ -89,9 +89,9 @@ function animateHomeElements() {
     }
   }
   if (contentRec.top <= 90) {
-    $("header").addClass("background_overlay");
+    $("header").addClass("show-background");
   } else {
-    $("header").removeClass("background_overlay");
+    $("header").removeClass("show-background");
   }
 }
 

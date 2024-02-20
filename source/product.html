@@ -9,9 +9,9 @@
 {% endcase %}
 
 {% if product.categories != blank %}
-  <div class="product-breadcrumb">
+  <nav class="product-breadcrumb" role="navigation" aria-label="breadcrumbs">
     <a href="/products">{{ pages.products.name }}</a> / {{ product.categories.first | link_to }}
-  </div>
+  </nav>
 {% endif %}
 
 <div class="product-container">
@@ -138,7 +138,7 @@
         {% else %}
           <div class="product-selects">
             {% if product.has_option_groups %}
-              <div class="product_option_groups">
+              <div class="product-option-groups">
                 <input id="option" name="cart[add][id]" type="hidden" value="0">
                 {% for option_group in product.option_groups %}
                   <div class="select">
@@ -154,7 +154,7 @@
               </div>
             {% else %}
               <div class="select">
-                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
+                <select class="product-option-select" id="option" name="cart[add][id]" aria-label="Select variant" required>
                   <option value="" disabled="disabled" selected>Select variant</option>
                   {% for option in product.options %}
                     <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>

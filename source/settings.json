@@ -138,33 +138,11 @@
       "default": "Featured"
     },
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": true,
-      "description": "Displays a product search icon in the header"
-    },
-    {
-      "variable": "show_sold_out_product_options",
-      "label": "Show sold out product options",
-      "type": "boolean",
-      "default": true,
-      "description": "Shows sold out product options in the Product page dropdowns",
-      "requires": "inventory"
-    },
-{
-      "variable": "featured_header",
-      "label": "Featured products header",
-      "type": "text",
-      "description": "Displays above featured products on the Home page",
-      "default": "Featured Products"
-    },
-    {
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 4,
+      "default": 12,
       "description": "The number of products displayed on the Home page"
     },
     {
@@ -225,7 +203,7 @@
       "label": "Maximum products per row",
       "type": "select",
       "options": "1..4",
-      "default": 4,
+      "default": 3,
       "description": "The maximum number of products displayed per row on larger screens"
     },
     {
@@ -245,11 +223,19 @@
       "description": "The number of products shown at a time on the Products page"
     },
     {
+      "variable": "nav_items",
+      "label": "Navigation items",
+      "type": "select",
+      "options": "0..6",
+      "default": 2,
+      "description": "The number of custom page links show in the main navigation"
+    },
+    {
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
       "default": true,
-      "description": "Shows the product search area"
+      "description": "Displays a product search icon in the header"
     },
     {
       "variable": "show_sold_out_product_options",

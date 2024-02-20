@@ -8,16 +8,6 @@
         <li{% if page.full_url contains category.url %} class="current"{% endif %}>{{ category | link_to }}</li>
       {% endfor %}
     </ul>
-    <div class="select">
-      <select class="category_select" aria-label="Browse products...">
-        <option value="" selected disabled>Browse products...</option>
-        <option value="/products">View all</option>
-        {% for category in categories.active %}
-          <option value="/category/{{ category.permalink }}">{{ category.name }}</option>
-        {% endfor %}
-      </select>
-      <svg aria-hidden="true" fill="currentColor" height="20" width="20" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
-    </div>
   </div>
 {% endif %}
 

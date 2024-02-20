@@ -19,6 +19,16 @@
     gap: 8px
     transition: opacity .2s linear
 
+    @media (hover: hover)
+      &:hover
+        opacity: .85
+
+        .category-nav-page
+          text-decoration: underline
+
+  .category-nav-page
+    text-underline-offset: 4px
+
   .category-nav-arrow
     fill: currentColor
     pointer-events: none
@@ -80,6 +90,7 @@
 
 .header
   background: var(--header-background-color)
+  color: var(--header-text-color)
   font-family: var(--primary-font)
   height: var(--header-height)
   line-height: 1.2rem
@@ -107,100 +118,117 @@
     top: 0
     left: 0
 
-  &.has_welcome
+  &.has-welcome
     background: transparent
 
-  &.background_overlay
+  &.show-background
     background: var(--header-background-color)
 
-  .header-logo
-    font-size: 24px
-    display: inline-flex
-    align-items: center
-    text-align: left
+  a
+    color: var(--header-text-color)
+    text-decoration: none
+    transition: opacity .2s linear
 
-    @media only screen and (max-width: $break-small)
-      font-size: 18px
+    @media (hover: hover)
+      &:hover
+        color: var(--header-text-color)
+        text-decoration: underline
+        opacity: .85
+
+    &:focus
+      color: var(--header-text-color)
+      opacity: .85
+
+.header-logo
+  font-size: 1.5em
+  display: inline-flex
+  align-items: center
+  text-align: left
+
+  a
+    display: flex
+    line-height: 1.25em
+    align-items: center
+    max-width: 200px
+    width: auto
+    outline-offset: 4px
+
+  &.image
+    img
+      max-height: 100%
+      max-width: 200px
+
+      @media screen and (max-width: $break-small)
+        max-width: 140px
 
     a
+      height: 58px
+      max-width: 100%
+
+.header-icons
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  gap: 20px
+
+  @media screen and (max-width: $break-small)
+    gap: 16px
+
+  li
+    position: relative
+
+    > *
+      color: var(--header-text-color)
+      cursor: pointer
       display: flex
-      line-height: 1.25em
       align-items: center
-      max-width: 200px
-      width: auto
-
-    &.image
-      img
-        height: 100%
-        max-width: 200px
-
-      a
-        height: 66px
-        max-width: 100%
-
-  .header-icons
-    display: flex
-    align-items: center
-    justify-content: flex-end
-    gap: 20px
-
-    @media screen and (max-width: $break-small)
-      gap: 16px
-
-    li
+      justify-content: center
+      width: 40px
+      height: 40px
       position: relative
+      padding: 0
+      transition: opacity .2s linear
 
-      > *
+      &:hover, &:focus
         color: var(--header-text-color)
-        cursor: pointer
-        display: flex
-        align-items: center
-        justify-content: center
-        width: 40px
-        height: 40px
+        opacity: .85
+
+      svg
+        fill: currentColor
+        height: 30px
+        width: 30px
+
+    &.open_search
+      svg
+        height: 28px
+        width: 28px
         position: relative
-        padding: 0
-        transition: opacity .2s linear
+        top: 2px
 
-        &:hover
-          opacity: .85
+    &.open_menu
+      @media screen and (min-width: $break-large + 1)
+        display: none
 
-        svg
-          fill: currentColor
-          height: 30px
-          width: 30px
-
-      &.open_search
-        svg
-          height: 28px
+      button
+        span
+          border-radius: 2px
+          transform: rotate(0deg)
+          display: block
+          background: currentColor
+          width: 100%
+          height: 2px
+          position: absolute
+          opacity: 1
           width: 28px
-          position: relative
-          top: 2px
 
-      &.open_menu
-        @media screen and (min-width: $break-large + 1)
-          display: none
+          &:nth-child(1)
+            top: 12px
 
-        button
-          span
-            border-radius: 2px
-            transform: rotate(0deg)
-            display: block
-            background: currentColor
-            width: 100%
-            height: 2px
-            position: absolute
-            opacity: 1
-            width: 28px
+          &:nth-child(2), &:nth-child(3)
+            top: 50%
 
-            &:nth-child(1)
-              top: 12px
-
-            &:nth-child(2), &:nth-child(3)
-              top: 50%
-
-            &:nth-child(4)
-              bottom: 10px
+          &:nth-child(4)
+            bottom: 10px
 
 .header-navigation
   @media screen and (max-width: $break-large)
@@ -217,27 +245,13 @@
     text-align: center
     flex-direction: row
     justify-content: center
+
   .header-page-link
     a, .category-nav-heading
-      color: var(--header-text-color)
       display: flex
       position: relative
-      text-decoration: none
       outline-offset: 4px
       border-radius: 0
-      text-underline-offset: 4px
-
-  @media (hover: hover)
-    a:hover
-      transition: opacity .2s linear
-      text-decoration: underline
-      opacity: .85
-
-    .category-nav-heading:hover
-      opacity: .85
-
-      .category-nav-page
-        text-decoration: underline
 
 .cart-count
   position: absolute
@@ -255,32 +269,3 @@
   font-size: .75em
   height: 20px
   width: 20px
-
-.mobile-navigation
-  background: transparent
-  left: 0
-  position: absolute
-  top: var(--header-bottom-position,60px)
-  width: 100%
-  z-index: 10
-  height: calc(100vh - var(--header-bottom-position))
-  height: calc(100svh - var(--header-bottom-position))
-  width: 100vw
-  opacity: 0
-  visibility: hidden
-
-  &__wrapper
-    width: 100%
-    height: 100%
-    padding: 20px 20px 60px
-    background: red
-    transform: translateX(-100%)
-    overflow: scroll
-    transition: transform .2s ease
-
-    &.show_menu_transition
-      transform: translateX(0)
-
-  &[aria-hidden="false"]
-    opacity: 1
-    visibility: visible

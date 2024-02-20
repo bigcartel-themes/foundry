@@ -9,27 +9,19 @@
     display: flex
     align-items: center
     justify-content: center
-    column-gap: 24px
+    column-gap: 16px
     row-gap: 8px
+    flex-wrap: wrap
 
     a
+      color: var(--secondary-text-color)
       display: block
-      font-size: 18px
+      font-size: 1.2em
       padding: 2px 6px
       outline-offset: 2px
 
       &:hover
         text-decoration: underline
-
-    @media screen and (max-width: $break-small)
-      display: none
-
-  .select
-    display: none
-    max-width: 100%
-
-    @media screen and (max-width: $break-small)
-      display: block
 
 .product-list
   --gap: calc(var(--spacing-unit) * 4)
@@ -70,7 +62,11 @@ a.product-list-link
       .product-list-image
         transform: translate3d(0, 0, 0) scale(1.05)
 
+      .product-list-thumb-name
+        text-decoration: underline
+
 .product-list-image-container
+  border-radius: var(--border-radius)
   margin: 0
   overflow: hidden
   padding-bottom: 100%
