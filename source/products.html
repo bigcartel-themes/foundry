@@ -1,11 +1,11 @@
 <h1 class="page-title">{% if page.full_url contains "search=" %}Search results{% else %}{{ page.name }}{% endif %}</h1>
 
 {% if categories.active != blank %}
-  <div class="category_list">
+  <div class="category-list">
     <ul>
-      <li{% if page.full_url contains '/products' %} class="current"{% endif %}><a href="/products">All</a></li>
+      <li><a href="/products">All products</a></li>
       {% for category in categories.active %}
-        <li{% if page.full_url contains category.url %} class="current"{% endif %}>{{ category | link_to }}</li>
+        <li>{{ category | link_to }}</li>
       {% endfor %}
     </ul>
   </div>
@@ -28,15 +28,6 @@
             {% when 'coming-soon' %}
               {% assign product_status = 'Coming soon' %}
           {% endcase %}
-          {% capture image_class %}
-            {% if product.image.height > product.image.width %}
-              image-tall
-            {% elsif product.image.height < product.image.width %}
-              image-wide
-            {% else %}
-              image-square
-            {% endif %}
-          {% endcapture %}
           <div class="product-list-thumb {{ product.css_class }}">
             <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
               <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">

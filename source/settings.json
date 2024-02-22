@@ -161,7 +161,7 @@
       "variable": "all_products_button_text",
       "label": "All products button text",
       "type": "text",
-      "description": "Displays underneath featured products and links to your Product Page",
+      "description": "Displays underneath featured products, links to your Products page",
       "default": "All Products"
     },
     {
@@ -226,7 +226,7 @@
       "variable": "nav_items",
       "label": "Navigation items",
       "type": "select",
-      "options": "0..6",
+      "options": "0..4",
       "default": 2,
       "description": "The number of custom page links show in the main navigation"
     },
@@ -275,13 +275,6 @@
       ],
       "default": "show-thumbnails",
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
-    },
-    {
-      "variable": "show_related_products",
-      "label": "Show related products",
-      "type": "boolean",
-      "default": true,
-      "description": "Displays related products on the Product page"
     },
     {
       "variable": "money_format",
