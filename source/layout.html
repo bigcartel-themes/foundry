@@ -204,22 +204,24 @@
       </div>
     </div>
     {% if theme.show_search %}
-      <div id="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-content">
-          <div class="modal-content--inner">
-            <div class="wrapper">
-              <button class="close-search" aria-label="Close search dialog" data-dismiss="modal" type="button">
-                <svg aria-hidden="true" fill="currentColor" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
+      <div class="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="search-modal__content">
+          <div class="search-modal__wrapper">
+            <button class="search-modal__close" aria-label="Close search dialog" data-dismiss="modal" type="button">
+              <svg class="search-modal__close-icon" aria-hidden="true" fill="currentColor" viewBox="0 0 17 17">
+                <path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/>
+              </svg>
+            </button>
+            <form class="search-modal__form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
+              <input type="hidden" name="utf8" value='✓'>
+              <label class="search-modal__label" for="search-input">Search products</label>
+              <input class="search-modal__input" id="search-input" name="search" type="search" autocomplete="off" />
+              <button type="submit" class="search-modal__submit" aria-label="Submit search form">
+                <svg class="search-modal__submit-icon" aria-hidden="true" fill="currentColor" height="22" width="22" viewBox="0 0 30 30">
+                  <path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/>
+                </svg>
               </button>
-              <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
-                <input type="hidden" name="utf8" value='✓'>
-                <label for="desktop-search">Search products</label>
-                <input class="search-input" id="desktop-search" name="search" type="search" autocomplete="off" />
-                <button type="submit" class="button search-button" aria-label="Submit search form">
-                  <svg aria-hidden="true" fill="currentColor" height="22" width="22" viewBox="0 0 30 30"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/></svg>
-                </button>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
       </div>

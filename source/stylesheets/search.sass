@@ -1,4 +1,4 @@
-#search-modal
+.search-modal
   opacity: 0
   visibility: hidden
   position: fixed
@@ -16,7 +16,7 @@
     opacity: 1
     visibility: visible
 
-  .modal-content
+  &__content
     background-color: var(--background-color)
     border-bottom: 1px solid var(--primary-text-color)
     color: var(--primary-text-color)
@@ -25,10 +25,7 @@
     grid-template-rows: 1fr
     width: 100%
 
-    &--inner
-      overflow: hidden
-
-  .wrapper
+  &__wrapper
     display: flex
     align-items: center
     justify-content: center
@@ -39,7 +36,7 @@
     margin: 0 auto
     width: 100%
 
-  .search-form
+  &__form
     display: grid
     font-weight: bold
     grid-template-columns: 1fr
@@ -47,7 +44,7 @@
     row-gap: 8px
     width: 100%
 
-  .search-input
+  &__input
     grid-row: 2/2
     grid-column: 1/1
     border-radius: var(--border-radius)
@@ -59,7 +56,7 @@
     height: 48px
     padding: 8px
 
-  .search-button
+  &__submit
     color: var(--button-text-color)
     background: var(--button-background-color)
     grid-row: 2/2
@@ -71,7 +68,7 @@
     align-items: center
     justify-content: center
 
-  .close-search
+  &__close
     display: flex
     align-items: center
     justify-content: center
@@ -83,12 +80,12 @@
     margin-left: auto
     color: var(--primary-text-color)
 
-    svg
+    &-icon
       height: 20px
       width: 20px
 
     &:hover, &:focus
       color: var(--link-hover-color)
 
-  label
+  &__label
     text-align: left
