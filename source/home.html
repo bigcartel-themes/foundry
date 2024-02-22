@@ -28,15 +28,6 @@
                 {% when 'coming-soon' %}
                   {% assign product_status = 'Coming soon' %}
               {% endcase %}
-              {% capture image_class %}
-                {% if product.image.height > product.image.width %}
-                  image-tall
-                {% elsif product.image.height < product.image.width %}
-                  image-wide
-                {% else %}
-                  image-square
-                {% endif %}
-              {% endcapture %}
               <div class="product-list-thumb {{ product.css_class }}">
                 <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
                   <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
@@ -96,17 +87,6 @@
               {% assign image_width = product.image.width | times: 1.0 %}
               {% assign image_height = product.image.height | times: 1.0 %}
               {% assign aspect_ratio = image_width | divided_by: image_height %}
-
-              {% capture image_class %}
-                {% if product.image.height > product.image.width %}
-                  image-tall
-                {% elsif product.image.height < product.image.width %}
-                  image-wide
-                {% else %}
-                  image-square
-                {% endif %}
-              {% endcapture %}
-
               <div class="product-list-image-container product-list-image-container-cover">
                 <img
                   alt=""
