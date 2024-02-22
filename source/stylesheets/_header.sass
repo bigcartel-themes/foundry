@@ -17,14 +17,17 @@
     +align-items(center)
     +justify-content(center)
     gap: 8px
-    transition: opacity .2s linear
+    transition: color .2s linear
 
     @media (hover: hover)
       &:hover
-        opacity: .85
+        color: var(--header-text-hover-color)
 
         .category-nav-page
           text-decoration: underline
+
+    &:focus
+      color: var(--header-text-hover-color)
 
   .category-nav-page
     text-underline-offset: 4px
@@ -127,17 +130,15 @@
   a
     color: var(--header-text-color)
     text-decoration: none
-    transition: opacity .2s linear
+    transition: color .2s linear
 
     @media (hover: hover)
       &:hover
-        color: var(--header-text-color)
+        color: var(--header-text-hover-color)
         text-decoration: underline
-        opacity: .85
 
     &:focus
-      color: var(--header-text-color)
-      opacity: .85
+      color: var(--header-text-hover-color)
 
 .header-logo
   font-size: 1.5em
@@ -187,11 +188,10 @@
       height: 40px
       position: relative
       padding: 0
-      transition: opacity .2s linear
+      transition: color .2s linear
 
       &:hover, &:focus
-        color: var(--header-text-color)
-        opacity: .85
+        color: var(--header-text-hover-color)
 
       svg
         fill: currentColor
@@ -218,7 +218,6 @@
           width: 100%
           height: 2px
           position: absolute
-          opacity: 1
           width: 28px
 
           &:nth-child(1)

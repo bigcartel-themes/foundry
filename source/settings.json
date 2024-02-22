@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "1.8.2",
+  "version": "1.8.4",
   "images": [
     {
       "variable": "header_logo",
@@ -13,16 +13,151 @@
       "description": "Displays a full screen image on the Home page"
     }
   ],
+  "preset_styles": {
+    "preview": {
+      "title_font": "primary_font",
+      "body_font": "secondary_font",
+      "text_color": "primary_text_color",
+      "background_color": "background_color"
+    },
+    "presets": [
+      {
+        "group_name": "Classic",
+        "styles": [
+          {
+            "style_name": "Classic #1",
+            "fonts": {
+              "primary_font": "Work Sans",
+              "secondary_font": "Work Sans"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "header_background_color": "#222222",
+              "header_text_color": "#FFFFFF",
+              "header_text_hover_color": "#BBBBBB",
+              "button_background_color": "#222222",
+              "button_text_color": "#FFFFFF",
+              "button_hover_background_color": "#116E56",
+              "primary_text_color": "#222222",
+              "secondary_text_color": "#555555",
+              "link_hover_color": "#116E56",
+              "footer_background_color": "#F9F9F9",
+              "announcement_text_color": "#FFFFFF",
+              "announcement_background_color": "#116E56"
+            }
+          },
+          {
+            "style_name": "Classic #2",
+            "fonts": {
+              "primary_font": "Prompt",
+              "secondary_font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "header_background_color": "#FFFFFF",
+              "header_text_color": "#111111",
+              "header_text_hover_color": "#5900FF",
+              "button_background_color": "#111111",
+              "button_text_color": "#FFFFFF",
+              "button_hover_background_color": "#5900FF",
+              "primary_text_color": "#111111",
+              "secondary_text_color": "#111111",
+              "link_hover_color": "#5900FF",
+              "footer_background_color": "#FFFFFF",
+              "announcement_text_color": "#111111",
+              "announcement_background_color": "#F3F3F5"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Elegant",
+        "styles": [
+          {
+            "style_name": "Elegant #1",
+            "fonts": {
+              "primary_font": "Marcellus",
+              "secondary_font": "Lato"
+            },
+            "colors": {
+              "background_color": "#141415",
+              "header_background_color": "#141415",
+              "header_text_color": "#F8F8F8",
+              "header_text_hover_color": "#C6C6C6",
+              "button_background_color": "#F8F8F8",
+              "button_text_color": "#141415",
+              "button_hover_background_color": "#C6C6C6",
+              "primary_text_color": "#F8F8F8",
+              "secondary_text_color": "#F8F8F8",
+              "link_hover_color": "#C6C6C6",
+              "footer_background_color": "#141415",
+              "announcement_text_color": "#F8F8F8",
+              "announcement_background_color": "#303030"
+            }
+          },
+          {
+            "style_name": "Elegant #2",
+            "fonts": {
+              "primary_font": "Prata",
+              "secondary_font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#F8F8F8",
+              "header_background_color": "#DBD1D1",
+              "header_text_color": "#0F1B27",
+              "header_text_hover_color": "#8A5A5A",
+              "button_background_color": "#DBD1D1",
+              "button_text_color": "#0F1B27",
+              "button_hover_background_color": "#C7B3B3",
+              "primary_text_color": "#0F1B27",
+              "secondary_text_color": "#0F1B27",
+              "link_hover_color": "#8A5A5A",
+              "footer_background_color": "#F8F8F8",
+              "announcement_text_color": "#0F1B27",
+              "announcement_background_color": "#EBE7E7"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Natural",
+        "styles": [
+          {
+            "style_name": "Natural #1",
+            "fonts": {
+              "primary_font": "Cutive",
+              "secondary_font": "Cutive Mono"
+            },
+            "colors": {
+              "background_color": "#FFFDFC",
+              "header_background_color": "#D6E3F8",
+              "header_text_color": "#584B53",
+              "header_text_hover_color": "#9D5C63",
+              "button_background_color": "#9D5C63",
+              "button_text_color": "#FFFDFC",
+              "button_hover_background_color": "#584B53",
+              "primary_text_color": "#584B53",
+              "secondary_text_color": "#584B53",
+              "link_hover_color": "#9D5C63",
+              "footer_background_color": "#FEF5EF",
+              "announcement_text_color": "#584B53",
+              "announcement_background_color": "#FEF5EF"
+            }
+          }
+        ]
+      }
+    ]
+  },
   "fonts": [
     {
       "variable": "primary_font",
       "label": "Primary Font",
-      "default": "Inter"
+      "default": "Work Sans"
     },
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Inter"
+      "default": "Work Sans"
     }
   ],
   "colors": [
@@ -34,7 +169,7 @@
     {
       "variable": "header_background_color",
       "label": "Header background",
-      "default": "#111111"
+      "default": "#222222"
     },
     {
       "variable": "header_text_color",
@@ -42,9 +177,14 @@
       "default": "#FFFFFF"
     },
     {
+      "variable": "header_text_hover_color",
+      "label": "Header text hover",
+      "default": "#BBBBBB"
+    },
+    {
       "variable": "primary_text_color",
       "label": "Primary text",
-      "default": "#111111"
+      "default": "#222222"
     },
     {
       "variable": "secondary_text_color",
@@ -54,7 +194,7 @@
     {
       "variable": "link_hover_color",
       "label": "Link hover",
-      "default": "#116e56"
+      "default": "#116E56"
     },
     {
       "variable": "button_text_color",
@@ -64,22 +204,17 @@
     {
       "variable": "button_background_color",
       "label": "Button background",
-      "default": "#111111"
+      "default": "#222222"
     },
     {
       "variable": "button_hover_background_color",
       "label": "Button background hover",
-      "default": "#116e56"
+      "default": "#116E56"
     },
     {
       "variable": "footer_background_color",
       "label": "Footer background",
-      "default": "#F3F3F5"
-    },
-    {
-      "variable": "footer_text_color",
-      "label": "Footer text",
-      "default": "#111111"
+      "default": "#F9F9F9"
     },
     {
       "variable": "announcement_text_color",
@@ -89,7 +224,7 @@
     {
       "variable": "announcement_background_color",
       "label": "Announcement Message Background",
-      "default": "#F3F3F5"
+      "default": "#116E56"
     }
   ],
   "options": [
@@ -100,17 +235,23 @@
       "description": "Displays an announcement message on the top of every page"
     },
     {
-      "variable": "maintenance_message",
-      "label": "Maintenance mode message",
+      "variable": "contact_text",
+      "label": "Contact page text",
       "type": "text",
-      "description": "A message visitors see when your shop is in Maintenance Mode",
-      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+      "description": "Displays a message within your contact page"
     },
     {
       "variable": "cart_text",
       "label": "Cart page text",
       "type": "text",
       "description": "Displays a message within your cart page"
+    },
+    {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "type": "text",
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
       "variable": "welcome_text",
