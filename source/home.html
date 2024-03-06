@@ -1,3 +1,11 @@
+{% if errors != blank %}
+  <div class="errors">
+    {% for error in errors %}
+      <div>{{ error }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+
 {% if theme.home_tagline != blank %}
   <div class="home-tagline">
     {{ theme.home_tagline }}
