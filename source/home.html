@@ -82,7 +82,7 @@
     <div class="product-list product-list--center category-list">
       {% for category in categories.active %}
         <div class="product-list-thumb">
-          <a class="product-list-link category-link category-link--{{ theme.category_image_style }}" href="{{ category.url }}" title="View {{ category.name | escape }}">
+          <a class="product-list-link category-link" href="{{ category.url }}" title="View {{ category.name | escape }}">
             {% for product in category.products limit:1 %}
               {% assign image_width = product.image.width | times: 1.0 %}
               {% assign image_height = product.image.height | times: 1.0 %}

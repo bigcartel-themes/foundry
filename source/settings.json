@@ -325,7 +325,15 @@
       "type": "select",
       "options": "1..4",
       "default": 3,
-      "description": "The maximum number of Home page categories displayed per row"
+      "description": "The maximum number of Home page categories displayed per row on larger screens"
+    },
+    {
+      "variable": "max_categories_per_row_mobile",
+      "label": "Maximum categories per row (mobile)",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The maximum number of Home page categories displayed per row on smaller screens"
     },
     {
       "variable": "grid_image_style",
