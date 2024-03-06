@@ -1,0 +1,65 @@
+#navigation-modal
+  transition: opacity 0.2s, visibility 0s 0.2s
+  height: 100%
+  left: 0
+  opacity: 0
+  position: fixed
+  text-align: center
+  top: 0
+  visibility: hidden
+  width: 100%
+  z-index: 1000
+  overscroll-behavior: contain
+  background: var(--header-background-color)
+
+  &[aria-hidden="false"]
+    transition: opacity 0.2s
+    opacity: 1
+    visibility: visible
+
+  .overlay-content
+    height: 100%
+    overflow-y: scroll
+    padding: 0 0 90px
+
+  .navigation-modal-header
+    height: var(--header-height)
+    padding: 20px
+    display: flex
+    align-items: center
+    justify-content: flex-end
+
+  .close-navigation
+    cursor: pointer
+    color: var(--header-text-color)
+    height: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0px
+    width: 40px
+
+    &:hover
+      opacity: .85
+
+    svg
+      fill: currentColor
+
+  .navigation-modal-content
+    padding: 0 16px
+
+  .overlay-page-list
+    text-align: left
+    font-size: 1.25rem
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 24px
+    margin: 16px 0 32px
+
+    a
+      color: var(--header-text-color)
+
+      &:hover
+        text-decoration: underline
+        opacity: .85

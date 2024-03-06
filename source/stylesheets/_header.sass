@@ -1,0 +1,270 @@
+.category-nav
+  cursor: pointer
+  position: relative
+  width: auto
+  z-index: 3
+
+  @media screen and (max-width: $break-medium)
+    display: none
+    font-size: 1.25em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1em
+    max-width: 100%
+
+  .category-nav-heading
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    gap: 8px
+    transition: color .2s linear
+
+    @media (hover: hover)
+      &:hover
+        color: var(--header-text-hover-color)
+
+        .category-nav-page
+          text-decoration: underline
+
+    &:focus
+      color: var(--header-text-hover-color)
+
+  .category-nav-page
+    text-underline-offset: 4px
+
+  .category-nav-arrow
+    fill: currentColor
+    pointer-events: none
+    width: 12px
+
+  .category-dropdown
+    background: var(--header-background-color)
+    transition: opacity .2s linear, visibility .2s linear
+    border-radius: var(--border-radius)
+    border: 1px solid var(--header-text-color)
+    left: -20px
+    margin: 0 auto
+    min-width: 250px
+    opacity: 0
+    overflow-y: scroll
+    padding: 15px
+    position: absolute
+    text-align: left
+    visibility: hidden
+    height: auto
+    max-height: 50vh
+    z-index: 3
+    top: calc(100% + 16px)
+    scrollbar-width: thin
+    scrollbar-color: #{"rgba(var(--header-text-color-rgb),.5)"} transparent
+    scrollbar-gutter: stable
+
+    &[aria-hidden="false"]
+      opacity: 1
+      visibility: visible
+
+    &::-webkit-scrollbar
+      height: .375rem
+      width: .75rem
+
+    &::-webkit-scrollbar-track
+      background-color: transparent
+
+    &::-webkit-scrollbar-thumb
+      border-radius: .375rem
+      border: 3px solid transparent
+      background-color: #{"rgba(var(--primary-text-color-rgb),.5)"}
+      background-clip: content-box
+
+  .dropdown-list
+    list-style: none
+    margin: 0
+    padding: 0
+    position: relative
+    z-index: 4
+
+    li
+      display: block
+
+      a
+        display: block
+        font-size: .925em
+        padding: 8px
+
+.header
+  background: var(--header-background-color)
+  color: var(--header-text-color)
+  font-family: var(--primary-font)
+  height: var(--header-height)
+  line-height: 1.2rem
+  position: relative
+  z-index: 11
+  width: 100%
+  transition: background .2s linear
+
+  &__wrapper
+    max-width: var(--layout-width)
+    margin: 0 auto
+    padding: 0 var(--side-padding)
+    display: grid
+    min-height: var(--header-height)
+    align-items: center
+    grid-template-columns: 1fr 2fr 1fr
+    gap: 24px
+
+    @media screen and (max-width: $break-large)
+      grid-template-columns: 1fr 1fr
+      padding: 0 20px
+
+  &.fixed
+    position: fixed
+    top: 0
+    left: 0
+
+  &.has-welcome
+    background: transparent
+
+  &.show-background
+    background: var(--header-background-color)
+
+  a
+    color: var(--header-text-color)
+    text-decoration: none
+    transition: color .2s linear
+
+    @media (hover: hover)
+      &:hover
+        color: var(--header-text-hover-color)
+        text-decoration: underline
+
+    &:focus
+      color: var(--header-text-hover-color)
+
+.header-logo
+  font-size: 1.5em
+  display: inline-flex
+  align-items: center
+  text-align: left
+
+  a
+    display: flex
+    line-height: 1.25em
+    align-items: center
+    max-width: 200px
+    width: auto
+    outline-offset: 4px
+
+  &.image
+    img
+      max-height: 100%
+      max-width: 200px
+
+      @media screen and (max-width: $break-small)
+        max-width: 140px
+
+    a
+      height: 58px
+      max-width: 100%
+
+.header-icons
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  gap: 20px
+
+  @media screen and (max-width: $break-small)
+    gap: 16px
+
+  li
+    position: relative
+
+    > *
+      color: var(--header-text-color)
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 40px
+      height: 40px
+      position: relative
+      padding: 0
+      transition: color .2s linear
+
+      &:hover, &:focus
+        color: var(--header-text-hover-color)
+
+      svg
+        fill: currentColor
+        height: 30px
+        width: 30px
+
+    &.open_search
+      svg
+        height: 28px
+        width: 28px
+        position: relative
+        top: 2px
+
+    &.open_menu
+      @media screen and (min-width: $break-large + 1)
+        display: none
+
+      button
+        span
+          border-radius: 2px
+          transform: rotate(0deg)
+          display: block
+          background: currentColor
+          width: 100%
+          height: 2px
+          position: absolute
+          width: 28px
+
+          &:nth-child(1)
+            top: 12px
+
+          &:nth-child(2), &:nth-child(3)
+            top: 50%
+
+          &:nth-child(4)
+            bottom: 10px
+
+.header-navigation
+  @media screen and (max-width: $break-large)
+    display: none
+
+  .header-pages
+    display: flex
+    column-gap: 32px
+    row-gap: 4px
+    flex-wrap: wrap
+    list-style: none
+    margin: 0
+    padding: 0
+    text-align: center
+    flex-direction: row
+    justify-content: center
+
+  .header-page-link
+    a, .category-nav-heading
+      display: flex
+      position: relative
+      outline-offset: 4px
+      border-radius: 0
+
+.cart-count
+  position: absolute
+  right: -2px
+  top: 4px
+
+.cart-value
+  border-radius: 50%
+  background-color: var(--header-text-color)
+  color: var(--header-background-color)
+  display: flex
+  align-items: center
+  justify-content: center
+  font-family: var(--secondary-font)
+  font-size: .75em
+  height: 20px
+  width: 20px

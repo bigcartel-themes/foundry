@@ -1,0 +1,388 @@
+\:root
+  --primary-font: #{"{{ theme.primary_font | font_family }}"}
+  --secondary-font: #{"{{ theme.secondary_font | font_family }}"}
+
+  --background-color: #{'{{ theme.background_color }}'}
+
+  --header-background-color: #{'{{ theme.header_background_color }}'}
+  --header-text-color: #{'{{ theme.header_text_color }}'}
+  --header-text-hover-color: #{'{{ theme.header_text_hover_color }}'}
+
+  --primary-text-color: #{'{{ theme.primary_text_color }}'}
+  --secondary-text-color: #{'{{ theme.secondary_text_color }}'}
+
+  --border-color: #{'rgba(var(--primary-text-color-rgb), .4)'}
+
+  --link-hover-color: #{'{{ theme.link_hover_color }}'}
+
+  --button-background-color: #{'{{ theme.button_background_color }}'}
+  --button-hover-background-color: #{'{{ theme.button_hover_background_color }}'}
+  --button-text-color: #{'{{ theme.button_text_color }}'}
+
+  --footer-background-color: #{'{{ theme.footer_background_color }}'}
+
+  --announcement-background-color: #{"{{ theme.announcement_background_color }}"}
+  --announcement-text-color: #{"{{ theme.announcement_text_color }}"}
+
+  --error-background-color: #950f1e
+  --error-text-color: #FFFFFF
+
+  --product-status-background-color: var(--background-color)
+  --product-status-text-color: var(--primary-text-color)
+
+  --border-radius: #{'{{ theme.border_radius }}'}
+  --header-height: 90px
+
+  --margin-size: 64px
+
+  --layout-width: 1200px
+  --side-padding: 40px
+
+  @media screen and (max-width: $break-large)
+    --side-padding: 20px
+
+html
+  min-height: 100%
+  position: relative
+  height: 100%
+
+body
+  background: var(--background-color)
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  color: var(--primary-text-color)
+  display: flex
+  flex-direction: column
+  font-family: var(--secondary-font)
+  font-size: 16px
+  min-height: 100%
+  height: 100%
+
+  &.overlay-open
+    height: 100vh
+    width: 100vw
+    overflow: hidden
+    overscroll-behavior: none
+
+a.skip-link
+  transition: all .3s linear
+  background: var(--background-color)
+  border: 1px solid var(--primary-text-color)
+  color: var(--primary-text-color)
+  left: 25px
+  padding: 15px 20px
+  position: absolute
+  text-decoration: underline
+  top: -150px
+  z-index: 100
+
+  &:focus
+    top: 20px
+
+@import 'header'
+
+a
+  color: var(--primary-text-color)
+  text-decoration: none
+  text-underline-offset: 4px
+  transition: color .2s linear
+
+  &:focus
+    color: var(--link-hover-color)
+
+  @media (hover: hover)
+    &:hover
+      color: var(--link-hover-color)
+      text-decoration: underline
+
+button.button, a.button, div.button
+  +appearance(none)
+  background: var(--button-background-color)
+  color: var(--button-text-color)
+  border-radius: var(--border-radius)
+  display: flex
+  min-height: 60px
+  align-items: center
+  justify-content: center
+  padding: 16px
+  max-width: 360px
+  text-decoration: none
+  text-align: center
+  white-space: pre-wrap
+  width: 100%
+  transition: background .2s linear
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+  &:hover, &:focus
+    background: var(--button-hover-background-color)
+
+  &--minimal
+    background: none
+    border: 0
+    color: var(--primary-text-color)
+    text-decoration: underline
+    font-weight: normal
+    transition: color .2s linear
+
+    &:hover, &:focus
+      background: none
+      border: 0
+      color: var(--link-hover-color)
+
+  &--centered
+    margin: 0 auto
+
+  &--secondary
+    background: none
+    border: 2px solid var(--primary-text-color)
+    color: var(--primary-text-color)
+
+    &:hover, &:focus
+      background: none
+      border: 2px solid var(--link-hover-color)
+      color: var(--link-hover-color)
+
+.errors
+  background: var(--error-background-color)
+  border-radius: var(--border-radius)
+  color: var(--error-text-color)
+  margin-bottom: 40px
+  text-align: center
+  padding: 10px
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+.select
+  border-radius: var(--border-radius)
+  position: relative
+  color: var(--primary-text-color)
+  height: 56px
+  padding: 0
+  position: relative
+  width: 100%
+
+  select
+    background: none
+    border: 1px solid var(--primary-text-color)
+    height: 100%
+    padding: 0 40px 0 12px
+    position: relative
+    width: 100%
+    z-index: 2
+
+    option
+      background-color: #FFF
+      color: #000
+
+    &:focus
+      box-shadow: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    fill: currentColor
+    height: 8px
+    position: absolute
+    pointer-events: none
+    right: 14px
+    top: 50%
+    transform: translateY(-50%)
+    width: 14px
+    z-index: 1
+
+h1, h2, h3, h4, h5, h6
+  font-family: var(--primary-font)
+  font-weight: normal
+
+#main
+  flex: 1
+  padding-top: 96px
+  padding-bottom: var(--margin-size)
+
+  @media screen and (max-width: $break-small)
+    padding-top: 60px
+
+  .content-wrapper
+    margin: 0 auto
+    max-width: var(--layout-width)
+    padding: 0 var(--side-padding)
+
+    &--home
+
+      h1.page-title
+        margin-bottom: 48px
+
+    .custom-page
+      margin: 0 auto
+      max-width: 768px
+      width: 100%
+
+    &--contact
+      max-width: 680px
+
+    &--cart
+      max-width: 1200px
+
+    &--product
+      max-width: var(--layout-width)
+
+.page-title
+  font-size: 2rem
+  margin-bottom: 48px
+  text-align: center
+
+.social-icons
+  +flexbox
+  gap: 16px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    gap: 8px
+
+  a
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+
+    svg
+      fill: currentColor
+      height: 20px
+      width: 20px
+
+      &.tumblr-icon
+        width: 14px
+
+.message-banner
+  border-radius: var(--border-radius)
+  background-color: var(--announcement-background-color)
+  color: var(--announcement-text-color)
+  padding: 16px
+  margin-bottom: 32px
+  text-align: left
+  width: 100%
+
+  &--centered
+    text-align: center
+
+  &--no-bg
+    color: var(--primary-text-color)
+    background: none
+    padding: 0
+
+  &--errors
+    background-color: var(--error-background-color)
+    color: var(--error-text-color)
+
+.footer
+  background: var(--footer-background-color)
+  color: var(--footer-text-color)
+  font-family: var(--secondary-font)
+  display: flex
+  flex-shrink: 0
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  gap: 50px
+  padding: 60px 20px
+  text-align: center
+  width: 100%
+
+  a
+    color: var(--footer-text-color)
+
+    &:hover
+      color: var(--link-hover-color)
+
+  &__nav
+    display: flex
+    flex-direction: column
+    row-gap: 40px
+
+  &__pages
+    display: flex
+    column-gap: 30px
+    max-width: 640px
+    flex-wrap: wrap
+    justify-content: center
+    row-gap: 12px
+
+    a
+      display: block
+      padding: 2px
+
+      &:hover
+        text-decoration: underline
+
+  .bigcartel-credit
+    font-size: 14px
+    line-height: 1em
+    display: flex
+    align-items: center
+    gap: 8px
+    outline-offset: 4px
+    padding: 2px 0
+
+    &__text
+      position: relative
+
+    &__lockup
+      display: block
+      fill: currentColor
+      padding-top: 1px
+      width: 80px
+
+.blur-up
+  transition: filter .2s ease
+  filter: blur(2px)
+  transform: translate3d(0, 0, 0)
+
+  &.lazyloaded
+    filter: blur(0)
+
+.sr-only
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+
+.custom-page
+  max-width: 768px
+  margin: 0 auto
+
+.custom-page--content, .product-detail__description
+
+  p
+    margin: revert
+
+  &>:first-child
+    margin-top: 0
+
+  &>:last-child
+    margin-bottom: 0
+
+  ol, ul
+    margin: 1em
+
+  ul
+    list-style: disc
+
+  ol
+    list-style: decimal
+
+  a
+    text-decoration: underline

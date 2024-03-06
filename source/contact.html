@@ -1,36 +1,50 @@
-<h1>{{ page.name }}</h1>
+<h1 class="page-title">{{ page.name }}</h1>
+
 {% if errors != blank %}
-  <ul class="errors">
+  <div class="message-banner message-banner--errors">
     {% for error in errors %}
-      <li>{{ error }}</li>
+      <div>{{ error }}</div>
     {% endfor %}
-  </ul>
+  </div>
 {% endif %}
+
+{% if theme.contact_text %}
+  <div class="message-banner message-banner--contact">{{ theme.contact_text }}</div>
+{% endif %}
+
 {% if contact.sent %}
-  <p class="message_sent">Your message has been sent and we'll get back to you soon.</p>
+  <div class="message-banner message-banner--no-bg message-banner--centered">Thanks! Your message has been sent and we'll get back to you soon.</div>
 {% else %}
-  <form method="post" action="/contact" class="contact_form">
-    <div class="contact_name">
-      <label for="name">Name</label>
-      {{ contact | contact_input: 'name' }}
+  <form method="post" action="/contact" class="contact-form">
+    <div class="contact-form-block contact-name">
+      <label class="contact-label" for="name">Name</label>
+      <div class="input-holder">
+        {{ contact | contact_input: 'name' }}
+      </div>
     </div>
-    <div class="contact_email">
-      <label for="email">Email</label>
-      {{ contact | contact_input: 'email' }}
+    <div class="contact-form-block contact-email">
+      <label class="contact-label" for="email">Email</label>
+      <div class="input-holder">
+        {{ contact | contact_input: 'email' }}
+      </div>
     </div>
-    <div class="contact_subject">
-      <label for="subject">Subject</label>
-      {{ contact | contact_input: 'subject' }}
+    <div class="contact-form-block contact-subject">
+      <label class="contact-label" for="subject">Subject</label>
+      <div class="input-holder">
+        {{ contact | contact_input: 'subject' }}
+      </div>
     </div>
-    <div class="contact_message">
-      <label for="message">Message</label>
-      {{ contact | contact_input: 'message' }}
+    <div class="contact-form-block contact-message">
+      <label class="contact-label" for="message">Message</label>
+      <div class="input-holder">
+        {{ contact | contact_input: 'message' }}
+      </div>
     </div>
-    <div class="contact_recaptcha">
-      <div class="recaptcha-note">{{ contact.recaptcha }}</div>
+    <div class="contact-form-block contact-send">
+      <button class="button button--centered" type="submit" name="submit">Send message</button>
     </div>
-    <div class="contact_send">
-      <button class="button" type="submit" name="submit" title="Send message" tabindex="6">Send message</button>
+    <div class="contact-form-block recaptcha-note">
+      <p>{{ contact.recaptcha }}</p>
     </div>
   </form>
 {% endif %}

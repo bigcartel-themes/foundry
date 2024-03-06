@@ -1,73 +1,43 @@
-$primary-font: #{"{{ theme.primary_font | font_family }}"}
-$secondary-font: #{"{{ theme.secondary_font | font_family }}"}
-
-$background-color: #{'{{ theme.background_color }}'}
-
-$header-background-color: #{'{{ theme.header_background_color }}'}
-$header-text-color: #{'{{ theme.header_text_color }}'}
-$header-text-hover-color: #{'{{ theme.header_text_hover_color }}'}
-$primary-text-color: #{'{{ theme.primary_text_color }}'}
-$secondary-text-color: #{'{{ theme.secondary_text_color }}'}
-
-$hover-color: #{'{{ theme.link_hover_color }}'}
-
-$button-background-color: #{'{{ theme.button_background_color }}'}
-$button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
-$button-text-color: #{'{{ theme.button_text_color }}'}
-
-$error-text-color: #{'{{ theme.error_text_color }}'}
-
-$footer-background-color: #{'{{ theme.footer_background_color }}'}
-
 $break-extra-large: 1200px
 $break-large: 945px
 $break-medium: 800px
 $break-small: 668px
 $break-extra-small: 500px
 
-$base-padding: 10px
-
-@import 'flexbox'
-
-@mixin vertical-align
-  +transform(translateY(-50%))
-  position: relative
-  top: 50%
-
-@mixin transition($transition...)
-  -webkit-transition: #{$transition}
-  transition: #{$transition}
-
-@mixin transform($str...)
-  -webkit-transform: $str
-  transform: $str
-
-@mixin transform-origin($str...)
-  -webkit-transform-origin: $str
-  transform-origin: $str
-
 @mixin appearance($str...)
   -webkit-appearance: none
+  -moz-appearance: none
   appearance: none
 
-@mixin keyframes($animation...)
-  @-webkit-keyframes #{$animation}
-    @content
+*, *::before, *::after
+  box-sizing: border-box
 
-  @keyframes #{$animation}
-    @content
+*
+  margin: 0
+  padding: 0
+  border: 0
 
-@mixin animation($str...)
-  -webkit-animation: $str
-  animation: $str
+body
+  line-height: 1.5
+  -webkit-font-smoothing: antialiased
 
-@mixin pie-clearfix
-  zoom: 1
+img, picture, video, canvas, svg, iframe, embed, audio
+  display: block
+  max-width: 100%
 
-  &:after
-    display: block
-    visibility: hidden
-    height: 0
-    clear: both
-    content: "."
+input, button, textarea, select
+  +appearance(none)
+  border: 0
+  border-radius: var(--border-radius)
+  background: none
+  color: inherit
+  font: inherit
 
+button
+  cursor: pointer
+
+p, h1, h2, h3, h4, h5, h6
+  overflow-wrap: break-word
+
+ol, ul
+  list-style: none
