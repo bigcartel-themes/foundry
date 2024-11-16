@@ -135,8 +135,9 @@
           {% endif %}
         {% endunless %}
       {% endcapture %}
+      {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
       <h1 class="page-title page-title--left product-detail__title">{{ product.name }}</h1>
-      <div class="product-detail__pricing">{{ product_pricing }} {% if product_status != blank %}<div class="product-detail__status {% unless hide_price %}with-spacing{% endunless %}">{{ product_status }}</div>{% endif %}</div>
+      <div class="product-detail__pricing">{{ product_pricing }} {% if product_status != blank %}<div class="product-detail__status  {{ status_class }} {% unless hide_price %}with-spacing{% endunless %}">{{ product_status }}</div>{% endif %}</div>
     </div>
     {% if product.status == 'active' %}
       <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">

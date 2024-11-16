@@ -98,9 +98,7 @@ a.product-list-link
     object-fit: contain
 
 .product-list-thumb-status
-  background: var(--product-status-background-color)
   border-radius: var(--border-radius)
-  color: var(--product-status-text-color)
   top: 12px
   right: 12px
   font-size: .875rem
@@ -111,6 +109,14 @@ a.product-list-link
   text-transform: uppercase
   padding: 6px
   z-index: 2
+
+  &.status-primary
+    background: var(--product-status-background-color-primary)
+    color: var(--product-status-text-color-primary)
+
+  &.status-secondary
+    background: var(--product-status-background-color-secondary)
+    color: var(--product-status-text-color-secondary)
 
 .product-list-thumb-info
   line-height: normal
