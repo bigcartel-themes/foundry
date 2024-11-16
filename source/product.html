@@ -8,6 +8,12 @@
 		{% assign product_status = 'Coming soon' %}
 {% endcase %}
 
+{% if product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+  {% assign hide_price = true %}
+{% else %}
+  {% assign hide_price = false %}
+{% endif %}
+
 {% if product.categories != blank %}
   <nav class="product-breadcrumb" role="navigation" aria-label="breadcrumbs">
     <a href="/products">{{ pages.products.name }}</a> / {{ product.categories.first | link_to }}
@@ -121,14 +127,16 @@
   <section class="product-detail">
     <div class="product-detail__header">
       {% capture product_pricing %}
-        {% if product.variable_pricing %}
-          {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-        {% else %}
-          {{ product.default_price | money: theme.money_format }}
-        {% endif %}
+        {% unless hide_price %}
+          {% if product.variable_pricing %}
+            {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+          {% else %}
+            {{ product.default_price | money: theme.money_format }}
+          {% endif %}
+        {% endunless %}
       {% endcapture %}
       <h1 class="page-title page-title--left product-detail__title">{{ product.name }}</h1>
-      <div class="product-detail__pricing">{{ product_pricing }} {% if product_status != blank %}<div class="product-detail__status">{{ product_status }}</div>{% endif %}</div>
+      <div class="product-detail__pricing">{{ product_pricing }} {% if product_status != blank %}<div class="product-detail__status {% unless hide_price %}with-spacing{% endunless %}">{{ product_status }}</div>{% endif %}</div>
     </div>
     {% if product.status == 'active' %}
       <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">

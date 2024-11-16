@@ -388,10 +388,18 @@
     },
     {
       "variable": "show_sold_out_product_options",
-      "label": "Show sold out product options",
+      "label": "Show sold out product variants",
       "type": "boolean",
       "default": true,
-      "description": "Shows sold out product options in the Product page dropdowns",
+      "description": "Shows sold out product variants in the Product page dropdowns",
+      "requires": "inventory"
+    },
+    {
+      "variable": "show_sold_out_product_prices",
+      "label": "Show prices for sold out products",
+      "type": "boolean",
+      "default": true,
+      "description": "Display prices for sold out products when they are visible",
       "requires": "inventory"
     },
     {
