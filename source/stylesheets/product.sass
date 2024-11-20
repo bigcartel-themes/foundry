@@ -55,6 +55,10 @@
     flex-direction: column
     align-items: flex-start
 
+  &__title
+    line-height: 1.2
+    padding-bottom: 10px
+
   &__status
     text-transform: uppercase
     font-size: .825rem
@@ -62,10 +66,12 @@
     font-weight: 500
     display: inline-block
     padding: 4px 6px
-    margin-left: 8px
     border: 1px solid var(--border-color)
     border-radius: var(--border-radius)
     letter-spacing: 1.1px
+
+    &.with-spacing
+      margin-left: 8px
 
   &__pricing
     color: var(--secondary-text-color)
