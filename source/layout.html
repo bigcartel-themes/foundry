@@ -122,7 +122,7 @@
           or theme.threads_url != blank
           or theme.instagram_url != blank
           or theme.tiktok_url != blank
-          or theme.x_url != blank
+          or theme.twitter_url != blank
           or theme.snapchat_url != blank
           or theme.facebook_url != blank
           or theme.pinterest_url != blank
@@ -146,8 +146,8 @@
               <li><a href="{{ theme.tiktok_url }}" title="TikTok"><svg class="tiktok-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448 210a210 210 0 0 1-123-39v178a163 163 0 1 1-140-161v90a75 75 0 1 0 52 71V0h88a121 121 0 0 0 2 22 122 122 0 0 0 54 80 121 121 0 0 0 67 21z"/></svg></a>
             {% endif %}
 
-            {% if theme.x_url != blank %}
-              <li><a href="{{ theme.x_url }}" title="X"><svg class="x-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389 48h71L306 224l181 240H345L234 319 107 464H36l165-188L27 48h145l101 133L389 48zm-25 374h39L152 88h-42l255 334z"/></svg></a></li>
+            {% if theme.twitter_url != blank %}
+              <li><a href="{{ theme.twitter_url }}" title="X"><svg class="x-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389 48h71L306 224l181 240H345L234 319 107 464H36l165-188L27 48h145l101 133L389 48zm-25 374h39L152 88h-42l255 334z"/></svg></a></li>
             {% endif %}
 
             {% if theme.snapchat_url != blank %}

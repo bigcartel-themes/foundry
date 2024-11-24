@@ -522,7 +522,7 @@
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
     },
     {
-      "variable": "x_url",
+      "variable": "twitter_url",
       "label": "X URL",
       "type": "text",
       "description": "Ex: https://x.com/bigcartel"
