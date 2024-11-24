@@ -498,12 +498,6 @@
       "description": "Controls the rounded corner style on images and other site elements"
     },
     {
-      "variable": "bluesky_url",
-      "label": "Bluesky URL",
-      "type": "text",
-      "description": "Ex: https://bsky.app/profile/bigcartel.com"
-    },
-    {
       "variable": "threads_url",
       "label": "Threads URL",
       "type": "text",
@@ -520,6 +514,12 @@
       "label": "TikTok URL",
       "type": "text",
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
+    },
+    {
+      "variable": "bluesky_url",
+      "label": "Bluesky URL",
+      "type": "text",
+      "description": "Ex: https://bsky.app/profile/bigcartel.com"
     },
     {
       "variable": "twitter_url",
