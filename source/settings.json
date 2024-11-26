@@ -498,12 +498,6 @@
       "description": "Controls the rounded corner style on images and other site elements"
     },
     {
-      "variable": "threads_url",
-      "label": "Threads URL",
-      "type": "text",
-      "description": "Ex: https://www.threads.net/@bigcartel"
-    },
-    {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
@@ -514,6 +508,12 @@
       "label": "TikTok URL",
       "type": "text",
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
+    },
+    {
+      "variable": "threads_url",
+      "label": "Threads URL",
+      "type": "text",
+      "description": "Ex: https://www.threads.net/@bigcartel"
     },
     {
       "variable": "bluesky_url",
