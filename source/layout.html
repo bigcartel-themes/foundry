@@ -7,7 +7,7 @@
     {{ head_content }}
     <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
-  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader">
+  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.announcement_message_text != blank %}
       <div aria-label="Announcement message" class="announcement-message">
@@ -17,7 +17,7 @@
         </button>
       </div>
     {% endif %}
-    <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% endif %}{% endif %}">
+    <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% endif %}{% endif %}" data-bc-hook="header">
       <div class="header__wrapper">
         <div class="header-logo {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
           <a href="/" title="{{ store.name | escape }}">
@@ -116,7 +116,7 @@
         {% endif %}
       </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" data-bc-hook="footer">
       <nav class="footer__nav" aria-label="Footer navigation">
         {% if theme.instagram_url != blank
           or theme.tiktok_url != blank
