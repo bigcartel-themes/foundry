@@ -685,6 +685,13 @@
       "description": "Controls the rounded corner style on images and other site elements"
     },
     {
+      "variable": "show_categories_in_footer",
+      "label": "Show categories in footer",
+      "type": "boolean",
+      "default": true,
+      "description": "Show categories in the footer"
+    },
+    {
       "variable": "footer_text",
       "label": "Footer text",
       "type": "text",

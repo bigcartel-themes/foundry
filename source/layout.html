@@ -121,6 +121,28 @@
         {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
           <div class="footer__custom_text">{{ theme.footer_text }}</div>
         {% endif %}
+        <ul class="footer__pages footer__pages--main" aria-label="Footer main">
+          <li><a href="/">{{ pages.home.name }}</a></li>
+          <li><a href="/products">{{ pages.products.name }}</a></li>
+          <li><a href="/contact">{{ pages.contact.name }}</a></li>
+          {% if store.website != blank %}
+            <li><a href="{{ store.website }}">Back to site</a></li>
+          {% endif %}
+        </ul>
+        {% if theme.show_categories_in_footer %}
+          <ul class="footer__pages footer__pages--categories"  aria-label="Footer pages">
+            {% if categories.active != blank %}
+              {% for category in categories.active %}
+                <li>{{ category | link_to }}</li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        {% endif %}
+        <ul class="footer__pages footer__pages--pages"  aria-label="Footer pages">
+          {% for page in pages.all %}
+            <li>{{ page | link_to }}</li>
+          {% endfor %}
+        </ul>
         {% if theme.instagram_url != blank
           or theme.tiktok_url != blank
           or theme.threads_url != blank
@@ -178,16 +200,6 @@
             {% endif %}
           </ul>
         {% endif %}
-        <ul class="footer__pages">
-          <li><a href="/products">{{ pages.products.name }}</a></li>
-          {% for page in pages.all %}
-            <li>{{ page | link_to }}</li>
-          {% endfor %}
-          <li><a href="/contact">{{ pages.contact.name }}</a></li>
-          {% if store.website != blank %}
-            <li><a href="{{ store.website }}">Back to site</a></li>
-          {% endif %}
-        </ul>
       </nav>
       {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
         <div class="footer__custom_text">{{ theme.footer_text }}</div>
