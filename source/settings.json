@@ -459,6 +459,7 @@
     {
       "variable": "announcement_message_text",
       "label": "Announcement text",
+      "max_length": 500,
       "type": "text",
       "description": "Displays an announcement message on the top of every page"
     },
@@ -466,6 +467,7 @@
       "variable": "contact_text",
       "label": "Contact page text",
       "type": "text",
+      "max_length": 500,
       "description": "Displays a message within your contact page"
     },
     {
@@ -478,6 +480,7 @@
       "variable": "maintenance_message",
       "label": "Maintenance mode message",
       "type": "text",
+      "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
@@ -518,12 +521,8 @@
       "variable": "featured_order",
       "label": "Featured products order",
       "type": "select",
-      "options": [
-        ["Regular", "regular"],
-        ["Top Selling", "sales"],
-        ["Newest", "newest"]
-      ],
-      "default": "regular",
+      "options": "product_orders",
+      "default": "position",
       "description": "The order of products on the Home page"
     },
     {
