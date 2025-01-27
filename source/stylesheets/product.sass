@@ -85,3 +85,20 @@
 
 #instant-checkout-button
   margin-top: 12px
+
+.related-products-container
+  margin-top: calc(var(--margin-size) * 2)
+
+  @media screen and (max-width: $break-medium)
+    margin-top: calc(var(--margin-size) * 1.5)
+
+.related-products-header
+  display: flex
+  align-items: center
+
+  .related-products-view-all-link
+    margin-left: auto
+
+    &:hover
+      text-decoration: underline
+      text-underline-offset: 3px
