@@ -122,10 +122,13 @@
     left: 0
 
   &.has-welcome
-    background: transparent
-
-  &.show-background
     background: var(--header-background-color)
+
+    &.is-transparent
+      background: transparent
+
+    &.is-scrolled
+      background: var(--header-background-color)
 
   a
     color: var(--header-text-color)

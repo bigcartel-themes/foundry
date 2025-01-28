@@ -89,9 +89,9 @@ function animateHomeElements() {
     }
   }
   if (contentRec.top <= 90) {
-    $("header").addClass("show-background");
+    $("header").addClass("is-scrolled");
   } else {
-    $("header").removeClass("show-background");
+    $("header").removeClass("is-scrolled");
   }
 }
 

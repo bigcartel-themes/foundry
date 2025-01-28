@@ -503,6 +503,12 @@
       "description": "Home page tagline, displays above the featured header"
     },
     {
+      "variable": "transparent_header_with_welcome",
+      "label": "Make the header transparent header when a welcome image is set",
+      "type": "boolean",
+      "default": false
+    },
+    {
       "variable": "featured_header",
       "label": "Featured header",
       "type": "text",

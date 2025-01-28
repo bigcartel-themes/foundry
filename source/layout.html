@@ -17,7 +17,7 @@
         </button>
       </div>
     {% endif %}
-    <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% endif %}{% endif %}" data-bc-hook="header">
+    <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% if theme.transparent_header_with_welcome %} is-transparent{% endif %}{% endif %}{% endif %}" data-bc-hook="header">
       <div class="header__wrapper">
         <div class="header-logo {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
           <a href="/" title="{{ store.name | escape }}">
