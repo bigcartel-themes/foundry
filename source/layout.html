@@ -129,7 +129,7 @@
             <li><a href="{{ store.website }}">Back to site</a></li>
           {% endif %}
         </ul>
-        {% if theme.show_categories_in_footer %}
+        {% if theme.show_categories_in_footer and categories.active.size > 0 %}
           <ul class="footer__pages footer__pages--categories"  aria-label="Footer pages">
             {% if categories.active != blank %}
               {% for category in categories.active %}
