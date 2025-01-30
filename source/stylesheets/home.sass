@@ -121,6 +121,13 @@ a.all-products-button
     @media screen and (max-width: $break-small)
       --columns: #{"{{ theme.max_categories_per_row_mobile }}"}
 
-
     &--text 
       row-gap: 20px
+    
+    a.button
+      display: block
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      text-align: center
+      margin: 0
