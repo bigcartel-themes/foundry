@@ -95,7 +95,7 @@
       {% for category in categories.active limit:theme.featured_categories %}
         <div class="product-list-thumb">
           {% if theme.home_page_categories_style == "text" %}
-            <a class="button button--centered button--secondary" href="{{ category.url }}">{{ category.name | escape }}</a>
+            <a class="button button--centered button--secondary" href="{{ category.url }}">{{ category.name }}</a>
           {% else %}
             <a class="product-list-link category-link" href="{{ category.url }}" title="View {{ category.name | escape }}">
               {% for product in category.products limit:1 %}
