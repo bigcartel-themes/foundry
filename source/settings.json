@@ -504,9 +504,10 @@
     },
     {
       "variable": "transparent_header_with_welcome",
-      "label": "Make the header transparent header when a welcome image is set",
+      "label": "Transparent header on welcome image",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "description": "Makes the header background transparent when a welcome image is present, allowing the image to show through"
     },
     {
       "variable": "featured_header",
@@ -718,8 +719,21 @@
       ]
     },
     {
-      "variable": "border_radius",
-      "label": "Rounded corners",
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product variants",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product variants in the Product page dropdowns",
+      "requires": "inventory"
+    },
+    {
+      "variable": "show_sold_out_product_prices",
+      "label": "Show prices for sold out products",
+      "type": "boolean",
+      "default": true,
+      "description": "Display prices for sold out products when they are visible",
+      "requires": "inventory"
+    },
       "type": "select",
       "options": [
         ["Off", "0"],
@@ -757,6 +771,19 @@
       "requires": [
         "footer_text present"
       ]
+    },
+    {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
     },
     {
       "variable": "money_format",
