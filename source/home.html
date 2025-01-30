@@ -90,37 +90,42 @@
     {% if theme.home_page_categories_header %}
       <h2 class="featured-categories-header">{{ theme.home_page_categories_header }}</h2>
     {% endif %}
-    <div class="product-list product-list--center category-list">
-      {% for category in categories.active %}
+    {% assign category_list_style = theme.home_page_categories_style %}
+    <div class="product-list product-list--center category-list category-list--{{ category_list_style }}">
+      {% for category in categories.active limit:theme.featured_categories %}
         <div class="product-list-thumb">
-          <a class="product-list-link category-link" href="{{ category.url }}" title="View {{ category.name | escape }}">
-            {% for product in category.products limit:1 %}
-              {% assign image_width = product.image.width | times: 1.0 %}
-              {% assign image_height = product.image.height | times: 1.0 %}
-              {% assign aspect_ratio = image_width | divided_by: image_height %}
-              <div class="product-list-image-container product-list-image-container-cover">
-                <img
-                  alt=""
-                  class="blur-up product-list-image lazyload grid-cover"
-                  src="{{ product.image | product_image_url | constrain: 20 }}"
-                  {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
-                  data-srcset="
-                    {{ product.image | product_image_url | constrain: 240 }} 240w,
-                    {{ product.image | product_image_url | constrain: 320 }} 320w,
-                    {{ product.image | product_image_url | constrain: 400 }} 400w,
-                    {{ product.image | product_image_url | constrain: 540 }} 540w,
-                    {{ product.image | product_image_url | constrain: 600 }} 600w,
-                    {{ product.image | product_image_url | constrain: 800 }} 800w,
-                    {{ product.image | product_image_url | constrain: 960 }} 960w
-                  "
-                  data-sizes="auto"
-                >
-              </div>
-              <div class="product-list-thumb-info">
-                <div class="product-list-thumb-name">{{ category.name }}</div>
-              </div>
-            {% endfor %}
-          </a>
+          {% if theme.home_page_categories_style == "text" %}
+            <a class="button button--centered button--secondary" href="{{ category.url }}">{{ category.name | escape }}</a>
+          {% else %}
+            <a class="product-list-link category-link" href="{{ category.url }}" title="View {{ category.name | escape }}">
+              {% for product in category.products limit:1 %}
+                {% assign image_width = product.image.width | times: 1.0 %}
+                {% assign image_height = product.image.height | times: 1.0 %}
+                {% assign aspect_ratio = image_width | divided_by: image_height %}
+                <div class="product-list-image-container product-list-image-container-cover">
+                  <img
+                    alt=""
+                    class="blur-up product-list-image lazyload grid-cover"
+                    src="{{ product.image | product_image_url | constrain: 20 }}"
+                    {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+                    data-srcset="
+                      {{ product.image | product_image_url | constrain: 240 }} 240w,
+                      {{ product.image | product_image_url | constrain: 320 }} 320w,
+                      {{ product.image | product_image_url | constrain: 400 }} 400w,
+                      {{ product.image | product_image_url | constrain: 540 }} 540w,
+                      {{ product.image | product_image_url | constrain: 600 }} 600w,
+                      {{ product.image | product_image_url | constrain: 800 }} 800w,
+                      {{ product.image | product_image_url | constrain: 960 }} 960w
+                    "
+                    data-sizes="auto"
+                  >
+                </div>
+                <div class="product-list-thumb-info">
+                  <div class="product-list-thumb-name">{{ category.name }}</div>
+                </div>
+              {% endfor %}
+            </a>
+          {% endif %}
         </div>
       {% endfor %}
     </div>

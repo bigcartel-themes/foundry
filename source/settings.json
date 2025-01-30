@@ -510,9 +510,9 @@
     },
     {
       "variable": "featured_header",
-      "label": "Featured header",
+      "label": "Featured products header",
       "type": "text",
-      "description": "Featured products header on the Home page",
+      "description": "Displays above featured products on the Home page",
       "default": "Featured"
     },
     {
@@ -529,7 +529,10 @@
       "type": "select",
       "options": "product_orders",
       "default": "position",
-      "description": "The order of products on the Home page"
+      "description": "The order of products on the Home page",
+      "requires": [
+        "featured_products gt 0"
+      ]
     },
     {
       "variable": "all_products_button_text",
@@ -546,11 +549,36 @@
       "description": "Displays categories as a grid on the Home page"
     },
     {
+      "variable": "featured_categories",
+      "label": "Featured categories",
+      "type": "select",
+      "options": "1..100",
+      "default": 10,
+      "description": "The number of categories displayed on the Home page",
+      "requires": [
+        "show_home_page_categories eq true"
+      ]
+    },
+    {
       "variable": "home_page_categories_header",
-      "label": "Categories header",
+      "label": "Featured categories header",
       "type": "text",
-      "description": "Displays above categories on the Home page",
-      "default": "Categories"
+      "description": "Displays above featured categories on the Home page",
+      "default": "Featured Categories",
+      "requires": [
+        "show_home_page_categories eq true"
+      ]
+    },
+    {
+      "variable": "home_page_categories_style",
+      "label": "Display style of Home page featured categories",
+      "type": "select",
+      "options": [
+        ["Thumbnails", "thumbnails"],
+        ["Text", "text"]
+      ],
+      "default": "text",
+      "description": "Sets the display of images in the product grid"
     },
     {
       "variable": "max_categories_per_row",
@@ -618,22 +646,6 @@
       "type": "boolean",
       "default": true,
       "description": "Displays a product search icon in the header"
-    },
-    {
-      "variable": "show_sold_out_product_options",
-      "label": "Show sold out product variants",
-      "type": "boolean",
-      "default": true,
-      "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": "inventory"
-    },
-    {
-      "variable": "show_sold_out_product_prices",
-      "label": "Show prices for sold out products",
-      "type": "boolean",
-      "default": true,
-      "description": "Display prices for sold out products when they are visible",
-      "requires": "inventory"
     },
     {
       "variable": "product_image_zoom",
