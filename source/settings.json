@@ -703,7 +703,24 @@
         ["Text", "text"]
       ],
       "default": "text",
-      "description": "Sets the display of images in the product grid"
+      "description": "Sets the display of images in the product grid",
+      "requires": [
+        "show_home_page_categories eq true"
+      ]
+    },
+    {
+      "variable": "home_page_categories_position",
+      "label": "Display position of Home page featured categories",
+      "type": "select",
+      "options": [
+        ["Top", "top"],
+        ["Bottom", "bottom"]
+      ],
+      "default": "bottom",
+      "description": "Shows the featured categories at the top or bottom of the Home page",
+      "requires": [
+        "show_home_page_categories eq true"
+      ]
     },
     {
       "variable": "max_categories_per_row",
