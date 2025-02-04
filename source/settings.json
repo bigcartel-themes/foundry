@@ -621,6 +621,20 @@
       "description": "Displays underneath the welcome text on the Home page, links to your Products page"
     },
     {
+      "variable": "welcome_button_behavior",
+      "label": "Welcome Button Behavior",
+      "type": "select",
+      "options": [
+        ["Scroll down page", "scroll"],
+        ["Go to Products Page", "navigate"]
+      ],
+      "default": "scroll",
+      "description": "Controls the behavior of the welcome button on the Home page",
+      "requires": [
+        "welcome_button_text present"
+      ]
+    },
+    {
       "variable": "home_tagline",
       "label": "Home page tagline",
       "type": "text",
