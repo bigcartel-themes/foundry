@@ -85,3 +85,27 @@
 
 #instant-checkout-button
   margin-top: 12px
+
+.inventory-status-message
+  color: var(--inventory-status-text-color)
+  margin: 10px 0 auto
+  text-align: center
+  padding: 8px 0
+  font-weight: 500
+
+.related-products-container
+  margin-top: calc(var(--margin-size) * 2)
+
+  @media screen and (max-width: $break-medium)
+    margin-top: calc(var(--margin-size) * 1.5)
+
+.related-products-header
+  display: flex
+  align-items: center
+
+  .related-products-view-all-link
+    margin-left: auto
+
+    &:hover
+      text-decoration: underline
+      text-underline-offset: 3px

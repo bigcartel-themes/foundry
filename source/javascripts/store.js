@@ -89,9 +89,9 @@ function animateHomeElements() {
     }
   }
   if (contentRec.top <= 90) {
-    $("header").addClass("show-background");
+    $("header").addClass("is-scrolled");
   } else {
-    $("header").removeClass("show-background");
+    $("header").removeClass("is-scrolled");
   }
 }
 
@@ -111,3 +111,38 @@ API.onError = function(errors) {
     $productError.prepend($errorList);
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const welcomeButton = document.querySelector(".welcome-button");
+  if (welcomeButton) {
+    welcomeButton.addEventListener("click", function (event) {
+      console.log(themeOptions.welcomeButtonBehavior);
+      if (themeOptions.welcomeButtonBehavior === "scroll") {
+        event.preventDefault();
+        const targetElement = document.querySelector("#main");
+        if (targetElement) {
+          smoothScroll(targetElement, 1000);
+        }
+      }
+    });
+  }
+  function smoothScroll(target, duration, offset = 0) {
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+    const startPosition = window.scrollY;
+    let startTime = null;
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, targetPosition, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+    requestAnimationFrame(animation);
+  }
+});

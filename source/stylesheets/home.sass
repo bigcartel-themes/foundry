@@ -102,22 +102,49 @@
 .home-featured-products
   margin-bottom: var(--margin-size)
 
+  .page-title
+    &--primary
+      font-size: 2rem
+
+    &--secondary
+      font-size: 2rem
+
 a.all-products-button
   margin-top: 48px
 
 .featured-categories
+  margin-bottom: 80px
 
-  h2
+  .featured-categories-header
     text-align: center
-    font-size: 2rem
     margin-bottom: 48px
+
+    &--primary
+      font-size: 2rem
+    
+    &--secondary
+      font-size: 1.5rem
 
   .category-list
     --columns: #{"{{ theme.max_categories_per_row }}"}
 
     @media screen and (max-width: $break-large)
       --columns: calc(#{"{{ theme.max_categories_per_row }}"} - 1)
-      justify-content: flex-start
 
     @media screen and (max-width: $break-small)
       --columns: #{"{{ theme.max_categories_per_row_mobile }}"}
+
+    .product-list-thumb
+      width: 80%
+      max-width: 360px
+
+    &--text 
+      row-gap: 20px
+    
+    a.button
+      display: block
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      text-align: center
+      margin: 0
