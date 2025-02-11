@@ -835,6 +835,19 @@
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
+    },
+    {
       "variable": "show_related_products",
       "label": "Show related products",
       "type": "boolean",
@@ -879,7 +892,7 @@
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": "inventory"
+      "requires": [ "inventory" ]
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -887,7 +900,7 @@
       "type": "boolean",
       "default": true,
       "description": "Display prices for sold out products when they are visible",
-      "requires": "inventory"
+      "requires": [ "inventory" ]
     },
     {
       "variable": "show_low_inventory_messages",
@@ -968,19 +981,6 @@
       "requires": [
         "footer_text present"
       ]
-    },
-    {
-      "variable": "border_radius",
-      "label": "Rounded corners",
-      "type": "select",
-      "options": [
-        ["Off", "0"],
-        ["Small", "2px"],
-        ["Medium", "4px"],
-        ["Large", "8px"]
-      ],
-      "default": "4px",
-      "description": "Controls the rounded corner style on images and other site elements"
     },
     {
       "variable": "money_format",
