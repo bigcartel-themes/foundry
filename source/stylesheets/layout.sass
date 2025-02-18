@@ -326,6 +326,20 @@ h1, h2, h3, h4, h5, h6
       &:hover
         text-decoration: underline
 
+  &__custom_text
+    display: grid
+    grid-template-columns: 1fr
+    justify-content: center
+    text-align: center
+    padding: 20px 50px
+    gap: 20px
+
+    > *
+      justify-self: center
+    
+    @media screen and (max-width: $break-small)
+      padding: 10px
+
   .bigcartel-credit
     font-size: 14px
     line-height: 1em
