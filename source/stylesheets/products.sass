@@ -16,7 +16,7 @@
     a
       color: var(--secondary-text-color)
       display: block
-      font-size: 1.2em
+      font-size: 1.1em
       padding: 2px 6px
       outline-offset: 2px
 
@@ -133,8 +133,14 @@ a.product-list-link
   font-size: 1.1rem
   word-break: break-word
 
+  @media screen and (max-width: $break-small)
+    font-size: 1.0rem
+
 .product-list-thumb-price
   font-size: .975rem
+
+  @media screen and (max-width: $break-small)
+    font-size: 0.9rem
 
 .pagination
   display: flex
