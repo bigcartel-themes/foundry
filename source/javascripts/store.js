@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const welcomeButton = document.querySelector(".welcome-button");
   if (welcomeButton) {
     welcomeButton.addEventListener("click", function (event) {
-      console.log(themeOptions.welcomeButtonBehavior);
       if (themeOptions.welcomeButtonBehavior === "scroll") {
         event.preventDefault();
         const targetElement = document.querySelector("#main");
