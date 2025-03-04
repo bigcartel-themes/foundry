@@ -130,11 +130,17 @@ a.product-list-link
     display: none
 
 .product-list-thumb-name
-  font-size: 1.1rem
+  font-size: 1.0rem
   word-break: break-word
 
+  @media screen and (max-width: $break-small)
+    font-size: 0.9rem
+
 .product-list-thumb-price
-  font-size: .975rem
+  font-size: 0.9rem
+
+  @media screen and (max-width: $break-small)
+    font-size: 0.85rem
 
 .pagination
   display: flex
