@@ -639,14 +639,14 @@
       "label": "Welcome overlay opacity",
       "type": "select",
       "options": [
-        ["Brightest", "-0.50"],
-        ["Brighter", "-0.25"],
-        ["None", "0"],
-        ["Darker", "0.25"],
-        ["Darkest", "0.50"]
+        ["Very bright", "very_bright"],
+        ["Bright", "bright"],
+        ["None", "none"],
+        ["Dark", "dark"],
+        ["Very dark", "very_dark"]
       ],
       "default": "0.50",
-      "description": "Adjust the home page slideshow or welcome image to enhance the legibility of your welcome text and button"
+      "description": "Adjust the homepage welcome image to enhance the legibility of your welcome text and button"
     },
     {
       "variable": "home_tagline",
