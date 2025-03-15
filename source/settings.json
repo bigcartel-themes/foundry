@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "images": [
     {
       "variable": "header_logo",
@@ -635,6 +635,20 @@
       ]
     },
     {
+      "variable": "welcome_overlay_opacity",
+      "label": "Welcome overlay opacity",
+      "type": "select",
+      "options": [
+        ["Very bright", "very_bright"],
+        ["Bright", "bright"],
+        ["None", "none"],
+        ["Dark", "dark"],
+        ["Very dark", "very_dark"]
+      ],
+      "default": "0.50",
+      "description": "Adjust the homepage welcome image to enhance the legibility of your welcome text and button"
+    },
+    {
       "variable": "home_tagline",
       "label": "Home page tagline",
       "type": "text",
@@ -869,7 +883,7 @@
       "label": "Related products",
       "type": "select",
       "options": "1..8",
-      "default": 4,
+      "default": 6,
       "description": "The maximum number of related products to show on Product pages",
       "requires": [
         "show_related_products eq true"
@@ -981,6 +995,13 @@
       "requires": [
         "footer_text present"
       ]
+    },
+    {
+      "variable": "show_bnpl_messaging",
+      "label": "Buy Now, Pay Later Messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
     },
     {
       "variable": "money_format",

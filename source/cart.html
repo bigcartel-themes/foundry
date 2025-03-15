@@ -64,14 +64,29 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="cart-footer">
-        <div class="cart-subtotal" aria-live="polite" aria-atomic="true">
-          <span class="cart-subtotal__label">Subtotal</span>
-          <span class="cart-subtotal__amount">{{ cart.total | money: theme.money_format }}</span>
+      <div class="cart-footer-container">
+        <div class="cart-footer">
+          <div class="cart-subtotal" aria-live="polite" aria-atomic="true">
+            <span class="cart-subtotal__label">Subtotal</span>
+            <span class="cart-subtotal__amount">{{ cart.total | money: theme.money_format }}</span>
+          </div>
+          <div class="cart-submit">
+            <button type="submit" name="checkout" class="button button--checkout">Checkout</button>
+            {% if theme.show_bnpl_messaging and cart.items != blank %}
+              {% unless theme.features.opt_outs contains "theme_bnpl_messaging" %}
+                <div id="payment-processor-messaging">
+                  <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
+                    <div id="paypal-messaging-element"></div>
+                  </div>
+                  <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
+                    <div id="payment-method-messaging-element"></div>
+                  </div>
+                </div>
+              {% endunless %}
+            {% endif %}
+          </div>
         </div>
-        <div class="cart-submit">
-          <button type="submit" name="checkout" class="button button--checkout">Checkout</button>
-          <a class="button button--minimal" href="/">Continue Shopping</a>
+        <div class="cart-footer-secondary">
           {% if cart.shareable_link %}
             <a href="{{ cart.shareable_link }}" class="button button--minimal copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
           {% endif %}
