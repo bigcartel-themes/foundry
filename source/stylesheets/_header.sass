@@ -110,10 +110,10 @@
     min-height: var(--header-height)
     align-items: center
     grid-template-columns: 1fr 2fr 1fr
-    gap: 24px
+    gap: 15px
 
     @media screen and (max-width: $break-large)
-      grid-template-columns: 1fr 1fr
+      grid-template-columns: 1.35fr 0.65fr
       padding: 0 20px
 
   &.fixed
@@ -148,6 +148,9 @@
   display: inline-flex
   align-items: center
   text-align: left
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.3em
 
   a
     display: flex
