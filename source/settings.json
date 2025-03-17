@@ -623,7 +623,7 @@
         ["Dark", "dark"],
         ["Very dark", "very_dark"]
       ],
-      "default": "0.50",
+      "default": "dark",
       "description": "Adjust the homepage welcome image to enhance the legibility of your welcome text and button"
     },
     {
