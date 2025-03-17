@@ -29,9 +29,6 @@
     &:focus
       color: var(--header-text-hover-color)
 
-  .category-nav-page
-    text-underline-offset: 4px
-
   .category-nav-arrow
     fill: currentColor
     pointer-events: none
@@ -260,6 +257,10 @@
       position: relative
       outline-offset: 4px
       border-radius: 0
+
+      &:hover
+        text-decoration: underline
+        text-underline-offset: 8px
 
 .cart-count
   position: absolute
