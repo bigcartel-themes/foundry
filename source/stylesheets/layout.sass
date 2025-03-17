@@ -98,6 +98,8 @@ a
     &:hover
       color: var(--link-hover-color)
       text-decoration: underline
+      text-decoration-thickness: 1px
+      text-underline-offset: 4px
 
 button.button, a.button, div.button
   +appearance(none)
@@ -299,6 +301,7 @@ h1, h2, h3, h4, h5, h6
   align-items: center
   flex-direction: column
   gap: 50px
+  margin-top: 100px
   padding: 60px 20px
   text-align: center
   width: 100%
@@ -351,6 +354,7 @@ h1, h2, h3, h4, h5, h6
     gap: 8px
     outline-offset: 4px
     padding: 2px 0
+    text-decoration: none
 
     &__text
       position: relative
@@ -405,3 +409,9 @@ h1, h2, h3, h4, h5, h6
 
   a
     text-decoration: underline
+
+  img
+    display: inline-block
+    margin: 0 auto
+    max-width: 100%
+    margin-bottom: 16px

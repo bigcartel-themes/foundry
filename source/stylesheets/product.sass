@@ -4,10 +4,11 @@
 
   a
     color: inherit
-    text-decoration: underline
+    text-decoration: none
 
     &:hover
       color: var(--link-hover-color)
+      text-decoration: underline
 
 .product-container
   display: grid
@@ -108,4 +109,40 @@
 
     &:hover
       text-decoration: underline
-      text-underline-offset: 3px
+      text-underline-offset: 4px
+
+#payment-processor-messaging
+  margin: 20px 0 0
+  width: 100%
+  display: block
+  
+  body[data-bc-page-type="product"] &
+    margin: 0
+
+  body[data-bc-page-type="cart"] &
+    margin-bottom: 20px
+
+  &.display-flex
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    
+    &.dual-messaging
+      gap: 15px
+  
+  &.display-grid
+    display: grid
+  
+  &.hidden
+    position: absolute
+    left: -9999px
+    top: -9999px
+
+  > div
+    margin-bottom: 0
+  
+  // Only apply the margin for non-flex layouts when dual messaging is present
+  &:not(.display-flex)
+    &.dual-messaging > div.visible:first-of-type
+      margin-bottom: 15px
