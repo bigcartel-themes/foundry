@@ -1,4 +1,4 @@
-.category-nav
+.header-nav
   cursor: pointer
   position: relative
   width: auto
@@ -12,7 +12,7 @@
     font-size: 1em
     max-width: 100%
 
-  .category-nav-heading
+  .nav-heading
     +flexbox
     +align-items(center)
     +justify-content(center)
@@ -23,18 +23,18 @@
       &:hover
         color: var(--header-text-hover-color)
 
-        .category-nav-page
+        .nav-page
           text-decoration: underline
 
     &:focus
       color: var(--header-text-hover-color)
 
-  .category-nav-arrow
+  .nav-arrow
     fill: currentColor
     pointer-events: none
     width: 12px
 
-  .category-dropdown
+  .nav-dropdown
     background: var(--header-background-color)
     transition: opacity .2s linear, visibility .2s linear
     border-radius: var(--border-radius)
@@ -106,7 +106,7 @@
     display: grid
     min-height: var(--header-height)
     align-items: center
-    grid-template-columns: 1fr 2fr 1fr
+    grid-template-columns: #{"{% if theme.pages_global_nav_style == 'inline' %}1fr 2fr 1fr{% else %}1.25fr 1.5fr 1.25fr{% endif %}"}
     gap: 15px
 
     @media screen and (max-width: $break-large)
@@ -157,6 +157,9 @@
     padding: 8px 0
     width: auto
     outline-offset: 4px
+    
+    &:hover
+      text-decoration: none
 
   &.image
     img
@@ -252,7 +255,7 @@
     justify-content: center
 
   .header-page-link
-    a, .category-nav-heading
+    a, .nav-heading
       display: flex
       position: relative
       outline-offset: 4px
