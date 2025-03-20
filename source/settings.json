@@ -640,6 +640,39 @@
       "description": "Makes the header background transparent when a welcome image is present, allowing the image to show through"
     },
     {
+      "variable": "pages_global_nav_style",
+      "label": "How to display pages in your shop's header",
+      "type": "select",
+      "options": [
+        ["Dropdown", "dropdown"],
+        ["Inline", "inline"]
+      ],
+      "default": "dropdown",
+      "description": "Choose how your custom pages appear in your shop's header menu."
+    },
+    {
+      "variable": "pages_global_nav_dropdown_text",
+      "label": "Custom Pages header dropdown text",
+      "type": "text",
+      "default": "More",
+      "max_length": 25,
+      "description": "The label for your dropdown menu containing custom pages. Only applies when using dropdown style",
+      "requires": [
+        "pages_global_nav_style eq dropdown"
+      ]
+    },
+    {
+      "variable": "nav_items",
+      "label": "Navigation items",
+      "type": "select",
+      "options": "0..10",
+      "default": 2,
+      "description": "Number of custom page links to show in main navigation. Only applies to inline style",
+      "requires": [
+        "pages_global_nav_style eq inline"
+      ]
+    },
+    {
       "variable": "featured_header",
       "label": "Featured products header",
       "type": "text",
@@ -779,14 +812,6 @@
       "options": "1..100",
       "default": 48,
       "description": "The number of products shown at a time on the Products page"
-    },
-    {
-      "variable": "nav_items",
-      "label": "Navigation items",
-      "type": "select",
-      "options": "0..4",
-      "default": 2,
-      "description": "The number of custom page links show in the main navigation"
     },
     {
       "variable": "show_search",

@@ -1,39 +1,64 @@
-const categoryNavHeadings = document.querySelectorAll('.category-nav-heading');
-const dropdowns = document.querySelectorAll('.category-dropdown');
+const navHeadings = document.querySelectorAll('.nav-heading');
+const dropdowns = document.querySelectorAll('.nav-dropdown');
 
-categoryNavHeadings.forEach(function(categoryNavHeading) {
-  categoryNavHeading.addEventListener('click', function(e) {
+// Function to close all dropdowns
+function closeAllDropdowns() {
+  navHeadings.forEach(heading => {
+    heading.setAttribute('aria-expanded', 'false');
+  });
+  
+  dropdowns.forEach(dropdown => {
+    dropdown.setAttribute('aria-hidden', 'true');
+  });
+}
+
+// Create one escape key handler for the document
+function handleEscapeKey(e) {
+  if (e.key === 'Escape') {
+    closeAllDropdowns();
+    document.removeEventListener('keydown', handleEscapeKey);
+  }
+}
+
+navHeadings.forEach(function(navHeading) {
+  navHeading.addEventListener('click', function(e) {
     e.stopPropagation();
 
-    let thisButton = e.currentTarget;
-    const dropdown = document.getElementById(thisButton.getAttribute('aria-controls'));
+    const thisButton = e.currentTarget;
+    const dropdownId = thisButton.getAttribute('aria-controls');
+    const dropdown = document.getElementById(dropdownId);
+    
+    if (!dropdown) {
+      console.warn(`Dropdown with ID "${dropdownId}" not found`);
+      return;
+    }
+    
     const isExpanded = thisButton.getAttribute('aria-expanded') === 'true';
 
-    categoryNavHeading.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-    dropdown.setAttribute('aria-hidden', isExpanded ? 'true' : 'false');
-
-    document.addEventListener('keydown', function toggleDropdownOnEscape(e) {
-      if (e.key === 'Escape' && dropdown.getAttribute('aria-hidden') === 'false') {
-        categoryNavHeading.setAttribute('aria-expanded', 'false');
-        dropdown.setAttribute('aria-hidden', 'true');
-        document.removeEventListener('keydown', toggleDropdownOnEscape);
-      }
-    });
+    // First close all dropdowns
+    closeAllDropdowns();
+    
+    // If this dropdown wasn't already open, open it
+    if (!isExpanded) {
+      navHeading.setAttribute('aria-expanded', 'true');
+      dropdown.setAttribute('aria-hidden', 'false');
+      
+      // Set up a single escape key handler
+      document.removeEventListener('keydown', handleEscapeKey);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
   });
 });
 
+// Close dropdowns when clicking outside
 document.addEventListener('click', function(e) {
   const target = e.target;
-  const isDropdown = target.classList.contains('category-dropdown') || target.closest('.category-dropdown');
+  const isDropdown = target.classList.contains('nav-dropdown') || 
+                     target.closest('.nav-dropdown') || 
+                     target.classList.contains('nav-heading') ||
+                     target.closest('.nav-heading');
 
   if (!isDropdown) {
-    dropdowns.forEach(function(dropdown) {
-      const dropdownButton = document.querySelector(`[aria-controls="${dropdown.id}"]`);
-
-      if (dropdown.getAttribute('aria-hidden') === 'false') {
-        dropdownButton.setAttribute('aria-expanded', 'false');
-        dropdown.setAttribute('aria-hidden', 'true');
-      }
-    });
+    closeAllDropdowns();
   }
 });
