@@ -33,12 +33,12 @@
           <ul class="header-pages">
             <li class="header-page-link">
               {% if categories.active != blank %}
-                <div class="category-nav header-category-nav">
-                  <button class="category-nav-heading" aria-label="Open category navigation" aria-controls="header-dropdown" aria-expanded="false">
-                    <div class="category-nav-page">Shop</div>
-                    <svg aria-hidden="true" fill="currentColor" class="category-nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+                <div class="header-nav header-nav--categories">
+                  <button class="nav-heading nav-heading--categories" aria-label="Open category navigation" aria-controls="header-dropdown-categories" aria-expanded="false">
+                    <div class="nav-page nav-page--categories">Shop</div>
+                    <svg aria-hidden="true" fill="currentColor" class="nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
                   </button>
-                  <div class="category-dropdown" id="header-dropdown" aria-hidden="true">
+                  <div class="nav-dropdown" id="header-dropdown-categories" aria-hidden="true">
                     {% if categories.active != blank %}
                       <ul class="dropdown-list categories-list">
                         <li><a href="/products">All products</a></li>
@@ -53,10 +53,31 @@
                 <a href="/products">{{ pages.products.name }}</a>
               {% endif %}
             </li>
-            {% for page in pages.all limit: theme.nav_items %}
-              <li class="header-page-link">{{ page | link_to }}</li>
-            {% endfor %}
-            <li class="header-page-link"><a href="/contact">{{ pages.contact.name }}</a></li>
+            {% if theme.pages_global_nav_style == "inline" %}
+              {% for page in pages.all limit: theme.nav_items %}
+                <li class="header-page-link">{{ page | link_to }}</li>
+              {% endfor %}
+              {% if pages.all.size < theme.nav_items %}
+                <li class="header-page-link"><a href="/contact">{{ pages.contact.name }}</a></li>
+              {% endif %}
+            {% else %}
+              <li class="header-page-link">
+                <div class="header-nav header-nav--pages">
+                  <button class="nav-heading nav-heading--pages" aria-label="Open pages navigation" aria-controls="header-dropdown-pages" aria-expanded="false">
+                      <div class="nav-page nav-page--pages">{{ theme.pages_global_nav_dropdown_text | strip | default: "Info" }}</div>
+                    <svg aria-hidden="true" fill="currentColor" class="nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+                  </button>
+                  <div class="nav-dropdown" id="header-dropdown-pages" aria-hidden="true">
+                      <ul class="dropdown-list pages-list">
+                        {% for page in pages.all %}
+                          <li>{{ page | link_to }}</li>
+                        {% endfor %}
+                        <li><a href="/contact">{{ pages.contact.name }}</a></li>
+                      </ul>
+                  </div>
+                </div>
+              </li>
+            {% endif %}
           </ul>
         </nav>
 
