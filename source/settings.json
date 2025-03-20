@@ -641,7 +641,7 @@
     },
     {
       "variable": "pages_global_nav_style",
-      "label": "How to display pages in your shop's header",
+      "label": "Shop header menu style for custom pages in desktop view",
       "type": "select",
       "options": [
         ["Dropdown", "dropdown"],
@@ -665,7 +665,7 @@
       "variable": "nav_items",
       "label": "Navigation items",
       "type": "select",
-      "options": "0..10",
+      "options": "0..4",
       "default": 2,
       "description": "Number of custom page links to show in main navigation. Only applies to inline style",
       "requires": [
