@@ -40,7 +40,7 @@
   --margin-size: 64px
 
   --layout-width: 1200px
-  --side-padding: 40px
+  --side-padding: 30px
 
   @media screen and (max-width: $break-large)
     --side-padding: 20px
@@ -97,9 +97,6 @@ a
   @media (hover: hover)
     &:hover
       color: var(--link-hover-color)
-      text-decoration: underline
-      text-decoration-thickness: 1px
-      text-underline-offset: 4px
 
 button.button, a.button, div.button
   +appearance(none)
@@ -133,7 +130,7 @@ button.button, a.button, div.button
     transition: color .2s linear
 
     &:hover, &:focus
-      text-decoration: underline
+      text-decoration: none
       background: none
       border: 0
       color: var(--link-hover-color)
@@ -330,7 +327,7 @@ h1, h2, h3, h4, h5, h6
       padding: 2px
 
       &:hover
-        text-decoration: underline
+        text-decoration: none
 
   &__custom_text
     display: grid
