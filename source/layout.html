@@ -245,7 +245,7 @@
       {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
         <div class="footer__custom_text">{{ theme.footer_text }}</div>
       {% endif %}
-      <div class="footer__credit">
+      <div class="footer__credit" data-bc-hook="credit">
         <span class="credit">{{ powered_by_big_cartel }}</span>
       </div>
     </footer>
