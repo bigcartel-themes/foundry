@@ -775,6 +775,7 @@
       "upgrade_default": "first_product",
       "description": "Choose how products appear in featured categories. Collages show up to 4 products.",
       "requires": [
+        "feature:theme_category_collages eq opted_in",
         "show_home_page_categories eq true",
         "home_page_categories_style eq thumbnails"
       ]
@@ -795,6 +796,7 @@
       "upgrade_default": "none",
       "description": "Choose how to display product counts for categories. Badge overlays appear on category images, while text displays next to category names. Note: Collages show counts for categories with 5+ products.",
       "requires": [
+        "feature:theme_category_collages eq opted_in",
         "show_home_page_categories eq true",
         "home_page_categories_style eq thumbnails"
       ]
