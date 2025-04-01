@@ -762,6 +762,44 @@
       ]
     },
     {
+      "variable": "home_page_categories_image_style",
+      "label": "Featured categories image style",
+      "type": "select",
+      "options": [
+        ["First product", "first_product"],
+        ["Random product", "random_product"],
+        ["Collage of first products", "collage"],
+        ["Collage of random products", "collage_random"]
+      ],
+      "default": "collage",
+      "upgrade_default": "first_product",
+      "description": "Choose how products appear in featured categories. Collages show up to 4 products.",
+      "requires": [
+        "show_home_page_categories eq true",
+        "home_page_categories_style eq thumbnails"
+      ]
+    },
+    {
+      "variable": "home_page_categories_product_count_display",
+      "label": "Featured categories product count display",
+      "type": "select",
+      "options": [
+        ["Hide product count", "none"],
+        ["Show next to category name", "text"],
+        ["Circle badge overlay", "circle"],
+        ["Square badge overlay", "square"],
+        ["Pill badge overlay", "pill"],
+        ["Sunburst badge overlay", "sunburst"]
+      ],
+      "default": "circle",
+      "upgrade_default": "none",
+      "description": "Choose how to display product counts for categories. Badge overlays appear on category images, while text displays next to category names. Note: Collages show counts for categories with 5+ products.",
+      "requires": [
+        "show_home_page_categories eq true",
+        "home_page_categories_style eq thumbnails"
+      ]
+    },
+    {
       "variable": "max_categories_per_row",
       "label": "Maximum categories per row",
       "type": "select",

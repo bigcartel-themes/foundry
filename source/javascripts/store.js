@@ -113,35 +113,26 @@ API.onError = function(errors) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const welcomeButton = document.querySelector(".welcome-button");
-  if (welcomeButton) {
-    welcomeButton.addEventListener("click", function (event) {
-      if (themeOptions.welcomeButtonBehavior === "scroll") {
-        event.preventDefault();
-        const targetElement = document.querySelector("#main");
-        if (targetElement) {
-          smoothScroll(targetElement, 1000);
+  const isHomePage = document.body.getAttribute('data-bc-page-type') === 'home';
+  if (isHomePage) {
+    const welcomeButton = document.querySelector(".welcome-button");
+    if (welcomeButton) {
+      welcomeButton.addEventListener("click", function (event) {
+        if (themeOptions.welcomeButtonBehavior === "scroll") {
+          event.preventDefault();
+          const targetElement = document.querySelector("#main");
+          if (targetElement) {
+            smoothScroll(targetElement, 1000);
+          }
         }
-      }
+      });
+    }
+
+    setupCategoryCollages({ 
+      collage: { 
+        width: 720, 
+        height: 720 
+      } 
     });
-  }
-  function smoothScroll(target, duration, offset = 0) {
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-    const startPosition = window.scrollY;
-    let startTime = null;
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, targetPosition, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t + b;
-      t--;
-      return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-    requestAnimationFrame(animation);
   }
 });
