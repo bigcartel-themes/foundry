@@ -683,7 +683,7 @@
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
-      "options": "0..100",
+      "options": "0..48",
       "default": 12,
       "description": "The number of products displayed on the Home page"
     },
@@ -716,7 +716,7 @@
       "variable": "featured_categories",
       "label": "Featured categories",
       "type": "select",
-      "options": "1..100",
+      "options": "1..50",
       "default": 10,
       "description": "The number of categories displayed on the Home page",
       "requires": [
