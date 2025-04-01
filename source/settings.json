@@ -1038,7 +1038,7 @@
         ["Start of footer", "start"],
         ["End of footer", "end"]
       ],
-      "default": "after",
+      "default": "end",
       "description": "Choose where to show your footer message",
       "requires": [
         "footer_text present"
