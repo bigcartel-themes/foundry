@@ -595,7 +595,7 @@
       "type": "text",
       "default": "More",
       "max_length": 25,
-      "description": "The label for your dropdown menu containing custom pages. Only applies when using dropdown style",
+      "description": "The label for your dropdown menu containing custom pages",
       "requires": [
         "pages_global_nav_style eq dropdown"
       ]
@@ -607,7 +607,7 @@
       "type": "select",
       "options": "0..4",
       "default": 2,
-      "description": "Number of custom page links to show in main navigation. Only applies to inline style",
+      "description": "Number of custom page links to show in main navigation",
       "requires": [
         "pages_global_nav_style eq inline"
       ]
