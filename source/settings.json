@@ -790,14 +790,6 @@
       ]
     },
     {
-      "variable": "all_products_button_text",
-      "label": "All products button text",
-      "section": "homepage",
-      "type": "text",
-      "description": "Displays underneath featured products, links to your Products page",
-      "default": "All Products"
-    },
-    {
       "variable": "show_home_page_categories",
       "label": "Display categories on Home page",
       "section": "homepage",
@@ -901,6 +893,14 @@
         "home_page_categories_image_style neq collage",
         "home_page_categories_image_style neq collage_random"
       ]
+    },
+    {
+      "variable": "all_products_button_text",
+      "label": "All products button text",
+      "section": "homepage",
+      "type": "text",
+      "description": "Displays underneath featured products, links to your Products page",
+      "default": "All Products"
     },
     {
       "variable": "product_image_zoom",
