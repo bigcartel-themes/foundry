@@ -128,11 +128,17 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    setupCategoryCollages({ 
-      collage: { 
-        width: 720, 
-        height: 720 
-      } 
-    });
+    const featuredCategoriesContainerSelector = '.category-list';
+    const featuredCategoriesContainer = document.querySelector(featuredCategoriesContainerSelector);
+    const categoryCollagesEnabled = featuredCategoriesContainer?.dataset.categoryCollagesEnabled === 'true';
+
+    if (categoryCollagesEnabled) {
+      setupCategoryCollages({ 
+        collage: { 
+          width: 720, 
+          height: 720 
+        } 
+      });
+    }
   }
 });
