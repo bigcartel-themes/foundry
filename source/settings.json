@@ -590,7 +590,7 @@
     },
     {
       "variable": "pages_global_nav_dropdown_text",
-      "label": "Custom Pages header dropdown text",
+      "label": "Custom pages header dropdown text",
       "section": "global_navigation",
       "type": "text",
       "default": "More",
