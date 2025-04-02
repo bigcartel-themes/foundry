@@ -897,7 +897,9 @@
       "requires": [
         "feature:theme_category_collages eq opted_in",
         "show_home_page_categories eq true",
-        "home_page_categories_style eq thumbnails"
+        "home_page_categories_style eq thumbnails",
+        "home_page_categories_image_style neq collage",
+        "home_page_categories_image_style neq collage_random"
       ]
     },
     {
