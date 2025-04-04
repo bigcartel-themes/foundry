@@ -1,15 +1,17 @@
 {
   "name": "Foundry",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "images": [
     {
       "variable": "header_logo",
       "label": "Header logo",
+      "section": "global_navigation",
       "description": "Good for a logo up to 60 pixels high"
     },
     {
       "variable": "welcome_image",
       "label": "Welcome image",
+      "section": "homepage",
       "description": "Displays a full screen image on the Home page"
     }
   ],
@@ -559,48 +561,172 @@
   ],
   "options": [
     {
-      "variable": "announcement_message_text",
-      "label": "Announcement text",
-      "max_length": 500,
-      "type": "text",
-      "description": "Displays an announcement message on the top of every page"
+      "variable": "show_search",
+      "label": "Show search",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays a product search icon in the header"
     },
     {
-      "variable": "contact_text",
-      "label": "Contact page text",
-      "type": "text",
-      "max_length": 500,
-      "description": "Displays a message within your contact page"
+      "variable": "transparent_header_with_welcome",
+      "label": "Transparent header on welcome image",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": false,
+      "description": "Makes the header background transparent when a welcome image is present, allowing the image to show through"
     },
     {
-      "variable": "cart_text",
-      "label": "Cart page text",
-      "type": "text",
-      "description": "Displays a message within your cart page"
+      "variable": "pages_global_nav_style",
+      "label": "Shop header menu style for custom pages in desktop view",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Dropdown", "dropdown"],
+        ["Inline", "inline"]
+      ],
+      "default": "dropdown",
+      "description": "Choose how your custom pages appear in your shop's header menu."
     },
     {
-      "variable": "maintenance_message",
-      "label": "Maintenance mode message",
+      "variable": "pages_global_nav_dropdown_text",
+      "label": "Custom pages header dropdown text",
+      "section": "global_navigation",
+      "type": "text",
+      "default": "More",
+      "max_length": 25,
+      "description": "The label for your dropdown menu containing custom pages",
+      "requires": [
+        "pages_global_nav_style eq dropdown"
+      ]
+    },
+    {
+      "variable": "nav_items",
+      "label": "Navigation items",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..4",
+      "default": 2,
+      "description": "Number of custom page links to show in main navigation",
+      "requires": [
+        "pages_global_nav_style eq inline"
+      ]
+    },
+    {
+      "variable": "max_categories_per_row",
+      "label": "Maximum categories per row",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..4",
+      "default": 3,
+      "description": "The maximum number of Home page categories displayed per row on larger screens"
+    },
+    {
+      "variable": "max_categories_per_row_mobile",
+      "label": "Maximum categories per row (mobile)",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The maximum number of Home page categories displayed per row on smaller screens"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Normal", "default"],
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
+      ],
+      "default": "cover",
+      "description": "Sets the display of images in the product grid"
+    },
+    {
+      "variable": "max_products_per_row",
+      "label": "Maximum products per row",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..4",
+      "default": 3,
+      "description": "The maximum number of products displayed per row on larger screens"
+    },
+    {
+      "variable": "max_products_per_row_mobile",
+      "label": "Maximum products per row (mobile)",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The number of products displayed per row on smaller screens"
+    },
+    {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..100",
+      "default": 48,
+      "description": "The number of products shown at a time on the Products page"
+    },
+    {
+      "variable": "show_categories_in_footer",
+      "label": "Show categories in footer",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": true,
+      "description": "Display product category links in your shop's footer"
+    },
+    {
+      "variable": "show_custom_pages_in_footer",
+      "label": "Show custom pages in footer",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": true,
+      "description": "Display links to your custom pages in your shop's footer"
+    },
+    {
+      "variable": "footer_text",
+      "label": "Footer text",
+      "section": "global_navigation",
       "type": "text",
       "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode",
-      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+      "description": "Show a custom message in your shop's footer"
+    },
+    {
+      "variable": "footer_text_position",
+      "label": "Footer text position",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Start of footer", "start"],
+        ["End of footer", "end"]
+      ],
+      "default": "end",
+      "description": "Choose where to show your footer message",
+      "requires": [
+        "footer_text present"
+      ]
     },
     {
       "variable": "welcome_text",
       "label": "Welcome text",
+      "section": "homepage",
       "type": "text",
       "description": "Home page message for your visitors, use this with a welcome image"
     },
     {
       "variable": "welcome_button_text",
       "label": "Welcome button text",
+      "section": "homepage",
       "type": "text",
       "description": "Displays underneath the welcome text on the Home page, links to your Products page"
     },
     {
       "variable": "welcome_button_behavior",
       "label": "Welcome Button Behavior",
+      "section": "homepage",
       "type": "select",
       "options": [
         ["Scroll down page", "scroll"],
@@ -615,6 +741,7 @@
     {
       "variable": "welcome_overlay_opacity",
       "label": "Welcome overlay opacity",
+      "section": "homepage",
       "type": "select",
       "options": [
         ["Very bright", "very_bright"],
@@ -629,19 +756,14 @@
     {
       "variable": "home_tagline",
       "label": "Home page tagline",
+      "section": "homepage",
       "type": "text",
       "description": "Home page tagline, displays above the featured header"
     },
     {
-      "variable": "transparent_header_with_welcome",
-      "label": "Transparent header on welcome image",
-      "type": "boolean",
-      "default": false,
-      "description": "Makes the header background transparent when a welcome image is present, allowing the image to show through"
-    },
-    {
       "variable": "featured_header",
       "label": "Featured products header",
+      "section": "homepage",
       "type": "text",
       "description": "Displays above featured products on the Home page",
       "default": "Featured Products"
@@ -649,14 +771,16 @@
     {
       "variable": "featured_products",
       "label": "Featured products",
+      "section": "homepage",
       "type": "select",
-      "options": "0..100",
+      "options": "0..48",
       "default": 12,
       "description": "The number of products displayed on the Home page"
     },
     {
       "variable": "featured_order",
       "label": "Featured products order",
+      "section": "homepage",
       "type": "select",
       "options": "product_orders",
       "default": "position",
@@ -666,15 +790,9 @@
       ]
     },
     {
-      "variable": "all_products_button_text",
-      "label": "All products button text",
-      "type": "text",
-      "description": "Displays underneath featured products, links to your Products page",
-      "default": "All Products"
-    },
-    {
       "variable": "show_home_page_categories",
       "label": "Display categories on Home page",
+      "section": "homepage",
       "type": "boolean",
       "default": true,
       "description": "Displays categories as a grid on the Home page"
@@ -682,8 +800,9 @@
     {
       "variable": "featured_categories",
       "label": "Featured categories",
+      "section": "homepage",
       "type": "select",
-      "options": "1..100",
+      "options": "1..48",
       "default": 10,
       "description": "The number of categories displayed on the Home page",
       "requires": [
@@ -693,6 +812,7 @@
     {
       "variable": "home_page_categories_header",
       "label": "Featured categories header",
+      "section": "homepage",
       "type": "text",
       "description": "Displays above featured categories on the Home page",
       "default": "Featured Categories",
@@ -703,6 +823,7 @@
     {
       "variable": "home_page_categories_style",
       "label": "Display style of Home page featured categories",
+      "section": "homepage",
       "type": "select",
       "options": [
         ["Thumbnails", "thumbnails"],
@@ -717,6 +838,7 @@
     {
       "variable": "home_page_categories_position",
       "label": "Display position of Home page featured categories",
+      "section": "homepage",
       "type": "select",
       "options": [
         ["Top", "top"],
@@ -729,75 +851,61 @@
       ]
     },
     {
-      "variable": "max_categories_per_row",
-      "label": "Maximum categories per row",
-      "type": "select",
-      "options": "1..4",
-      "default": 3,
-      "description": "The maximum number of Home page categories displayed per row on larger screens"
-    },
-    {
-      "variable": "max_categories_per_row_mobile",
-      "label": "Maximum categories per row (mobile)",
-      "type": "select",
-      "options": "1..2",
-      "default": 2,
-      "description": "The maximum number of Home page categories displayed per row on smaller screens"
-    },
-    {
-      "variable": "grid_image_style",
-      "label": "Product grid image style",
+      "variable": "home_page_categories_image_style",
+      "label": "Featured categories image style",
+      "section": "homepage",
       "type": "select",
       "options": [
-        ["Normal", "default"],
-        ["Fit to square", "contain"],
-        ["Crop to square", "cover"]
+        ["First product", "first_product"],
+        ["Random product", "random_product"],
+        ["Collage of first products", "collage"],
+        ["Collage of random products", "collage_random"]
       ],
-      "default": "cover",
-      "description": "Sets the display of images in the product grid"
+      "default": "collage",
+      "upgrade_default": "first_product",
+      "description": "Choose how products appear in featured categories. Collages show up to 4 products.",
+      "requires": [
+        "feature:theme_category_collages eq visible",
+        "show_home_page_categories eq true",
+        "home_page_categories_style eq thumbnails"
+      ]
     },
     {
-      "variable": "max_products_per_row",
-      "label": "Maximum products per row",
+      "variable": "home_page_categories_product_count_display",
+      "label": "Featured categories product count display",
+      "section": "homepage",
       "type": "select",
-      "options": "1..4",
-      "default": 3,
-      "description": "The maximum number of products displayed per row on larger screens"
+      "options": [
+        ["Hide product count", "none"],
+        ["Show next to category name", "text"],
+        ["Circle badge overlay", "circle"],
+        ["Square badge overlay", "square"],
+        ["Pill badge overlay", "pill"],
+        ["Sunburst badge overlay", "sunburst"]
+      ],
+      "default": "circle",
+      "upgrade_default": "none",
+      "description": "Choose how to display product counts for categories. Badge overlays appear on category images, while text displays next to category names. Note: Collages show counts for categories with 5+ products.",
+      "requires": [
+        "feature:theme_category_collages eq visible",
+        "show_home_page_categories eq true",
+        "home_page_categories_style eq thumbnails",
+        "home_page_categories_image_style neq collage",
+        "home_page_categories_image_style neq collage_random"
+      ]
     },
     {
-      "variable": "max_products_per_row_mobile",
-      "label": "Maximum products per row (mobile)",
-      "type": "select",
-      "options": "1..2",
-      "default": 2,
-      "description": "The number of products displayed per row on smaller screens"
-    },
-    {
-      "variable": "products_per_page",
-      "label": "Products per page",
-      "type": "select",
-      "options": "1..100",
-      "default": 48,
-      "description": "The number of products shown at a time on the Products page"
-    },
-    {
-      "variable": "nav_items",
-      "label": "Navigation items",
-      "type": "select",
-      "options": "0..4",
-      "default": 2,
-      "description": "The number of custom page links show in the main navigation"
-    },
-    {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": true,
-      "description": "Displays a product search icon in the header"
+      "variable": "all_products_button_text",
+      "label": "All products button text",
+      "section": "homepage",
+      "type": "text",
+      "description": "Displays underneath featured products, links to your Products page",
+      "default": "All Products"
     },
     {
       "variable": "product_image_zoom",
       "label": "Enable product image zoom",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Click to open a larger version of the Product page image"
@@ -805,6 +913,7 @@
     {
       "variable": "desktop_product_page_images",
       "label": "Desktop product page images",
+      "section": "product_page",
       "type": "select",
       "options": [
         ["Thumbnails", "thumbnails"],
@@ -818,6 +927,7 @@
     {
       "variable": "mobile_product_page_images",
       "label": "Mobile product page image carousel",
+      "section": "product_page",
       "type": "select",
       "options": [
         ["Show thumbnails", "show-thumbnails"],
@@ -827,21 +937,9 @@
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
-      "variable": "border_radius",
-      "label": "Rounded corners",
-      "type": "select",
-      "options": [
-        ["Off", "0"],
-        ["Small", "2px"],
-        ["Medium", "4px"],
-        ["Large", "8px"]
-      ],
-      "default": "4px",
-      "description": "Controls the rounded corner style on images and other site elements"
-    },
-    {
       "variable": "show_related_products",
       "label": "Show related products",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Displays related products on the Product page"
@@ -849,6 +947,7 @@
     {
       "variable": "related_products_header",
       "label": "Related products header",
+      "section": "product_page",
       "type": "text",
       "description": "Displays above related products on Products pages",
       "default": "You might also like",
@@ -859,6 +958,7 @@
     {
       "variable": "related_products",
       "label": "Related products",
+      "section": "product_page",
       "type": "select",
       "options": "1..8",
       "default": 6,
@@ -870,6 +970,7 @@
     {
       "variable": "related_products_order",
       "label": "Related products order",
+      "section": "product_page",
       "type": "select",
       "options": "product_orders",
       "default": "top-selling",
@@ -881,22 +982,16 @@
     {
       "variable": "show_sold_out_product_options",
       "label": "Show sold out product variants",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
       "requires": [ "inventory" ]
     },
     {
-      "variable": "show_sold_out_product_prices",
-      "label": "Show prices for sold out products",
-      "type": "boolean",
-      "default": true,
-      "description": "Display prices for sold out products when they are visible",
-      "requires": [ "inventory" ]
-    },
-    {
       "variable": "show_low_inventory_messages",
       "label": "Show product stock alerts",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Show shoppers alerts on Product pages when it's running low on stock",
@@ -905,6 +1000,7 @@
     {
       "variable": "low_inventory_threshold",
       "label": "Low stock alert",
+      "section": "product_page",
       "options": "1..100",
       "type": "select",
       "default": "10",
@@ -917,6 +1013,7 @@
     {
       "variable": "low_inventory_message",
       "label": "Low stock message",
+      "section": "product_page",
       "type": "text",
       "max_length": 50,
       "description": "Message shown when stock drops below your alert level",
@@ -929,6 +1026,7 @@
     {
       "variable": "almost_sold_out_message",
       "label": "Almost sold out message",
+      "section": "product_page",
       "type": "text",
       "max_length": 50,
       "description": "Message shown when stock drops below half your alert level",
@@ -940,50 +1038,38 @@
       ]
     },
     {
-      "variable": "show_categories_in_footer",
-      "label": "Show categories in footer",
-      "type": "boolean",
-      "default": true,
-      "description": "Display product category links in your shop's footer"
-    },
-    {
-      "variable": "show_custom_pages_in_footer",
-      "label": "Show custom pages in footer",
-      "type": "boolean",
-      "default": true,
-      "description": "Display links to your custom pages in your shop's footer"
-    },
-    {
-      "variable": "footer_text",
-      "label": "Footer text",
-      "type": "text",
-      "max_length": 2048,
-      "description": "Show a custom message in your shop's footer"
-    },
-    {
-      "variable": "footer_text_position",
-      "label": "Footer text position",
-      "type": "select",
-      "options": [
-        ["Start of footer", "start"],
-        ["End of footer", "end"]
-      ],
-      "default": "after",
-      "description": "Choose where to show your footer message",
-      "requires": [
-        "footer_text present"
-      ]
-    },
-    {
       "variable": "show_bnpl_messaging",
       "label": "Buy Now, Pay Later Messaging",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
-      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan.",
+      "requires": [
+        "feature:theme_bnpl_messaging eq visible"
+      ],
+      "plan_type": "paid"
+    },
+    {
+      "variable": "show_sold_out_product_prices",
+      "label": "Show prices for sold out products",
+      "section": "general",
+      "type": "boolean",
+      "default": true,
+      "description": "Display prices for sold out products when they are visible",
+      "requires": [ "inventory" ]
+    },
+    {
+      "variable": "show_coming_soon_product_prices",
+      "label": "Show prices for coming soon products",
+      "section": "general",
+      "type": "boolean",
+      "default": true,
+      "description": "Show the price of coming soon products on product grids and product pages"
     },
     {
       "variable": "money_format",
       "label": "Price display",
+      "section": "general",
       "type": "select",
       "options": [
         ["Currency sign", "sign"],
@@ -993,86 +1079,146 @@
       "description": "Sets the display of prices in your shop"
     },
     {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
+    },
+    {
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "section": "messaging",
+      "max_length": 500,
+      "type": "text",
+      "description": "Displays an announcement message on the top of every page"
+    },
+    {
+      "variable": "contact_text",
+      "label": "Contact page text",
+      "section": "messaging",
+      "type": "text",
+      "max_length": 500,
+      "description": "Displays a message within your contact page"
+    },
+    {
+      "variable": "cart_text",
+      "label": "Cart page text",
+      "section": "messaging",
+      "type": "text",
+      "description": "Displays a message within your cart page"
+    },
+    {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "section": "messaging",
+      "type": "text",
+      "max_length": 2048,
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+    },
+    {
       "variable": "instagram_url",
       "label": "Instagram URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://instagram.com/bigcartel"
     },
     {
       "variable": "tiktok_url",
       "label": "TikTok URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
     },
     {
       "variable": "threads_url",
       "label": "Threads URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://www.threads.net/@bigcartel"
     },
     {
       "variable": "bluesky_url",
       "label": "Bluesky URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bsky.app/profile/bigcartel.com"
     },
     {
       "variable": "twitter_url",
       "label": "X URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://x.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://facebook.com/bigcartel"
     },
     {
       "variable": "snapchat_url",
       "label": "Snapchat URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://snapchat.com/add/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://pinterest.com/big_cartel"
     },
     {
       "variable": "youtube_url",
       "label": "YouTube URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://youtube.com/@BigCartelDotCom"
     },
     {
       "variable": "spotify_url",
       "label": "Spotify URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://open.spotify.com/artist/0gxy..."
     },
     {
       "variable": "linkedin_url",
       "label": "LinkedIn URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://linkedin.com/in/bigcartel"
     },
     {
       "variable": "twitch_url",
       "label": "Twitch URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://twitch.tv/username"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.tumblr.com"
     },
     {
       "variable": "bandcamp_url",
       "label": "Bandcamp URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.bandcamp.com"
     }

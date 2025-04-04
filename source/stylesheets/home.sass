@@ -161,3 +161,23 @@ a.all-products-button
       text-overflow: ellipsis
       text-align: center
       margin: 0
+
+  // Keyframes for fade-in animation
+@keyframes fade-in
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+// Styles for collage image fade-in using animation
+.collage-image
+  // Final state is opacity 1 by default
+  opacity: 1
+  // Apply animation when NOT loading
+  animation: fade-in 0.4s ease-in-out forwards
+
+  // Add a 'loading' state for when the image is not yet ready
+  &.loading
+    // Start invisible and prevent animation from running initially
+    opacity: 0
+    animation: none
