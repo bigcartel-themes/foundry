@@ -1098,7 +1098,7 @@
       "section": "messaging",
       "max_length": 500,
       "type": "text",
-      "description": "Displays an announcement message on the top of every page"
+      "description": "Announcement message on the top of every page"
     },
     {
       "variable": "contact_text",
@@ -1106,14 +1106,14 @@
       "section": "messaging",
       "type": "text",
       "max_length": 500,
-      "description": "Displays a message within your contact page"
+      "description": "Custom message at the top of your contact page"
     },
     {
       "variable": "cart_text",
       "label": "Cart page text",
       "section": "messaging",
       "type": "text",
-      "description": "Displays a message within your cart page"
+      "description": "Custom message at the top of your cart page"
     },
     {
       "variable": "maintenance_message",
