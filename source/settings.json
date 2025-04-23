@@ -1113,7 +1113,7 @@
       "label": "Cart page text",
       "section": "messaging",
       "type": "text",
-      "description": "Custom message at the top of your cart page"
+      "description": "Custom message at the top of your cart page when there are items in the cart"
     },
     {
       "variable": "maintenance_message",
