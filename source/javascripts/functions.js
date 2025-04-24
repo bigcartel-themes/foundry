@@ -94,21 +94,31 @@ const htmlHighlight = function(element, newText) {
 }
 
 function smoothScroll(target, duration, offset = 0) {
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+  const targetElement = typeof target === 'string' ? document.querySelector(target) : target;
+  const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
   const startPosition = window.scrollY;
   let startTime = null;
+  
   function animation(currentTime) {
     if (startTime === null) startTime = currentTime;
     const timeElapsed = currentTime - startTime;
-    const run = ease(timeElapsed, startPosition, targetPosition, duration);
-    window.scrollTo(0, run);
-    if (timeElapsed < duration) requestAnimationFrame(animation);
+    const progress = Math.min(timeElapsed / (duration*1.5), 1);
+    
+    const easeValue = easeInOutCubic(progress);
+    const currentPosition = startPosition + (targetPosition - startPosition) * easeValue;
+    
+    window.scrollTo(0, currentPosition);
+    
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
   }
-  function ease(t, b, c, d) {
-    t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
-    t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
+  
+  function easeInOutCubic(t) {
+    return t < 0.5 
+      ? 4 * t * t * t 
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
+  
   requestAnimationFrame(animation);
 }
