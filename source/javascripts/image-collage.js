@@ -20,7 +20,6 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
       return;
     }
 
-    // Known missing image patterns
     const missingImagePatterns = [
       '/missing.png',
       'assets-dev.bigcartel.biz/missing.png',
@@ -40,7 +39,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
       return;
     }
 
-    const isEffectivelySingle = validImageUrls.length === 1; // Is there only one valid image left?
+    const isEffectivelySingle = validImageUrls.length === 1;
     // Use the provided total count if available, otherwise use the count of valid images.
     const actualTotalCount = totalProductCount > 0 ? totalProductCount : validImageUrls.length;
 
@@ -60,7 +59,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
 
         // Show count indicator only for single images (not collages) if enabled and count > 0
         if (context === 'single' && showCount && actualTotalCount >= 1) {
-          addCountIndicator(ctx, width, height, actualTotalCount, fontFamily, indicatorShape, indicatorColorHex); // Pass color
+          addCountIndicator(ctx, width, height, actualTotalCount, fontFamily, indicatorShape, indicatorColorHex);
         }
 
         resolve(canvas.toDataURL('image/jpeg', 0.9));
@@ -76,7 +75,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
 
     // --- Collage Path (2 or more valid images) ---
     let layout;
-    const displayCount = Math.min(validImageUrls.length, 4); // Max 4 images displayed
+    const displayCount = Math.min(validImageUrls.length, 4);
 
     if (displayCount === 2) {
       // Layout: 2 images side-by-side
@@ -106,9 +105,8 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
-    // Optimize context creation if frequent reads aren't expected
     const ctx = canvas.getContext('2d', { willReadFrequently: false });
-    ctx.fillStyle = '#ffffff'; // Set a white background for gaps
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, width, height);
 
     // Loads a single image, resolving with the Image object or null on error
@@ -117,7 +115,6 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
         const img = new Image();
         img.crossOrigin = 'Anonymous'; // Required for canvas
         img.onload = () => {
-          // No need for explicit decode(); browser decodes before drawing.
           resolve(img);
         };
         img.onerror = (err) => {
@@ -149,7 +146,6 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
           return;
         }
 
-        // Draw the collage using the successfully loaded images
         drawCollage(validImages);
       })
       .catch(error => {
@@ -208,8 +204,8 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
     function addCountIndicator(ctx, width, height, count, fontFamily, shape = 'circle', colorHex = '#000000') {
       const padding = Math.min(width, height) * 0.04; // Padding from edges
       var baseSize = Math.min(width, height) * 0.18; // Base size relative to canvas size
-      let centerX = width - padding - baseSize / 2; // Use let for potential reassignment in pill
-      let centerY = height - padding - baseSize / 2; // Use let for potential reassignment in pill
+      let centerX = width - padding - baseSize / 2;
+      let centerY = height - padding - baseSize / 2;
 
       // Variables for text positioning, default to shape center
       let textX = centerX;
@@ -217,47 +213,45 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
       let fontSizeBaseDimension; // Variable to hold the dimension for font size calculation
 
       const indicatorFillColor = hexToRgba(colorHex, 0.65);
-      ctx.fillStyle = indicatorFillColor; // Background color for all shapes
-      ctx.strokeStyle = indicatorFillColor; // Stroke color for sunburst
-      ctx.lineWidth = 1; // Line width for sunburst
+      ctx.fillStyle = indicatorFillColor;
+      ctx.strokeStyle = indicatorFillColor;
+      ctx.lineWidth = 1;
 
       // --- Draw Shape Background ---
       ctx.beginPath();
       switch (shape) {
         case 'square':
-          // Make the square smaller relative to baseSize
           var radius = baseSize / 2.5;
           var squareSize = radius * 2;
           ctx.rect(centerX - radius, centerY - radius, squareSize, squareSize);
-          fontSizeBaseDimension = radius; // Use square's radius
+          fontSizeBaseDimension = radius;
           break;
         case 'pill':
-          // Draw a rectangle with fully rounded ends (capsule shape)
           const pillHeight = baseSize * 0.90;
-          const pillWidth = baseSize * 1.3; // Make it wider than tall
+          const pillWidth = baseSize * 1.3;
           const pillRadius = pillHeight / 2;
           fontSizeBaseDimension = pillRadius * 0.85;
-          const pillCenterX = width - padding - pillWidth / 2; // Adjust center based on new width
-          const pillCenterY = centerY; // Keep vertical center
+          const pillCenterX = width - padding - pillWidth / 2;
+          const pillCenterY = centerY;
 
-          ctx.moveTo(pillCenterX, pillCenterY - pillRadius); // Top start of left arc
-          ctx.arc(pillCenterX, pillCenterY, pillRadius, -Math.PI / 2, Math.PI / 2, false); // Right semicircle
-          ctx.lineTo(pillCenterX - (pillWidth - pillHeight), pillCenterY + pillRadius); // Bottom line to left arc start
-          ctx.arc(pillCenterX - (pillWidth - pillHeight), pillCenterY, pillRadius, Math.PI / 2, -Math.PI / 2, false); // Left semicircle
+          ctx.moveTo(pillCenterX, pillCenterY - pillRadius);
+          ctx.arc(pillCenterX, pillCenterY, pillRadius, -Math.PI / 2, Math.PI / 2, false);
+          ctx.lineTo(pillCenterX - (pillWidth - pillHeight), pillCenterY + pillRadius);
+          ctx.arc(pillCenterX - (pillWidth - pillHeight), pillCenterY, pillRadius, Math.PI / 2, -Math.PI / 2, false);
           ctx.closePath();
-          // Recalculate text position specifically for pill
-          textX = pillCenterX - (pillWidth - pillHeight) / 2; // Center text horizontally within the pill
+
+          textX = pillCenterX - (pillWidth - pillHeight) / 2;
           textY = pillCenterY;
           break;
         case 'sunburst':
           var radius = baseSize / 2;
           fontSizeBaseDimension = radius * 0.9;
-          const numPoints = 8; // Number of points/scallops
+          const numPoints = 8;
           const innerRadius = radius * 0.7;
           const outerRadius = radius * 1.05;
           const angleStep = (Math.PI * 2) / numPoints;
 
-          ctx.moveTo(centerX + outerRadius, centerY); // Start on the right edge
+          ctx.moveTo(centerX + outerRadius, centerY);
 
           for (let i = 0; i < numPoints; i++) {
             const angle = i * angleStep;
@@ -293,11 +287,11 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
 
       // Ensure fontSizeBaseDimension has a fallback if no case matched (shouldn't happen with default)
       if (fontSizeBaseDimension === undefined) {
-        fontSizeBaseDimension = baseSize / 2.5; // Default to circle/square logic
+        fontSizeBaseDimension = baseSize / 2.5;
       }
 
       // --- Draw Count Text ---
-      ctx.fillStyle = '#FFFFFF'; // Text color
+      ctx.fillStyle = '#FFFFFF';
       // Adjust font size dynamically based on the number of digits for better fit
       const digits = count.toString().length;
       let fontSizeMultiplier;
@@ -334,7 +328,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
 
       // Draw the "+N" text centered in the overlay
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = `normal ${position.h * 0.23}px ${fontFamily}`; // Font size relative to overlay height
+      ctx.font = `normal ${position.h * 0.23}px ${fontFamily}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(
@@ -356,21 +350,18 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
         drawCroppedImage(ctx, img, position.x, position.y, position.w, position.h);
       });
 
-      // Add count indicator overlay if applicable
-      if (showCount) {
-        // The grid indicator "+N" is shown only on a 4-image layout
-        // when the total number of products is 4 or more, AND exceeds the number of images actually drawn.
-        const shouldShowGridIndicator = displayCount === 4 && actualTotalCount >= 4 && actualTotalCount > validImages.length;
+      // The grid indicator "+N" is shown only on a 4-image layout
+      // when the total number of products is 4 or more, AND exceeds the number of images actually drawn.
+      const shouldShowGridIndicator = displayCount === 4 && actualTotalCount >= 4 && actualTotalCount > validImages.length;
 
-        if (shouldShowGridIndicator) {
-          const remainingCount = actualTotalCount - validImages.length; // Calculate how many are not shown
-          // Apply the indicator to the last slot (index 3)
-          if (layout && layout.length > 3) { // Ensure layout[3] exists
-            addGridCountIndicator(ctx, layout[3], remainingCount, fontFamily, gridIndicatorColorHex); // Pass color
-          }
+      if (shouldShowGridIndicator) {
+        const remainingCount = actualTotalCount - validImages.length; // Calculate how many are not shown
+        // Apply the indicator to the last slot (index 3)
+        if (layout && layout.length > 3) { // Ensure layout[3] exists
+          addGridCountIndicator(ctx, layout[3], remainingCount, fontFamily, gridIndicatorColorHex); // Pass color
         }
-        // Note: The circle indicator is *never* used for collage layouts (displayCount > 1).
       }
+      // Note: The circle indicator is *never* used for collage layouts (displayCount > 1).
 
       // Resolve the promise with the generated collage image data URL
       resolve(canvas.toDataURL('image/jpeg', 0.9)); // Use JPEG format with quality 0.9
@@ -433,13 +424,9 @@ function processContainer(container, collageOptions = {}) {
   const imageUrlsAttr = container.getAttribute('data-image-urls');
   const productCount = parseInt(container.getAttribute('data-product-count') || '0', 10);
   const fontFamily = container.getAttribute('data-font-family') || 'sans-serif';
-  // Read the count display attribute. 'text' means count is shown in HTML. 'none' means count is hidden entirely.
-  const countDisplay = container.getAttribute('data-count-display') || 'circle'; // Default to 'circle' if missing
-  // Determine if the overlay count should be shown (i.e., not 'text' and not 'none')
+  const countDisplay = container.getAttribute('data-count-display') || 'circle'
   const showCount = countDisplay !== 'text' && countDisplay !== 'none';
-  // Determine the intended display style (single or collage) from the attribute
   const imageStyle = container.getAttribute('data-image-style') || 'single';
-  // Read color attributes, defaulting to black
   const indicatorColorHex = container.getAttribute('data-indicator-color') || '#000000';
   const gridIndicatorColorHex = container.getAttribute('data-grid-indicator-color') || '#000000';
 
@@ -475,28 +462,25 @@ function processContainer(container, collageOptions = {}) {
     // Generate a seed based on time quantized to 5-minute intervals
     const fiveMinutesInMs = 5 * 60 * 1000;
     const timeSeed = Math.floor(Date.now() / fiveMinutesInMs);
-    const seededRandom = mulberry32(timeSeed); // Create the seeded generator
+    const seededRandom = mulberry32(timeSeed);
 
     // Fisher-Yates (Knuth) Shuffle using the seeded generator
     for (let i = imageUrls.length - 1; i > 0; i--) {
       const j = Math.floor(seededRandom() * (i + 1)); // Use seededRandom()
       [imageUrls[i], imageUrls[j]] = [imageUrls[j], imageUrls[i]];
     }
-    // Take the first 4 (or fewer if less than 4 exist after shuffle)
     imageUrls = imageUrls.slice(0, 4);
   }
   // Note: For 'collage' style, we still rely on createCollage's internal logic to take the first 4.
   // For 'first_product', we rely on createCollage's logic to handle the single URL.
 
-  // Merge default collage options with any provided overrides
   const finalCollageOptions = {
-    width: 800, // Default width
-    height: 800, // Default height
-    gap: 1, // Default gap
-    ...collageOptions // User-provided options take precedence
+    width: 800,
+    height: 800,
+    gap: 1,
+    ...collageOptions
   };
 
-  // --- Generate and apply the collage ---
   createCollage(
     imageUrls,
     finalCollageOptions.width,
@@ -504,11 +488,11 @@ function processContainer(container, collageOptions = {}) {
     finalCollageOptions.gap,
     productCount,
     fontFamily,
-    showCount, // Now derived from countDisplay !== 'text' && countDisplay !== 'none'
-    context, // Pass the determined context
-    countDisplay, // Pass the actual display type (used for shape if showCount is true)
-    indicatorColorHex, // Pass indicator color
-    gridIndicatorColorHex // Pass grid indicator color
+    showCount,
+    context,
+    countDisplay,
+    indicatorColorHex,
+    gridIndicatorColorHex
   )
     .then(collageUrl => {
       const img = container.querySelector('img');
@@ -534,8 +518,7 @@ function processContainer(container, collageOptions = {}) {
           };
           img.onerror = () => {
              console.error(`Failed to load generated collage data URL for ${categoryId}`);
-             img.classList.remove('loading'); // Remove loading state even on error
-             // Clean up handlers
+             img.classList.remove('loading');
              img.onload = null;
              img.onerror = null;
           };
@@ -566,17 +549,14 @@ function setupCategoryCollages(options = {}) {
   // Destructure options with defaults
   const { collage: collageOptions = {}, observer: observerOptions = {} } = options;
 
-  // Merge default IntersectionObserver options with provided ones
   const finalObserverOptions = {
     rootMargin: '200px 0px', // Start loading when the element is 200px away from the viewport
     threshold: 0.01,         // Trigger when at least 1% of the element is visible
-    ...observerOptions       // User-provided options override defaults
+    ...observerOptions
   };
 
-  // Create an IntersectionObserver instance
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // When a container enters the viewport (or the specified margin)
       if (entry.isIntersecting) {
         const container = entry.target;
         // Process the container to generate and apply the collage
@@ -586,12 +566,11 @@ function setupCategoryCollages(options = {}) {
         observer.unobserve(container);
       }
     });
-  }, finalObserverOptions); // Pass the final merged options to the observer
+  }, finalObserverOptions);
 
   // Select all potential category collage containers on the page
   const categoryContainers = document.querySelectorAll('[id^="category-collage-"]');
 
-  // Start observing each container
   categoryContainers.forEach(container => {
     observer.observe(container);
   });
