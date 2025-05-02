@@ -11,9 +11,10 @@
  * @param {string} indicatorShape - Shape of the count indicator ('circle', 'square', 'pill', 'sunburst') (default: 'circle')
  * @param {string} indicatorColorHex - Hex color for the single image count indicator (default: '#000000')
  * @param {string} gridIndicatorColorHex - Hex color for the grid count indicator (default: '#000000')
+ * @param {number} countOverlayOpacity - Opacity for the count overlay (default: 0.5)
  * @return {Promise<string>} - Promise that resolves with the data URL of the collage
  */
-function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProductCount = 0, fontFamily = 'sans-serif', showCount = true, context = 'single', indicatorShape = 'circle', indicatorColorHex = '#000000', gridIndicatorColorHex = '#000000') {
+function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProductCount = 0, fontFamily = 'sans-serif', showCount = true, context = 'single', indicatorShape = 'circle', indicatorColorHex = '#000000', gridIndicatorColorHex = '#000000', countOverlayOpacity = 0.5) {
   return new Promise((resolve, reject) => {
     if (!imageUrls || imageUrls.length === 0) {
       reject(new Error('Please provide at least one image URL'));
@@ -59,7 +60,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
 
         // Show count indicator only for single images (not collages) if enabled and count > 0
         if (context === 'single' && showCount && actualTotalCount >= 1) {
-          addCountIndicator(ctx, width, height, actualTotalCount, fontFamily, indicatorShape, indicatorColorHex);
+          addCountIndicator(ctx, width, height, actualTotalCount, fontFamily, indicatorShape, indicatorColorHex, countOverlayOpacity);
         }
 
         resolve(canvas.toDataURL('image/jpeg', 0.9));
@@ -200,8 +201,9 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
      * @param {string} fontFamily - Font family.
      * @param {string} shape - Shape ('circle', 'square', 'pill', 'sunburst').
      * @param {string} colorHex - Hex color for the indicator background (default: '#000000').
+     * @param {number} countOverlayOpacity - Opacity for the overlay (default: 0.5).
      */
-    function addCountIndicator(ctx, width, height, count, fontFamily, shape = 'circle', colorHex = '#000000') {
+    function addCountIndicator(ctx, width, height, count, fontFamily, shape = 'circle', colorHex = '#000000', countOverlayOpacity = 0.5) {
       const padding = Math.min(width, height) * 0.04; // Padding from edges
       var baseSize = Math.min(width, height) * 0.18; // Base size relative to canvas size
       let centerX = width - padding - baseSize / 2;
@@ -212,7 +214,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
       let textY = centerY;
       let fontSizeBaseDimension; // Variable to hold the dimension for font size calculation
 
-      const indicatorFillColor = hexToRgba(colorHex, 0.65);
+      const indicatorFillColor = hexToRgba(colorHex, countOverlayOpacity);
       ctx.fillStyle = indicatorFillColor;
       ctx.strokeStyle = indicatorFillColor;
       ctx.lineWidth = 1;
@@ -310,7 +312,15 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       // Use textX and textY for positioning, which might differ from centerX/centerY for pill
-      ctx.fillText(count.toString(), textX, textY);
+      // Measure text to calculate precise vertical offset for visual centering
+      const metrics = ctx.measureText(count.toString());
+      let textHeightOffset = 0;
+      // Check for modern metric support for more accurate centering
+      if (metrics.actualBoundingBoxAscent && metrics.actualBoundingBoxDescent) {
+        // Calculate the distance from the baseline to the visual center of the text
+        textHeightOffset = (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2;
+      }
+      ctx.fillText(count.toString(), textX, textY + textHeightOffset);
     }
 
     /**
@@ -321,9 +331,9 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
      * @param {string} fontFamily - Font family.
      * @param {string} colorHex - Hex color for the indicator background (default: '#000000').
      */
-    function addGridCountIndicator(ctx, position, count, fontFamily, colorHex = '#000000') {
+    function addGridCountIndicator(ctx, position, count, fontFamily, colorHex = '#000000', countOverlayOpacity = 0.5) {
       // Draw a semi-transparent overlay over the designated area
-      ctx.fillStyle = hexToRgba(colorHex, 0.7);
+      ctx.fillStyle = hexToRgba(colorHex, countOverlayOpacity);
       ctx.fillRect(position.x, position.y, position.w, position.h);
 
       // Draw the "+N" text centered in the overlay
@@ -358,7 +368,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
         const remainingCount = actualTotalCount - validImages.length; // Calculate how many are not shown
         // Apply the indicator to the last slot (index 3)
         if (layout && layout.length > 3) { // Ensure layout[3] exists
-          addGridCountIndicator(ctx, layout[3], remainingCount, fontFamily, gridIndicatorColorHex); // Pass color
+          addGridCountIndicator(ctx, layout[3], remainingCount, fontFamily, gridIndicatorColorHex, countOverlayOpacity);
         }
       }
       // Note: The circle indicator is *never* used for collage layouts (displayCount > 1).
@@ -425,11 +435,11 @@ function processContainer(container, collageOptions = {}) {
   const productCount = parseInt(container.getAttribute('data-product-count') || '0', 10);
   const fontFamily = container.getAttribute('data-font-family') || 'sans-serif';
   const countDisplay = container.getAttribute('data-count-display') || 'circle'
+  const countOverlayOpacity = container.getAttribute('data-count-overlay-opacity') || 0.5;
   const showCount = countDisplay !== 'text' && countDisplay !== 'none';
   const imageStyle = container.getAttribute('data-image-style') || 'single';
   const indicatorColorHex = container.getAttribute('data-indicator-color') || '#000000';
   const gridIndicatorColorHex = container.getAttribute('data-grid-indicator-color') || '#000000';
-
 
   if (!imageUrlsAttr) {
     console.warn(`No image URLs found for container: ${categoryId}`);
@@ -492,7 +502,8 @@ function processContainer(container, collageOptions = {}) {
     context,
     countDisplay,
     indicatorColorHex,
-    gridIndicatorColorHex
+    gridIndicatorColorHex,
+    countOverlayOpacity
   )
     .then(collageUrl => {
       const img = container.querySelector('img');
@@ -510,17 +521,17 @@ function processContainer(container, collageOptions = {}) {
           img.onload = () => {
             // 4. On successful load, remove the loading class. Use rAF again for a potentially smoother visual transition.
             requestAnimationFrame(() => {
-               img.classList.remove('loading');
+              img.classList.remove('loading');
             });
             // Clean up handlers to prevent memory leaks
             img.onload = null;
             img.onerror = null;
           };
           img.onerror = () => {
-             console.error(`Failed to load generated collage data URL for ${categoryId}`);
-             img.classList.remove('loading');
-             img.onload = null;
-             img.onerror = null;
+            console.error(`Failed to load generated collage data URL for ${categoryId}`);
+            img.classList.remove('loading');
+            img.onload = null;
+            img.onerror = null;
           };
 
           // 5. Explicitly mark as loaded for lazysizes compatibility *before* setting src.
