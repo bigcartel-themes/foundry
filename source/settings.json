@@ -922,7 +922,7 @@
         ["Darker", "0.8"],
         ["Darkest", "0.9"]
       ],
-      "default": "0.5",
+      "default": "0.3",
       "description": "Controls the opacity of the product count overlay on your featured category photos",
       "requires": [
         "feature:theme_category_collages eq visible",
