@@ -205,7 +205,7 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, totalProdu
      */
     function addCountIndicator(ctx, width, height, count, fontFamily, shape = 'circle', colorHex = '#000000', countOverlayOpacity = 0.5) {
       const padding = Math.min(width, height) * 0.04; // Padding from edges
-      var baseSize = Math.min(width, height) * 0.18; // Base size relative to canvas size
+      var baseSize = Math.min(width, height) * 0.25; // Base size relative to canvas size
       let centerX = width - padding - baseSize / 2;
       let centerY = height - padding - baseSize / 2;
 
