@@ -873,7 +873,7 @@
         ["Collage of first products", "collage"],
         ["Collage of random products", "collage_random"]
       ],
-      "default": "collage",
+      "default": "first_product",
       "upgrade_default": "first_product",
       "description": "Choose how products appear in featured categories. Collages show up to 4 products.",
       "requires": [
