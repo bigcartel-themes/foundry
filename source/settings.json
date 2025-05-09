@@ -1089,8 +1089,7 @@
       "section": "general",
       "type": "boolean",
       "default": true,
-      "description": "Display prices for sold out products when they are visible",
-      "requires": [ "inventory" ]
+      "description": "Display prices for sold out products when they are visible"
     },
     {
       "variable": "show_coming_soon_product_prices",
