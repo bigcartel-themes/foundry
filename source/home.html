@@ -14,11 +14,11 @@
 
 {% capture featured_categories_divs %}
   <div class="featured-categories">
-    {% if theme.home_page_categories_header %}
+    {% if t['home.featured_categories'] %}
       {% if theme.home_page_categories_position == "top" %}
-        <h1 class="featured-categories-header featured-categories-header{% if theme.home_page_categories_position == 'top' %}--primary{% else %}--secondary{% endif %}">{{ theme.home_page_categories_header }}</h2>
+        <h1 class="featured-categories-header featured-categories-header{% if theme.home_page_categories_position == 'top' %}--primary{% else %}--secondary{% endif %}">{{ t['home.featured_categories'] }}</h2>
       {% else %}
-        <h2 class="featured-categories-header">{{ theme.home_page_categories_header }}</h2>
+        <h2 class="featured-categories-header">{{ t['home.featured_categories'] }}</h2>
       {% endif %}
     {% endif %}
     {% assign category_list_style = theme.home_page_categories_style %}
@@ -32,7 +32,7 @@
           {% if category_list_style == "text" %}
             <a class="button button--centered button--secondary" href="{{ category.url }}">{{ category.name }}</a>
           {% else %}
-            <a class="product-list-link category-link category-link--{{ theme.home_page_categories_name_style }}" href="{{ category.url }}" title="View {{ category.name | escape }}">
+            <a class="product-list-link category-link category-link--{{ theme.home_page_categories_name_style }}" href="{{ category.url }}" title="{{ category.name | escape }}">
               {% if category_collages_enabled == false %}
                 {% for product in category.products limit:1 %}
                   {% assign image_width = product.image.width | times: 1.0 %}
@@ -134,9 +134,9 @@
 {% if theme.featured_products > 0 %}
   <div class="home-featured-products">
     {% if theme.show_home_page_categories and theme.home_page_categories_position == "bottom" %}
-      <h2 class="page-title page-title--primary">{{ theme.featured_header }}</h2>
+      <h2 class="page-title page-title--primary">{{ t['home.featured_products'] }}</h2>
     {% else %}
-      <h2 class="page-title page-title--secondary">{{ theme.featured_header }}</h2>
+      <h2 class="page-title page-title--secondary">{{ t['home.featured_products'] }}</h2>
     {% endif %}
     {% paginate products from products.current by theme.featured_products order:theme.featured_order %}
       {% assign num_results = paginate.items %}
@@ -153,15 +153,17 @@
               {% assign product_status = '' %}
               {% case product.status %}
                 {% when 'active' %}
-                  {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                  {% if product.on_sale %}
+                    {% assign product_status = t['products.on_sale'] %}
+                  {% endif %}
                 {% when 'sold-out' %}
-                  {% assign product_status = 'Sold out' %}
+                  {% assign product_status = t['products.sold_out'] %}
                 {% when 'coming-soon' %}
-                  {% assign product_status = 'Coming soon' %}
+                  {% assign product_status = t['products.coming_soon'] %}
               {% endcase %}
               {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
               <div class="product-list-thumb {{ product.css_class }}">
-                <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
+                <a class="product-list-link" href="{{ product.url }}" title="{{ product.name | escape }}">
                   <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                     <img
                       alt=""
@@ -208,10 +210,10 @@
           </div>
         </div>
         {% if paginate.pages > 1 %}
-          {% if theme.all_products_button_text != blank %}<a class="button button--centered button--secondary all-products-button" href="/products">{{ theme.all_products_button_text }}</a>{% endif %}
+          {% if theme.all_products_button_text != blank %}<a class="button button--centered button--secondary all-products-button" href="/products">{{ t['home.all_products'] }}</a>{% endif %}
         {% endif %}
       {% else %}
-        <div class="message-banner message-banner--centered message-banner--no-bg">No products found.</div>
+        <div class="message-banner message-banner--centered message-banner--no-bg">{{ t['products.no_products'] }}</div>
       {% endif %}
     {% endpaginate %}
   </div>
