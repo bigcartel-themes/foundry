@@ -271,11 +271,11 @@
       {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
         <div class="footer__custom_text">{{ theme.footer_text }}</div>
       {% endif %}
+      {% unless theme.hide_big_cartel_credit %}
         <div class="footer__credit" data-bc-hook="credit">
-          {% unless theme.hide_big_cartel_credit %}
-            <span class="credit">{{ big_cartel_credit_logo }}</span>
-          {% endunless %}
+          <span class="credit">{{ big_cartel_credit_logo }}</span>
         </div>
+      {% endunless %}
     </footer>
     <div id="navigation-modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="overlay-content">
