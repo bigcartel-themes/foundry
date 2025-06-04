@@ -1075,7 +1075,7 @@
       "section": "messaging",
       "max_length": 500,
       "type": "textarea",
-      "description": "Announcement message on the top of every page"
+      "description": "Announcement message on the top of every page. Accepts HTML for links and styling."
     },
     {
       "variable": "contact_text",
@@ -1083,14 +1083,14 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 500,
-      "description": "Custom message at the top of your contact page"
+      "description": "Custom message at the top of your contact page. Accepts HTML for links and styling."
     },
     {
       "variable": "cart_text",
       "label": "Cart page",
       "section": "messaging",
       "type": "textarea",
-      "description": "Custom message at the top of your cart page when there are items in the cart"
+      "description": "Custom message at the top of your cart page when there are items in the cart. Accepts HTML for links and styling."
     },
     {
       "variable": "maintenance_message",
@@ -1098,7 +1098,7 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "description": "A message visitors see when your shop is in Maintenance Mode. Accepts HTML for links and styling.",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
