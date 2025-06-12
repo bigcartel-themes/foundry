@@ -42,6 +42,13 @@
   --layout-width: 1200px
   --side-padding: 30px
 
+  // Video player customization
+  --video-rounded-radius: var(--border-radius)
+  --video-margin-small: 8px
+  --video-margin-large: 16px
+  --video-container-padding: #{"{% if theme.home_featured_video_size == 'full-width' %}0{% else %}0 var(--side-padding){% endif %}"}
+  --video-size-large: 1140px
+
   @media screen and (max-width: $break-large)
     --side-padding: 20px
 
@@ -205,7 +212,7 @@ h1, h2, h3, h4, h5, h6
 
 #main
   flex: 1
-  padding-top: 96px
+  padding-top: 48px
   padding-bottom: var(--margin-size)
 
   @media screen and (max-width: $break-small)

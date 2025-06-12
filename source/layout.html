@@ -146,6 +146,16 @@
           </div>
         </div>
       {% endif %}
+
+      {% if theme.home_featured_video_url %}
+        {% assign featured_video_header = t['home.featured_video'] %}
+        <div class="home-featured-video-section">
+          {% if featured_video_header != blank %}
+            <h1 class="page-title">{{ featured_video_header }}</h1>
+          {% endif %}
+          <div id="featured-video"></div>
+        </div>
+      {% endif %}
     {% endif %}
     <main id="main">
       <div class="content-wrapper content-wrapper--{{ page.permalink }}" data-bc-hook="content">
@@ -343,6 +353,9 @@
         productImageZoom: {{ theme.product_image_zoom }},
         welcomeButtonBehavior: "{{ theme.welcome_button_behavior }}",
         showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
+        homeFeaturedVideoUrl: "{{ theme.home_featured_video_url }}",
+        homeFeaturedVideoSize: "{{ theme.home_featured_video_size }}",
+        homeFeaturedVideoBorder: "{{ theme.home_featured_video_border }}",
       };
       const themeColors = {
         headerTextColor: '{{ theme.header_text_color }}',
