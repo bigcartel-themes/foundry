@@ -181,3 +181,7 @@ a.all-products-button
     // Start invisible and prevent animation from running initially
     opacity: 0
     animation: none
+
+// Video player theme-specific override
+.home-featured-video-section
+  margin-top: #{"{% if theme.images.welcome_image == blank and theme.welcome_text == blank and theme.welcome_button_text == blank %}0{% else %}calc(var(--margin-size) / 2){% endif %}"}

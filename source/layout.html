@@ -1,6 +1,23 @@
+{% comment %} Define a consistent title suffix {% endcomment %}
+{% capture title_suffix %} | {{ store.name }}{% endcapture %}
+
+{% comment %} Set default page title {% endcomment %}
+{% assign page_title = page.name | append: title_suffix %}
+
+{% comment %} Handle special page cases {% endcomment %}
+{% if page.name == 'Home' %}
+  {% assign page_title = store.name %}
+{% elsif page.full_url contains '/products' %}
+  {% if page.full_url contains 'search=' %}
+    {% assign page_title = t['products.search_results'] | append: title_suffix %}
+  {% elsif theme.collections %}
+    {% assign page_title = t['navigation.categories'] | append: title_suffix %}
+  {% endif %}
+{% endif %}
+
 <!DOCTYPE html>
   <head>
-    <title>{{ page.name }} | {{ store.name }}</title>
+    <title>{{ page_title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
@@ -8,7 +25,6 @@
     <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
   <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
-    <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.announcement_message_text != blank %}
       <div aria-label="Announcement message" class="announcement-message">
         <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
@@ -35,13 +51,13 @@
               {% if categories.active != blank %}
                 <div class="header-nav header-nav--categories">
                   <button class="nav-heading nav-heading--categories" aria-label="Open category navigation" aria-controls="header-dropdown-categories" aria-expanded="false">
-                    <div class="nav-page nav-page--categories">Shop</div>
+                    <div class="nav-page nav-page--categories">{{ t['navigation.shop'] }}</div>
                     <svg aria-hidden="true" fill="currentColor" class="nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
                   </button>
                   <div class="nav-dropdown" id="header-dropdown-categories" aria-hidden="true">
                     {% if categories.active != blank %}
                       <ul class="dropdown-list categories-list">
-                        <li><a href="/products">All products</a></li>
+                        <li><a href="/products">{{ t['navigation.all_products'] }}</a></li>
                         {% for category in categories.active %}
                           <li>{{ category | link_to }}</li>
                         {% endfor %}
@@ -50,7 +66,7 @@
                   </div>
                 </div>
               {% else %}
-                <a href="/products">{{ pages.products.name }}</a>
+                <a href="/products">{{ t['navigation.products'] }}</a>
               {% endif %}
             </li>
             {% if theme.pages_global_nav_style == "inline" %}
@@ -58,13 +74,16 @@
                 <li class="header-page-link">{{ page | link_to }}</li>
               {% endfor %}
               {% if pages.all.size < theme.nav_items %}
-                <li class="header-page-link"><a href="/contact">{{ pages.contact.name }}</a></li>
+                <li class="header-page-link"><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+              {% endif %}
+              {% if store.website != blank %}
+                <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
               {% endif %}
             {% else %}
               <li class="header-page-link">
                 <div class="header-nav header-nav--pages">
                   <button class="nav-heading nav-heading--pages" aria-label="Open pages navigation" aria-controls="header-dropdown-pages" aria-expanded="false">
-                    <div class="nav-page nav-page--pages">{{ theme.pages_global_nav_dropdown_text | strip | default: "More" }}</div>
+                    <div class="nav-page nav-page--pages">{{ t['navigation.more'] }}</div>
                     <svg aria-hidden="true" fill="currentColor" class="nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
                   </button>
                   <div class="nav-dropdown" id="header-dropdown-pages" aria-hidden="true">
@@ -72,7 +91,10 @@
                         {% for page in pages.all %}
                           <li>{{ page | link_to }}</li>
                         {% endfor %}
-                        <li><a href="/contact">{{ pages.contact.name }}</a></li>
+                        <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+                        {% if store.website != blank %}
+                          <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
+                        {% endif %}
                       </ul>
                   </div>
                 </div>
@@ -84,19 +106,19 @@
         <ul class="header-icons">
           {% if theme.show_search %}
             <li class="open_search">
-              <button class="nav-button open-search" type="button" aria-haspopup="dialog" aria-controls="search-modal" title="Open search menu">
+              <button class="nav-button open-search" type="button" aria-haspopup="dialog" aria-controls="search-modal" title="{{ t['navigation.search'] }}">
                 <svg aria-hidden="true" fill="currentColor" viewBox="0 0 30 30"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"/></svg>
               </button>
             </li>
           {% endif %}
           <li class="open_cart">
-            <a href="/cart" title="View cart">
+            <a href="/cart" title="{{ t['navigation.cart'] }}">
               <svg aria-hidden="true" fill="currentColor" viewBox="0 0 30 30"><path d="M22.7 8c-.9-3.4-4-6-7.7-6S8.2 4.6 7.3 8H2l3 20h20l3-20h-5.3zM15 4c2.6 0 4.8 1.7 5.6 4H9.3c.9-2.3 3.1-4 5.7-4zm8.3 22H6.7L4.3 10H7v3h2v-3h12v3h2v-3h2.7l-2.4 16z"/></svg>
               <span class="cart-count"><span class="cart-value"{% if cart.item_count == 0 %} style="display:none;"{% endif %}>{{ cart.item_count }}</span></span>
             </a>
           </li>
           <li class="open_menu">
-            <button type="button" title="Open navigation menu" class="open-navigation"><span></span><span></span><span></span><span></span></button>
+            <button type="button" aria-label="Open navigation menu" class="open-navigation"><span></span><span></span><span></span><span></span></button>
           </li>
         </ul>
       </div>
@@ -124,9 +146,19 @@
           </div>
         </div>
       {% endif %}
+
+      {% if theme.home_featured_video_url %}
+        {% assign featured_video_header = t['home.featured_video'] %}
+        <div class="home-featured-video-section">
+          {% if featured_video_header != blank %}
+            <h1 class="page-title">{{ featured_video_header }}</h1>
+          {% endif %}
+          <div id="featured-video"></div>
+        </div>
+      {% endif %}
     {% endif %}
     <main id="main">
-      <div class="content-wrapper content-wrapper--{{ page.permalink }}">
+      <div class="content-wrapper content-wrapper--{{ page.permalink }}" data-bc-hook="content">
         {% if page.category == 'custom' %}
           <div class="custom-page">
             <h1 class="page-title">{{ page.name }}</h1>
@@ -143,15 +175,19 @@
           <div class="footer__custom_text">{{ theme.footer_text }}</div>
         {% endif %}
         <ul class="footer__pages footer__pages--main" aria-label="Footer main">
-          <li><a href="/">{{ pages.home.name }}</a></li>
-          <li><a href="/products">{{ pages.products.name }}</a></li>
+          <li><a href="/">{{ t['navigation.home'] }}</a></li>
+          </a></li>
+          <li><a href="/products">{{ t['navigation.products'] }}</a></li>
           {% if theme.show_custom_pages_in_footer and pages.all.size <= 2 %}
             {% for page in pages.all %}
               <li>{{ page | link_to }}</li>
             {% endfor %}
           {% endif %}
-          <li><a href="/contact">{{ pages.contact.name }}</a></li>
-          <li><a href="/cart">{{ pages.cart.name }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
+          <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+          {% if store.website != blank %}
+            <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
+          {% endif %}
+          <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
         </ul>
         {% if theme.show_categories_in_footer and categories.active.size > 0 %}
           <ul class="footer__pages footer__pages--categories"  aria-label="Footer pages">
@@ -189,7 +225,7 @@
             {% endif %}
 
             {% if theme.tiktok_url != blank %}
-              <li><a href="{{ theme.tiktok_url }}" title="TikTok"><svg class="tiktok-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448 210a210 210 0 0 1-123-39v178a163 163 0 1 1-140-161v90a75 75 0 1 0 52 71V0h88a121 121 0 0 0 2 22 122 122 0 0 0 54 80 121 121 0 0 0 67 21z"/></svg></a>
+              <li><a href="{{ theme.tiktok_url }}" title="TikTok"><svg class="tiktok-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448 210a210 210 0 0 1-123-39v178a163 163 0 1 1-140-161v90a75 75 0 1 0 52 71V0h88a121 121 0 0 0 2 22 122 122 0 0 0 54 80 121 121 0 0 0 67 21z"/></svg></a></li>
             {% endif %}
 
             {% if theme.threads_url != blank %}
@@ -245,14 +281,16 @@
       {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
         <div class="footer__custom_text">{{ theme.footer_text }}</div>
       {% endif %}
-      <div class="footer__credit" data-bc-hook="credit">
-        <span class="credit">{{ powered_by_big_cartel }}</span>
-      </div>
+      {% unless theme.hide_big_cartel_credit %}
+        <div class="footer__credit" data-bc-hook="credit">
+          <span class="credit">{{ big_cartel_credit_logo }}</span>
+        </div>
+      {% endunless %}
     </footer>
     <div id="navigation-modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="overlay-content">
         <div class="navigation-modal-header">
-          <button type="button" class="icon-button close-navigation" title="Close navigation">
+          <button type="button" class="icon-button close-navigation" aria-label="Close navigation">
             <svg aria-hidden="true" fill="currentColor" width="15" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="9.2 12.3 12.5 12.5">
               <path d="m21.4 14.4-4.1 4.1 4 4.1c.6.5.6 1.3 0 1.8-.4.5-1.2.5-1.7 0l-4.1-4.1-4.1 4.1c-.5.5-1.3.5-1.8 0s-.5-1.3 0-1.8l4.1-4.1-4.1-4.1c-.5-.5-.5-1.3 0-1.8s1.3-.5 1.8 0l4.1 4.1 4.1-4c.5-.6 1.3-.6 1.8 0 .5.4.5 1.2 0 1.7Z"/>
             </svg>
@@ -261,12 +299,12 @@
         <div class="navigation-modal-content">
           <nav aria-label="Primary navigation">
             <ul class="overlay-page-list">
-              <li><a href="/">{{ pages.home.name }}</a></li>
-              <li><a href="/products">{{ pages.products.name }}</a></li>
+              <li><a href="/">{{ t['navigation.home'] }}</a></li>
+              <li><a href="/products">{{ t['navigation.products'] }}</a></li>
               {% for page in pages.all %}
                 <li>{{ page | link_to }}</li>
               {% endfor %}
-              <li><a href="/contact">{{ pages.contact.name }}</a></li>
+              <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
             </ul>
           </nav>
         </div>
@@ -283,7 +321,7 @@
             </button>
             <form class="search-modal__form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
               <input type="hidden" name="utf8" value='✓'>
-              <label class="search-modal__label" for="search-input">Search products</label>
+              <label class="search-modal__label" for="search-input">{{ t['navigation.search']}}</label>
               <input class="search-modal__input" id="search-input" name="search" type="search" autocomplete="off" />
               <button type="submit" class="search-modal__submit" aria-label="Submit search form">
                 <svg class="search-modal__submit-icon" aria-hidden="true" fill="currentColor" height="22" width="22" viewBox="0 0 30 30">
@@ -308,18 +346,26 @@
       const themeOptions = {
         showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         showLowInventoryMessages: {{ theme.show_low_inventory_messages }},
-        lowInventoryMessage: "{{ theme.low_inventory_message | replace: '"', '\"' | replace: "'", "\\'" }}",
-        almostSoldOutMessage: "{{ theme.almost_sold_out_message | replace: '"', '\"' | replace: "'", "\\'" }}",
+        lowInventoryMessage: "{{ t['products.low_inventory'] | replace: '"', '\"' | replace: "'", "\\'" }}",
+        almostSoldOutMessage: "{{ t['products.almost_sold_out'] | replace: '"', '\"' | replace: "'", "\\'" }}",
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
         productImageZoom: {{ theme.product_image_zoom }},
         welcomeButtonBehavior: "{{ theme.welcome_button_behavior }}",
         showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
+        homeFeaturedVideoUrl: "{{ theme.home_featured_video_url }}",
+        homeFeaturedVideoSize: "{{ theme.home_featured_video_size }}",
+        homeFeaturedVideoBorder: "{{ theme.home_featured_video_border }}",
       };
       const themeColors = {
         headerTextColor: '{{ theme.header_text_color }}',
         primaryTextColor: '{{ theme.primary_text_color }}',
         backgroundColor: '{{ theme.background_color }}',
+      };
+      const themeTranslations = {
+        cart: {
+          shareThisCartLinkCopySuccess: "{{ t['cart.share_this_cart_link_copy_success'] | replace: '"', '\"' | replace: "'", "\\'" }}"
+        }
       };
     </script>
     {% if theme.announcement_message_text != blank %}
@@ -348,21 +394,13 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script>
-      var formatMoney = Format.money;
-      Format.money = function(number) {
-        {% case theme.money_format %}
-        {% when 'sign' %}
-          return formatMoney(number, true, true, false);
-        {% when 'code' %}
-          return formatMoney(number, true, false, true);
-        {% when 'sign_and_code' %}
-          return formatMoney(number, true, true, true);
-        {% endcase %}
-      };
+      window.bigcartel = window.bigcartel || {};
+      window.bigcartel.account = window.bigcartel.account || {};
+      window.bigcartel.account.currency = window.bigcartel.account.currency || "{{ store.currency.code }}";
+      window.bigcartel.account.moneyFormat = "{{ theme.money_format }}";
     </script>
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
-      <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
       <script>
         Product.find('{{ product.permalink }}', processProduct)
       </script>
