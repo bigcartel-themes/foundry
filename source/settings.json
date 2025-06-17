@@ -589,18 +589,6 @@
       "description": "Choose how your custom pages appear in your shop's header menu."
     },
     {
-      "variable": "pages_global_nav_dropdown_text",
-      "label": "Custom pages header dropdown text",
-      "section": "global_navigation",
-      "type": "text",
-      "default": "More",
-      "max_length": 25,
-      "description": "The label for your dropdown menu containing custom pages",
-      "requires": [
-        "pages_global_nav_style eq dropdown"
-      ]
-    },
-    {
       "variable": "nav_items",
       "label": "Navigation items",
       "section": "global_navigation",
