@@ -141,15 +141,14 @@ a.all-products-button
   .category-list
     --columns: #{"{{ theme.max_categories_per_row }}"}
 
+    .product-list-thumb
+      width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)))
+
     @media screen and (max-width: $break-large)
-      --columns: calc(#{"{{ theme.max_categories_per_row }}"} - 1)
+      --columns: #{"{% if theme.max_categories_per_row > 3 %}calc(#{"{{ theme.max_categories_per_row }}"} - 1){% else %}{{ theme.max_categories_per_row }}{% endif %}"}
 
     @media screen and (max-width: $break-small)
       --columns: #{"{{ theme.max_categories_per_row_mobile }}"}
-
-    .product-list-thumb
-      width: 80%
-      max-width: 360px
 
     &--text 
       row-gap: 20px
