@@ -72,34 +72,29 @@
                   {% endcomment %}
                   {% assign image_urls = "" %}
       
-                  {% if theme.home_page_categories_image_style == "collage" %}
+                  {% if theme.home_page_categories_image_style == "grid" %}
+                    {% capture image_urls %}
+                      [{% for product in category.products limit:6 %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+                    {% endcapture %}
+                  {% elsif theme.home_page_categories_image_style == "strip" %}
                     {% capture image_urls %}
                       [{% for product in category.products limit:4 %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
                     {% endcapture %}
-                  {% elsif theme.home_page_categories_image_style == "first_product" %}
+                  {% elsif theme.home_page_categories_image_style == "featured" %}
+                    {% capture image_urls %}
+                      [{% for product in category.products limit:4 %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+                    {% endcapture %}
+                  {% elsif theme.home_page_categories_image_style == "single" %}
                     {% capture image_urls %}
                       ["{{ first_product.image | product_image_url | constrain: 800 }}"]
                     {% endcapture %}
-                  {% elsif theme.home_page_categories_image_style == "random_product" or theme.home_page_categories_image_style == "collage_random" %}
-                    {% comment %} Pass up to 20 product image URLs to JS for random selection {% endcomment %}
-                    {% assign max_pool_size = 20 %}
-                    {% capture limited_image_urls %}
-                      [{% for product in category.products limit:max_pool_size %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
-                    {% endcapture %}
-                    {% assign image_urls = limited_image_urls %}
                   {% endif %}
       
                   <div 
                     class="product-list-image-container product-list-image-container-cover" 
                     id="category-collage-{{ category.id }}"
                     data-image-urls='{{ image_urls | strip }}'
-                    data-product-count="{{ category.products.size }}"
-                    data-font-family="{{ theme.secondary_font }}"
                     data-image-style="{{ theme.home_page_categories_image_style }}"
-                    data-indicator-color="#000000"
-                    data-grid-indicator-color="#000000"
-                    data-count-display="{{ theme.home_page_categories_product_count_display }}"
-                    data-count-overlay-opacity="{{ theme.home_page_categories_count_overlay_opacity}}"
                   >
                     <!-- Default placeholder while image is being loaded -->
                     <img
@@ -112,7 +107,7 @@
                   <div class="product-list-thumb-info">
                     <div class="product-list-thumb-name">
                       {{ category.name }}
-                      {% if theme.home_page_categories_product_count_display == 'text' %}
+                      {% if theme.home_page_categories_product_count_display %}
                         <span class="category-count">({{ category.products.size }})</span>
                       {% endif %}
                     </div>
