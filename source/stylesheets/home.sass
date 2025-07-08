@@ -113,6 +113,8 @@
   margin-bottom: var(--margin-size)
 
   .page-title
+    margin-bottom: 0
+
     &--primary
       font-size: 2rem
 
@@ -141,15 +143,14 @@ a.all-products-button
   .category-list
     --columns: #{"{{ theme.max_categories_per_row }}"}
 
+    .product-list-thumb
+      width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)))
+
     @media screen and (max-width: $break-large)
-      --columns: calc(#{"{{ theme.max_categories_per_row }}"} - 1)
+      --columns: #{"{% if theme.max_categories_per_row > 3 %}calc(#{"{{ theme.max_categories_per_row }}"} - 1){% else %}{{ theme.max_categories_per_row }}{% endif %}"}
 
     @media screen and (max-width: $break-small)
       --columns: #{"{{ theme.max_categories_per_row_mobile }}"}
-
-    .product-list-thumb
-      width: 80%
-      max-width: 360px
 
     &--text 
       row-gap: 20px
@@ -185,3 +186,41 @@ a.all-products-button
 // Video player theme-specific override
 .home-featured-video-section
   margin-top: #{"{% if theme.images.welcome_image == blank and theme.welcome_text == blank and theme.welcome_button_text == blank %}0{% else %}calc(var(--margin-size) / 2){% endif %}"}
+
+#main
+  .featured-message
+    text-align: center
+    margin: 20px auto 60px auto
+    padding: 0 1.5rem
+
+    ol, ul
+      text-align: left
+      margin: 1em auto
+      max-width: 600px
+      padding-left: 2.5em
+
+      ol, ul
+        margin: 0.5em 0
+        padding-left: 1.5em
+
+    ul
+      list-style: disc
+
+    ol
+      list-style: decimal
+
+    a
+      text-decoration: underline
+      text-underline-offset: 3px
+
+    img
+      display: inline-block
+      max-width: 100%
+      margin: 0 auto
+      padding-bottom: 16px
+    
+    iframe
+      display: block
+      margin: 0 auto
+      max-width: 100%
+      margin-bottom: 16px

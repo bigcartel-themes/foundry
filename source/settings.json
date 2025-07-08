@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "images": [
     {
       "variable": "header_logo",
@@ -605,7 +605,7 @@
       "label": "Maximum categories per row",
       "section": "global_navigation",
       "type": "select",
-      "options": "1..4",
+      "options": "1..6",
       "default": 3,
       "description": "The maximum number of Home page categories displayed per row on larger screens"
     },
@@ -614,7 +614,7 @@
       "label": "Maximum categories per row (mobile)",
       "section": "global_navigation",
       "type": "select",
-      "options": "1..2",
+      "options": "1..3",
       "default": 2,
       "description": "The maximum number of Home page categories displayed per row on smaller screens"
     },
@@ -692,7 +692,7 @@
       "section": "global_navigation",
       "type": "textarea",
       "max_length": 2048,
-      "description": "Show a custom message in your shop's footer. Accepts HTML for links and styling."
+      "description": "Show a custom message in your shop's footer. Supports HTML for advanced customization."
     },
     {
       "variable": "footer_text_position",
@@ -821,6 +821,29 @@
       ]
     },
     {
+      "variable": "homepage_featured_text",
+      "label": "Featured message",
+      "section": "homepage",
+      "max_length": 2048,
+      "type": "textarea",
+      "description": "Add a message on the homepage above the featured products. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "homepage_featured_text_position",
+      "label": "Featured message position",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Above featured section", "above"],
+        ["Within featured section", "within"]
+      ],
+      "default": "within",
+      "description": "Sets position of the featured message",
+      "requires": [
+        "homepage_featured_text present"
+      ]
+    },
+    {
       "variable": "show_home_page_categories",
       "label": "Display categories on Home page",
       "section": "homepage",
@@ -876,14 +899,14 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["First product", "first_product"],
-        ["Random product", "random_product"],
-        ["Collage of first products", "collage"],
-        ["Collage of random products", "collage_random"]
+        ["Single product image", "single"],
+        ["Grid collage", "grid"],
+        ["Strip collage", "strip"],
+        ["Featured collage", "featured"]
       ],
-      "default": "first_product",
-      "upgrade_default": "first_product",
-      "description": "Choose how products appear in featured categories. Collages show up to 4 products.",
+      "default": "single",
+      "upgrade_default": "single",
+      "description": "Choose layout style for category images on the Home page",
       "requires": [
         "feature:theme_category_collages eq visible",
         "show_home_page_categories eq true",
@@ -892,52 +915,15 @@
     },
     {
       "variable": "home_page_categories_product_count_display",
-      "label": "Featured categories product count display",
+      "label": "Show product counts next to category names",
       "section": "homepage",
-      "type": "select",
-      "options": [
-        ["Hide product count", "none"],
-        ["Show next to category name", "text"],
-        ["Circle badge overlay", "circle"],
-        ["Square badge overlay", "square"],
-        ["Pill badge overlay", "pill"],
-        ["Sunburst badge overlay", "sunburst"]
-      ],
-      "default": "circle",
-      "upgrade_default": "text",
-      "description": "Choose how to display product counts for categories. Badge overlays appear on category images, while text displays next to category names. Note: Collages show counts for categories with 5+ products.",
+      "type": "boolean",
+      "default": false,
+      "description": "Display the number of products next to each category name",
       "requires": [
         "feature:theme_category_collages eq visible",
         "show_home_page_categories eq true",
-        "home_page_categories_style eq thumbnails",
-        "home_page_categories_image_style neq collage",
-        "home_page_categories_image_style neq collage_random"
-      ]
-    },
-    {
-      "variable": "home_page_categories_count_overlay_opacity",
-      "label": "Featured categories product count overlay opacity",
-      "section": "homepage",
-      "type": "select",
-      "options": [
-        ["Barely-there", "0.1"],
-        ["Extra-light", "0.2"],
-        ["Light", "0.3"],
-        ["Soft", "0.4"],
-        ["Medium", "0.5"],
-        ["Dim", "0.6"],
-        ["Dark", "0.7"],
-        ["Darker", "0.8"],
-        ["Darkest", "0.9"]
-      ],
-      "default": "0.3",
-      "description": "Controls the opacity of the product count overlay on your featured category photos",
-      "requires": [
-        "feature:theme_category_collages eq visible",
-        "show_home_page_categories eq true",
-        "home_page_categories_style eq thumbnails",
-        "home_page_categories_product_count_display neq none",
-        "home_page_categories_product_count_display neq text"
+        "home_page_categories_style eq thumbnails"
       ]
     },
     {
@@ -1102,7 +1088,7 @@
       "section": "messaging",
       "max_length": 500,
       "type": "textarea",
-      "description": "Announcement message on the top of every page. Accepts HTML for links and styling."
+      "description": "Announcement message on the top of every page. Supports HTML for advanced customization."
     },
     {
       "variable": "contact_text",
@@ -1110,14 +1096,14 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 500,
-      "description": "Custom message at the top of your contact page. Accepts HTML for links and styling."
+      "description": "Custom message at the top of your contact page. Supports HTML for advanced customization."
     },
     {
       "variable": "cart_text",
       "label": "Cart page",
       "section": "messaging",
       "type": "textarea",
-      "description": "Custom message at the top of your cart page when there are items in the cart. Accepts HTML for links and styling."
+      "description": "Custom message at the top of your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
       "variable": "maintenance_message",
@@ -1125,7 +1111,7 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode. Accepts HTML for links and styling.",
+      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
@@ -1421,11 +1407,11 @@
     },
     {
       "variable": "products_select_variant_tr_text",
-      "label": "'Select variant'",
+      "label": "'Select option'",
       "section": "translations",
       "sub_section": "products",
       "type": "text",
-      "default": "Select variant",
+      "default": "Select option",
       "description": "Text for product variant dropdowns and selections",
       "requires": [ "translation_mode eq manual" ]
     },
@@ -1525,7 +1511,7 @@
       "variable": "products_search_results_tr_text",
       "label": "'Search results'",
       "section": "translations",
-      "sub_section": "cart",
+      "sub_section": "products",
       "type": "text",
       "default": "Search results",
       "description": "Text displayed when showing title of search results",
@@ -1535,7 +1521,7 @@
       "variable": "products_in_stock_tr_text",
       "label": "'In stock'",
       "section": "translations",
-      "sub_section": "cart",
+      "sub_section": "products",
       "type": "text",
       "default": "in stock",
       "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
