@@ -133,11 +133,29 @@
 
 {% if theme.featured_products > 0 %}
   <div class="home-featured-products">
-    {% if theme.show_home_page_categories and theme.home_page_categories_position == "bottom" %}
-      <h2 class="page-title page-title--primary">{{ t['home.featured_products'] }}</h2>
-    {% else %}
-      <h2 class="page-title page-title--secondary">{{ t['home.featured_products'] }}</h2>
-    {% endif %}
+    <div class="featured-container">
+      {% assign featured_header = t['home.featured'] %}
+      {% assign featured_text = theme.homepage_featured_text %}
+      {% assign featured_text_position = theme.homepage_featured_text_position %}
+
+      {% assign page_title_css_modifier = 'secondary' %}
+      {% if theme.show_home_page_categories and theme.home_page_categories_position == "bottom" %}
+        {% assign page_title_css_modifier = 'primary' %}
+      {% endif %}
+      
+      {% if featured_text != blank and featured_text_position == "above" %}
+        <div class="featured-message">{{ featured_text }}</div>
+      {% endif %}
+      
+      <h2 class="featured-title page-title page-title--{{ page_title_css_modifier }}">
+        {{ featured_header }}
+      </h2>
+      
+      {% if featured_text != blank and featured_text_position != "above" %}
+        <div class="featured-message">{{ featured_text }}</div>
+      {% endif %}
+    </div>
+
     {% paginate products from products.current by theme.featured_products order:theme.featured_order %}
       {% assign num_results = paginate.items %}
       {% if paginate.next.is_link %}

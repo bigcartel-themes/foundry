@@ -692,7 +692,7 @@
       "section": "global_navigation",
       "type": "textarea",
       "max_length": 2048,
-      "description": "Show a custom message in your shop's footer. Accepts HTML for links and styling."
+      "description": "Show a custom message in your shop's footer. Supports HTML for advanced customization."
     },
     {
       "variable": "footer_text_position",
@@ -818,6 +818,29 @@
       "description": "The order of products on the Home page",
       "requires": [
         "featured_products gt 0"
+      ]
+    },
+    {
+      "variable": "homepage_featured_text",
+      "label": "Featured message",
+      "section": "homepage",
+      "max_length": 2048,
+      "type": "textarea",
+      "description": "Add a message on the homepage above the featured products. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "homepage_featured_text_position",
+      "label": "Featured message position",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Above featured section", "above"],
+        ["Within featured section", "within"]
+      ],
+      "default": "within",
+      "description": "Sets position of the featured message",
+      "requires": [
+        "homepage_featured_text present"
       ]
     },
     {
@@ -1102,7 +1125,7 @@
       "section": "messaging",
       "max_length": 500,
       "type": "textarea",
-      "description": "Announcement message on the top of every page. Accepts HTML for links and styling."
+      "description": "Announcement message on the top of every page. Supports HTML for advanced customization."
     },
     {
       "variable": "contact_text",
@@ -1110,14 +1133,14 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 500,
-      "description": "Custom message at the top of your contact page. Accepts HTML for links and styling."
+      "description": "Custom message at the top of your contact page. Supports HTML for advanced customization."
     },
     {
       "variable": "cart_text",
       "label": "Cart page",
       "section": "messaging",
       "type": "textarea",
-      "description": "Custom message at the top of your cart page when there are items in the cart. Accepts HTML for links and styling."
+      "description": "Custom message at the top of your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
       "variable": "maintenance_message",
@@ -1125,7 +1148,7 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode. Accepts HTML for links and styling.",
+      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
@@ -1421,11 +1444,11 @@
     },
     {
       "variable": "products_select_variant_tr_text",
-      "label": "'Select variant'",
+      "label": "'Select option'",
       "section": "translations",
       "sub_section": "products",
       "type": "text",
-      "default": "Select variant",
+      "default": "Select option",
       "description": "Text for product variant dropdowns and selections",
       "requires": [ "translation_mode eq manual" ]
     },
