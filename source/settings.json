@@ -1787,6 +1787,34 @@
       "description": "Ex: https://bigcartel.tumblr.com"
     },
     {
+      "variable": "telegram_url",
+      "label": "Telegram URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://t.me/username"
+    },
+    {
+      "variable": "discord_url",
+      "label": "Discord URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://discord.gg/username"
+    },
+    {
+      "variable": "reddit_url",
+      "label": "Reddit URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://reddit.com/r/subreddit"
+    },
+    {
+      "variable": "signal_url",
+      "label": "Signal URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://signal.group/..."
+    },
+    {
       "variable": "bandcamp_url",
       "label": "Bandcamp URL",
       "section": "social",
