@@ -310,11 +310,17 @@ h1, h2, h3, h4, h5, h6
   text-align: center
   width: 100%
 
+  *
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
+
   a
     color: var(--footer-text-color)
 
     &:hover
       color: var(--link-hover-color)
+
+  &__nav, &__pages, &__custom_text
+    max-width: $break-large
 
   &__nav
     display: flex
@@ -324,7 +330,6 @@ h1, h2, h3, h4, h5, h6
   &__pages
     display: flex
     column-gap: 30px
-    max-width: 640px
     flex-wrap: wrap
     justify-content: center
     row-gap: 6px

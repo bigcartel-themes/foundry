@@ -601,6 +601,32 @@
       ]
     },
     {
+      "variable": "nav_text_transform_header",
+      "label": "Transform text in shop header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your header"
+    },
+    {
+      "variable": "nav_text_transform_footer",
+      "label": "Transform text in shop footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your footer"
+    },
+    {
       "variable": "max_categories_per_row",
       "label": "Maximum categories per row",
       "section": "global_navigation",
