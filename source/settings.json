@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.9.1",
+  "version": "2.10.0",
   "images": [
     {
       "variable": "header_logo",
@@ -586,19 +586,60 @@
         ["Inline", "inline"]
       ],
       "default": "dropdown",
-      "description": "Choose how your custom pages appear in your shop's header menu."
+      "description": "Choose how your custom pages appear in your header"
+    },
+    {
+      "variable": "nav_page_display",
+      "label": "Pages to show in your header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your header"
     },
     {
       "variable": "nav_items",
       "label": "Navigation items",
       "section": "global_navigation",
       "type": "select",
-      "options": "0..4",
-      "default": 2,
-      "description": "Number of custom page links to show in main navigation",
+      "options": "0..100",
+      "default": 100,
+      "description": "Maximum number of custom page links to show in your header",
       "requires": [
-        "pages_global_nav_style eq inline"
+        "nav_page_display neq contact_only",
+        "nav_page_display neq none"
       ]
+    },
+    {
+      "variable": "nav_text_transform_header",
+      "label": "Transform text in shop header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your main navigation"
+    },
+    {
+      "variable": "nav_text_transform_footer",
+      "label": "Transform text in shop footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your footer"
     },
     {
       "variable": "max_categories_per_row",
@@ -679,12 +720,31 @@
       "description": "Display product category links in your shop's footer"
     },
     {
-      "variable": "show_custom_pages_in_footer",
-      "label": "Show custom pages in footer",
+      "variable": "nav_page_display_footer",
+      "label": "Pages to show in your footer",
       "section": "global_navigation",
-      "type": "boolean",
-      "default": true,
-      "description": "Display links to your custom pages in your shop's footer"
+      "type": "select",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your footer"
+    },
+    {
+      "variable": "nav_items_footer",
+      "label": "Custom page limit in footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..100",
+      "default": 100,
+      "description": "Maximum number of custom pages shown in your footer",
+      "requires": [
+        "nav_page_display_footer neq contact_only",
+        "nav_page_display_footer neq none"
+      ]
     },
     {
       "variable": "footer_text",
@@ -873,7 +933,7 @@
         ["Text", "text"]
       ],
       "default": "text",
-      "description": "Sets the display of images in the product grid",
+      "description": "Choose how featured categories appear on the Home page",
       "requires": [
         "show_home_page_categories eq true"
       ]
@@ -1002,7 +1062,7 @@
       "label": "Related products",
       "section": "product_page",
       "type": "select",
-      "options": "1..8",
+      "options": "1..12",
       "default": 6,
       "description": "The maximum number of related products to show on Product pages",
       "requires": [
@@ -1095,8 +1155,16 @@
       "label": "Contact page",
       "section": "messaging",
       "type": "textarea",
-      "max_length": 500,
-      "description": "Custom message at the top of your contact page. Supports HTML for advanced customization."
+      "max_length": 1024,
+      "description": "Message displayed at the top of your contact page. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "show_contact_form",
+      "label": "Show contact form",
+      "section": "messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Display contact form on contact page. If disabled, only contact text is shown."
     },
     {
       "variable": "cart_text",
@@ -1303,7 +1371,7 @@
       "section": "translations",
       "sub_section": "navigation",
       "type": "text",
-      "default": "Follow us",
+      "default": "Subscribe",
       "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
       "requires": [ "translation_mode eq manual" ]
     },
@@ -1785,6 +1853,34 @@
       "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "telegram_url",
+      "label": "Telegram URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://t.me/username"
+    },
+    {
+      "variable": "discord_url",
+      "label": "Discord URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://discord.gg/username"
+    },
+    {
+      "variable": "reddit_url",
+      "label": "Reddit URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://reddit.com/r/subreddit"
+    },
+    {
+      "variable": "signal_url",
+      "label": "Signal URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://signal.group/..."
     },
     {
       "variable": "bandcamp_url",
