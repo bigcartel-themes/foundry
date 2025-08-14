@@ -124,6 +124,14 @@ document.addEventListener("DOMContentLoaded", function () {
           if (targetElement) {
             smoothScroll(targetElement, 1000);
           }
+        } else if (themeOptions.welcomeButtonBehavior === "navigate") {
+          // Use external link detection for proper tab behavior
+
+          if (isExternalLink(event.target.href)) {
+            event.preventDefault();
+            event.stopPropagation();
+            window.open(event.target.href, '_blank', 'noopener,noreferrer');
+          }
         }
       });
     }
@@ -139,6 +147,29 @@ document.addEventListener("DOMContentLoaded", function () {
           height: 720 
         } 
       });
+    }
+
+    // Handle separate button and image link functionality  
+    const welcomeButtonLink = themeOptions.welcomeButtonLink && themeOptions.welcomeButtonLink.trim() !== '' ? themeOptions.welcomeButtonLink : null;
+    const welcomeImageLink = themeOptions.welcomeImageLink && themeOptions.welcomeImageLink.trim() !== '' ? themeOptions.welcomeImageLink : null;
+
+    // Make welcome image clickable when no button is shown but welcomeImageLink is configured
+    if (!welcomeButton && welcomeImageLink) {
+      const welcomeArea = document.querySelector(".welcome-image");
+      if (welcomeArea) {
+        welcomeArea.classList.add("welcome-clickable");
+        welcomeArea.setAttribute("role", "button");
+        welcomeArea.setAttribute("aria-label", "Navigate to " + welcomeImageLink);
+        welcomeArea.addEventListener("click", function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          if (isExternalLink(welcomeImageLink)) {
+            window.open(welcomeImageLink, '_blank', 'noopener,noreferrer');
+          } else {
+            window.location.href = welcomeImageLink;
+          }
+        });
+      }
     }
   }
 });

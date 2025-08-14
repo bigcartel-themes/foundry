@@ -146,7 +146,7 @@
     </header>
     {% if page.permalink == 'home' %}
       {% if theme.images.welcome_image or theme.welcome_text != blank or theme.welcome_button_text != blank %}
-        <div class="welcome-image">
+        <div class="welcome-image" {% if theme.welcome_image_link != blank %}title="{{ theme.welcome_image_link }}"{% endif %}>
           {% if theme.images.welcome_image %}
             <img
               alt="Welcome image"
@@ -163,7 +163,7 @@
           <div class="welcome-overlay"></div>
           <div class="welcome-text">
             {% if theme.welcome_text != blank %}<div class="welcome-text-header">{{ theme.welcome_text }}</div>{% endif %}
-            {% if theme.welcome_button_text != blank %}<a href="/products" class="welcome-button">{{ theme.welcome_button_text }}</a>{% endif %}
+            {% if theme.welcome_button_text != blank %}<a href="{% if theme.welcome_button_link != blank and theme.welcome_button_behavior == 'navigate' %}{{ theme.welcome_button_link }}{% else %}/products{% endif %}" class="welcome-button">{{ theme.welcome_button_text }}</a>{% endif %}
           </div>
         </div>
       {% endif %}
@@ -410,12 +410,12 @@
         </div>
       </div>
     {% endif %}
+    {% comment %}
+      Manual array construction needed for themeFeatures for Liquid 3.0.6 since standard JSON filters 
+      (json, jsonify) don't work properly. This ensures proper JavaScript array 
+      formatting with quoted elements and commas.
+    {% endcomment %}
     <script>
-      {% comment %}
-        Manual array construction needed for Liquid 3.0.6 since standard JSON filters 
-        (json, jsonify) don't work properly. This ensures proper JavaScript array 
-        formatting with quoted elements and commas.
-      {% endcomment %}
       const themeFeatures = {
         optIns: [{% if theme.features.opt_ins %}{% for opt in theme.features.opt_ins %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
         optOuts: [{% if theme.features.opt_outs %}{% for opt in theme.features.opt_outs %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
@@ -429,6 +429,8 @@
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
         productImageZoom: {{ theme.product_image_zoom }},
         welcomeButtonBehavior: "{{ theme.welcome_button_behavior }}",
+        welcomeButtonLink: "{{ theme.welcome_button_link }}",
+        welcomeImageLink: "{{ theme.welcome_image_link }}",
         showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
         homeFeaturedVideoUrl: "{{ theme.home_featured_video_url }}",
         homeFeaturedVideoSize: "{{ theme.home_featured_video_size }}",

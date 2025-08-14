@@ -785,17 +785,41 @@
     },
     {
       "variable": "welcome_button_behavior",
-      "label": "Welcome Button Behavior",
+      "label": "Welcome button behavior",
       "section": "homepage",
       "type": "select",
       "options": [
         ["Scroll down page", "scroll"],
-        ["Go to Products Page", "navigate"]
+        ["Navigate", "navigate"]
       ],
       "default": "scroll",
       "description": "Controls the behavior of the welcome button on the Home page",
       "requires": [
         "welcome_button_text present"
+      ]
+    },
+    {
+      "variable": "welcome_button_link",
+      "label": "Welcome button link",
+      "section": "homepage",
+      "type": "text",
+      "default": "/products",
+      "description": "Link destination for the welcome button. Accepts relative paths (e.g. /products) or full URLs.",
+      "requires": [
+        "welcome_button_text present",
+        "welcome_button_behavior eq navigate"
+      ]
+    },
+    {
+      "variable": "welcome_image_link",
+      "label": "Welcome image link", 
+      "section": "homepage",
+      "type": "text",
+      "default": "",
+      "description": "Optionally makes the welcome image clickable. Leave blank to disable. Accepts relative paths (e.g. /products) or full URLs.",
+      "requires": [
+        "welcome_image present",
+        "welcome_button_text neq present"
       ]
     },
     {
