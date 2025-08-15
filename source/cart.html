@@ -42,13 +42,12 @@
                 <a href="{{ item.product.url }}">
                   <div class="product-name">{{ item.product.name }}</div>
                 </a>
-                <div class="option-name">
-                  {% unless item.product.has_default_option %}
-                    {{ item.option.name }} - <span class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</span>
-                  {% else %}
-                    <div class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
-                  {% endunless %}
-                </div>
+                {% unless item.product.has_default_option %}
+                  <div class="option-name">
+                    {{ item.option.name }}
+                  </div>
+                {% endunless %}
+                <div class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
               </div>
               <div class="cart-qty">
                 <div class="qty-holder" data-item-id="{{ item.id }}">
