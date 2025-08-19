@@ -258,6 +258,7 @@ h1, h2, h3, h4, h5, h6
   padding: 0
   flex-wrap: wrap
   justify-content: center
+  padding: 0 30px
 
   @media screen and (max-width: $break-small)
     gap: 8px
@@ -272,11 +273,16 @@ h1, h2, h3, h4, h5, h6
 
     svg
       fill: currentColor
-      height: 20px
-      width: 20px
+      height: 24px
+      width: 24px
 
       &.tumblr-icon
         width: 14px
+
+      &.reddit-icon,
+      &.discord-icon
+        width: 26px
+        height: 26px
 
 .message-banner
   border-radius: var(--border-radius)
