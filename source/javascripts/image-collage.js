@@ -876,7 +876,15 @@ function createCollage(imageUrls, width = 800, height = 800, gap = 4, layoutType
                          maxDimension <= COLLAGE_CONFIG.MEDIUM_IMAGE_SIZE ? COLLAGE_CONFIG.MEDIUM_IMAGE_SIZE : 
                          COLLAGE_CONFIG.LARGE_IMAGE_SIZE;
 
-    const validImageUrls = imageUrls.filter(url => !CollageUtils.isMissingImage(url));
+    // Only process enough URLs to get the images we need
+    const maxNeeded = layoutType === 'strip' ? COLLAGE_CONFIG.MAX_STRIP_IMAGES : 
+                      layoutType === 'featured' ? COLLAGE_CONFIG.MAX_FEATURED_IMAGES : 
+                      COLLAGE_CONFIG.MAX_GRID_IMAGES;
+    
+    // Check a reasonable number of URLs (10x what we need) to avoid O(n) for large categories
+    const checkLimit = Math.min(maxNeeded * 10, imageUrls.length);
+    const limitedUrls = imageUrls.slice(0, checkLimit);
+    const validImageUrls = limitedUrls.filter(url => !CollageUtils.isMissingImage(url));
 
     if (validImageUrls.length === 0) {
       resolve(imageUrls[0]);
