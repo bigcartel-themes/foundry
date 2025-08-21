@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.9.1",
+  "version": "2.10.0",
   "images": [
     {
       "variable": "header_logo",
@@ -586,19 +586,60 @@
         ["Inline", "inline"]
       ],
       "default": "dropdown",
-      "description": "Choose how your custom pages appear in your shop's header menu."
+      "description": "Choose how your custom pages appear in your header"
+    },
+    {
+      "variable": "nav_page_display",
+      "label": "Pages to show in your header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your header"
     },
     {
       "variable": "nav_items",
       "label": "Navigation items",
       "section": "global_navigation",
       "type": "select",
-      "options": "0..4",
-      "default": 2,
-      "description": "Number of custom page links to show in main navigation",
+      "options": "0..100",
+      "default": 100,
+      "description": "Maximum number of custom page links to show in your header",
       "requires": [
-        "pages_global_nav_style eq inline"
+        "nav_page_display neq contact_only",
+        "nav_page_display neq none"
       ]
+    },
+    {
+      "variable": "nav_text_transform_header",
+      "label": "Transform text in shop header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default (Sentence case)", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your main navigation"
+    },
+    {
+      "variable": "nav_text_transform_footer",
+      "label": "Transform text in shop footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default (Sentence case)", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in the footer, excluding custom footer text"
     },
     {
       "variable": "max_categories_per_row",
@@ -679,12 +720,31 @@
       "description": "Display product category links in your shop's footer"
     },
     {
-      "variable": "show_custom_pages_in_footer",
-      "label": "Show custom pages in footer",
+      "variable": "nav_page_display_footer",
+      "label": "Pages to show in your footer",
       "section": "global_navigation",
-      "type": "boolean",
-      "default": true,
-      "description": "Display links to your custom pages in your shop's footer"
+      "type": "select",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your footer"
+    },
+    {
+      "variable": "nav_items_footer",
+      "label": "Custom page limit in footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..100",
+      "default": 100,
+      "description": "Maximum number of custom pages shown in your footer",
+      "requires": [
+        "nav_page_display_footer neq contact_only",
+        "nav_page_display_footer neq none"
+      ]
     },
     {
       "variable": "footer_text",
@@ -725,17 +785,41 @@
     },
     {
       "variable": "welcome_button_behavior",
-      "label": "Welcome Button Behavior",
+      "label": "Welcome button behavior",
       "section": "homepage",
       "type": "select",
       "options": [
         ["Scroll down page", "scroll"],
-        ["Go to Products Page", "navigate"]
+        ["Navigate", "navigate"]
       ],
       "default": "scroll",
       "description": "Controls the behavior of the welcome button on the Home page",
       "requires": [
         "welcome_button_text present"
+      ]
+    },
+    {
+      "variable": "welcome_button_link",
+      "label": "Welcome button link",
+      "section": "homepage",
+      "type": "text",
+      "default": "/products",
+      "description": "Link destination for the welcome button. Accepts relative paths (e.g. /products) or full URLs.",
+      "requires": [
+        "welcome_button_text present",
+        "welcome_button_behavior eq navigate"
+      ]
+    },
+    {
+      "variable": "welcome_image_link",
+      "label": "Welcome image link", 
+      "section": "homepage",
+      "type": "text",
+      "default": "",
+      "description": "Optionally makes the welcome image clickable. Leave blank to disable. Accepts relative paths (e.g. /products) or full URLs.",
+      "requires": [
+        "welcome_image present",
+        "welcome_button_text neq present"
       ]
     },
     {
@@ -873,7 +957,7 @@
         ["Text", "text"]
       ],
       "default": "text",
-      "description": "Sets the display of images in the product grid",
+      "description": "Choose how featured categories appear on the Home page",
       "requires": [
         "show_home_page_categories eq true"
       ]
@@ -934,10 +1018,13 @@
       "options": [
         ["Currency sign", "sign"],
         ["Currency code", "code"],
-        ["No currency indicator", "none"]
+        ["No currency indicator", "none"],
+        ["Currency sign (rounded)", "sign_rounded"],
+        ["Currency code (rounded)", "code_rounded"],
+        ["No currency indicator (rounded)", "rounded"]
       ],
       "default": "sign",
-      "description": "Sets how prices appear in your shop"
+      "description": "Choose how prices display. Rounded options remove decimals and round up to the next whole number."
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -954,6 +1041,27 @@
       "type": "boolean",
       "default": true,
       "description": "Show the price of coming soon products on product grids and product pages"
+    },
+    {
+      "variable": "product_variable_pricing_display_format",
+      "label": "Price display for products with varying prices",
+      "section": "product_page",
+      "type": "select",
+      "options": [
+        ["Show price range", "default"],
+        ["Show lowest price only", "min_only"],
+        ["Show highest price only", "max_only"]
+      ],
+      "default": "default",
+      "description": "Choose how to display prices in your product grid when a product's variants have different prices. Individual product pages will always show the full range."
+    },
+    {
+      "variable": "show_product_variant_count_in_grid",
+      "label": "Show product variant count in product grids",
+      "section": "product_page",
+      "type": "boolean",
+      "default": false,
+      "description": "For products with multiple variants, show the variant count in product grids."
     },
     {
       "variable": "product_image_zoom",
@@ -1002,7 +1110,7 @@
       "label": "Related products",
       "section": "product_page",
       "type": "select",
-      "options": "1..8",
+      "options": "1..12",
       "default": 6,
       "description": "The maximum number of related products to show on Product pages",
       "requires": [
@@ -1095,8 +1203,16 @@
       "label": "Contact page",
       "section": "messaging",
       "type": "textarea",
-      "max_length": 500,
-      "description": "Custom message at the top of your contact page. Supports HTML for advanced customization."
+      "max_length": 1024,
+      "description": "Message displayed at the top of your contact page. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "show_contact_form",
+      "label": "Show contact form",
+      "section": "messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Display contact form on contact page. If disabled, only contact text is shown."
     },
     {
       "variable": "cart_text",
@@ -1136,7 +1252,6 @@
       "description": "Select how text appears throughout your shop. Automatic uses our default translations for your chosen language. Manual lets you customize individual text elements to improve translations or personalize messaging."
     },
 
-    // Manual Navigation Translations
     {
       "variable": "navigation_home_tr_text",
       "label": "'Home'",
@@ -1303,7 +1418,7 @@
       "section": "translations",
       "sub_section": "navigation",
       "type": "text",
-      "default": "Follow us",
+      "default": "Subscribe",
       "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
       "requires": [ "translation_mode eq manual" ]
     },
@@ -1338,7 +1453,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Homepage Translations
     {
       "variable": "home_featured_products_tr_text",
       "label": "'Featured products'",
@@ -1394,7 +1508,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
   
-    // Manual Product Translations
     {
       "variable": "products_add_to_cart_tr_text",
       "label": "'Add to cart'",
@@ -1527,8 +1640,27 @@
       "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
       "requires": [ "translation_mode eq manual" ]
     },
+    {
+      "variable": "products_variant_tr_text",
+      "label": "'Option'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Option",
+      "description": "Text in some cases to reference the product variant (singular)",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_variants_tr_text",
+      "label": "'Options'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Options",
+      "description": "Text in some cases to reference product variants (plural)",
+      "requires": [ "translation_mode eq manual" ]
+    },
 
-    // Manual Cart Translations
     {
       "variable": "cart_checkout_tr_text",
       "label": "'Checkout'",
@@ -1631,7 +1763,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Manual Contact Translations
     {
       "variable": "contact_name_tr_text",
       "label": "'Name'",
@@ -1694,7 +1825,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Social Profile URL Settings
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
@@ -1785,6 +1915,34 @@
       "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "telegram_url",
+      "label": "Telegram URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://t.me/username"
+    },
+    {
+      "variable": "discord_url",
+      "label": "Discord URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://discord.gg/username"
+    },
+    {
+      "variable": "reddit_url",
+      "label": "Reddit URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://reddit.com/r/subreddit"
+    },
+    {
+      "variable": "signal_url",
+      "label": "Signal URL",
+      "section": "social",
+      "type": "text",
+      "description": "Ex: https://signal.group/..."
     },
     {
       "variable": "bandcamp_url",

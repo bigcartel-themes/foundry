@@ -258,6 +258,7 @@ h1, h2, h3, h4, h5, h6
   padding: 0
   flex-wrap: wrap
   justify-content: center
+  padding: 0 30px
 
   @media screen and (max-width: $break-small)
     gap: 8px
@@ -272,11 +273,16 @@ h1, h2, h3, h4, h5, h6
 
     svg
       fill: currentColor
-      height: 20px
-      width: 20px
+      height: 24px
+      width: 24px
 
       &.tumblr-icon
         width: 14px
+
+      &.reddit-icon,
+      &.discord-icon
+        width: 26px
+        height: 26px
 
 .message-banner
   border-radius: var(--border-radius)
@@ -310,11 +316,17 @@ h1, h2, h3, h4, h5, h6
   text-align: center
   width: 100%
 
+  *:not(.footer-custom-content)
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
+
   a
     color: var(--footer-text-color)
 
     &:hover
       color: var(--link-hover-color)
+
+  &__nav, &__pages, &__custom_text
+    max-width: $break-large
 
   &__nav
     display: flex
@@ -324,7 +336,6 @@ h1, h2, h3, h4, h5, h6
   &__pages
     display: flex
     column-gap: 30px
-    max-width: 640px
     flex-wrap: wrap
     justify-content: center
     row-gap: 6px
@@ -337,15 +348,16 @@ h1, h2, h3, h4, h5, h6
         text-decoration: none
 
   &__custom_text
-    display: grid
-    grid-template-columns: 1fr
-    justify-content: center
+    display: block
     text-align: center
     padding: 20px 50px
-    gap: 20px
 
-    > *
-      justify-self: center
+    img
+      display: block
+      margin: 20px auto
+
+    a
+      text-decoration: underline
     
     @media screen and (max-width: $break-small)
       padding: 10px
