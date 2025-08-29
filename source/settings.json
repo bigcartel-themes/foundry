@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "images": [
     {
       "variable": "header_logo",
@@ -1060,7 +1060,8 @@
       "label": "Show product variant count in product grids",
       "section": "product_page",
       "type": "boolean",
-      "default": false,
+      "default": true,
+      "upgrade_default": false,
       "description": "For products with multiple variants, show the variant count in product grids."
     },
     {
@@ -1219,6 +1220,7 @@
       "label": "Cart page",
       "section": "messaging",
       "type": "textarea",
+      "max_length": 1024,
       "description": "Custom message at the top of your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
@@ -1470,7 +1472,7 @@
       "section": "translations",
       "sub_section": "homepage",
       "type": "text",
-      "default": "Featured categories",
+      "default": "Shop by Category",
       "allow_blank": true,
       "description": "Text for the featured categories section on the home page.",
       "requires": [ "translation_mode eq manual" ]
@@ -1576,6 +1578,26 @@
       "type": "text",
       "default": "Sold out",
       "description": "Text displayed when a product is out of stock",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_product_tr_text",
+      "label": "'Product'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Product",
+      "description": "Text displayed when referencing a single item in your shop",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_products_tr_text",
+      "label": "'Products'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Products",
+      "description": "Text displayed when referencing multiple items in your shop",
       "requires": [ "translation_mode eq manual" ]
     },
     {
