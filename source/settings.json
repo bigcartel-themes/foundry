@@ -1220,6 +1220,7 @@
       "label": "Cart page",
       "section": "messaging",
       "type": "textarea",
+      "max_length": 1024,
       "description": "Custom message at the top of your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
