@@ -38,10 +38,10 @@
                   {% assign image_width = product.image.width | times: 1.0 %}
                   {% assign image_height = product.image.height | times: 1.0 %}
                   {% assign aspect_ratio = image_width | divided_by: image_height %}
-                  <div class="product-list-image-container product-list-image-container-cover">
+                  <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                     <img
                       alt=""
-                      class="blur-up product-list-image lazyload grid-cover"
+                      class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
                       src="{{ product.image | product_image_url | constrain: 20 }}"
                       {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
                       data-srcset="
@@ -91,7 +91,7 @@
                   {% endif %}
       
                   <div 
-                    class="product-list-image-container product-list-image-container-cover" 
+                    class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}" 
                     id="category-collage-{{ category.id }}"
                     data-image-urls='{{ image_urls | strip }}'
                     data-image-style="{{ theme.home_page_categories_image_style }}"
@@ -99,7 +99,7 @@
                     <!-- Default placeholder while image is being loaded -->
                     <img
                       alt=""
-                      class="blur-up product-list-image lazyload grid-cover"
+                      class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
                       src="{{ first_product.image | product_image_url | constrain: 30 }}"
                       {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
                     >
