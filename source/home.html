@@ -38,10 +38,10 @@
                   {% assign image_width = product.image.width | times: 1.0 %}
                   {% assign image_height = product.image.height | times: 1.0 %}
                   {% assign aspect_ratio = image_width | divided_by: image_height %}
-                  <div class="product-list-image-container product-list-image-container-cover">
+                  <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                     <img
                       alt=""
-                      class="blur-up product-list-image lazyload grid-cover"
+                      class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
                       src="{{ product.image | product_image_url | constrain: 20 }}"
                       {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
                       data-srcset="
@@ -91,7 +91,7 @@
                   {% endif %}
       
                   <div 
-                    class="product-list-image-container product-list-image-container-cover" 
+                    class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}" 
                     id="category-collage-{{ category.id }}"
                     data-image-urls='{{ image_urls | strip }}'
                     data-image-style="{{ theme.home_page_categories_image_style }}"
@@ -99,7 +99,7 @@
                     <!-- Default placeholder while image is being loaded -->
                     <img
                       alt=""
-                      class="blur-up product-list-image lazyload grid-cover"
+                      class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
                       src="{{ first_product.image | product_image_url | constrain: 30 }}"
                       {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
                     >
@@ -122,8 +122,21 @@
   </div>
 {% endcapture %}
 
-{% if theme.show_home_page_categories and categories.active.size > 0 and theme.home_page_categories_position == "top" %}
-    {{ featured_categories_divs }}
+{%- assign can_show_categories = false -%}
+{%- if theme.show_home_page_categories and theme.featured_categories > 0 and categories.active.size > 0 -%}
+  {%- assign can_show_categories = true -%}
+{%- endif -%}
+
+{%- assign categories_at_top = false -%}
+{%- assign categories_at_bottom = false -%}
+{%- if can_show_categories and theme.home_page_categories_position == "top" -%}
+  {%- assign categories_at_top = true -%}
+{%- endif -%}
+{%- if can_show_categories and theme.home_page_categories_position == "bottom" -%}
+  {%- assign categories_at_bottom = true -%}
+{%- endif -%}
+{% if categories_at_top %}
+  {{ featured_categories_divs }}
 {% endif %}
 
 {% if theme.featured_products > 0 %}
@@ -134,7 +147,7 @@
       {% assign featured_text_position = theme.homepage_featured_text_position %}
 
       {% assign page_title_css_modifier = 'secondary' %}
-      {% if theme.show_home_page_categories and theme.home_page_categories_position == "bottom" %}
+      {% if categories_at_bottom %}
         {% assign page_title_css_modifier = 'primary' %}
       {% endif %}
       
@@ -239,12 +252,6 @@
             {% endfor %}
           </div>
         </div>
-        {% if paginate.pages > 1 %}
-          {% assign all_products_button_text = t['home.all_products'] %}
-          {% if all_products_button_text != blank %}
-            <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
-          {% endif %}
-        {% endif %}
       {% else %}
         <div class="message-banner message-banner--centered message-banner--no-bg">{{ t['products.no_products'] }}</div>
       {% endif %}
@@ -252,6 +259,21 @@
   </div>
 {% endif %}
 
-{% if theme.show_home_page_categories and categories.active.size > 0 and theme.home_page_categories_position == "bottom" %}
-    {{ featured_categories_divs }}
+{% if categories_at_bottom %}
+  {{ featured_categories_divs }}
+{% endif %}
+
+{%- comment -%}
+  All products button should appear after the last featured section:
+  - If both products and categories are shown, it goes after categories (which may be placed at bottom).
+  - If only products are shown, it goes after products.
+  - If only categories are shown, it goes after categories.
+{%- endcomment -%}
+{% assign show_featured_categories = can_show_categories %}
+{% assign show_featured_products = theme.featured_products > 0 and products.all.size > 0 %}
+{% if (show_featured_categories or show_featured_products) and products.all.size > 0 %}
+  {% assign all_products_button_text = t['home.all_products'] %}
+  {% if all_products_button_text != blank %}
+    <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
+  {% endif %}
 {% endif %}
