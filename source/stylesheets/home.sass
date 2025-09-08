@@ -145,9 +145,12 @@ a.all-products-button
 
   .category-list
     --columns: #{"{{ theme.max_categories_per_row }}"}
-
-    .product-list-thumb
-      width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)))
+    max-width: #{"{% if theme.max_categories_per_row == 1 or theme.max_categories_per_row == 2 %}800px{% else %}none{% endif %}"}
+    margin: #{"{% if theme.max_categories_per_row == 1 or theme.max_categories_per_row == 2 %}0 auto{% else %}0{% endif %}"}
+    
+    // Apply centering and reduce gap for 1-2 categories on desktop
+    @media screen and (min-width: calc($break-small + 1px))
+      justify-content: #{"{% if theme.max_categories_per_row == 1 or theme.max_categories_per_row == 2 %}center{% else %}flex-start{% endif %}"}
 
     @media screen and (max-width: $break-large)
       --columns: #{"{% if theme.max_categories_per_row > 3 %}calc(#{"{{ theme.max_categories_per_row }}"} - 1){% else %}{{ theme.max_categories_per_row }}{% endif %}"}
@@ -155,8 +158,17 @@ a.all-products-button
     @media screen and (max-width: $break-small)
       --columns: #{"{{ theme.max_categories_per_row_mobile }}"}
 
-    &--text 
-      row-gap: 20px
+    &--text
+      row-gap: calc(var(--spacing-unit) * 4)
+      --gap: calc(var(--spacing-unit) * 3)
+
+      @media screen and (max-width: $break-small)
+        row-gap: calc(var(--spacing-unit) * 2)
+
+      // Allow natural button width for better centering when 1-2 categories per row
+      .product-list-thumb
+        @media screen and (min-width: calc($break-small + 1px))
+          width: #{"{% if theme.max_categories_per_row == 1 or theme.max_categories_per_row == 2 %}auto{% else %}calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns))){% endif %}"}
     
     a.button
       display: block
@@ -164,7 +176,8 @@ a.all-products-button
       overflow: hidden
       text-overflow: ellipsis
       text-align: center
-      margin: 0
+      // Center buttons within their containers for 1-2 categories per row
+      margin: #{"{% if theme.max_categories_per_row == 1 or theme.max_categories_per_row == 2 %}0 auto{% else %}0{% endif %}"}
 
   // Keyframes for fade-in animation
 @keyframes fade-in

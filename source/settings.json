@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.10.2",
+  "version": "2.10.3",
   "images": [
     {
       "variable": "header_logo",
@@ -642,24 +642,6 @@
       "description": "Controls the text case styling in the footer, excluding custom footer text"
     },
     {
-      "variable": "max_categories_per_row",
-      "label": "Maximum categories per row",
-      "section": "global_navigation",
-      "type": "select",
-      "options": "1..6",
-      "default": 3,
-      "description": "The maximum number of Home page categories displayed per row on larger screens"
-    },
-    {
-      "variable": "max_categories_per_row_mobile",
-      "label": "Maximum categories per row (mobile)",
-      "section": "global_navigation",
-      "type": "select",
-      "options": "1..3",
-      "default": 2,
-      "description": "The maximum number of Home page categories displayed per row on smaller screens"
-    },
-    {
       "variable": "grid_image_style",
       "label": "Product grid image style",
       "section": "global_navigation",
@@ -973,6 +955,30 @@
       ],
       "default": "bottom",
       "description": "Shows the featured categories at the top or bottom of the Home page",
+      "requires": [
+        "show_home_page_categories eq true"
+      ]
+    },
+    {
+      "variable": "max_categories_per_row",
+      "label": "Maximum categories per row",
+      "section": "homepage",
+      "type": "select",
+      "options": "1..6",
+      "default": 3,
+      "description": "The maximum number of Home page categories displayed per row on larger screens",
+      "requires": [
+        "show_home_page_categories eq true"
+      ]
+    },
+    {
+      "variable": "max_categories_per_row_mobile",
+      "label": "Maximum categories per row (mobile)",
+      "section": "homepage",
+      "type": "select",
+      "options": "1..3",
+      "default": 2,
+      "description": "The maximum number of Home page categories displayed per row on smaller screens",
       "requires": [
         "show_home_page_categories eq true"
       ]
