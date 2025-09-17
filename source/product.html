@@ -281,6 +281,9 @@
                   {% if related_product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
                     {% assign hide_price = true %}
                   {% endif %}
+                  {% if related_product.has_password_protection and theme.show_password_protected_product_prices == false %}
+                    {% assign hide_price = true %}
+                  {% endif %}
 
                   <div class="product-list-thumb-price">
                     {% unless hide_price %}
