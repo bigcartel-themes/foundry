@@ -6,7 +6,7 @@
       "variable": "header_logo",
       "label": "Header logo",
       "section": "global_navigation",
-      "description": "Transparent background recommended. Ideal height is at least 100px for best results."
+      "description": "Use a PNG file with a transparent background. Your logo should be at least 100 pixels tall."
     },
     {
       "variable": "welcome_image",
