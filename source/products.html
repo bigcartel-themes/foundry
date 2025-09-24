@@ -13,7 +13,7 @@
 {% if categories.active != blank %}
   <div class="category-list">
     <ul>
-      <li><a href="/products">{{ t['navigation.all_products'] }}</a></li>
+      <li><a href="/products">{{ t['navigation.all'] }}</a></li>
       {% for category in categories.active %}
         <li>{{ category | link_to }}</li>
       {% endfor %}
