@@ -1288,7 +1288,7 @@
     },
     {
       "variable": "header_text_scale",
-      "label": "Header navigation text size",
+      "label": "Header and sidebar text size",
       "section": "text_sizing",
       "type": "select",
       "options": [
@@ -1305,7 +1305,7 @@
         ["150%", "1.5"]
       ],
       "default": "1",
-      "description": "Fine-tune header navigation text size (applies on top of global setting)"
+      "description": "Fine-tune header and sidebar navigation text size (applies on top of global setting)"
     },
     {
       "variable": "footer_text_scale",
