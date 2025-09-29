@@ -3,13 +3,14 @@
   position: relative
   width: auto
   z-index: 3
+  font-size: calc(1rem * var(--header-text-scale, 1))
 
   @media screen and (max-width: $break-medium)
     display: none
-    font-size: 1.25em
+    font-size: calc(1.25em * var(--header-text-scale, 1))
 
   @media screen and (max-width: $break-small)
-    font-size: 1em
+    font-size: calc(1em * var(--header-text-scale, 1))
     max-width: 100%
 
   .nav-heading
@@ -141,13 +142,13 @@
       color: var(--header-text-hover-color)
 
 .header-logo
-  font-size: 1.5em
+  font-size: calc(1.5em * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
   display: inline-flex
   align-items: center
   text-align: left
 
   @media screen and (max-width: $break-small)
-    font-size: 1.3em
+    font-size: calc(1.3em * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
 
   a
     display: flex
@@ -239,6 +240,7 @@
             bottom: 10px
 
 .header-navigation
+  font-size: calc(1rem * var(--header-text-scale, 1))
 
   *
     text-transform: #{"{{ theme.nav_text_transform_header }}"}
