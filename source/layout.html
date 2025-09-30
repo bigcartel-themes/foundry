@@ -38,11 +38,23 @@
   </head>
   <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     {% if theme.announcement_message_text != blank %}
-      <div aria-label="Announcement message" class="announcement-message">
-        <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
-        <button title="Close announcement message" class="announcement-message__close-button">
-          <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
-        </button>
+      <div aria-label="Announcement message" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}">
+        {% if theme.announcement_message_scroll %}
+          <div class="announcement-message__scroll-wrapper">
+            <div class="announcement-message__scroll-content">
+              <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+          <button title="Close announcement message" class="announcement-message__close-button">
+            <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
+          </button>
+        {% endif %}
       </div>
     {% endif %}
     <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% if theme.transparent_header_with_welcome %} is-transparent{% endif %}{% endif %}{% endif %}" data-bc-hook="header">
@@ -459,15 +471,17 @@
         function closeAnnouncement() {
           let announcementElement = document.querySelector(".announcement-message");
           announcementElement?.remove();
-          document.cookie = `announcementClosed=${hashedAnnouncement};path=/`;
+          document.cookie = `announcementClosed=${hashedAnnouncement};path=/;max-age=28800`;
         }
 
-        if (announcementElement?.classList && closeAnnouncementBtn && hashedAnnouncement) {
+        if (announcementElement?.classList && hashedAnnouncement) {
           let hasClosedAnnouncement = document.cookie.includes(`announcementClosed=${hashedAnnouncement}`);
           if (!hasClosedAnnouncement) {
             announcementElement.classList.add('visible');
           }
-          closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          if (closeAnnouncementBtn) {
+            closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          }
         }
       </script>
     {% endif %}
