@@ -19,12 +19,11 @@
     display: flex
 
   &--scrolling
-    min-height: 56px
     padding: 18px 0
     overflow: hidden
+    min-height: fit-content
 
     @media screen and (max-width: $break-small)
-      min-height: 48px
       padding: 14px 0
 
     .announcement-message__close-button
@@ -33,19 +32,22 @@
   &__scroll-wrapper
     width: 100%
     overflow: hidden
-    white-space: nowrap
 
   &__scroll-content
     display: inline-flex
+    white-space: nowrap
     animation: scroll-announcement var(--scroll-duration) linear infinite
     will-change: transform
+    padding: 0 96px
+
+    @media screen and (max-width: $break-small)
+      padding: 0 64px
 
     &:hover
       animation-play-state: paused
 
   &__text
     display: inline-block
-    white-space: nowrap
 
     .announcement-message--scrolling &
       padding: 0 5em
