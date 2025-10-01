@@ -290,7 +290,7 @@
 {%- endcomment -%}
 {% assign show_featured_categories = can_show_categories %}
 {% assign show_featured_products = theme.featured_products > 0 and products.all.size > 0 %}
-{% if (show_featured_categories or show_featured_products) and products.all.size > 0 %}
+{% if theme.homepage_show_all_items_link and (show_featured_categories or show_featured_products) and products.all.size > 0 %}
   {% assign all_products_button_text = t['home.all_products'] %}
   {% if all_products_button_text != blank %}
     <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
