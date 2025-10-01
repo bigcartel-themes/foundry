@@ -93,7 +93,6 @@
   background: var(--header-background-color)
   color: var(--header-text-color)
   font-family: var(--primary-font)
-  height: var(--header-height)
   line-height: 1.2rem
   position: relative
   z-index: 11
@@ -103,16 +102,15 @@
   &__wrapper
     max-width: var(--layout-width)
     margin: 0 auto
-    padding: 0 var(--side-padding)
+    padding: 8px var(--side-padding)
     display: grid
     min-height: var(--header-height)
-    align-items: center
     grid-template-columns: #{"{% if theme.pages_global_nav_style == 'inline' %}1fr 2fr 1fr{% else %}1.25fr 1.5fr 1.25fr{% endif %}"}
     gap: 15px
 
     @media screen and (max-width: $break-large)
       grid-template-columns: 1.35fr 0.65fr
-      padding: 0 20px
+      padding: 8px 20px
 
   &.fixed
     position: fixed
@@ -143,22 +141,23 @@
 
 .header-logo
   font-size: calc(1.5em * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
-  display: inline-flex
-  align-items: center
+  display: flex
+  align-items: flex-start
+  align-self: center
   text-align: left
 
   @media screen and (max-width: $break-small)
     font-size: calc(1.3em * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
 
   a
-    display: flex
+    display: block
     line-height: 1.25em
-    align-items: center
     max-width: 350px
     padding: 8px 0
     width: auto
     outline-offset: 4px
-    
+    word-wrap: break-word
+
     &:hover
       text-decoration: none
 
@@ -177,6 +176,7 @@
 .header-icons
   display: flex
   align-items: center
+  align-self: center
   justify-content: flex-end
   gap: 20px
   position: relative
@@ -241,6 +241,7 @@
 
 .header-navigation
   font-size: calc(1rem * var(--header-text-scale, 1))
+  align-self: center
 
   *
     text-transform: #{"{{ theme.nav_text_transform_header }}"}
