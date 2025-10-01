@@ -12,6 +12,15 @@
   </div>
 {% endif %}
 
+{% assign featured_header = t['home.featured'] %}
+{% assign featured_text = theme.homepage_featured_text %}
+{% assign featured_text_position = theme.homepage_featured_text_position %}
+
+{%- assign can_show_categories = false -%}
+{%- if theme.show_home_page_categories and theme.featured_categories > 0 and categories.active.size > 0 -%}
+  {%- assign can_show_categories = true -%}
+{%- endif -%}
+
 {% capture featured_categories_divs %}
   <div class="featured-categories">
     {% if t['home.featured_categories'] %}
@@ -20,6 +29,10 @@
       {% else %}
         <h2 class="featured-categories-header">{{ t['home.featured_categories'] }}</h2>
       {% endif %}
+    {% endif %}
+    {% comment %} Only show within if no products, categories exist, AND position is within {% endcomment %}
+    {% if featured_text != blank and featured_text_position == "within" and theme.featured_products == 0 and can_show_categories %}
+      <div class="featured-message">{{ featured_text }}</div>
     {% endif %}
     {% assign category_list_style = theme.home_page_categories_style %}
     {% assign category_collages_enabled = false %}
@@ -123,11 +136,6 @@
   </div>
 {% endcapture %}
 
-{%- assign can_show_categories = false -%}
-{%- if theme.show_home_page_categories and theme.featured_categories > 0 and categories.active.size > 0 -%}
-  {%- assign can_show_categories = true -%}
-{%- endif -%}
-
 {%- assign categories_at_top = false -%}
 {%- assign categories_at_bottom = false -%}
 {%- if can_show_categories and theme.home_page_categories_position == "top" -%}
@@ -140,13 +148,9 @@
   {{ featured_categories_divs }}
 {% endif %}
 
-{% assign featured_header = t['home.featured'] %}
-{% assign featured_text = theme.homepage_featured_text %}
-{% assign featured_text_position = theme.homepage_featured_text_position %}
-
-{% comment %} Show featured text above when position is "above" OR when no featured products {% endcomment %}
+{% comment %} Show featured text above when position is "above" OR when no featured content exists {% endcomment %}
 {% if featured_text != blank %}
-  {% if featured_text_position == "above" or theme.featured_products == 0 %}
+  {% if featured_text_position == "above" or (theme.featured_products == 0 and can_show_categories == false) %}
     <div class="featured-message">{{ featured_text }}</div>
   {% endif %}
 {% endif %}
