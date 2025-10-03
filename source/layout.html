@@ -59,10 +59,10 @@
     {% endif %}
     <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% if theme.transparent_header_with_welcome %} is-transparent{% endif %}{% endif %}{% endif %}" data-bc-hook="header">
       <div class="header__wrapper">
-        <div class="header-logo {% if theme.header_logo != blank %}image{% else %}text{% endif %}">
+        <div class="header-logo {% if theme.logo_image != blank %}image{% else %}text{% endif %}">
           <a href="/" title="{{ store.name | escape }}">
-            {% if theme.header_logo != blank %}
-              <img alt="{{ store.name }} Home" src="{{ theme.images.header_logo.url | constrain: '416', '132' }}" srcset="{{ theme.images.header_logo.url | constrain: '416', '132' }} 2x, {{ theme.images.header_logo.url | constrain: '208', '66' }} 1x">
+            {% if theme.logo_image != blank %}
+              <img alt="{{ store.name }} Home" src="{{ theme.images.logo_image.url | constrain: '416', '132' }}" srcset="{{ theme.images.logo_image.url | constrain: '416', '132' }} 2x, {{ theme.images.logo_image.url | constrain: '208', '66' }} 1x">
             {% else %}
               {{ store.name }}
             {% endif %}

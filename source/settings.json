@@ -3,7 +3,7 @@
   "version": "2.11.0",
   "images": [
     {
-      "variable": "header_logo",
+      "variable": "logo_image",
       "label": "Header logo",
       "section": "global_navigation",
       "description": "Use a PNG file with a transparent background. Your logo should be at least 100 pixels tall."
@@ -2190,7 +2190,7 @@
     }
   ],
   "checkout": {
-    "header_image": "{{ header_logo }}",
+    "header_image": "{{ logo_image }}",
     "header_image_max_width": "200px",
     "header_image_max_height": "50px",
     "title_font": "{{ primary_font }}",
