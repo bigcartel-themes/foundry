@@ -33,13 +33,16 @@
   &__scroll-wrapper
     width: 100%
     overflow: hidden
+    // Isolate this container to prevent layout thrashing
+    isolation: isolate
 
   &__scroll-content
     display: inline-flex
     white-space: nowrap
     animation: scroll-announcement var(--scroll-duration) linear infinite
-    will-change: transform
     padding: 0 96px
+    // Contain the rendering to this element only
+    contain: layout style
 
     @media screen and (max-width: $break-small)
       padding: 0 64px
@@ -91,8 +94,10 @@
     &:hover, &:focus
       color: var(--announcement-text-color)
 
+// Keyframe animation for smooth scrolling
+// Uses exact pixel distance calculated by JavaScript for seamless looping
 @keyframes scroll-announcement
   0%
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0)
   100%
-    transform: translateX(-20%)
+    transform: translate3d(var(--scroll-distance, -20%), 0, 0)
