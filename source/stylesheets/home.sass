@@ -118,14 +118,9 @@
   .page-title
     margin-bottom: 0
 
-    &--primary
-      font-size: 2rem
-
+    &--primary,
     &--secondary
-      font-size: 2rem
-
-      @media screen and (max-width: $break-small)
-        font-size: 1.5rem
+      font-size: inherit
 
 a.all-products-button
   margin-top: 48px
@@ -204,6 +199,15 @@ a.all-products-button
   margin-top: #{"{% if theme.images.welcome_image == blank and theme.welcome_text == blank and theme.welcome_button_text == blank %}0{% else %}calc(var(--margin-size) / 2){% endif %}"}
 
 #main
+  .featured-container
+    font-size: 1rem
+
+    @media screen and (max-width: $break-medium)
+      font-size: 0.95rem
+
+    .page-title
+      font-size: 2em
+
   .featured-message
     text-align: center
     margin: 20px auto 60px auto

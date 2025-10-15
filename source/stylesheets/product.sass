@@ -22,6 +22,13 @@
   @media screen and (max-width: $break-medium)
     grid-template-columns: minmax(0, 1fr)
 
+.product-password-form-container
+  margin: 40px auto
+  padding: 0 20px
+
+  h1
+    font-size: 1.5rem
+
 .reset-selection-button-container
   text-align: center
   width: 100%
@@ -59,10 +66,14 @@
   &__title
     line-height: 1.2
     padding-bottom: 10px
+    font-size: calc(2rem * var(--product-title-scale, 1))
+
+    @media screen and (max-width: $break-small)
+      font-size: calc(1.75rem * var(--product-title-scale, 1))
 
   &__status
     text-transform: uppercase
-    font-size: .825rem
+    font-size: calc(.825rem * min(var(--product-title-scale, 1), 1.3))
     line-height: normal
     font-weight: 500
     display: inline-block
@@ -78,10 +89,11 @@
     color: var(--secondary-text-color)
     display: flex
     align-items: center
-    font-size: 1.5em
+    font-size: calc(1.5em * var(--product-title-scale, 1))
 
   &__price-suffix
     color: var(--secondary-text-color)
+    font-size: calc(1rem * var(--product-title-scale, 1))
 
   .page-title
     margin-bottom: 0

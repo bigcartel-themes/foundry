@@ -23,6 +23,7 @@
 
   --announcement-background-color: #{"{{ theme.announcement_background_color }}"}
   --announcement-text-color: #{"{{ theme.announcement_text_color }}"}
+  --scroll-duration: #{"{{ theme.announcement_scroll_speed | default: '15s' }}"}
 
   --error-background-color: #950f1e
   --error-text-color: #FFFFFF
@@ -42,6 +43,21 @@
   --layout-width: 1200px
   --side-padding: 30px
 
+  --font-scale: #{'{{ theme.global_text_scale | default: 1 }}'}
+  --shop-name-scale: #{'{{ theme.shop_name_text_scale | default: 1 }}'}
+  --product-grid-scale: #{'{{ theme.product_grid_scale | default: 1 }}'}
+  --product-title-scale: #{'{{ theme.product_page_heading_scale | default: 1 }}'}
+  --product-description-scale: #{'{{ theme.product_page_description_scale | default: 1 }}'}
+  --header-text-scale: #{'{{ theme.header_text_scale | default: 1 }}'}
+  --footer-text-scale: #{'{{ theme.footer_text_scale | default: 1 }}'}
+  --shop-sprinkles-size: #{"{{ theme.shop_sprinkles_size | default: '2em' }}"}
+  --shop-sprinkles-animation: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}orbit{% when 'tumble' %}tumble{% else %}shake{% endcase %}"}
+  --shop-sprinkles-style-duration: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}5.2s{% else %}4.6s{% endcase %}"}
+  --shop-sprinkles-style-timing: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}linear{% else %}cubic-bezier(0.33,0.65,0.45,1){% endcase %}"}
+  --shop-sprinkles-fall-duration: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}12.5s{% else %}10.8s{% endcase %}"}
+  --shop-sprinkles-spin-animation: #{"{% if theme.shop_sprinkles_animation == 'tumble' %}tumble-spin{% else %}none{% endif %}"}
+  --shop-sprinkles-density: #{"{{ theme.shop_sprinkles_density | default: 12 }}"}
+
   // Video player customization
   --video-rounded-radius: var(--border-radius)
   --video-margin-small: 8px
@@ -53,6 +69,7 @@
     --side-padding: 20px
 
 html
+  font-size: calc(16px * var(--font-scale, 1))
   min-height: 100%
   position: relative
   height: 100%
@@ -65,7 +82,7 @@ body
   display: flex
   flex-direction: column
   font-family: var(--secondary-font)
-  font-size: 16px
+  font-size: 1rem
   min-height: 100%
   height: 100%
 
@@ -74,6 +91,20 @@ body
     width: 100vw
     overflow: hidden
     overscroll-behavior: none
+
+
+// shop sprinkles overrides
+.emoji
+  font-size: var(--shop-sprinkles-size) !important
+  animation-name: var(--shop-sprinkles-animation) !important
+  animation-duration: var(--shop-sprinkles-style-duration) !important
+  animation-timing-function: var(--shop-sprinkles-style-timing) !important
+
+.emoji .inner
+  animation-duration: var(--shop-sprinkles-fall-duration) !important
+
+.emoji .inner span
+  animation-name: var(--shop-sprinkles-spin-animation) !important
 
 a.skip-link
   transition: all .3s linear
@@ -268,21 +299,21 @@ h1, h2, h3, h4, h5, h6
     align-items: center
     justify-content: center
     flex-shrink: 0
-    width: 36px
-    height: 36px
+    width: 30px
+    height: 30px
 
     svg
       fill: currentColor
-      height: 24px
-      width: 24px
+      height: 22px
+      width: 22px
 
       &.tumblr-icon
         width: 14px
 
       &.reddit-icon,
       &.discord-icon
-        width: 26px
-        height: 26px
+        width: 24px
+        height: 24px
 
 .message-banner
   border-radius: var(--border-radius)
@@ -305,6 +336,7 @@ h1, h2, h3, h4, h5, h6
   background: var(--footer-background-color)
   color: var(--footer-text-color)
   font-family: var(--secondary-font)
+  font-size: calc(1rem * var(--footer-text-scale, 1))
   display: flex
   flex-shrink: 0
   justify-content: center
@@ -316,7 +348,7 @@ h1, h2, h3, h4, h5, h6
   text-align: center
   width: 100%
 
-  *:not(.footer-custom-content)
+  *:not(.footer__custom_text)
     text-transform: #{"{{ theme.nav_text_transform_footer }}"}
 
   a
@@ -402,6 +434,13 @@ h1, h2, h3, h4, h5, h6
 .custom-page
   max-width: 768px
   margin: 0 auto
+
+.product-detail__description
+  font-size: calc(1rem * var(--product-description-scale, 1))
+  line-height: 1.6
+
+  @media screen and (max-width: $break-small)
+    font-size: calc(0.95rem * var(--product-description-scale, 1))
 
 .custom-page--content, .product-detail__description
 

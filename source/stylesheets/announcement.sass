@@ -2,13 +2,13 @@
   background-color: var(--announcement-background-color)
   color: var(--announcement-text-color)
   display: none
-  font-size: 1rem
+  font-size: calc(1rem * var(--header-text-scale, 1))
   padding: 18px 96px
   line-height: 1.25em
   position: relative
   text-align: center
   width: 100%
-  z-index: 1
+  z-index: 500
   align-items: center
   justify-content: center
 
@@ -17,6 +17,54 @@
 
   &.visible
     display: flex
+
+  &--scrolling
+    cursor: pointer
+    padding: 18px 0
+    overflow: hidden
+    min-height: fit-content
+
+    @media screen and (max-width: $break-small)
+      padding: 14px 0
+
+    .announcement-message__close-button
+      display: none
+
+  &__scroll-wrapper
+    width: 100%
+    overflow: hidden
+    // Isolate this container to prevent layout thrashing
+    isolation: isolate
+
+  &__scroll-content
+    display: inline-flex
+    white-space: nowrap
+    animation: scroll-announcement var(--scroll-duration) linear infinite
+    padding: 0 96px
+    // Contain the rendering to this element only
+    contain: layout style
+
+    @media screen and (max-width: $break-small)
+      padding: 0 64px
+
+  // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
+  &--scrolling
+    @media (hover: hover)
+      &:hover .announcement-message__scroll-content
+        animation-play-state: paused
+
+    &:focus-visible .announcement-message__scroll-content
+      animation-play-state: paused
+
+    // Pause when user taps on mobile (via JS class toggle)
+    &.is-paused .announcement-message__scroll-content
+      animation-play-state: paused
+
+  &__text
+    display: inline-block
+
+    .announcement-message--scrolling &
+      padding: 0 5em
 
   &__close-button
     transform: translateY(-50%)
@@ -45,3 +93,11 @@
 
     &:hover, &:focus
       color: var(--announcement-text-color)
+
+// Keyframe animation for smooth scrolling
+// Uses exact pixel distance calculated by JavaScript for seamless looping
+@keyframes scroll-announcement
+  0%
+    transform: translate3d(0, 0, 0)
+  100%
+    transform: translate3d(var(--scroll-distance, -20%), 0, 0)

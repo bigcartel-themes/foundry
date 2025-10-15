@@ -12,6 +12,15 @@
   </div>
 {% endif %}
 
+{% assign featured_header = t['home.featured'] %}
+{% assign featured_text = theme.homepage_featured_text %}
+{% assign featured_text_position = theme.homepage_featured_text_position %}
+
+{%- assign can_show_categories = false -%}
+{%- if theme.show_home_page_categories and theme.featured_categories > 0 and categories.active.size > 0 -%}
+  {%- assign can_show_categories = true -%}
+{%- endif -%}
+
 {% capture featured_categories_divs %}
   <div class="featured-categories">
     {% if t['home.featured_categories'] %}
@@ -20,6 +29,10 @@
       {% else %}
         <h2 class="featured-categories-header">{{ t['home.featured_categories'] }}</h2>
       {% endif %}
+    {% endif %}
+    {% comment %} Only show within if no products, categories exist, AND position is within {% endcomment %}
+    {% if featured_text != blank and featured_text_position == "within" and theme.featured_products == 0 and can_show_categories %}
+      <div class="featured-message">{{ featured_text }}</div>
     {% endif %}
     {% assign category_list_style = theme.home_page_categories_style %}
     {% assign category_collages_enabled = false %}
@@ -123,11 +136,6 @@
   </div>
 {% endcapture %}
 
-{%- assign can_show_categories = false -%}
-{%- if theme.show_home_page_categories and theme.featured_categories > 0 and categories.active.size > 0 -%}
-  {%- assign can_show_categories = true -%}
-{%- endif -%}
-
 {%- assign categories_at_top = false -%}
 {%- assign categories_at_bottom = false -%}
 {%- if can_show_categories and theme.home_page_categories_position == "top" -%}
@@ -140,27 +148,34 @@
   {{ featured_categories_divs }}
 {% endif %}
 
+{% comment %} Show featured text above when position is "above" OR when no featured content exists {% endcomment %}
+{% if featured_text != blank %}
+  {% assign show_above = false %}
+  {% if featured_text_position == "above" %}
+    {% assign show_above = true %}
+  {% endif %}
+  {% if theme.featured_products == 0 and can_show_categories == false %}
+    {% assign show_above = true %}
+  {% endif %}
+  {% if show_above %}
+    <div class="featured-message">{{ featured_text }}</div>
+  {% endif %}
+{% endif %}
+
 {% if theme.featured_products > 0 %}
   <div class="home-featured-products">
     <div class="featured-container">
-      {% assign featured_header = t['home.featured'] %}
-      {% assign featured_text = theme.homepage_featured_text %}
-      {% assign featured_text_position = theme.homepage_featured_text_position %}
-
       {% assign page_title_css_modifier = 'secondary' %}
       {% if categories_at_bottom %}
         {% assign page_title_css_modifier = 'primary' %}
-      {% endif %}
-      
-      {% if featured_text != blank and featured_text_position == "above" %}
-        <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
       
       <h2 class="featured-title page-title page-title--{{ page_title_css_modifier }}">
         {{ featured_header }}
       </h2>
       
-      {% if featured_text != blank and featured_text_position != "above" %}
+      {% comment %} Only show within if we have products AND position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_products > 0 %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
@@ -220,6 +235,9 @@
                       {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
                         {% assign hide_price = true %}
                       {% endif %}
+                      {% if product.has_password_protection and theme.show_password_protected_product_prices == false %}
+                        {% assign hide_price = true %}
+                      {% endif %}
 
                       {% unless hide_price %}
                         {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
@@ -272,7 +290,7 @@
 {%- endcomment -%}
 {% assign show_featured_categories = can_show_categories %}
 {% assign show_featured_products = theme.featured_products > 0 and products.all.size > 0 %}
-{% if (show_featured_categories or show_featured_products) and products.all.size > 0 %}
+{% if theme.homepage_show_all_items_link and (show_featured_categories or show_featured_products) and products.all.size > 0 %}
   {% assign all_products_button_text = t['home.all_products'] %}
   {% if all_products_button_text != blank %}
     <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
