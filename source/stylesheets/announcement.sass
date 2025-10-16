@@ -20,21 +20,27 @@
 
   &--scrolling
     cursor: pointer
-    padding: 18px 0
-    overflow: hidden
-    min-height: fit-content
-
-    @media screen and (max-width: $break-small)
-      padding: 14px 0
+    padding: 0
+    overflow: visible
+    display: flex
+    align-items: center
+    justify-content: center
+    // Safari fix: overflow visible on parent, hidden on wrapper
 
     .announcement-message__close-button
       display: none
 
   &__scroll-wrapper
+    padding: 18px 0
     width: 100%
     overflow: hidden
+    display: flex
+    align-items: center
     // Isolate this container to prevent layout thrashing
     isolation: isolate
+
+    @media screen and (max-width: $break-small)
+      padding: 14px 0
 
   &__scroll-content
     display: inline-flex
