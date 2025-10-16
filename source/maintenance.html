@@ -14,7 +14,7 @@
           <img src="{{ theme.maintenance_image.url }}" alt="" loading="lazy">
         </div>
       {% endif %}
-      {% if theme.show_shop_name_on_maintenance_page %}<h1 class="store-name">{{ store.name }}</h1>{% endif %}
+      <h1 class="store-name {% if theme.show_shop_name_on_maintenance_page == false %}visually-hidden{% endif %}">{{ store.name }}</h1>
       {% if theme.maintenance_message != blank %}<div class="maintenance-message">{{ theme.maintenance_message }}</div>{% endif %}
       {% if theme.instagram_url != blank
         or theme.tiktok_url != blank
