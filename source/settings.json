@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "images": [
     {
       "variable": "logo_image",
