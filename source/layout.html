@@ -59,9 +59,9 @@
     {% endif %}
     <header class="header{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has-welcome{% if theme.transparent_header_with_welcome %} is-transparent{% endif %}{% endif %}{% endif %}" data-bc-hook="header">
       <div class="header__wrapper">
-        <div class="header-logo {% if theme.logo_image != blank %}image{% else %}text{% endif %}">
+        <div class="header-logo {% if theme.images.logo_image != blank %}image{% else %}text{% endif %}">
           <a href="/" title="{{ store.name | escape }}">
-            {% if theme.logo_image != blank %}
+            {% if theme.images.logo_image != blank %}
               <img alt="{{ store.name }} Home" src="{{ theme.images.logo_image.url | constrain: '416', '132' }}" srcset="{{ theme.images.logo_image.url | constrain: '416', '132' }} 2x, {{ theme.images.logo_image.url | constrain: '208', '66' }} 1x">
             {% else %}
               {{ store.name }}
@@ -160,7 +160,7 @@
     {% if page.permalink == 'home' %}
       {% if theme.images.welcome_image or theme.welcome_text != blank or theme.welcome_button_text != blank %}
         <div class="welcome-image" {% if theme.welcome_image_link != blank %}title="{{ theme.welcome_image_link }}"{% endif %}>
-          {% if theme.images.welcome_image %}
+          {% if theme.images.welcome_image != blank %}
             <img
               alt="Welcome image"
               class="welcome-image-bg lazyload"
