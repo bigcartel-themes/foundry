@@ -9,9 +9,9 @@
   </head>
   <body id="{{ page.permalink }}" class="{{ page.category }}">
     <div class="maintenance-container">
-      {% if theme.maintenance_image != blank %}
+      {% if theme.images.maintenance_image != blank %}
         <div class="maintenance-image">
-          <img src="{{ theme.maintenance_image.url }}" alt="" loading="lazy">
+          <img src="{{ theme.images.maintenance_image.url | constrain: 800 }}" alt="" loading="lazy">
         </div>
       {% endif %}
       <h1 class="store-name {% if theme.show_shop_name_on_maintenance_page == false %}visually-hidden{% endif %}">{{ store.name }}</h1>
