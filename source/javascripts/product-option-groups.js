@@ -1,4 +1,9 @@
 function processProduct(product) {
+  window.bigcartel = window.bigcartel || {};
+  window.bigcartel.product = product;
+  if (typeof updateInventoryMessage === 'function') {
+    updateInventoryMessage();
+  }
   if (product.has_option_groups) {
     setInitialProductOptionStatuses(product);
     $(".product_option_group").on('change',function() {
