@@ -71,6 +71,9 @@
 
     .announcement-message--scrolling &
       padding: 0 5em
+      // Prevent iOS Safari text inflation
+      -webkit-text-size-adjust: 100%
+      text-size-adjust: 100%
 
   &__close-button
     transform: translateY(-50%)
