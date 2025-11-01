@@ -283,16 +283,30 @@
 {% endif %}
 
 {%- comment -%}
-  All products button should appear after the last featured section:
-  - If both products and categories are shown, it goes after categories (which may be placed at bottom).
-  - If only products are shown, it goes after products.
-  - If only categories are shown, it goes after categories.
+  All products button should appear after the last featured section
+  ONLY when eligible (i.e., when there are more products than currently displayed)
 {%- endcomment -%}
-{% assign show_featured_categories = can_show_categories %}
-{% assign show_featured_products = theme.featured_products > 0 and products.all.size > 0 %}
-{% if theme.homepage_show_all_items_link and (show_featured_categories or show_featured_products) and products.all.size > 0 %}
-  {% assign all_products_button_text = t['home.all_products'] %}
-  {% if all_products_button_text != blank %}
-    <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
+{% if products.all.size > 0 %}
+  {% assign show_all_products_button = false %}
+
+  {%- comment -%} Case 1: Featured products are shown - only eligible if there are more products than displayed {%- endcomment -%}
+  {% if theme.featured_products > 0 %}
+    {% assign total_products = products.all.size %}
+    {% assign displayed_products = theme.featured_products %}
+    {% if displayed_products < total_products %}
+      {% assign show_all_products_button = true %}
+    {% endif %}
+  {% else %}
+    {%- comment -%} Case 2: Only categories shown - eligible because products aren't displayed yet {%- endcomment -%}
+    {% if can_show_categories %}
+      {% assign show_all_products_button = true %}
+    {% endif %}
+  {% endif %}
+
+  {% if theme.homepage_show_all_items_link and show_all_products_button %}
+    {% assign all_products_button_text = t['home.all_products'] %}
+    {% if all_products_button_text != blank %}
+      <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
+    {% endif %}
   {% endif %}
 {% endif %}
