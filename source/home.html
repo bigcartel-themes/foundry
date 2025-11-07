@@ -297,10 +297,8 @@
       {% assign show_all_products_button = true %}
     {% endif %}
   {% else %}
-    {%- comment -%} Case 2: Only categories shown - eligible because products aren't displayed yet {%- endcomment -%}
-    {% if can_show_categories %}
-      {% assign show_all_products_button = true %}
-    {% endif %}
+    {%- comment -%} Case 2: No featured products shown - eligible because products aren't displayed yet {%- endcomment -%}
+    {% assign show_all_products_button = true %}
   {% endif %}
 
   {% if theme.homepage_show_all_items_link and show_all_products_button %}
