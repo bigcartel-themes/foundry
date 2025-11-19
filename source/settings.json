@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.11.6",
+  "version": "2.11.7",
   "images": [
     {
       "variable": "logo_image",
@@ -588,8 +588,14 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Dropdown", "dropdown"],
-        ["Inline", "inline"]
+        [
+          "Dropdown",
+          "dropdown"
+        ],
+        [
+          "Inline",
+          "inline"
+        ]
       ],
       "default": "dropdown",
       "description": "Choose how your custom pages appear in your header"
@@ -600,10 +606,22 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["All pages", "all"],
-        ["Custom pages only", "pages_only"],
-        ["Contact page only", "contact_only"],
-        ["None", "none"]
+        [
+          "All pages",
+          "all"
+        ],
+        [
+          "Custom pages only",
+          "pages_only"
+        ],
+        [
+          "Contact page only",
+          "contact_only"
+        ],
+        [
+          "None",
+          "none"
+        ]
       ],
       "default": "all",
       "description": "Select which types of pages appear in your header"
@@ -627,9 +645,18 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Default (Sentence case)", "initial"],
-        ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        [
+          "Default (Sentence case)",
+          "initial"
+        ],
+        [
+          "Uppercase",
+          "uppercase"
+        ],
+        [
+          "Lowercase",
+          "lowercase"
+        ]
       ],
       "default": "initial",
       "description": "Controls the text case styling in your main navigation"
@@ -640,9 +667,18 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Default (Sentence case)", "initial"],
-        ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        [
+          "Default (Sentence case)",
+          "initial"
+        ],
+        [
+          "Uppercase",
+          "uppercase"
+        ],
+        [
+          "Lowercase",
+          "lowercase"
+        ]
       ],
       "default": "initial",
       "description": "Controls the text case styling in the footer, excluding custom footer text"
@@ -653,9 +689,18 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Normal", "default"],
-        ["Fit to square", "contain"],
-        ["Crop to square", "cover"]
+        [
+          "Normal",
+          "default"
+        ],
+        [
+          "Fit to square",
+          "contain"
+        ],
+        [
+          "Crop to square",
+          "cover"
+        ]
       ],
       "default": "cover",
       "description": "Sets the display of images in the product grid"
@@ -713,10 +758,22 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["All pages", "all"],
-        ["Custom pages only", "pages_only"],
-        ["Contact page only", "contact_only"],
-        ["None", "none"]
+        [
+          "All pages",
+          "all"
+        ],
+        [
+          "Custom pages only",
+          "pages_only"
+        ],
+        [
+          "Contact page only",
+          "contact_only"
+        ],
+        [
+          "None",
+          "none"
+        ]
       ],
       "default": "all",
       "description": "Select which types of pages appear in your footer"
@@ -748,8 +805,14 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Start of footer", "start"],
-        ["End of footer", "end"]
+        [
+          "Start of footer",
+          "start"
+        ],
+        [
+          "End of footer",
+          "end"
+        ]
       ],
       "default": "end",
       "description": "Choose where to show your footer message",
@@ -777,8 +840,14 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Scroll down page", "scroll"],
-        ["Navigate", "navigate"]
+        [
+          "Scroll down page",
+          "scroll"
+        ],
+        [
+          "Navigate",
+          "navigate"
+        ]
       ],
       "default": "scroll",
       "description": "Controls the behavior of the welcome button on the Home page",
@@ -800,7 +869,7 @@
     },
     {
       "variable": "welcome_image_link",
-      "label": "Welcome image link", 
+      "label": "Welcome image link",
       "section": "homepage",
       "type": "text",
       "default": "",
@@ -816,11 +885,26 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Very bright", "very_bright"],
-        ["Bright", "bright"],
-        ["None", "none"],
-        ["Dark", "dark"],
-        ["Very dark", "very_dark"]
+        [
+          "Very bright",
+          "very_bright"
+        ],
+        [
+          "Bright",
+          "bright"
+        ],
+        [
+          "None",
+          "none"
+        ],
+        [
+          "Dark",
+          "dark"
+        ],
+        [
+          "Very dark",
+          "very_dark"
+        ]
       ],
       "default": "dark",
       "description": "Adjust the homepage welcome image to enhance the legibility of your welcome text and button"
@@ -845,10 +929,22 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Small", "small"],
-        ["Medium", "medium"],
-        ["Large", "large"],
-        ["Full width", "full-width"]
+        [
+          "Small",
+          "small"
+        ],
+        [
+          "Medium",
+          "medium"
+        ],
+        [
+          "Large",
+          "large"
+        ],
+        [
+          "Full width",
+          "full-width"
+        ]
       ],
       "default": "full-width",
       "description": "Sets the size of the featured video on the Home page",
@@ -862,8 +958,14 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Rounded", "rounded"],
-        ["Sharp", "sharp"]
+        [
+          "Rounded",
+          "rounded"
+        ],
+        [
+          "Sharp",
+          "sharp"
+        ]
       ],
       "default": "rounded",
       "description": "Sets the style of the featured video border on the Home page",
@@ -914,8 +1016,14 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Above featured section", "above"],
-        ["Within featured section", "within"]
+        [
+          "Above featured section",
+          "above"
+        ],
+        [
+          "Within featured section",
+          "within"
+        ]
       ],
       "default": "within",
       "description": "Sets position of the featured message",
@@ -950,8 +1058,14 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Thumbnails", "thumbnails"],
-        ["Text", "text"]
+        [
+          "Thumbnails",
+          "thumbnails"
+        ],
+        [
+          "Text",
+          "text"
+        ]
       ],
       "default": "text",
       "description": "Choose how featured categories appear on the Home page",
@@ -965,8 +1079,14 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Top", "top"],
-        ["Bottom", "bottom"]
+        [
+          "Top",
+          "top"
+        ],
+        [
+          "Bottom",
+          "bottom"
+        ]
       ],
       "default": "bottom",
       "description": "Shows the featured categories at the top or bottom of the Home page",
@@ -1004,10 +1124,22 @@
       "section": "homepage",
       "type": "select",
       "options": [
-        ["Single product image", "single"],
-        ["Grid collage", "grid"],
-        ["Strip collage", "strip"],
-        ["Featured collage", "featured"]
+        [
+          "Single product image",
+          "single"
+        ],
+        [
+          "Grid collage",
+          "grid"
+        ],
+        [
+          "Strip collage",
+          "strip"
+        ],
+        [
+          "Featured collage",
+          "featured"
+        ]
       ],
       "default": "single",
       "upgrade_default": "single",
@@ -1037,12 +1169,30 @@
       "section": "product_page",
       "type": "select",
       "options": [
-        ["Currency sign", "sign"],
-        ["Currency code", "code"],
-        ["No currency indicator", "none"],
-        ["Currency sign (rounded)", "sign_rounded"],
-        ["Currency code (rounded)", "code_rounded"],
-        ["No currency indicator (rounded)", "rounded"]
+        [
+          "Currency sign",
+          "sign"
+        ],
+        [
+          "Currency code",
+          "code"
+        ],
+        [
+          "No currency indicator",
+          "none"
+        ],
+        [
+          "Currency sign (rounded)",
+          "sign_rounded"
+        ],
+        [
+          "Currency code (rounded)",
+          "code_rounded"
+        ],
+        [
+          "No currency indicator (rounded)",
+          "rounded"
+        ]
       ],
       "default": "sign",
       "description": "Choose how prices display. Rounded options remove decimals and round up to the next whole number."
@@ -1081,9 +1231,18 @@
       "section": "product_page",
       "type": "select",
       "options": [
-        ["Show price range", "default"],
-        ["Show lowest price only", "min_only"],
-        ["Show highest price only", "max_only"]
+        [
+          "Show price range",
+          "default"
+        ],
+        [
+          "Show lowest price only",
+          "min_only"
+        ],
+        [
+          "Show highest price only",
+          "max_only"
+        ]
       ],
       "default": "default",
       "description": "Choose how to display prices in your product grid when a product's variants have different prices. Individual product pages will always show the full range."
@@ -1111,10 +1270,22 @@
       "section": "product_page",
       "type": "select",
       "options": [
-        ["Thumbnails", "thumbnails"],
-        ["Carousel", "carousel"],
-        ["Stacked 2 column", "two-column"],
-        ["Stacked full width", "stacked"]
+        [
+          "Thumbnails",
+          "thumbnails"
+        ],
+        [
+          "Carousel",
+          "carousel"
+        ],
+        [
+          "Stacked 2 column",
+          "two-column"
+        ],
+        [
+          "Stacked full width",
+          "stacked"
+        ]
       ],
       "default": "carousel",
       "description": "Sets the display of the Product page gallery"
@@ -1125,8 +1296,14 @@
       "section": "product_page",
       "type": "select",
       "options": [
-        ["Show thumbnails", "show-thumbnails"],
-        ["Hide thumbnails", "hide-thumbnails"]
+        [
+          "Show thumbnails",
+          "show-thumbnails"
+        ],
+        [
+          "Hide thumbnails",
+          "hide-thumbnails"
+        ]
       ],
       "default": "show-thumbnails",
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
@@ -1170,7 +1347,9 @@
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": [ "inventory" ]
+      "requires": [
+        "inventory"
+      ]
     },
     {
       "variable": "show_low_inventory_messages",
@@ -1179,7 +1358,9 @@
       "type": "boolean",
       "default": true,
       "description": "Show shoppers alerts on Product pages when it's running low on stock",
-      "requires": [ "inventory" ]
+      "requires": [
+        "inventory"
+      ]
     },
     {
       "variable": "low_inventory_threshold",
@@ -1249,11 +1430,26 @@
       "section": "messaging",
       "type": "select",
       "options": [
-        ["Slowest", "50s"],
-        ["Slow", "30s"],
-        ["Medium", "15s"],
-        ["Fast", "7s"],
-        ["Fastest", "3s"]
+        [
+          "Slowest",
+          "50s"
+        ],
+        [
+          "Slow",
+          "30s"
+        ],
+        [
+          "Medium",
+          "15s"
+        ],
+        [
+          "Fast",
+          "7s"
+        ],
+        [
+          "Fastest",
+          "3s"
+        ]
       ],
       "default": "15s",
       "description": "Controls how quickly the announcement scrolls across the screen",
@@ -1292,17 +1488,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Set the base text size for your entire shop. All text will scale from this setting"
@@ -1313,17 +1542,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Fine-tune header and sidebar navigation text size (applies on top of global setting)"
@@ -1334,17 +1596,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Fine-tune footer text size (applies on top of global setting)"
@@ -1355,17 +1650,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Fine-tune your shop name size (applies on top of global and header settings)"
@@ -1376,17 +1704,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Fine-tune product grid text size (applies on top of global setting)"
@@ -1397,17 +1758,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Fine-tune product title, price, and status text size (applies on top of global setting)"
@@ -1418,17 +1812,50 @@
       "section": "text_sizing",
       "type": "select",
       "options": [
-        ["50%", "0.5"],
-        ["60%", "0.6"],
-        ["70%", "0.7"],
-        ["80%", "0.8"],
-        ["90%", "0.9"],
-        ["Default", "1"],
-        ["110%", "1.1"],
-        ["120%", "1.2"],
-        ["130%", "1.3"],
-        ["140%", "1.4"],
-        ["150%", "1.5"]
+        [
+          "50%",
+          "0.5"
+        ],
+        [
+          "60%",
+          "0.6"
+        ],
+        [
+          "70%",
+          "0.7"
+        ],
+        [
+          "80%",
+          "0.8"
+        ],
+        [
+          "90%",
+          "0.9"
+        ],
+        [
+          "Default",
+          "1"
+        ],
+        [
+          "110%",
+          "1.1"
+        ],
+        [
+          "120%",
+          "1.2"
+        ],
+        [
+          "130%",
+          "1.3"
+        ],
+        [
+          "140%",
+          "1.4"
+        ],
+        [
+          "150%",
+          "1.5"
+        ]
       ],
       "default": "1",
       "description": "Fine-tune product description text size (applies on top of global setting)"
@@ -1439,9 +1866,18 @@
       "section": "general",
       "type": "select",
       "options": [
-        ["Drift", "shake"],
-        ["Orbit", "orbit"],
-        ["Tumble", "tumble"]
+        [
+          "Drift",
+          "shake"
+        ],
+        [
+          "Orbit",
+          "orbit"
+        ],
+        [
+          "Tumble",
+          "tumble"
+        ]
       ],
       "default": "shake",
       "description": "Adjust the falling animation style of the shop sprinkles. You must select an emoji to turn on sprinkles."
@@ -1452,14 +1888,38 @@
       "section": "general",
       "type": "select",
       "options": [
-        ["Smallest", "0.75em"],
-        ["Small", "1.25em"],
-        ["Smaller", "1.5em"],
-        ["Default", "2em"],
-        ["Bigger", "2.75em"],
-        ["Big", "3.5em"],
-        ["Biggest", "4.25em"],
-        ["Jumbo", "5em"]
+        [
+          "Smallest",
+          "0.75em"
+        ],
+        [
+          "Small",
+          "1.25em"
+        ],
+        [
+          "Smaller",
+          "1.5em"
+        ],
+        [
+          "Default",
+          "2em"
+        ],
+        [
+          "Bigger",
+          "2.75em"
+        ],
+        [
+          "Big",
+          "3.5em"
+        ],
+        [
+          "Biggest",
+          "4.25em"
+        ],
+        [
+          "Jumbo",
+          "5em"
+        ]
       ],
       "default": "2em",
       "description": "Adjust the size of the shop sprinkles"
@@ -1470,11 +1930,26 @@
       "section": "general",
       "type": "select",
       "options": [
-        ["Very subtle", "4"],
-        ["Subtle", "8"],
-        ["Balanced", "14"],
-        ["Festive", "20"],
-        ["Party", "28"]
+        [
+          "Very subtle",
+          "4"
+        ],
+        [
+          "Subtle",
+          "8"
+        ],
+        [
+          "Balanced",
+          "14"
+        ],
+        [
+          "Festive",
+          "20"
+        ],
+        [
+          "Party",
+          "28"
+        ]
       ],
       "default": "14",
       "description": "Adjust the density of shop sprinkles"
@@ -1485,10 +1960,22 @@
       "section": "general",
       "type": "select",
       "options": [
-        ["Off", "0"],
-        ["Small", "2px"],
-        ["Medium", "4px"],
-        ["Large", "8px"]
+        [
+          "Off",
+          "0"
+        ],
+        [
+          "Small",
+          "2px"
+        ],
+        [
+          "Medium",
+          "4px"
+        ],
+        [
+          "Large",
+          "8px"
+        ]
       ],
       "default": "4px",
       "description": "Controls the rounded corner style on images and other site elements"
@@ -1508,13 +1995,18 @@
       "section": "translations",
       "type": "select",
       "options": [
-        ["Automatic", "automatic"],
-        ["Manual", "manual"]
+        [
+          "Automatic",
+          "automatic"
+        ],
+        [
+          "Manual",
+          "manual"
+        ]
       ],
       "default": "automatic",
       "description": "Select how text appears throughout your shop. Automatic uses our default translations for your chosen language. Manual lets you customize individual text elements to improve translations or personalize messaging."
     },
-
     {
       "variable": "navigation_home_tr_text",
       "label": "'Home'",
@@ -1523,7 +2015,9 @@
       "type": "text",
       "default": "Home",
       "description": "Text for the 'Home' navigation link.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_search_tr_text",
@@ -1533,7 +2027,9 @@
       "type": "text",
       "default": "Search",
       "description": "Text for the 'Search' navigation link or button.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_shop_tr_text",
@@ -1543,7 +2039,9 @@
       "type": "text",
       "default": "Shop",
       "description": "Text for the 'Shop' navigation links in the header and menus",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_cart_tr_text",
@@ -1553,7 +2051,9 @@
       "type": "text",
       "default": "Cart",
       "description": "Text for the 'Cart' link and references to the cart page",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_contact_tr_text",
@@ -1563,7 +2063,9 @@
       "type": "text",
       "default": "Contact",
       "description": "Text for the 'Contact' link and references to the contact page",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_view_all_tr_text",
@@ -1573,7 +2075,9 @@
       "type": "text",
       "default": "View all",
       "description": "Text for 'View all' links, often in product collections.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_view_tr_text",
@@ -1583,7 +2087,9 @@
       "type": "text",
       "default": "View",
       "description": "General text for 'View' links or buttons.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_next_tr_text",
@@ -1593,7 +2099,9 @@
       "type": "text",
       "default": "Next",
       "description": "Text for 'Next' buttons or links in pagination.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_previous_tr_text",
@@ -1603,7 +2111,9 @@
       "type": "text",
       "default": "Previous",
       "description": "Text for 'Previous' buttons or links in pagination.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_all_tr_text",
@@ -1613,7 +2123,9 @@
       "type": "text",
       "default": "All",
       "description": "Text abbreviation used for links to all products",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_all_products_tr_text",
@@ -1623,7 +2135,9 @@
       "type": "text",
       "default": "All products",
       "description": "Text for links pointing to all products.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_products_tr_text",
@@ -1633,7 +2147,9 @@
       "type": "text",
       "default": "Products",
       "description": "Text for 'Products' navigation links.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_categories_tr_text",
@@ -1643,7 +2159,9 @@
       "type": "text",
       "default": "Categories",
       "description": "Text for 'Categories' navigation links.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_pages_tr_text",
@@ -1653,7 +2171,9 @@
       "type": "text",
       "default": "Pages",
       "description": "Text for 'Pages' navigation links.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_more_tr_text",
@@ -1663,7 +2183,9 @@
       "type": "text",
       "default": "More",
       "description": "Text for 'More' navigation menus",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_social_tr_text",
@@ -1673,7 +2195,9 @@
       "type": "text",
       "default": "Follow us",
       "description": "Text for titles on your social media links",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_subscribe_tr_text",
@@ -1683,7 +2207,9 @@
       "type": "text",
       "default": "Subscribe",
       "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_back_to_site_tr_text",
@@ -1693,7 +2219,9 @@
       "type": "text",
       "default": "Back to site",
       "description": "Text 'Back to site' link in navigation which links to your 'website' configured in your <a href='/account/your-shop'>shop info</a>",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_newest_tr_text",
@@ -1703,7 +2231,9 @@
       "type": "text",
       "default": "Newest",
       "description": "Text for 'Newest' labels in menus for product collections",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "navigation_top_selling_tr_text",
@@ -1713,9 +2243,10 @@
       "type": "text",
       "default": "Top-selling",
       "description": "Text for 'Top-selling' labels in menus for product collections",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
-
     {
       "variable": "home_featured_products_tr_text",
       "label": "'Featured products'",
@@ -1725,7 +2256,9 @@
       "default": "Featured products",
       "allow_blank": true,
       "description": "Text for the featured products section on the home page.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "home_featured_categories_tr_text",
@@ -1736,7 +2269,9 @@
       "default": "Shop by Category",
       "allow_blank": true,
       "description": "Text for the featured categories section on the home page.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "home_featured_video_tr_text",
@@ -1747,7 +2282,9 @@
       "default": "",
       "allow_blank": true,
       "description": "Text for the featured video section on the home page.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "home_featured_tr_text",
@@ -1758,7 +2295,9 @@
       "default": "Featured",
       "allow_blank": true,
       "description": "Generic title for featured content on the home page.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "home_all_products_tr_text",
@@ -1768,9 +2307,10 @@
       "type": "text",
       "default": "All products",
       "description": "Button caption for the 'All products' button on the home page.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
-  
     {
       "variable": "products_add_to_cart_tr_text",
       "label": "'Add to cart'",
@@ -1779,7 +2319,9 @@
       "type": "text",
       "default": "Add to cart",
       "description": "Text for the 'Add to cart' buttons",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_select_variant_tr_text",
@@ -1789,7 +2331,9 @@
       "type": "text",
       "default": "Select option",
       "description": "Text for product variant dropdowns and selections",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_select_tr_text",
@@ -1799,7 +2343,9 @@
       "type": "text",
       "default": "Select",
       "description": "Text for the word used before product variant group dropdowns and selections (e.g. 'Select <variant group name>')",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_reset_tr_text",
@@ -1809,7 +2355,9 @@
       "type": "text",
       "default": "Reset",
       "description": "Text for button shown when resetting product variant selections",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_coming_soon_tr_text",
@@ -1819,7 +2367,9 @@
       "type": "text",
       "default": "Coming soon",
       "description": "Text displayed for products not yet available",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_on_sale_tr_text",
@@ -1829,7 +2379,9 @@
       "type": "text",
       "default": "On sale",
       "description": "Text indicating a product is on sale",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_sold_out_tr_text",
@@ -1839,7 +2391,9 @@
       "type": "text",
       "default": "Sold out",
       "description": "Text displayed when a product is out of stock",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_product_tr_text",
@@ -1849,7 +2403,9 @@
       "type": "text",
       "default": "Product",
       "description": "Text displayed when referencing a single item in your shop",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_products_tr_text",
@@ -1859,7 +2415,9 @@
       "type": "text",
       "default": "Products",
       "description": "Text displayed when referencing multiple items in your shop",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_related_products_tr_text",
@@ -1869,7 +2427,9 @@
       "type": "text",
       "description": "Displays above related products on Products pages",
       "default": "You might also like",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_low_inventory_tr_text",
@@ -1880,7 +2440,9 @@
       "max_length": 50,
       "description": "Message shown when stock drops below your alert level",
       "default": "Limited quantities available",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_almost_sold_out_tr_text",
@@ -1891,7 +2453,9 @@
       "max_length": 50,
       "description": "Message shown on product pages when stock drops below half your alert level",
       "default": "Only a few left!",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_no_products_tr_text",
@@ -1901,7 +2465,9 @@
       "type": "text",
       "default": "No products found",
       "description": "Text displayed in status messages when no products are found",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_search_results_tr_text",
@@ -1911,7 +2477,9 @@
       "type": "text",
       "default": "Search results",
       "description": "Text displayed when showing title of search results",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_in_stock_tr_text",
@@ -1921,7 +2489,9 @@
       "type": "text",
       "default": "in stock",
       "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_variant_tr_text",
@@ -1931,7 +2501,9 @@
       "type": "text",
       "default": "Option",
       "description": "Text in some cases to reference the product variant (singular)",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "products_variants_tr_text",
@@ -1941,9 +2513,10 @@
       "type": "text",
       "default": "Options",
       "description": "Text in some cases to reference product variants (plural)",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
-
     {
       "variable": "cart_checkout_tr_text",
       "label": "'Checkout'",
@@ -1952,7 +2525,9 @@
       "type": "text",
       "default": "Checkout",
       "description": "Text for the 'Checkout' button or page title",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_share_this_cart_tr_text",
@@ -1962,7 +2537,9 @@
       "type": "text",
       "default": "Share this cart",
       "description": "Text for the 'Share this cart' feature",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_share_this_cart_link_copy_success_tr_text",
@@ -1972,7 +2549,9 @@
       "type": "text",
       "default": "Link copied!",
       "description": "Success message when the cart share link is copied to the clipboard",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_remove_tr_text",
@@ -1982,7 +2561,9 @@
       "type": "text",
       "default": "Remove",
       "description": "Text for link to remove items from the cart",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_subtotal_tr_text",
@@ -1992,7 +2573,9 @@
       "type": "text",
       "default": "Subtotal",
       "description": "Text label for the cart subtotal.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_continue_shopping_tr_text",
@@ -2002,7 +2585,9 @@
       "type": "text",
       "default": "Continue shopping",
       "description": "Text for the 'Continue shopping' link or button",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_view_cart_tr_text",
@@ -2012,7 +2597,9 @@
       "type": "text",
       "default": "View cart",
       "description": "Text for the 'View cart' link or button",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_empty_cart_tr_text",
@@ -2023,7 +2610,9 @@
       "max_length": 250,
       "default": "Your cart is empty",
       "description": "Text for the empty cart message",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_quantity_abbreviated_tr_text",
@@ -2033,7 +2622,9 @@
       "type": "text",
       "default": "Qty",
       "description": "Text abbreviation for quantity labels",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "cart_quantity_tr_text",
@@ -2043,9 +2634,10 @@
       "type": "text",
       "default": "Quantity",
       "description": "Text quantity labels",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
-
     {
       "variable": "contact_name_tr_text",
       "label": "'Name'",
@@ -2054,7 +2646,9 @@
       "type": "text",
       "default": "Name",
       "description": "Text for the name field in contact forms.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "contact_subject_tr_text",
@@ -2064,7 +2658,9 @@
       "type": "text",
       "default": "Subject",
       "description": "Text for the subject field in contact forms.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "contact_email_tr_text",
@@ -2074,7 +2670,9 @@
       "type": "text",
       "default": "Email",
       "description": "Text for the email field in contact forms.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "contact_message_tr_text",
@@ -2084,7 +2682,9 @@
       "type": "text",
       "default": "Message",
       "description": "Text for the message field in contact forms.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "contact_send_button_tr_text",
@@ -2094,7 +2694,9 @@
       "type": "text",
       "default": "Send message",
       "description": "Text for the send button in contact forms.",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
     {
       "variable": "contact_form_success_tr_text",
@@ -2105,9 +2707,10 @@
       "max_length": 250,
       "default": "Thanks! Your message has been sent and we'll get back to you soon.",
       "description": "Shown when visitor successfully sends a message from the contact form",
-      "requires": [ "translation_mode eq manual" ]
+      "requires": [
+        "translation_mode eq manual"
+      ]
     },
-
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
