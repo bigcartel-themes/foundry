@@ -132,11 +132,12 @@ a.all-products-button
     text-align: center
     margin-bottom: 48px
 
-    &--primary
-      font-size: 2rem
-    
+    &--primary,
     &--secondary
-      font-size: 1.5rem
+      font-size: 1.75rem
+
+      @media screen and (max-width: $break-small)
+        font-size: 1.5rem
 
   .category-list
     --columns: #{"{{ theme.max_categories_per_row }}"}
@@ -206,7 +207,10 @@ a.all-products-button
       font-size: 0.95rem
 
     .page-title
-      font-size: 2em
+      font-size: 1.75rem
+
+      @media screen and (max-width: $break-small)
+        font-size: 1.5rem
 
   .featured-message
     text-align: center
