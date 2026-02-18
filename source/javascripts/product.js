@@ -29,8 +29,10 @@ if (themeOptions.productImageZoom === true) {
   lightbox.init();
 }
 $('.product-option-select').on('change',function() {
-  var option_price = $(this).find("option:selected").attr("data-price");
-  enableAddButton(option_price);
+  var selectedOption = $(this).find("option:selected");
+  var option_price = selectedOption.attr("data-price");
+  var original_price = selectedOption.attr("data-original-price");
+  enableAddButton(option_price, original_price);
 });
 
 function updateInventoryMessage(optionId = null) {
@@ -91,18 +93,41 @@ function updateInventoryMessage(optionId = null) {
   }
 }
 
-function enableAddButton(updated_price) {
+function updateProductPrice(updated_price, original_price) {
+  var priceContainer = $('.product-detail__price-value');
+  if (!priceContainer.length) return;
+
+  // Convert to numbers for proper comparison (data attributes are strings)
+  var updatedNum = parseFloat(updated_price) || 0;
+  var originalNum = parseFloat(original_price) || 0;
+
+  var showStrikethrough = originalNum > updatedNum &&
+                          themeOptions.showStrikethroughPricing;
+
+  var priceHtml;
+  if (showStrikethrough) {
+    var regularFormatted = formatMoney(original_price, true, true);
+    var saleFormatted = formatMoney(updated_price, true, true);
+    priceHtml = '<s class="price-compare">' + regularFormatted + '</s> <span class="price-sale">' + saleFormatted + '</span>';
+  } else {
+    priceHtml = formatMoney(updated_price, true, true);
+  }
+
+  priceContainer.html(priceHtml);
+}
+
+function enableAddButton(updated_price, original_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
+  addButton.html(addButtonTitle);
+  addButton.attr('aria-label', addButtonTitle);
+
+  // Update the price display area if a price is provided
   if (updated_price) {
-    priceTitle = ' - ' + formatMoney(updated_price, true, true);
+    updateProductPrice(updated_price, original_price);
   }
-  else {
-    priceTitle = '';
-  }
-  addButton.html(addButtonTitle + priceTitle);
-  addButton.attr('aria-label',addButton.text());
+
   updateInventoryMessage($('#option').val());
   showBnplMessaging(updated_price, { alignment: 'left', displayMode: 'grid', pageType: 'product' });
 }
