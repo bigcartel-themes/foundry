@@ -134,10 +134,7 @@ function enableAddButton(updated_price, original_price) {
   addButton.html(addButtonTitle);
   addButton.attr('aria-label', addButtonTitle);
 
-  // Update the price display area if a price is provided
-  if (updated_price) {
-    updateProductPrice(updated_price, original_price);
-  }
+  updateProductPrice(updated_price, original_price);
 
   updateInventoryMessage($('#option').val());
   showBnplMessaging(updated_price, { alignment: 'left', displayMode: 'grid', pageType: 'product' });
