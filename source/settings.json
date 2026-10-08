@@ -1,6 +1,6 @@
 {
   "name": "Foundry",
-  "version": "2.11.7",
+  "version": "2.11.8",
   "images": [
     {
       "variable": "logo_image",
@@ -645,18 +645,10 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        [
-          "Default (Sentence case)",
-          "initial"
-        ],
-        [
-          "Uppercase",
-          "uppercase"
-        ],
-        [
-          "Lowercase",
-          "lowercase"
-        ]
+        ["Default (Sentence case)", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in your main navigation"
@@ -667,18 +659,10 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        [
-          "Default (Sentence case)",
-          "initial"
-        ],
-        [
-          "Uppercase",
-          "uppercase"
-        ],
-        [
-          "Lowercase",
-          "lowercase"
-        ]
+        ["Default (Sentence case)", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in the footer, excluding custom footer text"
